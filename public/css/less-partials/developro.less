@@ -1,0 +1,625 @@
+#plan-holder {
+    position: relative;
+    div {
+        margin: 0 auto;
+    }
+    .plan-holder-info {
+        position: absolute;
+        right: 60px;
+        background: #213c13;
+        z-index: 90;
+        padding: 30px;
+        line-height: normal;
+        color: white;
+        top: -30px;
+        a {
+            color: white;
+        }
+    }
+}
+
+#filtr {
+    form {
+        background: white;
+        padding: 15px 30px 30px;
+        -webkit-box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.24);
+        -moz-box-shadow:    0 3px 5px 0 rgba(0, 0, 0, 0.24);
+        box-shadow:         0 3px 5px 0 rgba(0, 0, 0, 0.24);
+    }
+    label {
+        font-size: 13px;
+        color: #213c13;
+        font-weight: normal;
+    }
+    .form-control {
+        padding: 12px 12px
+    }
+    #filtr-button {
+        margin: 0;
+        border-radius: 0;
+        border-color: #d2d2d2;
+        color: #2b2b2b;
+        font-weight: 600;
+        font-size: 15px;
+        letter-spacing: 0;
+        &:hover {
+            background: var(--main-color-gold);
+            border-color: var(--main-color-gold);
+            color: #fff;
+            -webkit-box-shadow: 0 3px 5px 0 rgba(0,0,0,0);
+            -moz-box-shadow: 0 3px 5px 0 rgba(0,0,0,0);
+            box-shadow: 0 3px 5px 0 rgba(0,0,0,0);
+            top: 0;
+        }
+    }
+    .bootstrap-select {
+        width: 100%;
+    }
+    button, .bs-placeholder {
+        align-items: center;
+        font-size: 15px;
+        color: #2b2b2b;
+        border-radius: 0;
+    }
+    button.dropdown-toggle {
+        background: white;
+        border: 1px solid #d2d2d2;
+    }
+    button.dropdown-toggle.bs-placeholder {
+        background: white;
+        border: 1px solid #d2d2d2;
+    }
+    .bootstrap-select .dropdown-toggle:focus,
+    .bootstrap-select > select.mobile-device:focus + .dropdown-toggle {
+        outline: 0 !important
+    }
+}
+
+#sortList {
+    button {
+        font-size: 12px;
+        background: #b79a5e;
+        border-radius: 0;
+        color: white;
+        &:hover {
+            background: #b79a5e;
+            color: white;
+        }
+    }
+    label {
+        font-size: 13px;
+        color: #797979;
+        font-weight: normal;
+    }
+    .dropdown-menu {
+        border-radius: 0;
+    }
+}
+
+.dropdown-item {
+    font-size: 14px;
+    line-height: normal;
+    &.active,
+    &:active {
+        color: #fff;
+        background-color: #b79a5e
+    }
+}
+
+.view span {
+    font-size: 16px;
+}
+#list {
+    margin-left: 16px;
+    padding-left: 20px;
+    border-left: 1px solid #dee2e6;
+}
+
+#planNav {
+    .bttn {
+        text-transform: uppercase;
+        margin:0 0 30px 0
+    }
+}
+
+
+.ribbon1 {
+    position: absolute;
+    top: -6.1px;
+    left: 10px;
+}
+.ribbon1:after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 76px solid transparent;
+    border-right: 76px solid transparent;
+    border-top: 10px solid #b79a5e;
+}
+.ribbon1 span {
+    position: relative;
+    display: block;
+    text-align: center;
+    background: #b79a5e;
+    font-size: 14px;
+    line-height: 1;
+    padding: 12px 8px 10px;
+    border-top-right-radius: 8px;
+    width: 152px;
+    color: white;
+    font-weight: 500;
+}
+.ribbon1 span:before, .ribbon1 span:after {
+    position: absolute;
+    content: "";
+}
+.ribbon1 span:before {
+    height: 6px;
+    width: 6px;
+    left: -6px;
+    top: 0;
+    background: #b79a5e;
+}
+.ribbon1 span:after {
+    height: 6px;
+    width: 8px;
+    left: -8px;
+    top: 0;
+    border-radius: 8px 8px 0 0;
+    background: #957d4c;
+}
+
+#roomsList {
+    border-bottom: 1px solid #e5e5e5;
+    .row {
+        background: white;
+        border-top:1px solid #e5e5e5;
+        position: relative;
+        -webkit-transition: all 200ms linear;
+        -moz-transition: all 200ms linear;
+        -o-transition: all 200ms linear;
+        transition: all 200ms linear;
+        -webkit-box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0);
+        -moz-box-shadow:    0 5px 5px 0 rgba(0, 0, 0, 0);
+        box-shadow:         0 5px 5px 0 rgba(0, 0, 0, 0);
+        &:hover {
+            top:-5px;
+            -webkit-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.38);
+            -moz-box-shadow:    0 5px 10px 0 rgba(0, 0, 0, 0.38);
+            box-shadow:         0 5px 10px 0 rgba(0, 0, 0, 0.38);
+        }
+    }
+    .col {
+        padding:30px;
+        display: flex;
+        align-items: center;
+        img {
+            width: 150px;
+        }
+    }
+    .bttn {
+        margin:0;
+        width: 100%;
+        padding: 22px 0;
+    }
+    h2 {
+        font-size: 30px;
+        span {
+            font-size: 42px;
+            font-weight: 600;
+        }
+    }
+    ul {
+        width: 100%;
+        b {
+            float: right;
+        }
+        li {
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+        }
+        li:last-child {
+            border-bottom: 0 solid #ddd;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+    }
+    .badge {
+        color: #fff;
+        font-size: 15px;
+        line-height: normal;
+        font-weight: 400;
+        min-width: 210px;
+        height: 38px;
+        border-radius: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .badge.room-list-status-1 {background:green}
+    .badge.room-list-status-2 {background:#0063a9}
+    .badge.room-list-status-3 {background:#b71c1c}
+    .badge.room-list-status-4 {background:#e17f00}
+}
+
+.property {
+    #page {
+        padding-top:0;
+        padding-bottom: 1px;
+    }
+    #property {
+        background: #213c13 url("../../gfx/green-bg.png");
+        padding:60px 0;
+        h6 {
+            font-size: 30px;
+            color: white;
+            font-weight: 600;
+        }
+
+        #notifications {
+            background: white;
+        }
+    }
+    .property-desc {
+        ul {
+            li {
+                color: #fff;
+                font-size: 18px;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+                padding: 5px 0;
+                span {
+                    float: right;
+                    font-weight: 600;
+                }
+            }
+        }
+        .bttn {
+            color: white;
+            text-transform: uppercase;
+            padding: 14px 25px;
+            margin: 0 0 15px 0;
+        }
+    }
+    .property-img {
+        padding: 30px;
+        img {
+            border: 10px solid white;
+            -webkit-box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.38);
+            -moz-box-shadow:    0px 5px 10px 0px rgba(0, 0, 0, 0.38);
+            box-shadow:         0px 5px 10px 0px rgba(0, 0, 0, 0.38);
+        }
+    }
+
+
+    #contact-form {
+        margin: 0;
+        padding: 40px;
+    }
+    #property-form {
+        h2 {
+            margin-bottom: 20px;
+        }
+        .alert {
+            line-height: normal;
+            margin: 0
+        }
+    }
+}
+
+#propertyNav {
+    .bttn {
+        width: 100%;
+        color: white;
+        text-transform: uppercase;
+        padding: 14px 0;
+        margin: 0 0 15px 0;
+        font-size: 12px;
+    }
+}
+
+.qtip {position:absolute;left:-28000px;top:-28000px;display:none;width:190px;box-shadow:none;}
+.qtip-content {position:relative;overflow:hidden;text-align:left;word-wrap:break-word;color:white !important;font-size:13px !important;line-height:16px;padding:10px 10px;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px}
+.qtip-default .qtip-content {background:#183a61}
+.qtip-tip{margin: 0 auto;overflow: hidden;z-index: 10;}
+.qtip-tip{visibility: hidden}
+.qtip-tip, .qtip-tip canvas{position: absolute;color:#222 !important;border: 0 dashed transparent !important}
+.qtip-tip canvas{ top: 0; left: 0; }
+.qtip-content h3 {color:white;font-weight:600;text-align:center;margin:0}
+.qtip-content li {border-bottom:1px solid #3f3f3f;padding:3px 0;font-weight:300}
+.qtip-content li b {font-weight:600}
+
+/* Kolory dymkow
+'1' => 'Na sprzedaż',
+'2' => 'Rezerwacja',
+'3' => 'Sprzedane',
+'4' => 'Wynajęte'
+*/
+.qtip.status-1 .qtip-content {background:#3a9019;border:1px solid #3a9019}
+.qtip.status-1 .qtip-content canvas {background:#3a9019}
+.qtip.status-2 .qtip-content {background:#1788c9;border:1px solid #1788c9}
+.qtip.status-2 .qtip-content canvas {background:#1788c9;color:black}
+.qtip.status-3 .qtip-content {background:#ec2327;border:1px solid #ec2327}
+.qtip.status-3 .qtip-content canvas {background:#ec2327}
+.qtip.status-4 .qtip-content {background:#de8300;border:1px solid #de8300}
+.qtip.status-4 .qtip-content canvas {background:#de8300}
+
+.property-desc {
+    position: relative;
+    .room-status {
+        font-size: 16px;
+        padding: 3px 60px !important;
+        text-align: center;
+        position: relative;
+        margin: 20px 0;
+        border-radius: 6px;
+    }
+    .room-status-1 {color: white;background:#3a9019}
+    .room-status-2 {color: white;background:#1788c9}
+    .room-status-3 {color: white;background:#ec2327}
+    .room-status-4 {color: white;background:#de8300}
+}
+
+@media (max-width: 1389.98px) {
+    #roomsList {
+        h2 {
+            font-size: 22px;
+            span {
+                font-size: 28px;
+                font-weight: 600;
+            }
+        }
+        ul li {
+            font-size: 14px;
+            &:first-child {
+                margin-bottom: 5px;
+                padding-bottom: 5px;
+            }
+        }
+        .bttn {
+            padding: 14px 0;
+        }
+        .col {
+            padding: 20px;
+            img {
+                width: 130px;
+            }
+        }
+        .badge {
+            font-size: 13px;
+            min-width: 150px;
+            height: 30px
+        }
+    }
+}
+/* end of 1389.98 */
+
+@media (max-width: 1199.98px) {
+    #planNav .bttn {
+        padding: 13px 0;
+        width: 100%;
+    }
+    .property {
+        .property-img {
+            padding-right: 0;
+            width: 40%;
+            float: left;
+        }
+        .property-desc {
+            width: 60%;
+            float: left;
+        }
+    }
+    #property-form {
+        margin-top: 20px;
+        .container {
+            padding:0
+        }
+    }
+}
+/* end of 1199.98 */
+
+@media (max-width: 991.98px) {
+    #plan-holder .plan-holder-info {
+        padding: 15px;
+        font-size: 14px;
+        position: static;
+        text-align: center;
+    }
+    #filtr form {
+        padding: 15px 10px 25px
+    }
+    #filtr,
+    #plan-holder,
+    #sortList,
+    #roomsList
+    {
+        padding: 0 30px;
+    }
+    #roomsList {
+        h2 {
+            font-size: 18px;
+            span {
+                font-size: 22px;
+            }
+        }
+        ul li {
+            font-size: 12px;
+        }
+        .bttn {
+            padding: 9px 0;
+            font-size: 11px;
+        }
+        .col {
+            padding: 10px 20px;
+            img {
+                width: 90px;
+            }
+        }
+        .badge {
+            min-width: 115px;
+        }
+    }
+}
+/* end of 991.98 */
+
+@media (max-width: 767.98px) {
+    #roomsList {
+        .container-fluid {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .row {
+            flex: 0 0 auto;
+            width: 48%;
+            margin:0 1% 10px;
+        }
+        .badge {
+            min-width: 102px;
+            font-size: 12px;
+            height: 26px;
+        }
+        h2 {
+            font-size: 23px;
+            margin:0;
+            text-align: center;
+            span {
+                font-size: 28px;
+            }
+        }
+        .col {
+            padding: 10px 15px;
+            flex: 0 0 100%;
+            img {
+                width: 100%;
+            }
+            a {
+                width: 100%;
+            }
+            &.col-top {
+                padding: 40px 15px 10px;
+            }
+        }
+    }
+    .ribbon1 {
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 175px;
+    }
+    #planNav .bttn {
+        padding: 10px 0;
+        font-size: 11px;
+    }
+    .property {
+        #contact-form {
+            padding: 15px 20px 25px
+        }
+        #property-form h2 {
+            margin-bottom: 5px;
+            font-size: 26px;
+        }
+    }
+}
+/* end of 767.98 */
+
+@media (max-width: 575.98px) {
+    #filtr,
+    #plan-holder,
+    #roomsList,
+    #sortList
+    {
+        padding: 0 15px;
+    }
+    #roomsList {
+        .row {
+            margin-bottom: 10px;
+        }
+        .badge {
+            min-width: 100%;
+            font-size: 13px;
+            height: 26px;
+        }
+        .col {
+            padding: 10px 15px;
+        }
+    }
+    #planNav .bttn {
+        margin: 0 0 10px;
+    }
+    .property {
+        #page {
+            padding: 0 0 1px;
+        }
+        #property {
+            padding: 30px 15px;
+        }
+        .property-img {
+            width: 100%;
+            padding: 0;
+            margin-bottom: 20px;
+            img {
+                width: 200px;
+                margin: 0 auto;
+            }
+        }
+        .property-desc {
+            width: 100%;
+            .bttn {
+                padding: 10px 0;
+                font-size: 11px;
+                width: 100%;
+            }
+            ul li {
+                font-size: 15px;
+                padding: 3px 0;
+            }
+            .room-status {
+                margin-top: 0;
+            }
+        }
+    }
+    #propertyNav {
+        .bttn {
+            padding: 10px 0;
+            font-size: 11px;
+            width: 100%;
+        }
+    }
+}
+/* end of 575.98 */
+
+@media (max-width: 420px) {
+    #roomsList {
+        .row {
+            flex: 0 0 auto;
+            width: 100%;
+            margin:0 0 10px;
+        }
+        .container-fluid {
+            padding: 0;
+        }
+    }
+    #filtr {
+        form {
+            padding: 10px 5px 15px;
+        }
+        .bs-placeholder,
+        button,
+        #filtr-button
+        {
+            font-size: 13px
+        }
+    }
+}
+
+/* end of 359.98 */
+@media (max-width: 359.98px) {
+    .property {
+        .property-img img {
+            width: 150px
+        }
+    }
+}
+/* end of 359.98 */

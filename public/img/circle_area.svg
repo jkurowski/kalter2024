@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="35.415" height="38.83" viewBox="0 0 35.415 38.83">
+  <g id="circle_area" transform="translate(-43.528 -22.852)">
+    <g id="Group_743" data-name="Group 743" transform="translate(46.678 23.602)">
+      <g id="Group_742" data-name="Group 742" transform="translate(11.71 0)">
+        <g id="Group_741" data-name="Group 741">
+          <g id="Group_740" data-name="Group 740">
+            <circle id="Ellipse_108" data-name="Ellipse 108" cx="2.756" cy="2.756" r="2.756" fill="none" stroke="#024282" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5"/>
+          </g>
+        </g>
+      </g>
+      <path id="Path_289" data-name="Path 289" d="M85.9,102.54l-3.559.9a5.285,5.285,0,0,1-2.3.067l-4.452-.858a1.161,1.161,0,0,0-.533,2.258l4.989,1.252a5.286,5.286,0,0,0,1.91.122l3.174-.377L83.7,128.433a1.454,1.454,0,0,0,1.451,1.546H85.3a1.454,1.454,0,0,0,1.437-1.231l1.591-13.4a.438.438,0,0,1,.869,0L90.9,128.763a1.454,1.454,0,0,0,2.885-.33l-1.426-22.524,3.174.377a5.285,5.285,0,0,0,1.91-.122l4.989-1.252a1.161,1.161,0,0,0-.533-2.258l-4.452.858a5.285,5.285,0,0,1-2.3-.067l-3.559-.9" transform="translate(-74.188 -96.207)" fill="none" stroke="#024282" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5"/>
+    </g>
+    <path id="Path_290" data-name="Path 290" d="M69.4,376.548c5.24.817,8.79,2.4,8.79,4.211,0,2.653-7.592,4.8-16.957,4.8s-16.957-2.151-16.957-4.8c0-1.814,3.55-3.394,8.79-4.211" transform="translate(0 -324.631)" fill="none" stroke="#fbc000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5"/>
+  </g>
+</svg>
