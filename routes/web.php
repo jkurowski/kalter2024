@@ -46,13 +46,25 @@ Route::post('/email/verification-notification', function (Request $request) {
 
 
 Route::middleware(['restrictIp'])->group(function () {
-    Route::group(['namespace' => 'Front', 'prefix' => '{locale?}', 'where' => ['locale' => '(?!admin)*[a-z]{2}'],], function() {
+    Route::group(['namespace' => 'Front', 'prefix' => '{locale?}', 'where' => ['locale' => '(?!admin)*[a-z]{2}'],], function () {
 
         Route::get('/', 'IndexController@index')->name('index');
 
+        // Oferta
+        Route::get('/oferta-mieszkan', 'Investments\IndexController@index')->name('offer.index');
 
+        Route::get('/i/downtown', 'Investments\IndexController@downtown')->name('offer.downtown');
+        Route::get('/i/downtown/plan-inwestycji', 'Investments\IndexController@downtownProperties')->name('offer.downtown.properties');
 
-        Route::get('/oferta/{offer}', 'Offer\IndexController@show')->name('show');
+        Route::get('/i/na-skraju', 'Investments\IndexController@naSkraju')->name('offer.na-skraju');
+        Route::get('/i/na-skraju/plan-inwestycji', 'Investments\IndexController@naSkrajuProperties')->name('offer.na-skraju.properties');
+
+        Route::get('/i/slonimska-residence-ii', 'Investments\IndexController@slonimskaResidenceII')->name('offer.slonimska-residence-ii');
+        Route::get('/i/slonimska-residence-ii/plan-inwestycji', 'Investments\IndexController@slonimskaResidenceIIProperties')->name('offer.slonimska-residence-ii.properties');
+
+        Route::get('/i/ogrody-andersena', 'Investments\IndexController@ogrodyAndersena')->name('offer.ogrody-andersena');
+        Route::get('/i/ogrody-andersena/plan-inwestycji', 'Investments\IndexController@ogrodyAndersenaProperties')->name('offer.ogrody-andersena.properties');
+
 
         Route::get('/kontakt', 'ContactController@index')->name('contact');
         Route::post('/kontakt', 'ContactController@send')->name('contact.send');
@@ -65,33 +77,33 @@ Route::middleware(['restrictIp'])->group(function () {
             '/gallery' => 'GalleryController'
         ]);
 
-//        // Client area
-//        Route::middleware('guest.client')->group(function () {
-//            Route::get('client/login', 'Auth\LoginController@showLoginForm')->name('login');
-//            Route::post('client/login/request-code', 'Auth\LoginController@requestCode')->name('login.request-code');
-//            Route::post('client/login/verify-code', 'Auth\LoginController@verifyCode')->name('login.verify-code');
-//        });
-//
-//        Route::middleware(['auth.client'])->group(function () {
-//            Route::get('client/area', 'Client\IndexController@index')->name('client.area');
-//
-//            Route::get('client/area/chat', 'Client\Chat\IndexController@index')->name('client.area.chat');
-//            Route::get('client/area/chat/messages/{clientId}', 'Client\Chat\IndexController@fetchMessages')->name('client.area.fetchMessages');
-//            Route::post('client/area/chat/send', 'Client\Chat\IndexController@sendMessage')->name('client.area.sendMessage');
-//
-//            Route::get('client/area/file', 'Client\Files\IndexController@index')->name('client.area.files');
-//            Route::get('client/area/calendar', 'Client\Calendar\IndexController@index')->name('client.area.calendar');
-//            Route::get('client/area/calendar/events', 'Client\Calendar\IndexController@show')->name('client.area.calendar.events.show');
-//
-//            Route::get('client/area/offer', 'Client\Offer\IndexController@index')->name('client.area.offer');
-//
-//            Route::get('client/area/special', 'Client\Special\IndexController@index')->name('client.area.special');
-//
-//            Route::get('client/area/rodo', 'Client\Rodo\IndexController@index')->name('client.area.rodo');
-//            Route::post('client/area/rodo/change-rule', 'Client\Rodo\IndexController@editRule')->name('client.area.rodo.change-rule');
-//
-//            Route::post('client/logout', 'Auth\LoginController@logout')->name('client.logout');
-//        });
+        //        // Client area
+        //        Route::middleware('guest.client')->group(function () {
+        //            Route::get('client/login', 'Auth\LoginController@showLoginForm')->name('login');
+        //            Route::post('client/login/request-code', 'Auth\LoginController@requestCode')->name('login.request-code');
+        //            Route::post('client/login/verify-code', 'Auth\LoginController@verifyCode')->name('login.verify-code');
+        //        });
+        //
+        //        Route::middleware(['auth.client'])->group(function () {
+        //            Route::get('client/area', 'Client\IndexController@index')->name('client.area');
+        //
+        //            Route::get('client/area/chat', 'Client\Chat\IndexController@index')->name('client.area.chat');
+        //            Route::get('client/area/chat/messages/{clientId}', 'Client\Chat\IndexController@fetchMessages')->name('client.area.fetchMessages');
+        //            Route::post('client/area/chat/send', 'Client\Chat\IndexController@sendMessage')->name('client.area.sendMessage');
+        //
+        //            Route::get('client/area/file', 'Client\Files\IndexController@index')->name('client.area.files');
+        //            Route::get('client/area/calendar', 'Client\Calendar\IndexController@index')->name('client.area.calendar');
+        //            Route::get('client/area/calendar/events', 'Client\Calendar\IndexController@show')->name('client.area.calendar.events.show');
+        //
+        //            Route::get('client/area/offer', 'Client\Offer\IndexController@index')->name('client.area.offer');
+        //
+        //            Route::get('client/area/special', 'Client\Special\IndexController@index')->name('client.area.special');
+        //
+        //            Route::get('client/area/rodo', 'Client\Rodo\IndexController@index')->name('client.area.rodo');
+        //            Route::post('client/area/rodo/change-rule', 'Client\Rodo\IndexController@editRule')->name('client.area.rodo.change-rule');
+        //
+        //            Route::post('client/logout', 'Auth\LoginController@logout')->name('client.logout');
+        //        });
 
         // DeveloPro
         Route::group(['namespace' => 'Developro', 'prefix' => '/inwestycje', 'as' => 'developro.'], function () {
