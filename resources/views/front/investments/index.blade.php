@@ -42,7 +42,6 @@
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 row-gap-4">
                     @foreach ($investments as $investment)
                         <div class="col">
-                            @dump($investment->id)
                             <?php
                             $link = '';
                             switch ($investment->id) {
