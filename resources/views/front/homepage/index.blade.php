@@ -164,119 +164,42 @@
         ];
         ?>
         <div class="invests-vertical-slider mt-4" data-slick='<?= json_encode($slider_options) ?>'>
-            <div>
-                <div class="invest-card position-relative">
-                    <a href="#" class="stretched-link z-2"></a>
-                    <div class="position-absolute invest-card-bg-overlay w-100 h-100 top-0 start-0">
-                        <img src="img/invest_1_bg.png" alt="" class="w-100 h-100 object-fit-cover invest-card-bg">
-                    </div>
-                    <div class="d-flex isolation-isolate justify-content-between gap-3 text-white">
-                        <div class="fw-bold">
-                            <p class="small text-uppercase mb-3 lh-1">Łódź</p>
-                            <p class="h3 lh-1">Na falistej</p>
-
+            @foreach($current_investment as $p)
+                <div>
+                    <div class="invest-card position-relative">
+                        <a href="{{ route('developro.show', $p->slug) }}" class="stretched-link z-2"></a>
+                        <div class="position-absolute invest-card-bg-overlay w-100 h-100 top-0 start-0">
+                            <img src="{{asset('investment/thumbs/'.$p->file_thumb) }}" alt="" class="w-100 h-100 object-fit-cover invest-card-bg">
                         </div>
-                        <div>
-                            <img src="img/invest_1_logo.png" alt="" class="rounded-circle invest-card-logo img-fluid" loading="lazy" decoding="async" width="71" height="71">
+                        <div class="d-flex isolation-isolate justify-content-between gap-3 text-white">
+                            <div class="fw-bold">
+                                <p class="small text-uppercase mb-3 lh-1">{{$p->city->name}}</p>
+                                <p class="h3 lh-1">{{$p->name}}</p>
+
+                            </div>
+                            @if($p->file_logo)
+                                <div>
+                                    <img src="{{asset('investment/logo/'.$p->file_logo) }}" alt="" class="rounded-circle invest-card-logo img-fluid" loading="lazy" decoding="async" width="71" height="71">
+                                </div>
+                            @endif
                         </div>
-                    </div>
-                    <div class="isolation-isolate text-white fw-semibold mb-auto fs-13">
-                        <p class="text-uppercase mb-0">
-                            Termin oddania:
-                        </p>
-                        <p class="mb-0">
-                            III kwartał 2023
-                        </p>
-                        <p class="price mt-3 fs-3 text-primary">999 999zł</p>
-                    </div>
-
-                    <div class="position-relative z-2">
-                        <button class="btn btn-primary btn-with-icon ">
-                            Sprawdź
-                            <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062">
-                                <path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor" />
-                            </svg>
-
-                        </button>
-                    </div>
-
-                </div>            </div>
-            <div>
-                <div class="invest-card position-relative">
-                    <a href="#" class="stretched-link z-2"></a>
-                    <div class="position-absolute invest-card-bg-overlay w-100 h-100 top-0 start-0">
-                        <img src="img/invest_1_bg.png" alt="" class="w-100 h-100 object-fit-cover invest-card-bg">
-                    </div>
-                    <div class="d-flex isolation-isolate justify-content-between gap-3 text-white">
-                        <div class="fw-bold">
-                            <p class="small text-uppercase mb-3 lh-1">Łódź</p>
-                            <p class="h3 lh-1">Na falistej</p>
-
+                        <div class="isolation-isolate text-white fw-semibold mb-auto fs-13">
+                            <p class="text-uppercase mb-0">Termin oddania:</p>
+                            <p class="mb-0">{{ $p->date_end }}</p>
+                            <p class="price mt-3 fs-3 text-primary d-none">999 999zł</p>
                         </div>
-                        <div>
-                            <img src="img/invest_1_logo.png" alt="" class="rounded-circle invest-card-logo img-fluid" loading="lazy" decoding="async" width="71" height="71">
+
+                        <div class="position-relative z-2">
+                            <a href="{{ route('developro.show', $p->slug) }}" class="btn btn-primary btn-with-icon ">
+                                Sprawdź
+                                <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062">
+                                    <path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor" />
+                                </svg>
+                            </a>
                         </div>
                     </div>
-                    <div class="isolation-isolate text-white fw-semibold mb-auto fs-13">
-                        <p class="text-uppercase mb-0">
-                            Termin oddania:
-                        </p>
-                        <p class="mb-0">
-                            III kwartał 2023
-                        </p>
-                        <p class="price mt-3 fs-3 text-primary">999 999zł</p>
-                    </div>
-
-                    <div class="position-relative z-2">
-                        <button class="btn btn-primary btn-with-icon ">
-                            Sprawdź
-                            <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062">
-                                <path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor" />
-                            </svg>
-
-                        </button>
-                    </div>
-
                 </div>
-            </div>
-            <div>
-                <div class="invest-card position-relative">
-                    <a href="#" class="stretched-link z-2"></a>
-                    <div class="position-absolute invest-card-bg-overlay w-100 h-100 top-0 start-0">
-                        <img src="img/invest_1_bg.png" alt="" class="w-100 h-100 object-fit-cover invest-card-bg">
-                    </div>
-                    <div class="d-flex isolation-isolate justify-content-between gap-3 text-white">
-                        <div class="fw-bold">
-                            <p class="small text-uppercase mb-3 lh-1">Łódź</p>
-                            <p class="h3 lh-1">Na falistej</p>
-
-                        </div>
-                        <div>
-                            <img src="img/invest_1_logo.png" alt="" class="rounded-circle invest-card-logo img-fluid" loading="lazy" decoding="async" width="71" height="71">
-                        </div>
-                    </div>
-                    <div class="isolation-isolate text-white fw-semibold mb-auto fs-13">
-                        <p class="text-uppercase mb-0">
-                            Termin oddania:
-                        </p>
-                        <p class="mb-0">
-                            III kwartał 2023
-                        </p>
-                        <p class="price mt-3 fs-3 text-primary">999 999zł</p>
-                    </div>
-
-                    <div class="position-relative z-2">
-                        <button class="btn btn-primary btn-with-icon ">
-                            Sprawdź
-                            <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062">
-                                <path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor" />
-                            </svg>
-
-                        </button>
-                    </div>
-
-                </div>
-            </div>
+            @endforeach
         </div>
     </section>
 
@@ -487,14 +410,7 @@
                                 </h2>
                             </div>
                             <div class="pt-4 mt-3" data-aos="fade">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-
-                                </p>
-                                <p>
-                                    At vero eos et accusam et justo duo dolores et ea rebum.
-                                </p>
-
+                                <p>Kalter Nieruchomości to spółka z Grupy Kalter utworzona w celu przygotowania, realizacji i sprzedaży własnych inwestycji deweloperskich. Bazujemy na wieloletnim doświadczeniu Kalter Sp. z o. o., uznanego na rynku wykonawcy inwestycji kubaturowych.</p>
                             </div>
                         </div>
 
@@ -507,22 +423,22 @@
                     <?php $items = [
                         [
                             'title' => 'Doświadczenie budowlane',
-                            'description' => 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy.',
+                            'description' => 'Spółka Kalter działa od przeszło 20 lat na rynku i zrealizowała już przeszło 138 inwestycji.',
                             'svg_url' => 'img/construction.svg'
                         ],
                         [
                             'title' => 'Elastyczność projektowa',
-                            'description' => 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy.',
+                            'description' => 'Inwestujemy w nowe technologie i systemy informatyczne wspierające sprawne zarządzanie i realizacje prac. ',
                             'svg_url' => 'img/graphic-design.svg'
                         ],
                         [
                             'title' => 'Wysoka jakość usług',
-                            'description' => 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy.',
+                            'description' => 'Jest potwierdzona szeregiem referencji od naszych Inwestorów i pozytywnych opinii naszych klientów. ',
                             'svg_url' => 'img/services-quality.svg'
                         ],
                         [
                             'title' => 'Profesjonalna realizacja',
-                            'description' => 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy.',
+                            'description' => 'Nasz sukces tworzy zespół pracowników, który pozwala nam profesjonalnie budować inwestycje, relacje i przyszłość.',
                             'svg_url' => 'img/realisation.svg'
                         ],
                     ]; ?>
