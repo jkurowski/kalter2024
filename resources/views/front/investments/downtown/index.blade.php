@@ -13,18 +13,13 @@
                         <nav aria-label="breadcrumb small text-white" data-aos="fade">
                             <ol class="breadcrumb opacity-50">
                                 <li class="breadcrumb-item">
-                                    <a href="{{ route('index') }}"
-                                        style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">Strona
-                                        główna</a>
+                                    <a href="{{ route('index') }}" style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">Strona główna</a>
                                 </li>
                                 <li class="breadcrumb-item" style="--bs-breadcrumb-divider-color: var(--bs-white);">
-                                    <a href="{{ route('offer.index') }}"
-                                        style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">Oferta
-                                        mieszkania</a>
+                                    <a href="#" style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">Oferta mieszkania</a>
                                 </li>
                                 <li class="breadcrumb-item" style="--bs-breadcrumb-divider-color: var(--bs-white);">
-                                    <a href="{{ route('offer.downtown') }}"
-                                        style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">Downtown</a>
+                                    <a href="#" style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">Downtown</a>
                                 </li>
                             </ol>
                         </nav>
@@ -54,7 +49,7 @@
                                     <a class="nav-link" href="#opis-inwestycji">Opis inwestycji</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('offer.downtown.properties') }}">Mieszkania</a>
+                                    <a class="nav-link" href="#">Mieszkania</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">Model 3D</a>
@@ -171,7 +166,7 @@
                                 </p>
                                 <div class="mt-4">
                                     <a class="btn btn-primary btn-with-icon text-nowrap"
-                                        href="{{ route('offer.downtown.properties') }}">Mieszkania 2-POK<svg
+                                        href="#">Mieszkania 2-POK<svg
                                             xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062"
                                             viewBox="0 0 6.073 11.062">
                                             <path id="chevron_right_FILL0_wght100_GRAD0_opsz24"
@@ -461,7 +456,7 @@
                                     miasta.
                                 </p>
                                 <div class="mt-4">
-                                    <a class="btn btn-primary btn-with-icon text-nowrap" href="{{ route('offer.downtown.properties') }}">Zobacz
+                                    <a class="btn btn-primary btn-with-icon text-nowrap" href="#">Zobacz
                                         mieszkania!<svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062"
                                             viewBox="0 0 6.073 11.062">
                                             <path id="chevron_right_FILL0_wght100_GRAD0_opsz24"

@@ -170,6 +170,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with('available_locales', config('app.available_locales'));
             $view->with('required_rodo_rules', RodoRules::whereIn('id', [1, 2, 3])->get());
             $view->with('cities', City::where('active', 1)->orderBy('sort')->get());
+            $view->with('current_investment', Investment::where('status', 1)->with('city')->get(['slug', 'name', 'file_thumb', 'file_logo', 'date_end', 'city_id']));
         });
 
         view()->composer(['admin.crm.offer.form', 'admin.crm.inbox.index'], function ($view) {

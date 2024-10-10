@@ -51,19 +51,19 @@ Route::middleware(['restrictIp'])->group(function () {
         Route::get('/', 'IndexController@index')->name('index');
 
         // Oferta
-        Route::get('/oferta-mieszkan', 'Investments\IndexController@index')->name('offer.index');
-
-        Route::get('/i/downtown', 'Investments\IndexController@downtown')->name('offer.downtown');
-        Route::get('/i/downtown/plan-inwestycji', 'Investments\IndexController@downtownProperties')->name('offer.downtown.properties');
-
-        Route::get('/i/na-skraju', 'Investments\IndexController@naSkraju')->name('offer.na-skraju');
-        Route::get('/i/na-skraju/plan-inwestycji', 'Investments\IndexController@naSkrajuProperties')->name('offer.na-skraju.properties');
-
-        Route::get('/i/slonimska-residence-ii', 'Investments\IndexController@slonimskaResidenceII')->name('offer.slonimska-residence-ii');
-        Route::get('/i/slonimska-residence-ii/plan-inwestycji', 'Investments\IndexController@slonimskaResidenceIIProperties')->name('offer.slonimska-residence-ii.properties');
-
-        Route::get('/i/ogrody-andersena', 'Investments\IndexController@ogrodyAndersena')->name('offer.ogrody-andersena');
-        Route::get('/i/ogrody-andersena/plan-inwestycji', 'Investments\IndexController@ogrodyAndersenaProperties')->name('offer.ogrody-andersena.properties');
+//        Route::get('/oferta-mieszkan', 'Investments\IndexController@index')->name('offer.index');
+//
+//        Route::get('/i/downtown', 'Investments\IndexController@downtown')->name('offer.downtown');
+//        Route::get('/i/downtown/plan-inwestycji', 'Investments\IndexController@downtownProperties')->name('offer.downtown.properties');
+//
+//        Route::get('/i/na-skraju', 'Investments\IndexController@naSkraju')->name('offer.na-skraju');
+//        Route::get('/i/na-skraju/plan-inwestycji', 'Investments\IndexController@naSkrajuProperties')->name('offer.na-skraju.properties');
+//
+//        Route::get('/i/slonimska-residence-ii', 'Investments\IndexController@slonimskaResidenceII')->name('offer.slonimska-residence-ii');
+//        Route::get('/i/slonimska-residence-ii/plan-inwestycji', 'Investments\IndexController@slonimskaResidenceIIProperties')->name('offer.slonimska-residence-ii.properties');
+//
+//        Route::get('/i/ogrody-andersena', 'Investments\IndexController@ogrodyAndersena')->name('offer.ogrody-andersena');
+//        Route::get('/i/ogrody-andersena/plan-inwestycji', 'Investments\IndexController@ogrodyAndersenaProperties')->name('offer.ogrody-andersena.properties');
 
 
         Route::get('/kontakt', 'ContactController@index')->name('contact');
@@ -106,12 +106,12 @@ Route::middleware(['restrictIp'])->group(function () {
         //        });
 
         // DeveloPro
-        Route::group(['namespace' => 'Developro', 'prefix' => '/inwestycje', 'as' => 'developro.'], function () {
+        Route::group(['namespace' => 'Developro', 'as' => 'developro.'], function () {
 
             Route::post('{property}/notifications', 'Property\NotificationController@store')->name('properties.notifications.store');
             Route::get('/unsubscribe/{hash}', 'Property\NotificationController@unsubscribe')->name('properties.notifications.unsubscribe');
 
-            Route::get('/', 'IndexController@index')->name('index');
+            Route::get('/oferta-mieszkan', 'IndexController@index')->name('index');
             Route::get('/i/{slug}', 'InvestmentController@show')->name('show');
             Route::get('/i/{slug}/plan', 'InvestmentPlanController@index')->name('plan');
             Route::get('/i/{slug}/pietro/{floor}', 'InvestmentFloorController@index')->name('floor');

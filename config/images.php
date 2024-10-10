@@ -7,11 +7,15 @@ return [
     |--------------------------------------------------------------------------
     */
     'investment' => [
-        'thumb_width' => 940,
-        'thumb_height' => 530,
+        'thumb_width' => 552,
+        'thumb_height' => 827,
         'file_path' => 'investment/',
         'thumb_file_path' => 'investment/thumbs/',
-        'preview_file_path' => 'investment/thumbs/'
+        'preview_file_path' => 'investment/thumbs/',
+        'logo_width' => 140,
+        'logo_height' => 140,
+        'logo_file_path' => 'investment/logo/',
+        'logo_preview_file_path' => 'investment/logo/'
     ],
 
     /*

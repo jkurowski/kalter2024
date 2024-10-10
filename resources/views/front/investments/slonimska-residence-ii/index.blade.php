@@ -13,17 +13,13 @@
                         <nav aria-label="breadcrumb small text-white" data-aos="fade">
                             <ol class="breadcrumb opacity-50">
                                 <li class="breadcrumb-item">
-                                    <a href="{{ route('index') }}"
-                                        style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">Strona
-                                        główna</a>
+                                    <a href="{{ route('index') }}" style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">Strona</a>
                                 </li>
                                 <li class="breadcrumb-item" style="--bs-breadcrumb-divider-color: var(--bs-white);">
-                                    <a href="{{ route('offer.index') }}"
-                                        style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">Oferta</a>
+                                    <a href="#" style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">Oferta</a>
                                 </li>
                                 <li class="breadcrumb-item" style="--bs-breadcrumb-divider-color: var(--bs-white);">
-                                    <a href="{{ route('offer.slonimska-residence-ii') }}"
-                                        style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">{{ $investment->name }}</a>
+                                    <a href="#" style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">{{ $investment->name }}</a>
                                 </li>
                             </ol>
                         </nav>
@@ -49,7 +45,7 @@
                                     <a class="nav-link" href="#opis-inwestycji">Opis inwestycji</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('offer.slonimska-residence-ii.properties') }}">Mieszkania</a>
+                                    <a class="nav-link" href="#">Mieszkania</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">Model 3D</a>

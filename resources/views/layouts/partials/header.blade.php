@@ -18,17 +18,16 @@
                                 <a class="nav-link active" href="/">Home</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-hover" href="{{route('offer.index')}}" data-bs-hover="dropdown" aria-expanded="false">
+                                <a class="nav-link dropdown-hover" href="#" data-bs-hover="dropdown" aria-expanded="false">
                                     Oferta
                                     <svg class="d-none d-xl-inline" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down ms-2" viewBox="0 0 16 16" id="navbar-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
                                         <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"></path>
                                     </svg>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="/osiedle-na-skraju.php">Osiedle Na Skraju</a></li>
-                                    <li><a class="dropdown-item" href="/oferta-wyszukano.php">Widok wyszukania</a></li>
-
-                                    <li><a class="dropdown-item" href="/karta-mieszkania.php">Karta mieszkania</a></li>
+                                    @foreach($current_investment as $p)
+                                        <li><a class="dropdown-item" href="{{ route('developro.show', $p->slug) }}">{{ $p->name }}</a></li>
+                                    @endforeach
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">

@@ -218,13 +218,13 @@
                         'label' => 'Logo',
                         'sublabel' =>
                             '(wymiary: ' .
-                            config('images.investment.thumb_width') .
+                            config('images.investment.logo_width') .
                             'px / ' .
-                            config('images.investment.thumb_height') .
+                            config('images.investment.logo_height') .
                             'px)',
                         'name' => 'file_logo',
                         'file' => $entry->file_logo,
-                        'file_preview' => config('images.investment.preview_file_path'),
+                        'file_preview' => config('images.investment.logo_preview_file_path'),
                     ])
                 </div>
 

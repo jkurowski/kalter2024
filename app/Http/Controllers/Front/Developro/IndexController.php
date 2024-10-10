@@ -18,7 +18,6 @@ class IndexController extends Controller
     {
         $page = Page::find($this->pageId);
         return view('front.developro.investment.index', [
-            'list' => Investment::where('status', '<>', '4')->get(),
             'page' => $page
         ]);
     }

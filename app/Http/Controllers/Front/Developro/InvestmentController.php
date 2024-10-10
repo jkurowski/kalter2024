@@ -21,12 +21,12 @@ class InvestmentController extends Controller
         $this->pageId = 4;
     }
 
-    public function show($slug)
+    public function show($lang, $slug)
     {
         $investment = Investment::findBySlug($slug);
         $page = Page::find($this->pageId);
 
-        return view('front.developro.investment.show', [
+        return view('front.investments.'.$slug.'.index', [
             'investment' => $investment,
             'page' => $page
         ]);

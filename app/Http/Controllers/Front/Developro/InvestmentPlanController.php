@@ -21,7 +21,7 @@ class InvestmentPlanController extends Controller
         $this->pageId = 2;
     }
 
-    public function index(Request $request, $slug)
+    public function index($lang, Request $request, $slug)
     {
         $investment = Investment::findBySlug($slug);
 

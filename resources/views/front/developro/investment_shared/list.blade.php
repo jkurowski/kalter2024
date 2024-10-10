@@ -9,13 +9,13 @@
                     <div class="col col-top">
 
                         @if($investment->type == 2)
-                            <a href="{{route('front.developro.property', ['slug' => $investment->slug, 'floor' => $room->floor_id, 'property' => $room->id])}}">
+                            <a href="{{route('developro.property', ['slug' => $investment->slug, 'floor' => $room->floor_id, 'property' => $room->id])}}">
                                 <h2>{{$room->name_list}}<br><span>{{$room->number}}</span></h2>
                             </a>
                         @endif
 
                         @if($investment->type == 3)
-                            <a href="{{route('front.developro.house', ['slug' => $investment->slug, 'property' => $room->id])}}">
+                            <a href="{{route('developro.house', ['slug' => $investment->slug, 'property' => $room->id])}}">
                                 <h2>{{$room->name_list}}<br><span>{{$room->number}}</span></h2>
                             </a>
                         @endif
@@ -43,11 +43,11 @@
                     </div>
                     <div class="col justify-content-end col-list-btn">
                         @if($investment->type == 2)
-                            <a href="{{route('front.developro.property', ['slug' => $investment->slug, 'floor' => $room->floor_id, 'property' => $room->id])}}" class="bttn">ZOBACZ</a>
+                            <a href="{{route('developro.property', ['slug' => $investment->slug, 'floor' => $room->floor_id, 'property' => $room->id])}}" class="bttn">ZOBACZ</a>
                         @endif
 
                         @if($investment->type == 3)
-                            <a href="{{route('front.developro.house', ['slug' => $investment->slug, 'property' => $room->id])}}" class="bttn">ZOBACZ</a>
+                            <a href="{{route('developro.house', ['slug' => $investment->slug, 'property' => $room->id])}}" class="bttn">ZOBACZ</a>
                         @endif
                     </div>
                 </div>
