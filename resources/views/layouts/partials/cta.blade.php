@@ -63,21 +63,23 @@
                         </div>
 
                         <div class="col-12">
-
+                            <div class="form-check text-start pt-2 pb-2">
+                                <input class="form-check-input" type="checkbox" value="" id="terms-check1" name="terms1">
+                                <label class="form-check-label fs-10 fs-8 fs-md-10" for="terms-check1">
+                                    Wyrażam zgodę na przetwarzanie moich danych osobowych zawartych w formularzu, zgodnie z przepisami RODO oraz zasadami <a class="link-hover-primary text-decoration-underline" href="/polityka-prywatnosci.php">Polityki prywatności</a>, w celu odpowiedzi na moje zapytanie. Podmiotem przetwarzającym dane osobowe jest Kalter Nieruchomości Sp. z o.o.
+                                </label>
+                            </div>
                             <div class="form-check text-start pt-2 pb-2">
                                 <input class="form-check-input" type="checkbox" value="" id="terms-check2" name="terms2">
                                 <label class="form-check-label fs-10 fs-8 fs-md-10" for="terms-check2">
-                                    Wyrażam zgodę na przetwarzanie danych osobowych zgodnie z ustawą o ochronie
-                                    danych osobowych w związku z wysłaniem zapytania przez formularz kontaktowy.
-                                    Podanie danych jest dobrowolne, ale niezbędne do przetworzenia zapytania.
-                                    Administratorem danych jest KALTER NIERUCHOMOŚCI SP. z o.o. 15-218 Białystok,
-                                    ul. Augustowska 8.
+                                    Wyrażam zgodę na przetwarzanie moich danych osobowych zawartych w formularzu w celach marketingowych, w tym marketingu bezpośredniego oraz otrzymywanie na podany adres e-mail i numer telefonu informacji handlowych obejmujących produkty oraz usługi świadczone przez Kalter Nieruchomości Sp. z o.o. oraz spółki należące do Grupy Kalter(powiązane kapitałowo) współpracujące ze sobą w ramach prowadzonych inwestycji.
                                 </label>
                             </div>
                             <div class="form-check text-start">
-                                <input class="form-check-input" type="checkbox" value="" id="terms-check" name="terms">
-                                <label class="form-check-label fs-10 fs-8 fs-md-10" for="terms-check">
-                                    Oświadczam, iż zapoznałem się z treścią <a class="link-hover-primary text-decoration-underline" href='/polityka-prywatnosci.php'>Polityką prywatności *</a>
+                                <input class="form-check-input" type="checkbox" value="" id="terms-check3" name="terms3">
+                                <label class="form-check-label fs-10 fs-8 fs-md-10" for="terms-check3">
+                                    Wyrażona zgoda jest dobrowolna ale niezbędna, żeby zarejestrować Pana/Panią w bazie kontaktowej Administratora Danych. Mają Państwo prawo żądać wstrzymania przetwarzania lub usunięcia danych, które zebraliśmy za Państwa zgodą. Równocześnie mają Państwo prawo do wycofania zgody poprzez przesłanie odpowiedniego oświadczenia na adres: <a href="mailto:bialystok@kalternieruchomosci.pl">bialystok@kalternieruchomosci.pl</a>.
+                                    Administratorem danych jest Kalter Nieruchomości Sp. z o.o.. Wycofanie zgody nie wpływa na zgodność z prawem przetwarzania danych na podstawie zgody przed jej wycofaniem
                                 </label>
                             </div>
                         </div>

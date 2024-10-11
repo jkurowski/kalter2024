@@ -10,14 +10,6 @@
                         <div class="col-12">
                             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 row-cols-xxl-5 align-items-end">
                                 <div class="col">
-                                    <select name="step" id="step" class="form-select">
-                                        <option value="0" selected>Etap</option>
-                                        <option value="1">I</option>
-                                        <option value="2">II</option>
-                                        <option value="3">III</option>
-                                    </select>
-                                </div>
-                                <div class="col">
                                     <select name="city" id="city" class="form-select">
                                         <option value="0" selected>Miasto</option>
                                         <option value="Warszawa">Warszawa</option>
@@ -36,18 +28,25 @@
                                     </select>
                                 </div>
                                 <div class="col">
-                                    <div class="form-floating">
-                                        <input type="text" name="area_from" id="area_from"
-                                            class="form-control bg-transparent" placeholder="Powierzchnia od">
-                                        <label for="area_from">Powierzchnia od</label>
-                                    </div>
+                                    <select name="area" id="area" class="form-select">
+                                        <option value="0" selected>Powierzchnia</option>
+                                        <option value="1">30-50 m<sup>2</sup></option>
+                                        <option value="2">51-70 m<sup>2</sup></option>
+                                        <option value="3">71-90 m<sup>2</sup></option>
+                                        <option value="4">91-110 m<sup>2</sup></option>
+                                        <option value="5">> 110 m<sup>2</sup></option>
+                                    </select>
                                 </div>
                                 <div class="col">
-                                    <div class="form-floating">
-                                        <input type="text" name="area_to" id="area_to"
-                                            class="form-control bg-transparent" placeholder="Powierzchnia do">
-                                        <label for="area_to">Powierzchnia do</label>
-                                    </div>
+                                    <select name="advanced" id="advanced" class="form-select">
+                                        <option value="0" selected>Zaawansowane</option>
+                                        <option value="1">Przedsprzedaż</option>
+                                        <option value="2">Realizacja 25%</option>
+                                        <option value="3">Realizacja 50%</option>
+                                        <option value="4">Realizacja 75%</option>
+                                        <option value="5">Realizacja 100%</option>
+                                        <option value="6">Gotowe do odbioru</option>
+                                    </select>
                                 </div>
                                 <div class="col">
                                     <select name="invest" id="invest" class="form-select">
@@ -82,11 +81,13 @@
                                     </select>
                                 </div>
                                 <div class="col">
-                                    <select name="terrace" id="terrace" class="form-select">
-                                        <option value="0" selected>Taras</option>
-                                        <option value="1">Tak</option>
-                                        <option value="2">Nie</option>
-
+                                    <select name="price" id="price" class="form-select">
+                                        <option value="0" selected>Przedział cenowy</option>
+                                        <option value="1">300-450 tyś. PLN</option>
+                                        <option value="2">450-600 tyś. PLN</option>
+                                        <option value="3">600-800 tyś. PLN</option>
+                                        <option value="4">800-999 tyś. PLN</option>
+                                        <option value="5">powyżej 1,0 mln PLN</option>
                                     </select>
                                 </div>
                                 <div class="col">

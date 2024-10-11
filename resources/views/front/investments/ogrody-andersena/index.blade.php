@@ -13,13 +13,17 @@
                         <nav aria-label="breadcrumb small text-white" data-aos="fade">
                             <ol class="breadcrumb opacity-50">
                                 <li class="breadcrumb-item">
-                                    <a href="{{ route('index') }}" style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">Strona główna</a>
+                                    <a href="{{ route('index') }}"
+                                        style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">Strona
+                                        główna</a>
                                 </li>
                                 <li class="breadcrumb-item" style="--bs-breadcrumb-divider-color: var(--bs-white);">
-                                    <a href="#" style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">Oferta</a>
+                                    <a href="#"
+                                        style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">Oferta</a>
                                 </li>
                                 <li class="breadcrumb-item" style="--bs-breadcrumb-divider-color: var(--bs-white);">
-                                    <a href="#" style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">{{ $investment->name }}</a>
+                                    <a href="#"
+                                        style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">{{ $investment->name }}</a>
                                 </li>
                             </ol>
                         </nav>
@@ -38,32 +42,45 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-lg-10 offset-lg-1">
-                        <nav class="fixed-top-menu bg-white" id="navbar-secondary">
-                            <ul class="navbar-nav with-underline-active nav-snap-md-down flex-row justify-content-around py-3"
-                                style="--bs-nav-link-color: var(--bs-secondary);--bs-nav-link-hover-color: var(--bs-primary); --bs-navbar-active-color: var(--bs-secondary);">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#opis-inwestycji">Opis inwestycji</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Mieszkania</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Model 3D</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#atuty">Atuty</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#lokalizacja">Lokalizacja</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Dziennik inwestycji</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#kontakt">Kontakt</a>
-                                </li>
-                            </ul>
-                        </nav>
+                        @include('front.investments.submenu', [
+                            'links' => [
+                                [
+                                    'title' => 'Opis inwestycji',
+                                    'href' => '#opis-inwestycji',
+                                    'active' => false,
+                                ],
+                                [
+                                    'title' => 'Wyszukaj z rzutu',
+                                    'href' => '#mieszkania',
+                                    'active' => false,
+                                ],
+                                [
+                                    'title' => 'Wyszukaj z modelu 3D',
+                                    'href' => '#model-3d',
+                                    'active' => false,
+                                ],
+                                [
+                                    'title' => 'Atuty',
+                                    'href' => '#atuty',
+                                    'active' => false,
+                                ],
+                                [
+                                    'title' => 'Lokalizacja',
+                                    'href' => '#lokalizacja',
+                                    'active' => false,
+                                ],
+                                [
+                                    'title' => 'Dziennik inwestycji',
+                                    'href' => '#dziennik-inwestycji',
+                                    'active' => false,
+                                ],
+                                [
+                                    'title' => 'Kontakt',
+                                    'href' => '#kontakt',
+                                    'active' => false,
+                                ],
+                            ],
+                        ])
                     </div>
                 </div>
             </div>
@@ -74,7 +91,13 @@
             <section class="s1" id="opis-inwestycji">
                 <div class="container">
                     <div class="row row-gap-4 align-items-center">
-                        <div class="col-12 col-md-6">
+                        <div class="col-12 col-md-6 col-lg-5 order-last order-md-0 ">
+                            <div class="w-100 h-100" data-aos="fade">
+                                <img class="img-fluid rounded" src="{{ asset('img/ogrody-andersena/s1.png') }}"
+                                    alt="" width="555" height="629" loading="eager">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
                             <div style="--translate-x: 0;"
                                 class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
@@ -101,63 +124,22 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
-                            <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded" src="{{ asset('img/ogrody-andersena/s1.png') }}"
-                                    alt="" width="555" height="629" loading="eager">
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </section>
 
             <section class="s2">
+
                 <div class="container">
-                    <div class="row row-gap-4 align-items-center">
-                        <div class="col-12 col-md-6 col-lg-5 order-last order-md-0">
-                            <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded" src="{{ asset('img/ogrody-andersena/s2.png') }}"
-                                    alt="" width="555" height="699" loading="lazy" decoding="async">
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
-                            <div style="--translate-x: 0;"
-                                class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
-                                <div class="position-absolute top-50 start-50 translate-middle z-2">
-                                    <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168"
-                                        height="168" loading="lazy" decoding="async" data-aos="fade">
-                                </div>
-                                <h2 class="fw-bold text-center text-uppercase">
-                                    <span data-aos="fade-up" data-aos-delay="200">
-                                        Mieszkaj wygodnie
-                                    </span>
-                                </h2>
-                            </div>
-                            <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
-                                <p>
-                                    Osiedle „OGRODY ANDERSENA” doskonale spełniające oczekiwania obecnych i przyszłych
-                                    pokoleń,
-                                    to niezwykłe miejsce, które posiada wiele zalet. Zaprojektowaliśmy różnorodne typy
-                                    mieszkań,
-                                    dostosowane do potrzeb różnych pokoleń i stylów życia. Znajdą tu swoje miejsce do życia
-                                    single, rodziny z dziećmi, a także seniorzy.
-                                </p>
-                                <p>
-                                    To idealne miejsce do zamieszkania dla osób ceniących sobie komfort, bezpieczeństwo oraz
-                                    wysoką jakość życia w otoczeniu natury. To projekt, który łączy w sobie nowoczesność z
-                                    przyjaznym, kameralnym charakterem, tworząc idealne warunki do życia dla każdego
-                                    pokolenia.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-12">
+                    <div class="row">
+                        <div class="col-12 py-5">
                             <div class="row row-gap-3 justify-content-center">
                                 <div class="col-6 col-sm-4">
                                     <div class="bg-white icon-shadow mx-auto rounded-circle d-flex align-items-center justify-content-center"
                                         style="width: 87px; height: 87px;">
                                         <img src="{{ asset('img/ogrody-andersena/ico_mieszkania.png') }}" width="42"
-                                            height="42" alt="" loading="lazy" decoding="async"
-                                            class="img-fluid">
+                                            height="42" alt="" loading="lazy" decoding="async" class="img-fluid">
                                     </div>
                                     <p class="text-secondary text-center mt-3 mt-lg-30">Funkcjonalne mieszkania</p>
                                 </div>
@@ -165,8 +147,7 @@
                                     <div class="bg-white icon-shadow mx-auto rounded-circle d-flex align-items-center justify-content-center"
                                         style="width: 87px; height: 87px;">
                                         <img src="{{ asset('img/ogrody-andersena/ico_okna.png') }}" width="42"
-                                            height="42" alt="" loading="lazy" decoding="async"
-                                            class="img-fluid">
+                                            height="42" alt="" loading="lazy" decoding="async" class="img-fluid">
                                     </div>
                                     <p class="text-secondary text-center mt-3 mt-lg-30">Duże okna</p>
                                 </div>
@@ -201,13 +182,9 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
-
-            <section class="s3">
-                <div class="container">
-                    <div class="row row-gap-4">
-                        <div class="col-12 col-lg-4 ">
+                    <div class="row row-gap-4 align-items-center">
+                      
+                        <div class="col-12 col-md-6 col-lg-5">
                             <div style="--translate-x: 0;"
                                 class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
@@ -216,29 +193,41 @@
                                 </div>
                                 <h2 class="fw-bold text-center text-uppercase">
                                     <span data-aos="fade-up" data-aos-delay="200">
-                                        Wykorzystanie<br>
-                                        przestrzeni
+                                        Mieszkaj wygodnie
                                     </span>
-
                                 </h2>
                             </div>
                             <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
                                 <p>
-                                    W ofercie dostępne są różne warianty mieszkań, w tym: z dwiema łazienkami, garderobą lub
-                                    oknem w kuchni.
+                                    Osiedle „OGRODY ANDERSENA” doskonale spełniające oczekiwania obecnych i przyszłych
+                                    pokoleń,
+                                    to niezwykłe miejsce, które posiada wiele zalet. Zaprojektowaliśmy różnorodne typy
+                                    mieszkań,
+                                    dostosowane do potrzeb różnych pokoleń i stylów życia. Znajdą tu swoje miejsce do życia
+                                    single, rodziny z dziećmi, a także seniorzy.
                                 </p>
                                 <p>
-                                    Osiedle „Na skraju” posiada także podziemną halę garażową, w której znajduje się 80
-                                    miejsc postojowych, zapewniających wygodne parkowanie.
+                                    To idealne miejsce do zamieszkania dla osób ceniących sobie komfort, bezpieczeństwo oraz
+                                    wysoką jakość życia w otoczeniu natury. To projekt, który łączy w sobie nowoczesność z
+                                    przyjaznym, kameralnym charakterem, tworząc idealne warunki do życia dla każdego
+                                    pokolenia.
                                 </p>
-                                <p>
-                                    Dodatkowo, na zewnątrz budynku na poziomie parteru, przewidziano kolejne 11 miejsc
-                                    parkingowych oraz stojaki na rowery.
-                                </p>
-
                             </div>
                         </div>
-                        <div class="col-12 col-lg-8 position-relative">
+                        <div class="col-12 col-md-6 offset-lg-1">
+                            <div class="w-100 h-100" data-aos="fade">
+                                <img class="img-fluid rounded" src="{{ asset('img/ogrody-andersena/s2.png') }}"
+                                    alt="" width="555" height="699" loading="lazy" decoding="async">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="s3">
+                <div class="container">
+                    <div class="row row-gap-4">
+                                                <div class="col-12 col-lg-8 position-relative">
                             <div data-aos="fade">
                                 <img class="img-fluid rounded" src="{{ asset('img/ogrody-andersena/s3.png') }}"
                                     alt="" width="906" height="492" loading="lazy" decoding="async">
@@ -284,6 +273,38 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-12 col-lg-4 order-first order-lg-0">
+                            <div style="--translate-x: 0;"
+                                class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
+                                <div class="position-absolute top-50 start-50 translate-middle z-2">
+                                    <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168"
+                                        height="168" loading="lazy" decoding="async" data-aos="fade">
+                                </div>
+                                <h2 class="fw-bold text-center text-uppercase">
+                                    <span data-aos="fade-up" data-aos-delay="200">
+                                        Wykorzystanie<br>
+                                        przestrzeni
+                                    </span>
+
+                                </h2>
+                            </div>
+                            <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
+                                <p>
+                                    W ofercie dostępne są różne warianty mieszkań, w tym: z dwiema łazienkami, garderobą lub
+                                    oknem w kuchni.
+                                </p>
+                                <p>
+                                    Osiedle „Na skraju” posiada także podziemną halę garażową, w której znajduje się 80
+                                    miejsc postojowych, zapewniających wygodne parkowanie.
+                                </p>
+                                <p>
+                                    Dodatkowo, na zewnątrz budynku na poziomie parteru, przewidziano kolejne 11 miejsc
+                                    parkingowych oraz stojaki na rowery.
+                                </p>
+
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </section>
@@ -326,7 +347,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="col-12 col-lg-7 position-relative order-last order-lg-first">
+                        <div class="col-12 col-lg-7 position-relative">
                             <div data-aos="fade">
                                 <img class="img-fluid rounded" src="{{ asset('img/ogrody-andersena/s4.png') }}"
                                     alt="" width="906" height="492" loading="lazy" decoding="async">
@@ -380,41 +401,7 @@
             <section class="s5">
                 <div class="container">
                     <div class="row row-gap-4">
-                        <div class="col-12 col-lg-5 ">
-                            <div style="--translate-x: 0;"
-                                class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
-                                <div class="position-absolute top-50 start-50 translate-middle z-2">
-                                    <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168"
-                                        height="168" loading="lazy" decoding="async" data-aos="fade">
-                                </div>
-                                <h2 class="fw-bold text-center text-uppercase">
-                                    <span data-aos="fade-up" data-aos-delay="200">
-                                        Dogodna komunikacja
-                                    </span>
-
-                                </h2>
-                            </div>
-                            <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
-                                <p>
-                                    Dzięki istniejącej bogatej infrastrukturze drogowej i rozwiniętej komunikacji miejskiej
-                                    miasta Ząbki, osiedle „Ogrody Andersena”, zapewni swoim mieszkańcom doskonałe połączenie
-                                    z
-                                    pozostałą częścią miasta oraz z Warszawą.
-                                </p>
-
-                                <p>
-                                    Dojazd samochodem do centrum Warszawy zajmuje zaledwie około 20 minut, a do Dworca
-                                    Warszawa
-                                    Wileńska można dotrzeć już w 15 minut. Komunikacja miejska na terenie Ząbek jest na
-                                    wysokim
-                                    poziomie, co umożliwia szybkie dotarcie do stacji Metra Trocka lub Kondratowicza za
-                                    pomocą
-                                    licznych linii autobusowych. Dodatkowym atutem miasta Ząbki jest bezpłatna część
-                                    połączeń
-                                    komunikacyjnych dla mieszkańców.
-                                </p>
-                            </div>
-                        </div>
+                        
                         <div class="col-12 col-lg-7 position-relative">
                             <div data-aos="fade">
                                 <img class="img-fluid rounded" src="{{ asset('img/ogrody-andersena/s5.png') }}"
@@ -463,6 +450,41 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-12 col-lg-5 order-first order-md-0">
+                            <div style="--translate-x: 0;"
+                                class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
+                                <div class="position-absolute top-50 start-50 translate-middle z-2">
+                                    <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168"
+                                        height="168" loading="lazy" decoding="async" data-aos="fade">
+                                </div>
+                                <h2 class="fw-bold text-center text-uppercase">
+                                    <span data-aos="fade-up" data-aos-delay="200">
+                                        Dogodna komunikacja
+                                    </span>
+
+                                </h2>
+                            </div>
+                            <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
+                                <p>
+                                    Dzięki istniejącej bogatej infrastrukturze drogowej i rozwiniętej komunikacji miejskiej
+                                    miasta Ząbki, osiedle „Ogrody Andersena”, zapewni swoim mieszkańcom doskonałe połączenie
+                                    z
+                                    pozostałą częścią miasta oraz z Warszawą.
+                                </p>
+
+                                <p>
+                                    Dojazd samochodem do centrum Warszawy zajmuje zaledwie około 20 minut, a do Dworca
+                                    Warszawa
+                                    Wileńska można dotrzeć już w 15 minut. Komunikacja miejska na terenie Ząbek jest na
+                                    wysokim
+                                    poziomie, co umożliwia szybkie dotarcie do stacji Metra Trocka lub Kondratowicza za
+                                    pomocą
+                                    licznych linii autobusowych. Dodatkowym atutem miasta Ząbki jest bezpłatna część
+                                    połączeń
+                                    komunikacyjnych dla mieszkańców.
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -495,12 +517,12 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="col-12 col-lg-7 position-relative order-last order-lg-first">
+                        <div class="col-12 col-lg-7 position-relative">
                             <div data-aos="fade">
                                 <img class="img-fluid rounded" src="{{ asset('img/ogrody-andersena/s6.png') }}"
                                     alt="" width="906" height="492" loading="lazy" decoding="async">
                             </div>
-                            <div class="position-absolute-lg translate-middle-y-lg top-50 w-calc-lg">
+                            <div class="position-absolute-lg translate-middle-y-20-lg top-50 w-calc-lg">
                                 <div class="row">
                                     <div class="col-12 col-xl-10 offset-xl-1" data-aos="fade-up">
                                         <div class="bg-white p-3 px-xl-40">
@@ -549,42 +571,7 @@
             <section class="s7 mt-lg-5">
                 <div class="container mt-lg-5">
                     <div class="row row-gap-4">
-                        <div class="col-12 col-lg-5 ">
-                            <div style="--translate-x: 0;"
-                                class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
-                                <div class="position-absolute top-50 start-50 translate-middle z-2">
-                                    <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168"
-                                        height="168" loading="lazy" decoding="async" data-aos="fade">
-                                </div>
-                                <h2 class="fw-bold text-center text-uppercase">
-                                    <span data-aos="fade-up" data-aos-delay="200">
-                                        Bogata infrastruktura
-                                    </span>
-
-                                </h2>
-                            </div>
-                            <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
-                                <p>
-                                    Mieszkańcy osiedla mają w bliskim sąsiedztwie liczne sklepy, restauracje, kawiarnie,
-                                    ośrodki
-                                    medyczne oraz tereny zielone. Okolica „Ogrodów Andersena” charakteryzuje się również
-                                    bogatą
-                                    infrastrukturą oświatową, w której skład wchodzą liczne żłobki, przedszkola oraz szkoła
-                                    podstawowa.
-                                </p>
-
-                                <p>
-                                    Dzięki połączeniu nowoczesnej infrastruktury, dogodnych warunków komunikacyjnych oraz
-                                    licznych udogodnień, Ząbki stają się idealnym miejscem do zamieszkania dla osób
-                                    ceniących
-                                    sobie komfort życia codziennego, bliskość natury oraz łatwy dostęp do wielkomiejskich
-                                    atrakcji Warszawy. Wszystkie te elementy sprawiają, że mieszkanie w Ząbkach to
-                                    komfortowy
-                                    wybór dla osób ceniących sobie zarówno bliskość dużego miasta, jak i spokojną, przyjazną
-                                    okolicę pełną udogodnień.
-                                </p>
-                            </div>
-                        </div>
+                        
                         <div class="col-12 col-lg-7 position-relative">
                             <div data-aos="fade">
                                 <img class="img-fluid rounded" src="{{ asset('img/ogrody-andersena/s7.png') }}"
@@ -629,6 +616,42 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-5 order-first order-md-0">
+                            <div style="--translate-x: 0;"
+                                class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
+                                <div class="position-absolute top-50 start-50 translate-middle z-2">
+                                    <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168"
+                                        height="168" loading="lazy" decoding="async" data-aos="fade">
+                                </div>
+                                <h2 class="fw-bold text-center text-uppercase">
+                                    <span data-aos="fade-up" data-aos-delay="200">
+                                        Bogata infrastruktura
+                                    </span>
+
+                                </h2>
+                            </div>
+                            <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
+                                <p>
+                                    Mieszkańcy osiedla mają w bliskim sąsiedztwie liczne sklepy, restauracje, kawiarnie,
+                                    ośrodki
+                                    medyczne oraz tereny zielone. Okolica „Ogrodów Andersena” charakteryzuje się również
+                                    bogatą
+                                    infrastrukturą oświatową, w której skład wchodzą liczne żłobki, przedszkola oraz szkoła
+                                    podstawowa.
+                                </p>
+
+                                <p>
+                                    Dzięki połączeniu nowoczesnej infrastruktury, dogodnych warunków komunikacyjnych oraz
+                                    licznych udogodnień, Ząbki stają się idealnym miejscem do zamieszkania dla osób
+                                    ceniących
+                                    sobie komfort życia codziennego, bliskość natury oraz łatwy dostęp do wielkomiejskich
+                                    atrakcji Warszawy. Wszystkie te elementy sprawiają, że mieszkanie w Ząbkach to
+                                    komfortowy
+                                    wybór dla osób ceniących sobie zarówno bliskość dużego miasta, jak i spokojną, przyjazną
+                                    okolicę pełną udogodnień.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -702,9 +725,6 @@
                                 'name' => 'Plac zabaw',
                                 'distance' => '600 m - 8 min',
                             ],
-                        ];
-                        
-                        $list2 = [
                             [
                                 'name' => 'Centrum handlowe',
                                 'distance' => '1,2 km - 18 min',
@@ -713,6 +733,9 @@
                                 'name' => 'Market spożywczy',
                                 'distance' => '60 m - 1 min',
                             ],
+                        ];
+                        
+                        $list2 = [
                             [
                                 'name' => 'Biedronka',
                                 'distance' => '1,1 km – 16 min',
@@ -733,17 +756,18 @@
                                 'name' => 'Apteka',
                                 'distance' => '450 m - 6 min',
                             ],
-                        ];
-                        
-                        $list3 = [
                             [
                                 'name' => 'Przystanek autobusowy linia 245',
                                 'distance' => '300 m - 4 min',
                             ],
+                        
                             [
                                 'name' => 'Stacja kolejowa',
                                 'distance' => '2,2 km - 31 min',
                             ],
+                        ];
+                        
+                        $list3 = [
                             [
                                 'name' => 'Żłobek',
                                 'distance' => '50 m - 1 min',

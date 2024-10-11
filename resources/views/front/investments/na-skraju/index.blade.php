@@ -13,13 +13,18 @@
                         <nav aria-label="breadcrumb small text-white" data-aos="fade">
                             <ol class="breadcrumb opacity-50">
                                 <li class="breadcrumb-item">
-                                    <a href="{{ route('index') }}" style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">Strona główna</a>
+                                    <a href="{{ route('index') }}"
+                                        style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">Strona
+                                        główna</a>
                                 </li>
                                 <li class="breadcrumb-item" style="--bs-breadcrumb-divider-color: var(--bs-white);">
-                                    <a href="#" style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">Oferta mieszkania</a>
+                                    <a href="#"
+                                        style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">Oferta
+                                        mieszkania</a>
                                 </li>
                                 <li class="breadcrumb-item" style="--bs-breadcrumb-divider-color: var(--bs-white);">
-                                    <a href="#" style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">{{ $investment->name }}</a>
+                                    <a href="#"
+                                        style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">{{ $investment->name }}</a>
                                 </li>
                             </ol>
                         </nav>
@@ -42,32 +47,45 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-lg-10 offset-lg-1">
-                        <nav class="fixed-top-menu bg-white" id="navbar-secondary">
-                            <ul class="navbar-nav with-underline-active nav-snap-md-down flex-row justify-content-around py-3"
-                                style="--bs-nav-link-color: var(--bs-secondary);--bs-nav-link-hover-color: var(--bs-primary); --bs-navbar-active-color: var(--bs-secondary);">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#opis-inwestycji">Opis inwestycji</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Mieszkania</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Model 3D</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#atuty">Atuty</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#lokalizacja">Lokalizacja</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Dziennik inwestycji</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#kontakt">Kontakt</a>
-                                </li>
-                            </ul>
-                        </nav>
+                        @include('front.investments.submenu', [
+                            'links' => [
+                                [
+                                    'title' => 'Opis inwestycji',
+                                    'href' => '#opis-inwestycji',
+                                    'active' => false,
+                                ],
+                                [
+                                    'title' => 'Wyszukaj z rzutu',
+                                    'href' => '#mieszkania',
+                                    'active' => false,
+                                ],
+                                [
+                                    'title' => 'Wyszukaj z modelu 3D',
+                                    'href' => '#model-3d',
+                                    'active' => false,
+                                ],
+                                [
+                                    'title' => 'Atuty',
+                                    'href' => '#atuty',
+                                    'active' => false,
+                                ],
+                                [
+                                    'title' => 'Lokalizacja',
+                                    'href' => '#lokalizacja',
+                                    'active' => false,
+                                ],
+                                [
+                                    'title' => 'Dziennik inwestycji',
+                                    'href' => '#dziennik-inwestycji',
+                                    'active' => false,
+                                ],
+                                [
+                                    'title' => 'Kontakt',
+                                    'href' => '#kontakt',
+                                    'active' => false,
+                                ],
+                            ],
+                        ])
                     </div>
                 </div>
             </div>
@@ -125,7 +143,13 @@
             <section class="s1">
                 <div class="container">
                     <div class="row row-gap-4 align-items-center">
-                        <div class="col-12 col-md-6">
+                        <div class="col-12 col-md-6 col-lg-5 order-last order-md-0 ">
+                            <div class="w-100 h-100" data-aos="fade">
+                                <img class="img-fluid rounded" src="{{ asset('img/na-skraju/s1.jpg') }}" alt=""
+                                    width="555" height="629" loading="eager">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
                             <div style="--translate-x: 0;"
                                 class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
@@ -157,12 +181,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
-                            <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded" src="{{ asset('img/na-skraju/s1.jpg') }}" alt=""
-                                    width="555" height="629" loading="eager">
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </section>
@@ -170,13 +189,8 @@
             <section class="s2">
                 <div class="container">
                     <div class="row row-gap-4 align-items-center">
-                        <div class="col-12 col-md-6 col-lg-5 order-last order-md-0">
-                            <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded" src="{{ asset('img/na-skraju/s2.jpg') }}" alt=""
-                                    width="555" height="699" loading="lazy" decoding="async">
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
+
+                        <div class="col-12 col-md-6 col-lg-5">
                             <div style="--translate-x: 0;"
                                 class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
@@ -210,7 +224,12 @@
                                 </p>
                             </div>
                         </div>
-
+                        <div class="col-12 col-md-6 offset-lg-1">
+                            <div class="w-100 h-100" data-aos="fade">
+                                <img class="img-fluid rounded" src="{{ asset('img/na-skraju/s2.jpg') }}" alt=""
+                                    width="555" height="699" loading="lazy" decoding="async">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -218,7 +237,13 @@
             <section class="s3">
                 <div class="container">
                     <div class="row row-gap-4 align-items-center">
-                        <div class="col-12 col-md-6 col-lg-5">
+                        <div class="col-12 col-md-6 col-lg-5 order-last order-md-0 ">
+                            <div class="w-100 h-100" data-aos="fade">
+                                <img class="img-fluid rounded" src="{{ asset('img/na-skraju/s3.jpg') }}" alt=""
+                                    width="672" height="448" loading="lazy" decoding="async">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
                             <div style="--translate-x: 0;"
                                 class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
@@ -253,12 +278,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="col-12 col-md-6 offset-lg-1">
-                            <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded" src="{{ asset('img/na-skraju/s3.jpg') }}" alt=""
-                                    width="672" height="448" loading="lazy" decoding="async">
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </section>
@@ -266,13 +286,7 @@
             <section class="s4">
                 <div class="container">
                     <div class="row row-gap-4 align-items-center">
-                        <div class="col-12 col-md-6 col-lg-5 order-last order-md-0">
-                            <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded" src="{{ asset('img/na-skraju/s4.jpg') }}" alt=""
-                                    width="555" height="699" loading="lazy" decoding="async">
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
+                        <div class="col-12 col-md-6 col-lg-5">
                             <div style="--translate-x: 0;"
                                 class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
@@ -304,7 +318,12 @@
                                 </p>
                             </div>
                         </div>
-
+                        <div class="col-12 col-md-6 offset-lg-1">
+                            <div class="w-100 h-100" data-aos="fade">
+                                <img class="img-fluid rounded" src="{{ asset('img/na-skraju/s4.jpg') }}" alt=""
+                                    width="555" height="699" loading="lazy" decoding="async">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -312,7 +331,13 @@
             <section class="s5">
                 <div class="container">
                     <div class="row row-gap-4 align-items-center">
-                        <div class="col-12 col-md-6 col-lg-5">
+                        <div class="col-12 col-md-6 col-lg-5 order-last order-md-0 ">
+                            <div class="w-100 h-100" data-aos="fade">
+                                <img class="img-fluid rounded" src="{{ asset('img/na-skraju/s5.jpg') }}" alt=""
+                                    width="672" height="448" loading="lazy" decoding="async">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
                             <div style="--translate-x: 0;"
                                 class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
@@ -344,12 +369,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="col-12 col-md-6 offset-lg-1">
-                            <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded" src="{{ asset('img/na-skraju/s5.jpg') }}" alt=""
-                                    width="672" height="448" loading="lazy" decoding="async">
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </section>
@@ -357,13 +377,8 @@
             <section class="s6" id='atuty'>
                 <div class="container">
                     <div class="row row-gap-4 align-items-center">
-                        <div class="col-12 col-md-6 col-lg-5 order-last order-md-0">
-                            <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded" src="{{ asset('img/na-skraju/s6.jpg') }}" alt=""
-                                    width="555" height="699" loading="lazy" decoding="async">
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
+
+                        <div class="col-12 col-md-6 col-lg-5">
                             <div style="--translate-x: 0;"
                                 class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
@@ -395,7 +410,12 @@
                                 </p>
                             </div>
                         </div>
-
+                        <div class="col-12 col-md-6 offset-lg-1">
+                            <div class="w-100 h-100" data-aos="fade">
+                                <img class="img-fluid rounded" src="{{ asset('img/na-skraju/s6.jpg') }}" alt=""
+                                    width="555" height="699" loading="lazy" decoding="async">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -403,7 +423,13 @@
             <section class="s7">
                 <div class="container">
                     <div class="row row-gap-4 align-items-center">
-                        <div class="col-12 col-md-6 col-lg-5">
+                        <div class="col-12 col-md-6 col-lg-5 order-last order-md-0 ">
+                            <div class="w-100 h-100" data-aos="fade">
+                                <img class="img-fluid rounded" src="{{ asset('img/na-skraju/s7.jpg') }}" alt=""
+                                    width="672" height="448" loading="lazy" decoding="async">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
                             <div style="--translate-x: 0;"
                                 class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
@@ -434,12 +460,7 @@
                                     będzie popularna Pływalnia Albatros.
                                 </p>
                             </div>
-                        </div>
-                        <div class="col-12 col-md-6 offset-lg-1">
-                            <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded" src="{{ asset('img/na-skraju/s7.jpg') }}" alt=""
-                                    width="672" height="448" loading="lazy" decoding="async">
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -486,7 +507,8 @@
                     <div class="row justify-content-center pt-md-50 mt-30">
                         <div class="row justify-content-center pt-md-50 mt-30">
                             <div class="col-12">
-                                <p class="h5 fw-semibold text-secondary mb-3 mb-md-30">Infrastruktura w otoczeniu inwestycji
+                                <p class="h5 fw-semibold text-secondary mb-3 mb-md-30">Infrastruktura w otoczeniu
+                                    inwestycji
                                 </p>
                             </div>
                             <?php
@@ -511,13 +533,13 @@
                                     'name' => 'Stacja kolejowa',
                                     'distance' => '1,5 km',
                                 ],
-                            ];
-                            
-                            $list2 = [
                                 [
                                     'name' => 'Tereny sportowe i rekreacyjne',
                                     'distance' => '900 m',
                                 ],
+                            ];
+                            
+                            $list2 = [
                                 [
                                     'name' => 'Park',
                                     'distance' => '1,3 km',
@@ -534,9 +556,6 @@
                                     'name' => 'Przedszkole publiczne',
                                     'distance' => '800 m',
                                 ],
-                            ];
-                            
-                            $list3 = [
                                 [
                                     'name' => 'Szkoła podstawowa',
                                     'distance' => '650 m',
@@ -545,6 +564,10 @@
                                     'name' => 'Market spożywczy',
                                     'distance' => '950 m',
                                 ],
+                            ];
+                            
+                            $list3 = [
+
                                 [
                                     'name' => 'Sklep osiedlowy',
                                     'distance' => '500 m',
@@ -620,8 +643,8 @@
                                     @endforeach
                                 </ul>
                             </div>
-    
-    
+
+
                         </div>
 
                     </div>

@@ -13,20 +13,25 @@
                         <nav aria-label="breadcrumb small text-white" data-aos="fade">
                             <ol class="breadcrumb opacity-50">
                                 <li class="breadcrumb-item">
-                                    <a href="{{ route('index') }}" style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">Strona główna</a>
+                                    <a href="{{ route('index') }}"
+                                        style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">Strona
+                                        główna</a>
                                 </li>
                                 <li class="breadcrumb-item" style="--bs-breadcrumb-divider-color: var(--bs-white);">
-                                    <a href="#" style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">Oferta mieszkania</a>
+                                    <a href="#"
+                                        style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">Oferta
+                                        mieszkania</a>
                                 </li>
                                 <li class="breadcrumb-item" style="--bs-breadcrumb-divider-color: var(--bs-white);">
-                                    <a href="#" style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">Downtown</a>
+                                    <a href="#"
+                                        style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">Downtown</a>
                                 </li>
                             </ol>
                         </nav>
                     </div>
                     <div
                         class="col-12 col-md-8 offset-md-2 col-xl-6 offset-xl-3 col-xxl-4 offset-xxl-4 text-white text-center">
-                        <h1 class="h2 mb-3" data-aos="fade-up">Downtown</h1>
+                        <h1 class="h2 mb-3 text-uppercase" data-aos="fade-up">Downtown</h1>
                         <p class="text-pretty" data-aos="fade-up" data-aos-delay="200">Zapraszamy do odkrycia nowej,
                             wyjątkowej inwestycji mieszkań na sprzedaż w Łodzi, która odmieni Twoje postrzeganie miasta.
                             Zespół nowoczesnych, komfortowych mieszkań w Łodzi, położonych w samym centrum miasta - to Twoja
@@ -42,44 +47,62 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-lg-10 offset-lg-1">
-                        <nav class="fixed-top-menu bg-white" id="navbar-secondary">
-                            <ul class="navbar-nav with-underline-active nav-snap-md-down flex-row justify-content-around py-3"
-                                style="--bs-nav-link-color: var(--bs-secondary);--bs-nav-link-hover-color: var(--bs-primary); --bs-navbar-active-color: var(--bs-secondary);">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#opis-inwestycji">Opis inwestycji</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Mieszkania</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Model 3D</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#atuty">Atuty</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#lokalizacja">Lokalizacja</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Dziennik inwestycji</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#kontakt">Kontakt</a>
-                                </li>
-                            </ul>
-                        </nav>
+                        @include('front.investments.submenu', [
+                            'links' => [
+                                [
+                                    'title' => 'Opis inwestycji',
+                                    'href' => '#opis-inwestycji',
+                                    'active' => false,
+                                ],
+                                [
+                                    'title' => 'Wyszukaj z rzutu',
+                                    'href' => '#mieszkania',
+                                    'active' => false,
+                                ],
+                                [
+                                    'title' => 'Wyszukaj z modelu 3D',
+                                    'href' => '#model-3d',
+                                    'active' => false,
+                                ],
+                                [
+                                    'title' => 'Atuty',
+                                    'href' => '#atuty',
+                                    'active' => false,
+                                ],
+                                [
+                                    'title' => 'Lokalizacja',
+                                    'href' => '#lokalizacja',
+                                    'active' => false,
+                                ],
+                                [
+                                    'title' => 'Dziennik inwestycji',
+                                    'href' => '#dziennik-inwestycji',
+                                    'active' => false,
+                                ],
+                                [
+                                    'title' => 'Kontakt',
+                                    'href' => '#kontakt',
+                                    'active' => false,
+                                ],
+                            ],
+                        ])
                     </div>
                 </div>
             </div>
         </section>
 
-        <div data-bs-spy="scroll" data-bs-target="#navbar-secondary"
-            class="position-relative with-bigger-section-spacing">
+        <div data-bs-spy="scroll" data-bs-target="#navbar-secondary" class="position-relative with-bigger-section-spacing">
 
             <section class="s1" id="opis-inwestycji">
                 <div class="container">
                     <div class="row row-gap-4">
-                        <div class="col-12 col-md-6">
+                        <div class="col-12 col-md-6 col-lg-5 order-last order-md-0 ">
+                            <div class="w-100 h-100" data-aos="fade">
+                                <img class="img-fluid rounded" src="/img/downtown/s1.jpg" alt="" width="555"
+                                    height="629" loading="eager">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
                             <div style="--translate-x: 0;"
                                 class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
@@ -118,12 +141,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
-                            <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded" src="/img/downtown/s1.jpg" alt="" width="555"
-                                    height="629" loading="eager">
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </section>
@@ -131,13 +149,8 @@
             <section class="s2">
                 <div class="container">
                     <div class="row row-gap-4 align-items-center">
-                        <div class="col-12 col-md-6 col-lg-5 order-last order-md-0">
-                            <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded" src="/img/downtown/s2.jpg" alt="" width="555"
-                                    height="699" loading="lazy" decoding="async">
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
+
+                        <div class="col-12 col-md-6 col-lg-5">
                             <div style="--translate-x: 0;"
                                 class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
@@ -165,9 +178,8 @@
                                     garażowej, dzięki czemu z nami zaparkujesz bezpiecznie i wygodnie.
                                 </p>
                                 <div class="mt-4">
-                                    <a class="btn btn-primary btn-with-icon text-nowrap"
-                                        href="#">Mieszkania 2-POK<svg
-                                            xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062"
+                                    <a class="btn btn-primary btn-with-icon text-nowrap" href="#">Mieszkania
+                                        2-POK<svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062"
                                             viewBox="0 0 6.073 11.062">
                                             <path id="chevron_right_FILL0_wght100_GRAD0_opsz24"
                                                 d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z"
@@ -176,15 +188,26 @@
                                 </div>
                             </div>
                         </div>
-
+                        <div class="col-12 col-md-6 offset-lg-1">
+                            <div class="w-100 h-100" data-aos="fade">
+                                <img class="img-fluid rounded" src="/img/downtown/s2.jpg" alt="" width="555"
+                                    height="699" loading="lazy" decoding="async">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <section class="s3" >
+            <section class="s3">
                 <div class="container">
                     <div class="row row-gap-4">
-                        <div class="col-12 col-md-6 col-lg-5">
+                        <div class="col-12 col-md-6 col-lg-5 order-last order-md-0 ">
+                            <div class="w-100 h-100" data-aos="fade">
+                                <img class="img-fluid rounded" src="/img/downtown/s3.jpg" alt="" width="672"
+                                    height="448" loading="lazy" decoding="async">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
                             <div style="--translate-x: 0;"
                                 class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
@@ -216,12 +239,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="col-12 col-md-6 offset-lg-1">
-                            <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded" src="/img/downtown/s3.jpg" alt="" width="672"
-                                    height="448" loading="lazy" decoding="async">
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </section>
@@ -229,13 +247,8 @@
             <section class="s4">
                 <div class="container">
                     <div class="row row-gap-4 align-items-center">
-                        <div class="col-12 col-md-6 col-lg-5 order-last order-md-0">
-                            <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded" src="/img/downtown/s4.jpg" alt="" width="555"
-                                    height="699" loading="lazy" decoding="async">
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
+
+                        <div class="col-12 col-md-6 col-lg-5">
                             <div style="--translate-x: 0;"
                                 class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
@@ -268,7 +281,12 @@
                                 </div>
                             </div>
                         </div>
-
+                        <div class="col-12 col-md-6 offset-lg-1">
+                            <div class="w-100 h-100" data-aos="fade">
+                                <img class="img-fluid rounded" src="/img/downtown/s4.jpg" alt="" width="555"
+                                    height="699" loading="lazy" decoding="async">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -276,7 +294,13 @@
             <section class="s5">
                 <div class="container">
                     <div class="row row-gap-4 align-items-center">
-                        <div class="col-12 col-md-6 col-lg-5">
+                        <div class="col-12 col-md-6 col-lg-5 order-last order-md-0 ">
+                            <div class="w-100 h-100" data-aos="fade">
+                                <img class="img-fluid rounded" src="/img/downtown/s5.jpg" alt="" width="672"
+                                    height="448" loading="lazy" decoding="async">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
                             <div style="--translate-x: 0;"
                                 class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
@@ -302,26 +326,90 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="col-12 col-md-6 offset-lg-1">
-                            <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded" src="/img/downtown/s5.jpg" alt="" width="672"
-                                    height="448" loading="lazy" decoding="async">
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </section>
 
-            <section class="s6" id='atuty'>
+            <?php
+            $icons = [
+                [
+                    'icon' => asset('img/ziel_otocz.svg'),
+                    'title' => 'Zielone otoczenie i wewnętrzne dziedzińce',
+                ],
+                [
+                    'icon' => asset('img/rower.svg'),
+                    'title' => 'Bezpieczna strefa dla rowerów',
+                ],
+                [
+                    'icon' => asset('img/lokale.svg'),
+                    'title' => 'Lokale usługowe',
+                ],
+                [
+                    'icon' => asset('img/plac_zabaw.svg'),
+                    'title' => 'Plac zabaw dla dzieci',
+                ],
+                [
+                    'icon' => asset('img/ogrodki.svg'),
+                    'title' => 'Ogródki, balkony, loggie, duże tarasy',
+                ],
+                [
+                    'icon' => asset('img/lokalizacja.svg'),
+                    'title' => 'Doskonała lokalizacja',
+                ],
+                [
+                    'icon' => asset('img/rekreacja.svg'),
+                    'title' => 'Ogólnodostępna strefa rekreacyjna na dachu',
+                ],
+                [
+                    'icon' => asset('img/monitoring.svg'),
+                    'title' => 'Monitoring i instalacje wideodomofonowe',
+                ],
+                [
+                    'icon' => asset('img/komunikacja.svg'),
+                    'title' => 'Bardzo dobra komunikacja',
+                ],
+            ];
+            ?>
+            <section id="atuty">
                 <div class="container">
-                    <div class="row row-gap-4 align-items-center">
-                        <div class="col-12 col-md-6 col-lg-5 order-last order-md-0">
-                            <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded" src="/img/downtown/s6.jpg" alt="" width="555"
-                                    height="699" loading="lazy" decoding="async">
+                    <div class="row">
+                        <div class="col-12 mb-5">
+                            <div style="--translate-x: 0;"
+                                class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
+                                <div class="position-absolute top-50 start-50 translate-middle z-2">
+                                    <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168"
+                                        height="168" loading="lazy" decoding="async" data-aos="fade">
+                                </div>
+                                <h2 class="fw-bold text-center text-uppercase">
+                                    <span data-aos="fade-up" data-aos-delay="200">
+                                        Atuty inwestycji
+                                    </span>
+                                </h2>
                             </div>
                         </div>
-                        <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
+                    </div>
+                    <div class="row justify-content-center row-cols-1 row-cols-md-2 row-cols-lg-3 row-gap-5">
+                        @foreach ($icons as $icon)
+                            <div class="col">
+
+                                <div class="bg-white icon-shadow mx-auto rounded-circle d-flex align-items-center justify-content-center"
+                                    style="width: 87px; height: 87px;">
+                                    <img src="{{ $icon['icon'] }}" width="42" height="42" alt=""
+                                        loading="lazy" decoding="async" class="img-fluid">
+                                </div>
+                                <p class="text-secondary text-center mt-3 mt-lg-30">{{ $icon['title'] }}</p>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </section>
+
+            <section class="s6">
+                <div class="container">
+                    <div class="row row-gap-4 align-items-center">
+
+                        <div class="col-12 col-md-6 col-lg-5">
                             <div style="--translate-x: 0;"
                                 class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
@@ -352,7 +440,12 @@
                                 </div>
                             </div>
                         </div>
-
+                        <div class="col-12 col-md-6 offset-lg-1">
+                            <div class="w-100 h-100" data-aos="fade">
+                                <img class="img-fluid rounded" src="/img/downtown/s6.jpg" alt="" width="555"
+                                    height="699" loading="lazy" decoding="async">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -360,7 +453,13 @@
             <section class="s7">
                 <div class="container">
                     <div class="row row-gap-4 align-items-center">
-                        <div class="col-12 col-md-6 col-lg-5">
+                        <div class="col-12 col-md-6 col-lg-5 order-last order-md-0 ">
+                            <div class="w-100 h-100" data-aos="fade">
+                                <img class="img-fluid rounded" src="/img/downtown/s7.jpg" alt="" width="672"
+                                    height="448" loading="lazy" decoding="async">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
                             <div style="--translate-x: 0;"
                                 class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
@@ -383,12 +482,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="col-12 col-md-6 offset-lg-1">
-                            <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded" src="/img/downtown/s7.jpg" alt="" width="672"
-                                    height="448" loading="lazy" decoding="async">
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </section>
@@ -396,13 +490,8 @@
             <section class="s8">
                 <div class="container">
                     <div class="row row-gap-4 align-items-center">
-                        <div class="col-12 col-md-6 col-lg-5 order-last order-md-0">
-                            <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded" src="/img/downtown/s8.jpg" alt="" width="555"
-                                    height="699" loading="lazy" decoding="async">
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
+
+                        <div class="col-12 col-md-6 col-lg-5">
                             <div style="--translate-x: 0;"
                                 class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
@@ -426,7 +515,12 @@
 
                             </div>
                         </div>
-
+                        <div class="col-12 col-md-6 offset-lg-1">
+                            <div class="w-100 h-100" data-aos="fade">
+                                <img class="img-fluid rounded" src="/img/downtown/s8.jpg" alt="" width="555"
+                                    height="699" loading="lazy" decoding="async">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -434,7 +528,13 @@
             <section class="s9">
                 <div class="container">
                     <div class="row row-gap-4 align-items-center">
-                        <div class="col-12 col-md-6 col-lg-5">
+                        <div class="col-12 col-md-6 col-lg-5 order-last order-md-0 ">
+                            <div class="w-100 h-100" data-aos="fade">
+                                <img class="img-fluid rounded" src="/img/downtown/s9.jpg" alt="" width="672"
+                                    height="448" loading="lazy" decoding="async">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
                             <div style="--translate-x: 0;"
                                 class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
@@ -466,12 +566,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-md-6 offset-lg-1">
-                            <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded" src="/img/downtown/s9.jpg" alt="" width="672"
-                                    height="448" loading="lazy" decoding="async">
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </section>
@@ -479,13 +574,8 @@
             <section class="s10">
                 <div class="container">
                     <div class="row row-gap-4 align-items-center">
-                        <div class="col-12 col-md-6 col-lg-5 order-last order-md-0">
-                            <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded" src="/img/downtown/s10.jpg" alt="" width="555"
-                                    height="699" loading="lazy" decoding="async">
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
+
+                        <div class="col-12 col-md-6 col-lg-5">
                             <div style="--translate-x: 0;"
                                 class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
@@ -508,7 +598,12 @@
 
                             </div>
                         </div>
-
+                        <div class="col-12 col-md-6 offset-lg-1">
+                            <div class="w-100 h-100" data-aos="fade">
+                                <img class="img-fluid rounded" src="/img/downtown/s10.jpg" alt="" width="555"
+                                    height="699" loading="lazy" decoding="async">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -516,7 +611,14 @@
             <section class="s11">
                 <div class="container">
                     <div class="row row-gap-4 align-items-center">
-                        <div class="col-12 col-md-6 col-lg-5">
+
+                        <div class="col-12 col-md-6 col-lg-5 order-last order-md-0 ">
+                            <div class="w-100 h-100" data-aos="fade">
+                                <img class="img-fluid rounded" src="/img/downtown/s11.jpg" alt="" width="672"
+                                    height="448" loading="lazy" decoding="async">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
                             <div style="--translate-x: 0;"
                                 class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
@@ -539,12 +641,6 @@
 
                             </div>
                         </div>
-                        <div class="col-12 col-md-6 offset-lg-1">
-                            <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded" src="/img/downtown/s11.jpg" alt="" width="672"
-                                    height="448" loading="lazy" decoding="async">
-                            </div>
-                        </div>
                     </div>
                 </div>
             </section>
@@ -552,13 +648,8 @@
             <section class="s12">
                 <div class="container">
                     <div class="row row-gap-4 align-items-center">
-                        <div class="col-12 col-md-6 col-lg-5 order-last order-md-0">
-                            <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded" src="/img/downtown/s12.jpg" alt="" width="555"
-                                    height="699" loading="lazy" decoding="async">
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
+
+                        <div class="col-12 col-md-6 col-lg-5">
                             <div style="--translate-x: 0;"
                                 class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
@@ -581,7 +672,12 @@
 
                             </div>
                         </div>
-
+                        <div class="col-12 col-md-6 offset-lg-1">
+                            <div class="w-100 h-100" data-aos="fade">
+                                <img class="img-fluid rounded" src="/img/downtown/s12.jpg" alt="" width="555"
+                                    height="699" loading="lazy" decoding="async">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -589,7 +685,13 @@
             <section class="s11">
                 <div class="container">
                     <div class="row row-gap-4 align-items-center">
-                        <div class="col-12 col-md-6 col-lg-5">
+                        <div class="col-12 col-md-6 col-lg-5 order-last order-md-0 ">
+                            <div class="w-100 h-100" data-aos="fade">
+                                <img class="img-fluid rounded" src="/img/downtown/s13.jpg" alt="" width="672"
+                                    height="448" loading="lazy" decoding="async">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
                             <div style="--translate-x: 0;"
                                 class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
@@ -611,12 +713,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="col-12 col-md-6 offset-lg-1">
-                            <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded" src="/img/downtown/s13.jpg" alt="" width="672"
-                                    height="448" loading="lazy" decoding="async">
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </section>
@@ -680,6 +777,9 @@
                                 'name' => 'Planetarium',
                                 'distance' => '700 m',
                             ],
+                        ];
+                        
+                        $list2 = [
                             [
                                 'name' => 'Park Sienkiewicza',
                                 'distance' => '700 m',
@@ -688,9 +788,6 @@
                                 'name' => 'Park Źródliska',
                                 'distance' => '1,2 km',
                             ],
-                        ];
-                        
-                        $list2 = [
                             [
                                 'name' => 'Galeria Handlowa Manufaktura',
                                 'distance' => '3,8 km',
@@ -699,13 +796,13 @@
                                 'name' => 'Galeria Łódzka',
                                 'distance' => '700 m',
                             ],
+                        ];
+                        
+                        $list3 = [
                             [
                                 'name' => 'Off Piotrkowska',
                                 'distance' => '900 m',
                             ],
-                        ];
-                        
-                        $list3 = [
                             [
                                 'name' => 'Sieć komunikacji miejskiej',
                                 'distance' => '350 m',
@@ -806,7 +903,7 @@
                 @include('layouts.partials.cta')
             </div>
         </div>
-        
+
     </main>
 @endsection
 @push('scripts')

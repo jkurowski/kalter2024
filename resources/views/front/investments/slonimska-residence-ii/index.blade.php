@@ -26,7 +26,7 @@
                     </div>
                     <div
                         class="col-12 col-md-8 offset-md-2 col-xl-6 offset-xl-3 col-xxl-4 offset-xxl-4 text-white text-center">
-                        <h1 class="h2 mb-3" data-aos="fade-up">Slonimska Residence II</h1>
+                        <h1 class="h2 mb-3 text-uppercase" data-aos="fade-up">Slonimska Residence II</h1>
                     </div>
                 </div>
             </div>
@@ -38,32 +38,45 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-lg-10 offset-lg-1">
-                        <nav class="fixed-top-menu bg-white" id="navbar-secondary">
-                            <ul class="navbar-nav with-underline-active nav-snap-md-down flex-row justify-content-around py-3"
-                                style="--bs-nav-link-color: var(--bs-secondary);--bs-nav-link-hover-color: var(--bs-primary); --bs-navbar-active-color: var(--bs-secondary);">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#opis-inwestycji">Opis inwestycji</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Mieszkania</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Model 3D</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#atuty">Atuty</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#lokalizacja">Lokalizacja</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Dziennik inwestycji</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#kontakt">Kontakt</a>
-                                </li>
-                            </ul>
-                        </nav>
+                        @include('front.investments.submenu', [
+                            'links' => [
+                                [
+                                    'title' => 'Opis inwestycji',
+                                    'href' => '#opis-inwestycji',
+                                    'active' => false,
+                                ],
+                                [
+                                    'title' => 'Wyszukaj z rzutu',
+                                    'href' => '#mieszkania',
+                                    'active' => false,
+                                ],
+                                [
+                                    'title' => 'Wyszukaj z modelu 3D',
+                                    'href' => '#model-3d',
+                                    'active' => false,
+                                ],
+                                [
+                                    'title' => 'Atuty',
+                                    'href' => '#atuty',
+                                    'active' => false,
+                                ],
+                                [
+                                    'title' => 'Lokalizacja',
+                                    'href' => '#lokalizacja',
+                                    'active' => false,
+                                ],
+                                [
+                                    'title' => 'Dziennik inwestycji',
+                                    'href' => '#dziennik-inwestycji',
+                                    'active' => false,
+                                ],
+                                [
+                                    'title' => 'Kontakt',
+                                    'href' => '#kontakt',
+                                    'active' => false,
+                                ],
+                            ],
+                        ])
                     </div>
                 </div>
             </div>
@@ -74,7 +87,13 @@
             <section class="s1" id="opis-inwestycji">
                 <div class="container">
                     <div class="row row-gap-4 align-items-center">
-                        <div class="col-12 col-md-6">
+                        <div class="col-12 col-md-6 col-lg-5 order-last order-md-0">
+                            <div class="w-100 h-100" data-aos="fade">
+                                <img class="img-fluid rounded" src="{{ asset('img/slonimska/s1.jpg') }}" alt=""
+                                    width="555" height="629" loading="eager">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
                             <div style="--translate-x: 0;"
                                 class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
@@ -107,12 +126,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
-                            <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded" src="{{ asset('img/slonimska/s1.jpg') }}" alt=""
-                                    width="555" height="629" loading="eager">
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </section>
@@ -120,13 +134,8 @@
             <section class="s2">
                 <div class="container">
                     <div class="row row-gap-4 align-items-center">
-                        <div class="col-12 col-md-6 col-lg-5 order-last order-md-0">
-                            <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded" src="{{ asset('img/slonimska/s2.jpg') }}" alt=""
-                                    width="555" height="699" loading="lazy" decoding="async">
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
+
+                        <div class="col-12 col-md-6 col-lg-5">
                             <div style="--translate-x: 0;"
                                 class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
@@ -155,7 +164,12 @@
                                 </p>
                             </div>
                         </div>
-
+                        <div class="col-12 col-md-6 offset-lg-1">
+                            <div class="w-100 h-100" data-aos="fade">
+                                <img class="img-fluid rounded" src="{{ asset('img/slonimska/s2.jpg') }}" alt=""
+                                    width="555" height="699" loading="lazy" decoding="async">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -163,7 +177,13 @@
             <section class="s3">
                 <div class="container">
                     <div class="row align-items-center">
-                        <div class="col-12 col-md-6 col-lg-5">
+                        <div class="col-12 col-md-6 col-lg-5 order-last order-md-0 ">
+                            <div class="w-100 h-100" data-aos="fade">
+                                <img class="img-fluid rounded" src="{{ asset('img/slonimska/s3.jpg') }}" alt=""
+                                    width="672" height="448" loading="lazy" decoding="async">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
                             <div style="--translate-x: 0;"
                                 class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
@@ -191,12 +211,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="col-12 col-md-6 offset-lg-1">
-                            <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded" src="{{ asset('img/slonimska/s3.jpg') }}" alt=""
-                                    width="672" height="448" loading="lazy" decoding="async">
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </section>
@@ -204,13 +219,8 @@
             <section class="s4"  id='atuty'>
                 <div class="container">
                     <div class="row row-gap-4 align-items-center">
-                        <div class="col-12 col-md-6 col-lg-5 order-last order-md-0">
-                            <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded" src="{{ asset('img/slonimska/s4.jpg') }}" alt=""
-                                    width="555" height="699" loading="lazy" decoding="async">
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
+
+                        <div class="col-12 col-md-6 col-lg-5 order-last order-md-0 ">
                             <div style="--translate-x: 0;"
                                 class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
@@ -236,7 +246,12 @@
                                 </p>
                             </div>
                         </div>
-
+                        <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
+                            <div class="w-100 h-100" data-aos="fade">
+                                <img class="img-fluid rounded" src="{{ asset('img/slonimska/s4.jpg') }}" alt=""
+                                    width="555" height="699" loading="lazy" decoding="async">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -245,46 +260,47 @@
                 <div class="container">
                     <div class="row row-gap-4 align-items-center">
                         <div class="col-12 col-md-6 col-lg-5">
-                            <div style="--translate-x: 0;"
-                                class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
-                                <div class="position-absolute top-50 start-50 translate-middle z-2">
-                                    <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168"
-                                        height="168" loading="lazy" decoding="async" data-aos="fade">
-                                </div>
-                                <h2 class="fw-bold text-center text-uppercase">
-                                    <span data-aos="fade-up" data-aos-delay="200">
-                                        Bezpieczeństwo
-                                    </span>
 
-                                </h2>
-                            </div>
-                            <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
-                                <p>
-                                    Nieruchomość zostanie dodatkowo zabezpieczona solidnym ogrodzeniem od strony sąsiedniej
-                                    zabudowy, dzięki czemu mieszkańcy będą mogli zaaranżować je w sposób indywidualny z
-                                    naciskiem na prywatność.
-                                </p>
-
-                                <p>
-                                    Na komfort mieszkańców pozytywnie wpłyną również ciekawie zaaranżowane przestrzenie
-                                    wspólne
-                                    wewnątrz budynku, a także przestronne korytarze i klatka schodowa.
-                                </p>
-
-                                <p class='fw-semibold'>
-                                    Planowy termin rozpoczęcia budowy to 2024 rok.
-                                </p>
-                                <p class='fw-semibold'>
-                                    Za to już dziś można zobaczyć standard i niepowtarzalny styl w jakim został zrealizowany
-                                    pierwszy etap inwestycji!
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 offset-lg-1">
                             <div class="w-100 h-100" data-aos="fade">
                                 <img class="img-fluid rounded" src="{{ asset('img/slonimska/s5.jpg') }}" alt=""
                                     width="672" height="448" loading="lazy" decoding="async">
                             </div>
+                        </div>
+                        <div class="col-12 col-md-6 offset-lg-1">
+                            <div style="--translate-x: 0;"
+                            class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
+                            <div class="position-absolute top-50 start-50 translate-middle z-2">
+                                <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168"
+                                    height="168" loading="lazy" decoding="async" data-aos="fade">
+                            </div>
+                            <h2 class="fw-bold text-center text-uppercase">
+                                <span data-aos="fade-up" data-aos-delay="200">
+                                    Bezpieczeństwo
+                                </span>
+
+                            </h2>
+                        </div>
+                        <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
+                            <p>
+                                Nieruchomość zostanie dodatkowo zabezpieczona solidnym ogrodzeniem od strony sąsiedniej
+                                zabudowy, dzięki czemu mieszkańcy będą mogli zaaranżować je w sposób indywidualny z
+                                naciskiem na prywatność.
+                            </p>
+
+                            <p>
+                                Na komfort mieszkańców pozytywnie wpłyną również ciekawie zaaranżowane przestrzenie
+                                wspólne
+                                wewnątrz budynku, a także przestronne korytarze i klatka schodowa.
+                            </p>
+
+                            <p class='fw-semibold'>
+                                Planowy termin rozpoczęcia budowy to 2024 rok.
+                            </p>
+                            <p class='fw-semibold'>
+                                Za to już dziś można zobaczyć standard i niepowtarzalny styl w jakim został zrealizowany
+                                pierwszy etap inwestycji!
+                            </p>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -293,13 +309,8 @@
             <section class="s6">
                 <div class="container">
                     <div class="row row-gap-4 align-items-center">
-                        <div class="col-12 col-md-6 col-lg-5 order-last order-md-0">
-                            <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded" src="{{ asset('img/slonimska/s6.jpg') }}" alt=""
-                                    width="555" height="699" loading="lazy" decoding="async">
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
+                        
+                        <div class="col-12 col-md-6 col-lg-5">
                             <div style="--translate-x: 0;"
                                 class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
@@ -323,7 +334,12 @@
 
                             </div>
                         </div>
-
+                        <div class="col-12 col-md-6 offset-lg-1">
+                            <div class="w-100 h-100" data-aos="fade">
+                                <img class="img-fluid rounded" src="{{ asset('img/slonimska/s6.jpg') }}" alt=""
+                                    width="555" height="699" loading="lazy" decoding="async">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -331,7 +347,13 @@
             <section class="s7">
                 <div class="container">
                     <div class="row row-gap-4 align-items-center">
-                        <div class="col-12 col-md-6 col-lg-5">
+                        <div class="col-12 col-md-6 col-lg-5 order-last order-md-0 ">
+                            <div class="w-100 h-100" data-aos="fade">
+                                <img class="img-fluid rounded" src="{{ asset('img/slonimska/s7.jpg') }}" alt=""
+                                    width="672" height="448" loading="lazy" decoding="async">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
                             <div style="--translate-x: 0;"
                                 class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
@@ -356,12 +378,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="col-12 col-md-6 offset-lg-1">
-                            <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded" src="{{ asset('img/slonimska/s7.jpg') }}" alt=""
-                                    width="672" height="448" loading="lazy" decoding="async">
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </section>
@@ -369,13 +386,8 @@
             <section class="s8">
                 <div class="container">
                     <div class="row row-gap-4 align-items-center">
-                        <div class="col-12 col-md-6 col-lg-5 order-last order-md-0">
-                            <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded" src="{{ asset('img/slonimska/s8.jpg') }}" alt=""
-                                    width="555" height="699" loading="lazy" decoding="async">
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
+                      
+                        <div class="col-12 col-md-6 col-lg-5">
                             <div style="--translate-x: 0;"
                                 class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
@@ -402,7 +414,12 @@
 
                             </div>
                         </div>
-
+                        <div class="col-12 col-md-6 offset-lg-1">
+                            <div class="w-100 h-100" data-aos="fade">
+                                <img class="img-fluid rounded" src="{{ asset('img/slonimska/s8.jpg') }}" alt=""
+                                    width="555" height="699" loading="lazy" decoding="async">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -412,7 +429,12 @@
             <section class="section-localization mt-50" id="lokalizacja">
                 <div class="container">
                     <div class="row row-gap-4  align-items-center">
-                        <div class="col-12 col-md-6 col-lg-5">
+                        <div class="col-12 col-md-6 col-lg-5 order-last order-md-0 ">
+                            <div class="ratio ratio-16x9" data-aos="fade">
+                                <div id="map"></div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
                             <div style="--translate-x: 0;"
                                 class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
@@ -439,11 +461,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="col-12 col-md-6 offset-lg-1">
-                            <div class="ratio ratio-16x9" data-aos="fade">
-                                <div id="map"></div>
-                            </div>
-                        </div>
+                        
                     </div>
 
 

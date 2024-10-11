@@ -3,24 +3,8 @@
         <div class="row">
             <div class="col-12 col-lg-10 col-xl-8 offset-lg-1 offset-xl-2">
                 <form action="" class="bg-secondary text-white rounded d-flex row-gap-0 flex-wrap flex-sm-nowrap search-form" autocomplete="off">
-                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-5 row-gap-3 align-items-end px-30 py-3 w-md-100 pb-md-40 pb-20">
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 row-gap-3 align-items-end px-30 py-3 w-md-100 pb-md-40 pb-20">
                         <p class="col-12 w-100 text-uppercase mb-0">Wyszukiwarka</p>
-                        <div class="col-12 w-100">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="showAll">
-                                <label class="form-check-label" for="showAll">
-                                    Pokaż wszystkie
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <select name="step" id="step" class="form-select">
-                                <option value="0" selected>Etap</option>
-                                <option value="1">I</option>
-                                <option value="2">II</option>
-                                <option value="3">III</option>
-                            </select>
-                        </div>
                         <div class="col">
                             <select name="city" id="city" class="form-select">
                                 <option value="0" selected>Miasto</option>
@@ -40,16 +24,27 @@
                             </select>
                         </div>
                         <div class="col">
-                            <div class="form-floating">
-                                <input type="text" name="area_from" id="area_from" class="form-control bg-transparent" placeholder="Powierzchnia od">
-                                <label for="area_from">Powierzchnia od</label>
-                            </div>
+                            <select name="area" id="area" class="form-select">
+                                <option value="0" selected>Powierzchnia</option>
+                                <option value="1">30-50 m<sup>2</sup></option>
+                                <option value="2">51-70 m<sup>2</sup></option>
+                                <option value="3">71-90 m<sup>2</sup></option>
+                                <option value="4">91-110 m<sup>2</sup></option>
+                                <option value="5">> 110 m<sup>2</sup></option>
+                            </select>
                         </div>
                         <div class="col">
-                            <div class="form-floating">
-                                <input type="text" name="area_to" id="area_to" class="form-control bg-transparent" placeholder="Powierzchnia do">
-                                <label for="area_to">Powierzchnia do</label>
-                            </div>
+                           
+                                <select name="advanced" id="advanced" class="form-select">
+                                    <option value="0" selected>Zaawansowane</option>
+                                    <option value="1">Przedsprzedaż</option>
+                                    <option value="2">Realizacja 25%</option>
+                                    <option value="3">Realizacja 50%</option>
+                                    <option value="4">Realizacja 75%</option>
+                                    <option value="5">Realizacja 100%</option>
+                                    <option value="6">Gotowe do odbioru</option>
+                                </select>
+                            
                         </div>
                     </div>
                     <div class="flex-fill">
