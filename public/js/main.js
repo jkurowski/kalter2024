@@ -57,6 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (entry.isIntersecting) {
                     $(entry.target).slick();
                     observer.unobserve(entry.target);
+                    AOS.refresh();
                 }
             });
         };
