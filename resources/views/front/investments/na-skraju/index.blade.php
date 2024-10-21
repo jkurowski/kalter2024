@@ -4,7 +4,7 @@
     <main>
         <section class="position-relative page-hero-section">
             <div class="position-absolute top-0 start-0 w-100 h-100 with-image-overlay-gradient ">
-                <img src="{{ asset('img/na-skraju/img_slider_1.jpg') }}" alt="" width="1920" height="386"
+                <img src="{{ asset('img/na-skraju/na_skraju_bg.jpg') }}" alt="" width="1920" height="386"
                     loading="eager" decoding="async" class="w-100 h-100 object-fit-cover">
             </div>
             <div class="container isolation-isolate">
