@@ -24,7 +24,7 @@ $offices = [
         'tel' => '666 347 990',
         'email' => 'andersena@kalternieruchomosci.pl',
     ],
-] ?>
+]; ?>
 
 
 <footer class="page-footer fs-14">
@@ -34,26 +34,28 @@ $offices = [
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="mb-4 col-5">
                     <a href="/">
-                        <img src="{{ asset('img/logo.svg') }}" alt="Logo" width="262" height="87" class="img-fluid footer-logo" loading="lazy" decoding="async">
+                        <img src="{{ asset('img/logo.svg') }}" alt="Logo" width="262" height="87"
+                            class="img-fluid footer-logo" loading="lazy" decoding="async">
                     </a>
                 </div>
                 <p class="text-balance">
-                    Gwarantujemy wysoką jakość świadczonych usług, zapewniamy profesjonalną, stałą współpracę z klientem oraz pewność, że powierzone nam zadania znajdują się w rękach fachowców.
+                    Gwarantujemy wysoką jakość świadczonych usług, zapewniamy profesjonalną, stałą współpracę z klientem
+                    oraz pewność, że powierzone nam zadania znajdują się w rękach fachowców.
                 </p>
                 <p>
-                    <a class="small link-body-primary text-decoration-underline" href="/polityka-prywatnosci">Polityka prywatności*</a>
+                    <a class="small link-body-primary text-decoration-underline" href="/polityka-prywatnosci">Polityka
+                        prywatności*</a>
                 </p>
             </div>
             <div class="col-12 col-md-6 col-lg-3">
                 <p class="text-uppercase text-secondary mb-md-4 fw-semibold fs-6">Oferta</p>
                 <ul class="list-unstyled">
-                    <li class="mb-2">
-                        <a href="/oferta.php">Mieszkania</a>
-                    </li>
-                    <li class="mb-2">
-                        <a href="/lokale-uslugowe.php">Lokale usługowe</a>
-                    </li>
 
+                    @foreach ($current_investment as $p)
+                        <li class='mb-2'>
+                            <a class='text-uppercase' href="{{ route('developro.show', $p->slug) }}">{{ $p->name }}</a>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
             <div class="col-12 col-md-6 col-lg-3">
@@ -63,10 +65,13 @@ $offices = [
                         <a href="/inwestycje-zrealizowane.php">Inwestycje<br>Zrealizowane</a>
                     </li>
                     <li class="mb-2">
-                        <a href="/deweloper.php">Deweloper</a>
+                        <a href="{{ route('menu.show', ['uri' => 'deweloper']) }}">Deweloper</a>
                     </li>
                     <li class="mb-2">
-                        <a href="/kariera.php">Kariera</a>
+                        <a href="{{ route('menu.show', ['uri' => 'kariera']) }}">Kariera</a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="https://www.kalter.pl/o-nas" target="_blank">Grupa Kalter</a>
                     </li>
                 </ul>
             </div>
@@ -74,10 +79,10 @@ $offices = [
                 <p class="text-uppercase text-secondary mb-md-4 fw-semibold  fs-6">Dla klienta</p>
                 <ul class="list-unstyled">
                     <li class="mb-2">
-                        <a href="/programy-wykonczeniowe.php">Programy<br>wykończeniowe</a>
+                        <a href="{{ route('menu.show', ['uri' => 'kredyty']) }}">Kredyty</a>
                     </li>
                     <li class="mb-2">
-                        <a href="/kredyty.php">Kredyty</a>
+                        <a href="{{ route('menu.show', ['uri' => 'programy-wykonczeniowe-warszawa']) }}">Programy wykończeniowe</a>
                     </li>
                 </ul>
             </div>
@@ -88,10 +93,10 @@ $offices = [
 
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xxl-4 row-gap-3">
             <?php foreach ($cities as $city) : ?>
-            @if($city->footer)
-            <div class="col-auto">
-                {!! $city->footer !!}
-            </div>
+            @if ($city->footer)
+                <div class="col-auto">
+                    {!! $city->footer !!}
+                </div>
             @endif
             <?php endforeach; ?>
         </div>

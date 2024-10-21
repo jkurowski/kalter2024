@@ -4,19 +4,19 @@
     <?php
     // Zmienne do slidera
     $arrow_prev = '<button  class="slick-prev slick-arrow" aria-label="Previous" type="button">
-            
-                        <svg xmlns="http://www.w3.org/2000/svg" width="9.05" height="16.484" viewBox="0 0 9.05 16.484">
-                        <path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M363.434-675.758,356-683.192l.808-.808,8.242,8.242-8.242,8.242-.808-.808Z" transform="translate(365.05 -667.516) rotate(180)" fill="#fff"/>
-                      </svg>
-            
-                    </button>';
+                        
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="9.05" height="16.484" viewBox="0 0 9.05 16.484">
+                                    <path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M363.434-675.758,356-683.192l.808-.808,8.242,8.242-8.242,8.242-.808-.808Z" transform="translate(365.05 -667.516) rotate(180)" fill="#fff"/>
+                                  </svg>
+                        
+                                </button>';
     
     $arrow_next = '<button  class="slick-next slick-arrow" aria-label="Next" type="button">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="9.05" height="16.484" viewBox="0 0 9.05 16.484">
-            <path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M363.434-675.758,356-683.192l.808-.808,8.242,8.242-8.242,8.242-.808-.808Z" transform="translate(-356 684)" fill="#fff"/>
-            </svg>
-            
-                </button>'; ?>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="9.05" height="16.484" viewBox="0 0 9.05 16.484">
+                        <path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M363.434-675.758,356-683.192l.808-.808,8.242,8.242-8.242,8.242-.808-.808Z" transform="translate(-356 684)" fill="#fff"/>
+                        </svg>
+                        
+                            </button>'; ?>
 
 
     <section class="pb-0 home-hero position-relative">
@@ -125,13 +125,7 @@
                             </span>
                         </h2>
                     </div>
-                    <div class="pt-4 mt-3 text-center text-pretty" data-aos="fade">
-                        <p>
-                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
 
-                        </p>
-
-                    </div>
                 </div>
             </div>
         </div>
@@ -179,10 +173,9 @@
                             <div class="fw-bold">
                                 <p class="small text-uppercase mb-3 lh-1">{{ $p->city->name }}</p>
                                 <p class="h3 lh-1">{{ $p->name }}</p>
-
                             </div>
                             @if ($p->file_logo)
-                                <div>
+                                <div class='invest-card-logo-wrapper'>
                                     <img src="{{ asset('investment/logo/' . $p->file_logo) }}" alt=""
                                         class="rounded-circle invest-card-logo img-fluid" loading="lazy" decoding="async"
                                         width="71" height="71">
@@ -239,10 +232,8 @@
                     </div>
                     <div class="pt-4 mt-3 text-center" data-aos="fade">
                         <p>
-                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-
+                            Być może Twoje wymarzone mieszkanie jest w super promocyjnej cenie?<br>Sprawdź to!
                         </p>
-
                     </div>
                 </div>
             </div>

@@ -56,7 +56,7 @@
 
                                 </div>
                                 @if ($p->file_logo)
-                                    <div>
+                                    <div class='invest-card-logo-wrapper'>
                                         <img src="{{ asset('investment/logo/' . $p->file_logo) }}" alt=""
                                             class="rounded-circle invest-card-logo img-fluid" loading="lazy"
                                             decoding="async" width="71" height="71">

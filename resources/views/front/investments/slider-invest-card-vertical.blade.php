@@ -19,7 +19,7 @@
             <p class="h3 lh-1">{{ $name }}</p>
 
         </div>
-        <div>
+        <div class='invest-card-logo-wrapper'>
             <img src="{{ $logo }}" alt="" class="rounded-circle invest-card-logo img-fluid"
                 loading="lazy" decoding="async" width="71" height="71">
         </div>

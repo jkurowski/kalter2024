@@ -20,79 +20,14 @@
             </div>
         </div>
         <div class="row row-gap-4">
-            <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3">
+            <div class="col-12 col-lg-10 ">
                 <div class="contact-form-container text-secondary">
                     <div class="position-absolute cta-person z-2">
                         <img class="img-fluid" src="{{ asset('img/cta_person.webp') }}" alt="" width="475" height="710" loading="lazy" decoding="async">
                     </div>
                     <p class="fs-5 text-uppercase fw-semibold text-secondary">FORMULARZ KONTAKTOWY</p>
 
-                    <form id="contact-form" autocomplete="off" class="contact-form">
-                        <div class="row">
-                            <div class="col-12">
-                                <div id="form-errors" class="alert-danger alert hide-empty"></div>
-                                <div id="form-success" class="alert-success alert hide-empty"></div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-floating mb-2">
-                                    <input type="text" class="form-control" id="user-name" placeholder="Imię i nazwisko" name="username">
-                                    <label for="user-name">Imię i nazwisko</label>
-                                </div>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-12 col-lg-6">
-                                <div class="form-floating mb-2">
-                                    <input type="email" class="form-control" id="user-email" placeholder="E-mail" name="email" required="">
-                                    <label for="user-email">E-mail</label>
-                                </div>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-12 col-lg-6">
-                                <div class="form-floating mb-2">
-                                    <input type="tel" class="form-control" id="user-tel" placeholder="Telefon" name="tel">
-                                    <label for="user-tel">Telefon</label>
-                                </div>
-                            </div>
-
-
-                            <div class="col-12">
-                                <div class="form-floating">
-                                    <textarea class="form-control" placeholder="Wiadomość" id="user-message" style="height: 100px" name="message"></textarea>
-                                    <label for="user-message">Wiadomość</label>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="col-12">
-                            <div class="form-check text-start pt-2 pb-2">
-                                <input class="form-check-input" type="checkbox" value="" id="terms-check1" name="terms1">
-                                <label class="form-check-label fs-10 fs-8 fs-md-10" for="terms-check1">
-                                    Wyrażam zgodę na przetwarzanie moich danych osobowych zawartych w formularzu, zgodnie z przepisami RODO oraz zasadami <a class="link-hover-primary text-decoration-underline" href="/polityka-prywatnosci.php">Polityki prywatności</a>, w celu odpowiedzi na moje zapytanie. Podmiotem przetwarzającym dane osobowe jest Kalter Nieruchomości Sp. z o.o.
-                                </label>
-                            </div>
-                            <div class="form-check text-start pt-2 pb-2">
-                                <input class="form-check-input" type="checkbox" value="" id="terms-check2" name="terms2">
-                                <label class="form-check-label fs-10 fs-8 fs-md-10" for="terms-check2">
-                                    Wyrażam zgodę na przetwarzanie moich danych osobowych zawartych w formularzu w celach marketingowych, w tym marketingu bezpośredniego oraz otrzymywanie na podany adres e-mail i numer telefonu informacji handlowych obejmujących produkty oraz usługi świadczone przez Kalter Nieruchomości Sp. z o.o. oraz spółki należące do Grupy Kalter(powiązane kapitałowo) współpracujące ze sobą w ramach prowadzonych inwestycji.
-                                </label>
-                            </div>
-                            <div class="form-check text-start">
-                                <input class="form-check-input" type="checkbox" value="" id="terms-check3" name="terms3">
-                                <label class="form-check-label fs-10 fs-8 fs-md-10" for="terms-check3">
-                                    Wyrażona zgoda jest dobrowolna ale niezbędna, żeby zarejestrować Pana/Panią w bazie kontaktowej Administratora Danych. Mają Państwo prawo żądać wstrzymania przetwarzania lub usunięcia danych, które zebraliśmy za Państwa zgodą. Równocześnie mają Państwo prawo do wycofania zgody poprzez przesłanie odpowiedniego oświadczenia na adres: <a href="mailto:bialystok@kalternieruchomosci.pl">bialystok@kalternieruchomosci.pl</a>.
-                                    Administratorem danych jest Kalter Nieruchomości Sp. z o.o.. Wycofanie zgody nie wpływa na zgodność z prawem przetwarzania danych na podstawie zgody przed jej wycofaniem
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-12 text-center text-md-start pt-md-3">
-                            <button data-btn-submit="" type="submit" class="btn btn-primary btn-with-icon " disabled="">
-                                Wyślij
-                                <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062">
-                                    <path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor" />
-                                </svg>
-
-                            </button>
-                        </div>
-                    </form>
+                    @include('components.contact-form')
                 </div>
             </div>
         </div>

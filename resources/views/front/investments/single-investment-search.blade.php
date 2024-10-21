@@ -38,7 +38,7 @@
                     <div class="col">
                        
                             <select name="advanced" id="advanced" class="form-select">
-                                <option value="0" selected>Zaawansowane</option>
+                                <option value="0" selected>Zaawansowanie</option>
                                 <option value="1">Przedsprzedaż</option>
                                 <option value="2">Realizacja 25%</option>
                                 <option value="3">Realizacja 50%</option>

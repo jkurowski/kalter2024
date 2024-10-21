@@ -33,9 +33,7 @@
                         class="col-12 col-md-8 offset-md-2 col-xl-6 offset-xl-3 col-xxl-4 offset-xxl-4 text-white text-center">
                         <h1 class="h2 mb-3 text-uppercase" data-aos="fade-up">Downtown</h1>
                         <p class="text-pretty" data-aos="fade-up" data-aos-delay="200">Zapraszamy do odkrycia nowej,
-                            wyjątkowej inwestycji mieszkań na sprzedaż w Łodzi, która odmieni Twoje postrzeganie miasta.
-                            Zespół nowoczesnych, komfortowych mieszkań w Łodzi, położonych w samym centrum miasta - to Twoja
-                            szansa na eleganckie, praktyczne lokum w znakomitej lokalizacji.</p>
+                            wyjątkowej inwestycji mieszkań na sprzedaż w Łodzi, która odmieni Twoje postrzeganie miasta.</p>
                     </div>
                 </div>
             </div>
