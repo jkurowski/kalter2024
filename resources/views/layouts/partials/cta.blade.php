@@ -9,10 +9,10 @@
                     </div>
                     <h2 class="fw-bold text-center text-uppercase">
                         <span data-aos="fade-up" data-aos-delay="200" class="aos-init aos-animate">
-                            Kontakt
+                            Masz pytania?
                         </span>
                         <span class="fw-900 fs-4 d-block text-center aos-init aos-animate" data-aos="fade-up" data-aos-delay="400">
-                            Inwestycje
+                            Napisz do nas!
                         </span>
                     </h2>
                 </div>

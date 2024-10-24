@@ -112,6 +112,10 @@ Route::middleware(['restrictIp'])->group(function () {
             Route::get('/unsubscribe/{hash}', 'Property\NotificationController@unsubscribe')->name('properties.notifications.unsubscribe');
 
             Route::get('/oferta-mieszkan', 'IndexController@index')->name('index');
+            Route::get('/inwestycje-zrealizowane', 'CompletedController@index')->name('completed');
+            Route::get('/inwestycje-zrealizowane/{slug}', 'CompletedController@show')->name('completed.city');
+
+
             Route::get('/i/{slug}', 'InvestmentController@show')->name('show');
             Route::get('/i/{slug}/plan', 'InvestmentPlanController@index')->name('plan');
             Route::get('/i/{slug}/pietro/{floor}', 'InvestmentFloorController@index')->name('floor');
