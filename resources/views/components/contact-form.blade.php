@@ -1,5 +1,5 @@
 @props([
-    'pageTitle' => 'Undefined',
+    'pageTitle' => $page,
     'action' => '',
     'method' => 'POST',
 ])
@@ -58,8 +58,6 @@
                 @enderror
             </div>
         </div>
-
-
         <div class="col-12">
             <div class="form-floating">
                 <textarea placeholder="Wiadomość" style='min-height: 100px;' rows="5" cols="1" name="form_message"
@@ -70,11 +68,8 @@
                     <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                 @enderror
             </div>
-
         </div>
     </div>
-
-
 
     <div class="col-12">
         <div class="form-check text-start pt-2 pb-2">

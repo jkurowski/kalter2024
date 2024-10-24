@@ -37,7 +37,7 @@
                 </div>
 
                 <div class="row w-100 mb-4">
-                    <div class="col-6">
+                    <div class="col-4">
                         @include('form-elements.html-select', [
                             'label' => 'Typ inwestycji',
                             'name' => 'type',
@@ -49,7 +49,7 @@
                             ],
                         ])
                     </div>
-                    <div class="col-6">
+                    <div class="col-4">
                         @include('form-elements.html-select', [
                             'label' => 'Status inwestycji',
                             'name' => 'status',
@@ -59,6 +59,21 @@
                                 '2' => 'Inwestycja zakończona',
                                 '3' => 'Inwestycja planowana',
                                 '4' => 'Inwestycja ukryta',
+                            ],
+                        ])
+                    </div>
+                    <div class="col-4">
+                        @include('form-elements.html-select', [
+                            'label' => 'Postęp inwestycji',
+                            'name' => 'progress',
+                            'selected' => $entry->progress,
+                            'select' => [
+                                '1' => 'Przedsprzedaż',
+                                '2' => 'Realizacja 20%',
+                                '3' => 'Realizacja 40%',
+                                '4' => 'Realizacja 60%',
+                                '5' => 'Realizacja 80%',
+                                '6' => 'Realizacja 100%',
                             ],
                         ])
                     </div>

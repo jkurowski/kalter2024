@@ -412,9 +412,6 @@
         </div>
     </section>
 
-
-
-
     <section class="home-about">
         <div class="container">
             <div class="row row-gap-50 align-items-center">
@@ -450,10 +447,6 @@
                                 </p>
                             </div>
                         </div>
-
-
-
-
                     </div>
                 </div>
                 <div class="col-12 col-lg-5 offset-lg-1">

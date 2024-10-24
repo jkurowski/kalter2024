@@ -28,6 +28,7 @@ class Investment extends Model
     protected $fillable = [
         'type',
         'status',
+        'progress',
         'name',
         'slug',
         'address',

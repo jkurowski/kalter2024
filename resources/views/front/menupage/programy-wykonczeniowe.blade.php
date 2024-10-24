@@ -393,10 +393,10 @@
                             </div>
                             <h2 class="fw-bold text-center text-uppercase">
                             <span data-aos="fade-up" data-aos-delay="200" class="aos-init aos-animate">
-                                Zapytaj
+                                Masz pytania?
                             </span>
                                 <span class="fw-900 fs-4 d-block text-center aos-init aos-animate" data-aos="fade-up" data-aos-delay="400">
-                                o lokal
+                                Napisz do nas!
                             </span>
                             </h2>
                         </div>
@@ -410,7 +410,7 @@
                             </div>
                             <p class="fs-5 text-uppercase fw-semibold text-secondary">FORMULARZ KONTAKTOWY</p>
 
-                            @include('components.contact-form')
+                            @include('components.contact-form', ['page' => $page->title])
                         </div>
                     </div>
                 </div>

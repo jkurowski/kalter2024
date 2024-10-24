@@ -3,7 +3,6 @@
     <div class="container z-2">
         <div class="row">
             <div class="col-12 text-white mb-5 pb-4">
-
                 <div style="--translate-x: 0;" class="position-relative text-center d-flex flex-column justify-content-center align-items-center ">
                     <div class="position-absolute top-50 start-50 translate-middle z-2">
                         <img src="{{ asset('img/sygnet.svg') }}" alt="" width="168" height="168" loading="lazy" decoding="async" data-aos="fade" class="aos-init aos-animate">
