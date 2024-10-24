@@ -14100,3 +14100,14 @@ blockquote p {
     text-align: center;
     line-height: 46px;
 }
+@media (max-width: 575.98px) {
+    .invest-card-logo {
+        width: 70px;
+        min-width: 70px;
+    }
+    .invest-card-logo-wrapper {
+        min-width: 70px;
+        width: 70px;
+        max-width: 70px;
+    }
+}
