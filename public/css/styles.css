@@ -13098,9 +13098,15 @@ input[name="lang"]:checked + label > img {
     width: 100%;
 }
 .invest-card-logo {
-    width: 50px;
-    min-width: 50px;
+    width: 90px;
+    min-width: 90px;
 }
+.invest-card-logo-wrapper {
+    min-width: 90px;
+    width: 90px;
+    max-width: 90px;
+}
+
 .invest-card-bg-overlay:after {
     content: "";
     position: absolute;
@@ -13378,7 +13384,7 @@ main > section {
     padding-block: calc(1.375rem + 1.125vw);
 }
 @media (min-width: 1600px) {
-    .with-bigger-section-spacing > section {
+    .with-bigger-section-spacing section {
         padding-block: 2.5rem;
     }
 }
@@ -13968,8 +13974,129 @@ header .nav-link:not(.nav-link.dropdown-hover):hover {
   min-width: 100px;
   transform: translate(-50%, -100%);
 }
-.invest-card-logo-wrapper {
-    min-width: 50px;
-    width: 50px;
-    max-width: 50px;
+
+
+.programs {
+    margin: 0;
+    list-style: none;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 0;
+}
+.programs li {
+    -ms-flex: 0 0 33.333333%;
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+    padding: 45px 50px 50px;
+}
+
+
+ul.programs li.smart {
+    background-color: #f1f3f4;
+}
+ul.programs li.trend {
+    background-color: #909398;
+}
+ul.programs li.high {
+    background-color: #1d1d1b;
+}
+ul.programs li.trend .desc,
+ul.programs li.high .desc,
+ul.programs li.trend .desc2,
+ul.programs li.high .desc2
+{
+    color: #fff;
+}
+ul.programs .stars {
+    display: flex;
+    justify-content: center;
+}
+ul.programs .icon img {
+    margin:45px auto
+}
+ul.programs .desc {
+    padding-bottom: 30px;
+    height: 130px;
+}
+ul.programs .desc2 {
+    padding-bottom: 25px;
+}
+ul.programs .desc p {
+    font-style: oblique;
+}
+ul.programs li h3 {
+    color: #d2c0ac;
+    font-size: 50px;
+    font-weight: 100;
+    text-transform: uppercase;
+}
+ul.programs li h3 img {
+    display: inline-block;
+}
+ul.programs .letter {
+    display: inline-block;
+    margin: 0;
+}
+ul.programs.jesion-programs li {
+    text-align: center;
+}
+ul.programs.jesion-programs li h3,
+ul.programs.jesion-programs .desc p {
+    color: white;
+    line-height: normal;
+}
+ul.programs.jesion-programs li h3 {
+    line-height: 48px;
+}
+ul.programs.jesion-programs li a {
+    color: #fff;
+    border: 1px solid white;
+    padding: 7px 15px;
+    font-size: 13px;
+    background: #44601f;
+    transition: all 200ms linear;
+}
+ul.programs.jesion-programs li a:hover {
+    background: white;
+    color: #44601f;
+}
+ul.programs.jesion-programs li p {
+    font-size: 15px
+}
+ul.programs.jesion-programs .desc {
+    padding-bottom: 30px;
+    height: 110px;
+}
+ul.programs.jesion-programs .stars {
+    margin-bottom: 20px;
+}
+
+ul.programs.jesion-programs li h3 strong {
+    display: block;
+    width: 100%;
+    line-height: 1;
+}
+ul.programs.jesion-programs .pakiet-basic {
+    background: #9dcf5b;
+}
+ul.programs.jesion-programs .pakiet-premium {
+    background: #8AB74D;
+}
+ul.programs.jesion-programs .pakiet-vip {
+    background: #769F3F;
+}
+blockquote {
+    background: #f7f7f7;
+    padding: 40px 50px
+}
+blockquote p {
+    font-family: "Times New Roman";
+    font-size: 36px;
+    color: #212121;
+    font-style: oblique;
+    text-align: center;
+    line-height: 46px;
 }

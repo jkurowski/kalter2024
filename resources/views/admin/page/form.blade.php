@@ -36,6 +36,9 @@
                         @include('form-elements.html-input-text', ['label' => 'Tytuł strony', 'name' => 'title', 'value' => $entry->title, 'required' => 1])
                     </div>
                     <div class="row w-100 form-group">
+                        @include('form-elements.html-input-text', ['label' => 'Sub-Tytuł strony', 'name' => 'title_text', 'value' => $entry->title_text])
+                    </div>
+                    <div class="row w-100 form-group">
                         @include('form-elements.html-input-text', ['label' => 'Nagłówek H1', 'name' => 'content_header', 'value' => $entry->content_header])
                     </div>
                     <div class="row w-100 form-group">

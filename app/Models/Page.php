@@ -18,6 +18,7 @@ class Page extends Model
         'active',
         'parent_id',
         'title',
+        'title_text',
         'content',
         'content_header',
         'meta_title',

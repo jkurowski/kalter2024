@@ -26,6 +26,7 @@ class Url extends Model
         'type',
         'parent_id',
         'title',
+        'title_text',
         'uri',
         'url',
         'url_target',

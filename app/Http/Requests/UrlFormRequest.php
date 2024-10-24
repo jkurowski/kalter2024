@@ -28,6 +28,7 @@ class UrlFormRequest extends FormRequest
             'active' => 'boolean',
             'parent_id' => 'integer',
             'title' => 'required|string|min:2|max:100',
+            'title_text' => '',
             'url' => '',
             'url_target' => '',
             'content_header' => '',

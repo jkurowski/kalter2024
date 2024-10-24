@@ -9,12 +9,12 @@ class MenuController extends Controller
 {
     public function index($locale, $uri = null)
     {
-        //$page = Page::where('uri', $uri)->firstOrFail();
+        $page = Page::where('uri', $uri)->firstOrFail();
         //$parent = Page::ancestorsOf($page->id)->first();
 
         return view('front.menupage.'.$uri)
             ->with([
-                //'page' => $page,
+                'page' => $page,
                 //'parent' => $parent
                 'uri' => $uri
             ])

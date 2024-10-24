@@ -15,7 +15,7 @@ class ArticleController extends Controller
 
     public function index()
     {
-        $page = Page::whereId(1)->first();
+        $page = Page::whereId(2)->first();
         $articles = Article::where('status', 1)->orderBy('posted_at', 'DESC')->get();
         return view('front.article.index', ['page' => $page, 'articles' => $articles]);
     }
@@ -25,7 +25,7 @@ class ArticleController extends Controller
 
         $article = Article::where('slug', $slug)->first();
         //$page = Page::where('uri', 'aktualnosci')->firstOrFail();
-        $page = Page::whereId(1)->first();
+        $page = Page::whereId(2)->first();
 
 //        $schemaBlog = Schema::BlogPosting()
 //            ->mainEntityOfPage(Schema::WebPage()->identifier(route('front.news.show', $article->slug)))

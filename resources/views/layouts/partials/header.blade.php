@@ -30,18 +30,8 @@
                                     @endforeach
                                 </ul>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-hover" href="/lokale-uslugowe.php" data-bs-hover="dropdown" aria-expanded="false">
-                                    Lokale usługowe
-                                    <svg class="d-none d-xl-inline" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down ms-2" viewBox="0 0 16 16" id="navbar-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"></path>
-                                    </svg>
-                                </a>
-                                <ul class=" dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Item 1</a></li>
-                                    <li><a class="dropdown-item" href="#">Item 2</a></li>
-
-                                </ul>
+                            <li class="nav-item dropdown d-none">
+                                <a class="nav-link" href="/lokale-uslugowe.php">Lokale usługowe</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-hover" href="#" data-bs-hover="dropdown" aria-expanded="false">
@@ -66,7 +56,7 @@
                                 </a>
                                 <ul class=" dropdown-menu">
                                     <li><a class="dropdown-item" href="{{ route('menu.show', ['uri' => 'kredyty']) }}">Kredyty</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('menu.show', ['uri' => 'programy-wykonczeniowe-warszawa']) }}">Programy wykończeniowe</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('menu.show', ['uri' => 'programy-wykonczeniowe']) }}">Programy wykończeniowe</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item">

@@ -1,9 +1,9 @@
 @extends('layouts.page', ['body_class' => 'homepage'])
 
-@section('meta_title', '$page->title')
-@section('seo_title','$page->meta_title')
-@section('seo_description', '$page->meta_description')
-@section('seo_robots', '$page->meta_robots')
+@section('meta_title', $page->title .' - '.$article->title)
+@section('seo_title',$page->meta_title)
+@section('seo_description', $page->meta_description)
+@section('seo_robots', $page->meta_robots)
 
 @section('content')
     <main class="with-bigger-section-spacing">
