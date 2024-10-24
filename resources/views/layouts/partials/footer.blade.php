@@ -25,7 +25,7 @@
                 <p class="text-uppercase text-secondary mb-md-4 fw-semibold  fs-6">O firmie</p>
                 <ul class="list-unstyled">
                     <li class="mb-2 d-none">
-                        <a href="/inwestycje-zrealizowane.php">Inwestycje<br>Zrealizowane</a>
+                        <a href="{{ route('developro.completed') }}">Inwestycje<br>Zrealizowane</a>
                     </li>
                     <li class="mb-2">
                         <a href="{{ route('menu.show', ['uri' => 'deweloper']) }}">Deweloper</a>

@@ -41,7 +41,7 @@
                                     </svg>
                                 </a>
                                 <ul class=" dropdown-menu">
-                                    <li><a class="dropdown-item" href="/inwestycje-zrealizowane.php">Inwestycje zrealizowane</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('developro.completed') }}">Inwestycje zrealizowane</a></li>
                                     <li><a class="dropdown-item" href="{{ route('menu.show', ['uri' => 'deweloper']) }}">Deweloper</a></li>
                                     <li><a class="dropdown-item" href="{{ route('menu.show', ['uri' => 'kariera']) }}">Kariera</a></li>
                                     <li><a class="dropdown-item" href="https://www.kalter.pl/o-nas" target="_blank">Grupa Kalter</a></li>
