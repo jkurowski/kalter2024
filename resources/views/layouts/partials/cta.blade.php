@@ -26,7 +26,7 @@
                     </div>
                     <p class="fs-5 text-uppercase fw-semibold text-secondary">FORMULARZ KONTAKTOWY</p>
 
-                    @include('components.contact-form')
+                    @include('components.contact-form', ['page' => $page])
                 </div>
             </div>
         </div>

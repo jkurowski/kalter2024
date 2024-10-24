@@ -37,7 +37,7 @@
 <main>
     @yield('content')
 
-    @include('layouts.partials.cta')
+    @include('layouts.partials.cta', ['page' => 'Strona główna'])
 </main>
 
     @auth
