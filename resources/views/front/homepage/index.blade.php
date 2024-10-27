@@ -88,7 +88,7 @@
                             {{ $s->text }}
                         </p>
                         @endif
-
+                        @if($s->link)
                         <div class="mt-30 hero-slide-button">
                             <a href="{{ $s->link }}" class="btn btn-primary btn-with-icon" target="{{ $s->link_target }}">
                                 {{ $s->link_button }}
@@ -100,6 +100,7 @@
                                 </svg>
                             </a>
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>
