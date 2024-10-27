@@ -24,7 +24,7 @@
                                 <div class="row w-100 form-group">
                                     @include('form-elements.html-select', ['label' => 'Status', 'name' => 'active', 'selected' => $entry->active, 'select' => ['1' => 'Aktywny', '2' => 'Nieaktywny']])
                                 </div>
-                                <div class="row w-100 form-group">
+                                <div class="row w-100 form-group d-none">
                                     @include('form-elements.html-select', ['label' => 'Wyciemnienie zdjęcia', 'name' => 'opacity', 'selected' => $entry->opacity, 'select' => [
                                         '0' => '0',
                                         '0.2' => '0.2',
@@ -34,7 +34,7 @@
                                         '1.0' => '1',
                                     ]])
                                 </div>
-                                <div class="row w-100 form-group">
+                                <div class="row w-100 form-group d-none">
                                     @include('form-elements.html-color', ['label' => 'Kolor wyciemnienia', 'name' => 'color', 'value' => $entry->color])
                                 </div>
                                 <div class="row w-100 form-group">
