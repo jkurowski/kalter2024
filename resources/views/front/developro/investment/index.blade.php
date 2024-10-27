@@ -23,16 +23,19 @@
                             </li>
                             <li class="breadcrumb-item" style="--bs-breadcrumb-divider-color: var(--bs-white);">
                                 <a href="#"
-                                    style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">Oferta</a>
+                                    style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">{{ $page->title }}</a>
                             </li>
 
                         </ol>
                     </nav>
                 </div>
-                <div class="col-12 col-md-8 offset-md-2 col-xl-6 offset-xl-3 col-xxl-4 offset-xxl-4 text-white text-center">
-                    <h1 class="h2 mb-3 aos-init aos-animate" data-aos="fade-up">Oferta</h1>
-                    <p class="text-pretty aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">Lorem ipsum dolor
-                        sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.</p>
+                <div class="col-12 col-md-8 offset-md-2 col-xl-6 offset-xl-3 text-white text-center">
+                    @isset($page->title)
+                        <h1 class="h2 mb-3 text-uppercase" data-aos="fade-up">{{ $page->title }}</h1>
+                    @endisset
+                    @isset($page->title_text)
+                        <p class="text-pretty" data-aos="fade-up" data-aos-delay="200">{{ $page->title_text }}</p>
+                    @endisset
                 </div>
             </div>
         </div>
