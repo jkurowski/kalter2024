@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 //CMS
 use App\Repositories\InvestmentRepository;
 use App\Models\Investment;
+use App\Models\Building;
+use App\Models\Floor;
 use App\Models\Page;
 
 class InvestmentPlanController extends Controller
@@ -24,6 +26,34 @@ class InvestmentPlanController extends Controller
     public function index($lang, Request $request, $slug)
     {
         $investment = Investment::findBySlug($slug);
+
+        if($investment->type == 1){
+            $investment_room = $investment->load(array(
+                'buildingRooms' => function ($query) use ($request) {
+                    if ($request->input('rooms')) {
+                        $query->where('rooms', $request->input('rooms'));
+                    }
+                    if ($request->input('status')) {
+                        $query->where('status', $request->input('status'));
+                    }
+                    if ($request->input('area')) {
+                        $area_param = explode('-', $request->input('area'));
+                        $min = $area_param[0];
+                        $max = $area_param[1];
+                        $query->whereBetween('area', [$min, $max]);
+                    }
+                    if ($request->input('sort')) {
+                        $order_param = explode(':', $request->input('sort'));
+                        $column = $order_param[0];
+                        $direction = $order_param[1];
+                        $query->orderBy($column, $direction);
+                    }
+                },
+                'plan'
+            ));
+
+            $properties = $investment_room->buildingRooms;
+        }
 
         /**
          * Inwestycja z jednym budynkiem

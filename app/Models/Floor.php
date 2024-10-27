@@ -44,14 +44,7 @@ class Floor extends Model
         return $this->hasMany('App\Models\Property');
     }
 
-    /**
-     * Get next floor
-     * @param int $investment
-     * @param int $id
-     * @param int|null $building
-     * @return Floor
-     */
-    public function findNext(int $investment, int $id, int $building = null): Floor
+    public function findNext(int $investment, int $id, int $building = null)
     {
         $next = $this->where('investment_id', $investment)->where('id', '>', $id)->orderBy('id')->first();
         if ($building && $next) {
@@ -60,14 +53,7 @@ class Floor extends Model
         return $next;
     }
 
-    /**
-     * Get previous floor
-     * @param int $investment
-     * @param int $id
-     * @param int|null $building
-     * @return Floor
-     */
-    public function findPrev(int $investment, int $id, int $building = null): Floor
+    public function findPrev(int $investment, int $id, int $building = null)
     {
         $prev = $this->where('investment_id', $investment)->where('id', '<', $id)->orderByDesc('id')->first();
         if ($building && $prev) {

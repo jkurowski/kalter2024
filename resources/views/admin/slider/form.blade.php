@@ -41,6 +41,9 @@
                                     @include('form-elements.html-input-text', ['label' => 'Nazwa', 'name' => 'title', 'value' => $entry->title, 'required' => 1])
                                 </div>
                                 <div class="row w-100 form-group">
+                                    @include('form-elements.html-input-text', ['label' => 'Treść', 'name' => 'text', 'value' => $entry->text])
+                                </div>
+                                <div class="row w-100 form-group">
                                     @include('form-elements.html-input-text', ['label' => 'Button: adres url', 'name' => 'link', 'value' => $entry->link])
                                 </div>
                                 <div class="row w-100 form-group">

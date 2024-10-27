@@ -21,7 +21,7 @@
             </div>
             <div class="col-12 col-md-8 offset-md-2 col-xl-6 offset-xl-3 text-white text-center">
                 @isset($h1)
-                <h1 class="h2 mb-3" data-aos="fade-up">{{ $h1 }}</h1>
+                <h1 class="h2 mb-3 text-uppercase" data-aos="fade-up">{{ $h1 }}</h1>
                 @endisset
                 @isset($desc)
                 <p class="text-pretty" data-aos="fade-up" data-aos-delay="200">{{ $desc }}</p>

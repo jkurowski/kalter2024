@@ -19,7 +19,7 @@ $(document).ready(function(){
     });
 
     $('#invesmentplan').mapster({
-        fillColor: 'b79a5e',
+        fillColor: 'fbc000',
         fillOpacity: 0.8,
         clickNavigate: true
     });

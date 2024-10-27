@@ -13,6 +13,7 @@ class Slider extends Model
      */
     protected $fillable = [
         'title',
+        'text',
         'file',
         'file_alt',
         'link',

@@ -69,25 +69,29 @@
 
 
         <div data-slick='<?= json_encode($hero_slider_options) ?>' class="hero-slider">
-            <?php foreach ($hero_slides as $index => $row) : ?>
+            <?php foreach ($slider as $index => $s) : ?>
             <div class="hero-slide position-relative">
                 <div class="position-absolute top-0 start-0 w-100 h-100 hero-slide-image-container">
-                    <img src="<?= $row['image_url'] ?>" alt="" class="hero-slide-image w-100 h-100 object-fit-cover"
-                        loading="eager" width="1655" height="680">
+                    <img src="{{ asset('uploads/slider/'.$s->file) }}" alt="" class="hero-slide-image w-100 h-100 object-fit-cover"
+                        loading="eager" width="1920" height="792">
                 </div>
                 <div class="hero-slide-content isolation-isolate text-white text-center d-flex align-items-center">
                     <div class="col-8 offset-2 col-xxl-4  offset-xxl-4 ">
                         <?php if (!$index) : ?>
-                        <h1 class="hero-slide-title"><?= $row['title'] ?></h1>
+                        <h1 class="hero-slide-title">{{ $s->title }}</h1>
                         <?php else : ?>
-                        <h2 class="h1 hero-slide-title"><?= $row['title'] ?></h2>
+                        <h2 class="h1 hero-slide-title">{{ $s->title }}</h2>
                         <?php endif; ?>
+
+                        @if($s->text)
                         <p class="text-pretty lh-150 hero-slide-text">
-                            <?= $row['description'] ?>
+                            {{ $s->text }}
                         </p>
+                        @endif
+
                         <div class="mt-30 hero-slide-button">
-                            <a href="<?= $row['button_url'] ?>" class="btn btn-primary btn-with-icon">
-                                <?= $row['button_text'] ?>
+                            <a href="{{ $s->link }}" class="btn btn-primary btn-with-icon" target="{{ $s->link_target }}">
+                                {{ $s->link_button }}
                                 <svg class="mb-1" xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062"
                                     viewBox="0 0 6.073 11.062">
                                     <path id="chevron_right_FILL0_wght100_GRAD0_opsz24"

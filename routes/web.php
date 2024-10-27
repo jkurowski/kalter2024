@@ -117,9 +117,12 @@ Route::middleware(['restrictIp'])->group(function () {
 
 
             Route::get('/i/{slug}', 'InvestmentController@show')->name('show');
-            Route::get('/i/{slug}/plan', 'InvestmentPlanController@index')->name('plan');
-            Route::get('/i/{slug}/pietro/{floor}', 'InvestmentFloorController@index')->name('floor');
+            Route::get('/i/{slug}/plan-inwestycji', 'InvestmentPlanController@index')->name('plan');
+            Route::get('/i/{slug}/pietro/{floor},{floor_slug}', 'InvestmentFloorController@index')->name('floor');
             Route::get('/i/{slug}/pietro/{floor}/m/{property}', 'InvestmentPropertyController@index')->name('property');
+
+            Route::get('/i/{slug}/budynek/{building},{building_slug}', 'InvestmentBuildingController@index')->name('building');
+            Route::get('/i/{slug}/budynek/{building},{building_slug}/pietro/{floor},{floor_slug}', 'InvestmentBuildingFloorController@index')->name('building.floor');
 
             Route::get('/{slug}/aktualnosci', 'Article\IndexController@index')->name('investment.news');
             Route::get('/{slug}/aktualnosci/{article}', 'Article\IndexController@show')->name('investment.news.show');
