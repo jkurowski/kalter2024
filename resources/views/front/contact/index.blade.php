@@ -261,7 +261,7 @@
             const mapData = [
                 {
                     id: "map1",
-                    center: [51.76257784135881, 19.4686501834008],
+                    center: [53.12408961877622, 23.17818596758672],
                     popupText: "Biuro Sprzedaży Łódź"
                 },
                 {
@@ -271,7 +271,7 @@
                 },
                 {
                     id: "map3",
-                    center: [53.12408961877622, 23.17818596758672],
+                    center: [51.76257784135881, 19.4686501834008],
                     popupText: "Biuro Sprzedaży Białystok"
                 },
                 {

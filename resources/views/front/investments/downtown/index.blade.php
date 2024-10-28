@@ -904,7 +904,6 @@
         </div>
 
     </main>
-@endsection
 @push('scripts')
     <script defer src="{{ asset('js/leaflet.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('css/leaflet.css') }}" onload="this.media='all'" media="print" />
@@ -914,19 +913,43 @@
                 center: [51.76283000345753, 19.47064654233024],
                 zoom: 13,
             });
+
             L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
                 maxZoom: 19,
                 attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-            }).addTo(leafletMap)
+            }).addTo(leafletMap);
 
             L.marker([51.76283000345753, 19.47064654233024], {
                 icon: L.icon({
-                    iconUrl: '{{ asset('img/marker.svg') }}',
+                    iconUrl: '{{ asset("img/marker.svg") }}',
                     iconSize: [55, 88],
                     iconAnchor: [28, 94],
                     popupAnchor: [0, -88],
                 })
-            }).addTo(leafletMap).bindPopup('<p class="fw-bold text-white">Inwestycja „DownTown" </p>')
+            }).addTo(leafletMap).bindPopup(
+                '<p class="fw-bold text-white">Inwestycja „{{ $investment->name }}”</p>'
+            );
+
+            const customButton = L.Control.extend({
+                onAdd: function(map) {
+                    const button = L.DomUtil.create('button', 'leaflet-button');
+                    button.innerText = 'Otwórz w Google Maps';
+                    button.style.padding = '5px 10px';
+                    button.style.cursor = 'pointer';
+
+                    button.onclick = function() {
+                        const googleMapsUrl = `https://www.google.com/maps?q=51.76283000345753,19.47064654233024`;
+                        window.open(googleMapsUrl, '_blank');
+                    };
+
+                    return button;
+                },
+                onRemove: function(map) {
+                    // Cleanup if needed
+                }
+            });
+
+            leafletMap.addControl(new customButton({ position: 'bottomleft' }));
         });
     </script>
 @endpush

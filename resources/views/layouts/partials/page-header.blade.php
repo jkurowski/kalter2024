@@ -15,7 +15,6 @@
                         <li class="breadcrumb-item" style="--bs-breadcrumb-divider-color: var(--bs-white);">
                             <a href="#" style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">Kontakt</a>
                         </li>
-
                     </ol>
                 </nav>
             </div>

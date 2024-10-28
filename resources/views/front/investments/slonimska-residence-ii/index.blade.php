@@ -632,20 +632,43 @@
                 center: [53.135222, 23.179694],
                 zoom: 13,
             });
+
             L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
                 maxZoom: 19,
                 attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-            }).addTo(leafletMap)
+            }).addTo(leafletMap);
 
             L.marker([53.135222, 23.179694], {
                 icon: L.icon({
-                    iconUrl: '{{ asset('img/marker.svg') }}',
+                    iconUrl: '{{ asset("img/marker.svg") }}',
                     iconSize: [55, 88],
                     iconAnchor: [28, 94],
                     popupAnchor: [0, -88],
                 })
             }).addTo(leafletMap).bindPopup(
-                '<p class="fw-bold text-white">Inwestycja „{{ $investment->name }}"</p>')
+                '<p class="fw-bold text-white">Inwestycja „{{ $investment->name }}”</p>'
+            );
+
+            const customButton = L.Control.extend({
+                onAdd: function(map) {
+                    const button = L.DomUtil.create('button', 'leaflet-button');
+                    button.innerText = 'Otwórz w Google Maps';
+                    button.style.padding = '5px 10px';
+                    button.style.cursor = 'pointer';
+
+                    button.onclick = function() {
+                        const googleMapsUrl = `https://www.google.com/maps?q=53.135222, 23.179694`;
+                        window.open(googleMapsUrl, '_blank');
+                    };
+
+                    return button;
+                },
+                onRemove: function(map) {
+                    // Cleanup if needed
+                }
+            });
+
+            leafletMap.addControl(new customButton({ position: 'bottomleft' }));
         });
     </script>
 @endpush
