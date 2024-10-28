@@ -95,8 +95,6 @@
                         <div class="text-secondary text-center post-hero-padding">
                             <h1 class="h2">{{ $investment_news->title }}</h1>
                             <p class="fs-14 fw-900 ff-secondary">{{ $investment_news->date }}</p>
-                            <img src="img/aktualnosci_a1.webp" alt="" loading="eager" width="906" height="507" class="img-fluid rounded mt-4 mt-md-30">
-
                             <picture>
                                 @if($investment_news->file_webp)
                                     <source type="image/webp" srcset="{{asset('uploads/articles/webp/'.$investment_news->file_webp) }}">
