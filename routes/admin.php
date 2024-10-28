@@ -51,6 +51,7 @@ Route::group([
     Route::get('/developro/floor/convert', 'Developro\Floor\FloorController@convert');
     Route::get('/developro/floor/updateids', 'Developro\Floor\FloorController@updateids');
     Route::get('/developro/property/convert', 'Developro\Property\PropertyController@convert');
+    Route::get('/developro/articles/convert', 'Developro\Article\IndexController@convert');
 
     Route::post('city/set', 'City\IndexController@sort')->name('city.sort');
 

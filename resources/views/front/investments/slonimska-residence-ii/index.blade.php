@@ -42,7 +42,7 @@
                             'links' => [
                                 [
                                     'title' => 'Opis inwestycji',
-                                    'href' => '#opis-inwestycji',
+                                    'href' => route('developro.show', $investment->slug).'#opis-inwestycji',
                                     'active' => false,
                                 ],
                                 [
@@ -57,22 +57,23 @@
                                 ],
                                 [
                                     'title' => 'Atuty',
-                                    'href' => '#atuty',
+                                    'href' => route('developro.show', $investment->slug).'#atuty',
                                     'active' => false,
                                 ],
                                 [
                                     'title' => 'Lokalizacja',
-                                    'href' => '#lokalizacja',
+                                    'href' => route('developro.show', $investment->slug).'#lokalizacja',
                                     'active' => false,
                                 ],
-                                [
+                                // Conditional link
+                                $investment->articles->count() > 0 ? [
                                     'title' => 'Dziennik inwestycji',
-                                    'href' => '#dziennik-inwestycji',
+                                    'href' => route('developro.investment.news', $investment->slug),
                                     'active' => false,
-                                ],
+                                ] : null,
                                 [
                                     'title' => 'Kontakt',
-                                    'href' => '#kontakt',
+                                    'href' => route('developro.show', $investment->slug).'#kontakt',
                                     'active' => false,
                                 ],
                             ],

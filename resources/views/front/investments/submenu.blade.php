@@ -43,9 +43,12 @@
     <ul class="navbar-nav with-underline-active nav-snap-md-down flex-row justify-content-around py-3"
         style="--bs-nav-link-color: var(--bs-secondary);--bs-nav-link-hover-color: var(--bs-primary); --bs-navbar-active-color: var(--bs-secondary);">
         @foreach ($links as $link)
-            <li class="nav-item">
-                <a class="nav-link {{ $link['active'] ? 'active' : '' }}" href="{{ $link['href'] }}">{{ $link['title'] }}</a>
-            </li>
+            @if ($link)
+                <li class="nav-item">
+                    <a class="nav-link {{ $link['active'] ? 'active' : '' }}" href="{{ $link['href'] }}">{{ $link['title'] }}</a>
+                </li>
+            @endif
         @endforeach
     </ul>
 </nav>
+

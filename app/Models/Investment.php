@@ -186,6 +186,15 @@ class Investment extends Model
     }
 
     /**
+     * Get investment pages
+     * @return HasMany
+     */
+    public function articles(): HasMany
+    {
+        return $this->hasMany('App\Models\InvestmentArticles');
+    }
+
+    /**
      * Get investment properties
      * @return HasMany
      */

@@ -17,17 +17,17 @@ class IndexController extends Controller
     {
         $this->repository = $repository;
         $this->articleRepository = $articleRepository;
-        $this->pageId = 11;
+        $this->pageId = 8;
     }
 
     public function index($language, $slug)
     {
         $investment = $this->repository->findBySlug($slug);
-        $investmentPage = $investment->investmentPage()->where('slug', $slug)->first();
+        $investmentPage = $investment->pages()->where('slug', $slug)->first();
         $investmentArticles = $this->articleRepository->allSortByWhere('investment_id', $investment->id, 'date', 'ASC');
         $menu_page = Page::where('id', $this->pageId)->first();
 
-        return view('front.developro.investment.news', [
+        return view('front.developro.investment_article.index', [
             'investment' => $investment,
             'page' => $menu_page,
             'investment_page' => $investmentPage,
@@ -39,11 +39,11 @@ class IndexController extends Controller
     {
 
         $investment = $this->repository->findBySlug($slug);
-        $investmentPage = $investment->investmentPage()->where('slug', $slug)->first();
+        $investmentPage = $investment->pages()->where('slug', $slug)->first();
         $investmentArticle = $this->articleRepository->findBySlug($article);
         $menu_page = Page::where('id', $this->pageId)->first();
 
-        return view('front.developro.investment.news-show', [
+        return view('front.developro.investment_article.show', [
             'investment' => $investment,
             'page' => $menu_page,
             'investment_page' => $investmentPage,

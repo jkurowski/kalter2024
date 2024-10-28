@@ -124,8 +124,8 @@ Route::middleware(['restrictIp'])->group(function () {
             Route::get('/i/{slug}/budynek/{building},{building_slug}', 'InvestmentBuildingController@index')->name('building');
             Route::get('/i/{slug}/budynek/{building},{building_slug}/pietro/{floor},{floor_slug}', 'InvestmentBuildingFloorController@index')->name('building.floor');
 
-            Route::get('/{slug}/aktualnosci', 'Article\IndexController@index')->name('investment.news');
-            Route::get('/{slug}/aktualnosci/{article}', 'Article\IndexController@show')->name('investment.news.show');
+            Route::get('/i/{slug}/dziennik-inwestycji', 'Article\IndexController@index')->name('investment.news');
+            Route::get('/i/{slug}/dziennik-inwestycji/{article}', 'Article\IndexController@show')->name('investment.news.show');
 
             // Inwestycja domkowa
             Route::get('/{slug}/d/{property}', 'InvestmentHouseController@index')->name('house');
