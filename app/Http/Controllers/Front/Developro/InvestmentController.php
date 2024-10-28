@@ -26,9 +26,21 @@ class InvestmentController extends Controller
         $investment = Investment::findBySlug($slug);
         $page = Page::find($this->pageId);
 
-        return view('front.investments.'.$slug.'.index', [
-            'investment' => $investment,
-            'page' => $page
-        ]);
+        if($investment->status == 1){
+            return view('front.investments.'.$slug.'.index', [
+                'investment' => $investment,
+                'page' => $page
+            ]);
+        } else if($investment->status == 2){
+            return view('front.developro.completed.show', [
+                'investment' => $investment,
+                'page' => $page
+            ]);
+        } else {
+            return view('front.investments.'.$slug.'.index', [
+                'investment' => $investment,
+                'page' => $page
+            ]);
+        }
     }
 }

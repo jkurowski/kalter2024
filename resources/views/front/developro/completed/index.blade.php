@@ -42,6 +42,7 @@
                     <?php foreach ($investments as $p) : ?>
                     <div class="col-12 col-sm-6 col-lg-4">
                         <div class="invest-card invest-card-big invest-card-min-h position-relative">
+                            <a href="{{ route('developro.show', $p->slug) }}" class="stretched-link z-2"></a>
                             <div class="position-absolute invest-card-bg-overlay w-100 h-100 top-0 start-0">
                                 <img src="{{ asset('investment/thumbs/' . $p->file_thumb) }}" alt="" class="w-100 h-100 object-fit-cover invest-card-bg">
                             </div>
@@ -66,7 +67,6 @@
                 </div>
             </div>
         </section>
-
     </main>
 @endsection
 @push('scripts')

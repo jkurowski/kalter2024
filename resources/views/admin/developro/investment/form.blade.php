@@ -14,9 +14,7 @@
             <div class="card-head container">
                 <div class="row">
                     <div class="col-12 pl-0">
-                        <h4 class="page-title"><i class="fe-book-open"></i><a
-                                href="{{ route('admin.developro.investment.index') }}" class="p-0">Inwestycje</a><span
-                                class="d-inline-flex ms-2 me-2">/</span>{{ $cardTitle }}</h4>
+                        <h4 class="page-title"><i class="fe-book-open"></i><a href="{{ route('admin.developro.investment.index') }}" class="p-0">Inwestycje</a><span class="d-inline-flex ms-2 me-2">/</span>{{ $cardTitle }}</h4>
                     </div>
                 </div>
             </div>
@@ -219,13 +217,13 @@
                         'label' => 'Nagłówek',
                         'sublabel' =>
                             '(wymiary: ' .
-                            config('images.investment.thumb_width') .
+                            config('images.investment.header_width') .
                             'px / ' .
-                            config('images.investment.thumb_height') .
+                            config('images.investment.header_height') .
                             'px)',
                         'name' => 'file_header',
                         'file' => $entry->file_header,
-                        'file_preview' => config('images.investment.preview_file_path'),
+                        'file_preview' => config('images.investment.header_preview_file_path'),
                     ])
                 </div>
                 <div class="row w-100 mb-4">

@@ -15,7 +15,11 @@ return [
         'logo_width' => 140,
         'logo_height' => 140,
         'logo_file_path' => 'investment/logo/',
-        'logo_preview_file_path' => 'investment/logo/'
+        'logo_preview_file_path' => 'investment/logo/',
+        'header_width' => 1920,
+        'header_height' => 386,
+        'header_file_path' => 'investment/header/',
+        'header_preview_file_path' => 'investment/header/'
     ],
 
     /*
