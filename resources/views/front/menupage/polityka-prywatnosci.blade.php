@@ -14,7 +14,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        {!! parse_text($page->content) !!}
+                        {!! parse_text($page->content, true) !!}
                     </div>
                 </div>
             </div>

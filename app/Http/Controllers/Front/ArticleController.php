@@ -24,6 +24,12 @@ class ArticleController extends Controller
     {
 
         $article = Article::where('slug', $slug)->first();
+
+        $previousArticles = Article::where('posted_at', '<', $article->posted_at)
+            ->orderBy('posted_at', 'desc')
+            ->take(3)
+            ->get();
+
         //$page = Page::where('uri', 'aktualnosci')->firstOrFail();
         $page = Page::whereId(2)->first();
 
@@ -50,6 +56,7 @@ class ArticleController extends Controller
         return view('front.article.show', [
             'page' => $page,
             'article' => $article,
+            'previousArticles' => $previousArticles,
             //'schema' => $schemaBlog,
             //'opengraph' => $og
         ]);

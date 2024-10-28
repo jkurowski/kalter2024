@@ -14190,3 +14190,10 @@ blockquote p {
 .page-polityka-prywatnosci ol {
     margin-top: 15px;
 }
+
+.leaflet-button {
+    background: #024282;
+    color: white;
+    border: 0;
+    padding: 4px 10px;
+}

@@ -258,11 +258,12 @@
     <link rel="stylesheet" href="{{ asset('css/leaflet.css') }}" onload="this.media='all'" media="print" />
     <script defer>
         document.addEventListener("DOMContentLoaded", function() {
-            const mapData = [{
-                id: "map1",
-                center: [51.76257784135881, 19.4686501834008],
-                popupText: "Biuro Sprzedaży Łódź"
-            },
+            const mapData = [
+                {
+                    id: "map1",
+                    center: [51.76257784135881, 19.4686501834008],
+                    popupText: "Biuro Sprzedaży Łódź"
+                },
                 {
                     id: "map2",
                     center: [52.231062467027925, 20.989080484052327],
@@ -280,16 +281,28 @@
                 }
             ];
 
-            const createMap = ({
-                                   id,
-                                   center,
-                                   popupText
-                               }) => {
+            const createMap = ({ id, center, popupText }) => {
                 const map = L.map(id, {
                     center,
                     zoom: 13,
                     zoomControl: false,
                     attributionControl: false
+                });
+
+                const customButton = L.Control.extend({
+                    onAdd: function(map) {
+                        const button = L.DomUtil.create('button', 'leaflet-button');
+                        button.innerText = 'Otwórz w Google Maps';
+                        button.onclick = function() {
+                            const [lat, lng] = center;
+                            const googleMapsUrl = `https://www.google.com/maps?q=${lat},${lng}`;
+                            window.open(googleMapsUrl, '_blank');
+                        };
+                        return button;
+                    },
+                    onRemove: function(map) {
+                        // Cleanup if needed
+                    }
                 });
 
                 L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -299,15 +312,18 @@
 
                 L.marker(center, {
                     icon: L.icon({
-                        iconUrl: '{{ asset('img/marker.svg') }}',
+                        iconUrl: '{{ asset("img/marker.svg") }}',
                         iconSize: [55, 88],
                         iconAnchor: [28, 94],
                         popupAnchor: [0, -88]
                     })
                 }).addTo(map).bindPopup(`<p class="fw-bold text-secondary fs-10">${popupText}</p>`);
+
+                map.addControl(new customButton({ position: 'bottomright' }));
             };
 
             mapData.forEach(createMap);
         });
+
     </script>
 @endpush
