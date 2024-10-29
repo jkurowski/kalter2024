@@ -95,7 +95,7 @@
         </section>
 
         <div data-bs-spy="scroll" data-bs-target="#navbar-secondary" class="position-relative with-bigger-section-spacing">
-            <section class="s2">
+            <section class="s2 mt-5">
                 <div class="container">
                     <div class="row row-gap-4 align-items-center">
 
