@@ -854,6 +854,7 @@
         </div>
 
     </main>
+@endsection
 @push('scripts')
     <script defer src="{{ asset('js/leaflet.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('css/leaflet.css') }}" onload="this.media='all'" media="print" />
