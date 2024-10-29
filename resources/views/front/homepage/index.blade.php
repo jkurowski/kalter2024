@@ -43,37 +43,14 @@
                 ],
             ],
         ];
-        $hero_slides = [
-            [
-                'title' => 'Na Skraju',
-                'description' => 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.',
-                'button_text' => 'Sprawdź',
-                'button_url' => '#',
-                'image_url' => '/img/home_hero_1.webp',
-            ],
-            [
-                'title' => 'Na Skraju',
-                'description' => 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.',
-                'button_text' => 'Sprawdź',
-                'button_url' => '#',
-                'image_url' => '/img/home_hero_1.webp',
-            ],
-            [
-                'title' => 'Na Skraju',
-                'description' => 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.',
-                'button_text' => 'Sprawdź',
-                'button_url' => '#',
-                'image_url' => '/img/home_hero_1.webp',
-            ],
-        ]; ?>
+        ?>
 
 
         <div data-slick='<?= json_encode($hero_slider_options) ?>' class="hero-slider">
             <?php foreach ($slider as $index => $s) : ?>
             <div class="hero-slide position-relative">
                 <div class="position-absolute top-0 start-0 w-100 h-100 hero-slide-image-container">
-                    <img src="{{ asset('uploads/slider/'.$s->file) }}" alt="" class="hero-slide-image w-100 h-100 object-fit-cover"
-                        loading="eager" width="1920" height="792">
+                    <img src="{{ asset('uploads/slider/'.$s->file) }}" alt="" class="hero-slide-image w-100 h-100 object-fit-cover" loading="eager" width="1920" height="792">
                 </div>
                 <div class="hero-slide-content isolation-isolate text-white text-center d-flex align-items-center">
                     <div class="col-8 offset-2 col-xxl-4  offset-xxl-4 ">
@@ -170,9 +147,9 @@
                 <div>
                     <div class="invest-card position-relative">
                         <a href="{{ route('developro.show', $p->slug) }}" class="stretched-link z-2"></a>
-                        <div class="position-absolute invest-card-bg-overlay w-100 h-100 top-0 start-0">
-                            <img src="{{ asset('investment/thumbs/' . $p->file_thumb) }}" alt=""
-                                class="w-100 h-100 object-fit-cover invest-card-bg">
+                        <div class="position-absolute w-100 h-100 top-0 start-0">
+                            <img src="{{ asset('investment/thumbs/' . $p->file_thumb) }}" alt="" class="w-100 h-100 object-fit-cover invest-card-bg">
+                            <div style="position: absolute;opacity: 0.8;width: 100%;height: 100%;top: 0;left: 0;background-image: linear-gradient(#000, rgba(255, 255, 255, 0) {{ $p->gradient_thumb ?: '100%' }});"></div>
                         </div>
                         <div class="d-flex isolation-isolate justify-content-between gap-3 text-white">
                             <div class="fw-bold">
@@ -190,12 +167,10 @@
                         <div class="isolation-isolate text-white fw-semibold mb-auto fs-13">
                             <p class="text-uppercase mb-0">Termin oddania:</p>
                             <p class="mb-0">{{ $p->date_end }}</p>
-                            <p class="price mt-3 fs-6 text-primary">
-                                Ceny już od:
-                                <span>
-                                    999 999zł
-                                </span>
-                            </p>
+
+                            @if($p->entry_content)
+                                <p class="price mt-3 fs-6 text-primary">{{ $p->entry_content }}</p>
+                            @endif
                         </div>
 
                         <div class="position-relative z-2">

@@ -39,6 +39,8 @@ class InvestmentFormRequest extends FormRequest
             'meta_title' => '',
             'meta_description' => '',
             'meta_robots' => '',
+            'gradient_thumb' => '',
+            'gradient_header' => '',
             'entry_content' => '',
             'commercial' => '',
             'content' => '',

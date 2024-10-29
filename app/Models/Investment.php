@@ -54,6 +54,8 @@ class Investment extends Model
         'file_thumb',
         'file_header',
         'file_logo',
+        'gradient_header',
+        'gradient_thumb',
         'popup_status',
         'popup_mode',
         'popup_timeout',

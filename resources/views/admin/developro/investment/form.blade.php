@@ -189,6 +189,24 @@
                         ])
                     </div>
                 </div>
+                <div class="row w-100 mb-5">
+                    <div class="col-4">
+                        @include('form-elements.html-input-text', [
+                            'label' => 'Wyciemnienie miniaturki',
+                            'sublabel' => 'wartość: 0% - 100%',
+                            'name' => 'gradient_thumb',
+                            'value' => $entry->gradient_thumb,
+                        ])
+                    </div>
+                    <div class="col-4">
+                        @include('form-elements.html-input-text', [
+                            'label' => 'Wyciemnienie nagłowka',
+                            'sublabel' => 'wartość: 0% - 100%',
+                            'name' => 'gradient_header',
+                            'value' => $entry->gradient_header,
+                        ])
+                    </div>
+                </div>
 
                 <div class="row w-100 mb-4">
                     @include('form-elements.html-input-text', [

@@ -43,8 +43,9 @@
                     <div class="col-12 col-sm-6 col-lg-4">
                         <div class="invest-card invest-card-big invest-card-min-h position-relative">
                             <a href="{{ route('developro.show', $p->slug) }}" class="stretched-link z-2"></a>
-                            <div class="position-absolute invest-card-bg-overlay w-100 h-100 top-0 start-0">
+                            <div class="position-absolute w-100 h-100 top-0 start-0">
                                 <img src="{{ asset('investment/thumbs/' . $p->file_thumb) }}" alt="" class="w-100 h-100 object-fit-cover invest-card-bg">
+                                <div style="position: absolute;opacity: 0.8;width: 100%;height: 100%;top: 0;left: 0;background-image: linear-gradient(#000, rgba(255, 255, 255, 0) {{ $p->gradient_thumb ?: '100%' }});"></div>
                             </div>
                             <div class="d-flex isolation-isolate justify-content-between gap-3 text-white">
                                 <div class="fw-bold">
