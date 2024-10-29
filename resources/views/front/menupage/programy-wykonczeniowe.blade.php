@@ -359,7 +359,7 @@
                             <div class="col-12">
                                 <div style="--translate-x: 0;" class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                     <div class="position-absolute top-50 start-50 translate-middle z-2">
-                                        <img src="http://newkalter.test/img/sygnet_secondary.svg" alt="" width="168" height="168" loading="lazy" decoding="async" data-aos="fade">
+                                        <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168" height="168" loading="lazy" decoding="async" data-aos="fade">
                                     </div>
                                     <h2 class="fw-bold text-center text-uppercase">
                                         <span data-aos="fade-up" data-aos-delay="200">Masz</span>

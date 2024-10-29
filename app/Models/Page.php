@@ -21,6 +21,7 @@ class Page extends Model
         'title_text',
         'content',
         'content_header',
+        'file_header',
         'meta_title',
         'meta_description',
         'meta_robots'
