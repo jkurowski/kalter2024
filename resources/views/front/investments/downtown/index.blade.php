@@ -95,60 +95,6 @@
         </section>
 
         <div data-bs-spy="scroll" data-bs-target="#navbar-secondary" class="position-relative with-bigger-section-spacing">
-
-            <section class="s1" id="opis-inwestycji">
-                <div class="container">
-                    <div class="row row-gap-4">
-                        <div class="col-12 col-md-6 col-lg-5 order-last order-md-0 ">
-                            <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded" src="/img/downtown/s1.jpg" alt="" width="555"
-                                    height="629" loading="eager">
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
-                            <div style="--translate-x: 0;"
-                                class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
-                                <div class="position-absolute top-50 start-50 translate-middle z-2">
-                                    <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168"
-                                        height="168" loading="lazy" decoding="async" data-aos="fade">
-                                </div>
-                                <h2 class="fw-bold text-center text-uppercase">
-                                    <span data-aos="fade-up" data-aos-delay="200">
-                                        Zyskaj na przedsprzedaży!
-                                    </span>
-                                </h2>
-                            </div>
-                            <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
-                                <p>
-                                    Tylko do 21.10.2024 przyjdź do biura sprzedaży i kup mieszkanie w specjalnej cenie
-                                    przedsprzedażowej już od 9.800 zł/m²!
-                                </p>
-                                <p class="fw-semibold">
-                                    DODATKOWO, ZYSKAJ:
-                                </p>
-                                <ul>
-                                    <li>
-                                        Miejsce parkingowe GRATIS* lub
-                                    </li>
-                                    <li>
-                                        Harmonogram płatności 30/70**!
-                                    </li>
-                                </ul>
-                                <p>
-                                    Promocja ograniczona czasowo i ilościowo (szczegóły w regulaminie).
-                                </p>
-                                <p class="fw-bold text-secondary"> Nie zwlekaj – najlepsze okazje szybko znikają!</p>
-                                <p>
-                                    Zadzwoń i umów się na spotkanie już dziś: Tel. <a href='tel:+48532821111'>532 821
-                                        111</a>
-                                </p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-
             <section class="s2">
                 <div class="container">
                     <div class="row row-gap-4 align-items-center">
