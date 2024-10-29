@@ -93,7 +93,7 @@
 
         <div data-bs-spy="scroll" data-bs-target="#navbar-secondary" class="position-relative with-bigger-section-spacing">
 
-            <section class="s1" id="opis-inwestycji">
+            <section class="s1 mt-5" id="opis-inwestycji">
                 <div class="container">
                     <div class="row row-gap-4 align-items-center">
                         <div class="col-12 col-md-6 col-lg-5 order-last order-md-0 ">
