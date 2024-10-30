@@ -294,8 +294,14 @@
                         const button = L.DomUtil.create('button', 'leaflet-button');
                         button.innerText = 'Otwórz w Google Maps';
                         button.onclick = function() {
-                            const [lat, lng] = center;
-                            const googleMapsUrl = `https://www.google.com/maps?q=${lat},${lng}`;
+                            let googleMapsUrl;
+                            if(id === 'map3'){
+                                googleMapsUrl = `https://maps.app.goo.gl/zjjmBEzu1ZrZxsqz9`;
+                            } else {
+                                const [lat, lng] = center;
+                                googleMapsUrl = `https://www.google.com/maps?q=${lat},${lng}`;
+                            }
+
                             window.open(googleMapsUrl, '_blank');
                         };
                         return button;
