@@ -120,9 +120,23 @@
             </div>
         </section>
 
+        <section class="sticky-top py-0 bg-white sticky-top-menu">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-10 offset-lg-1">
+                        @include('front.investments.submenu', ['menuIds' => $investment->menu])
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section>
             <div class="container">
                 <div class="row">
+                    @if($investment->mockup)
+                    {!! $investment->mockup !!}
+                    @endif
+
                     <div class="col-12">
                         @if($investment->show_properties == 1)
                             @if($investment->plan)

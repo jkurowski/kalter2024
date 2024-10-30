@@ -51,46 +51,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-lg-10 offset-lg-1">
-                        @include('front.investments.submenu', [
-                            'links' => [
-                                [
-                                    'title' => 'Opis inwestycji',
-                                    'href' => route('developro.show', $investment->slug).'#opis-inwestycji',
-                                    'active' => false,
-                                ],
-                                [
-                                    'title' => 'Wyszukaj z rzutu',
-                                    'href' => '#mieszkania',
-                                    'active' => false,
-                                ],
-                                [
-                                    'title' => 'Wyszukaj z modelu 3D',
-                                    'href' => '#model-3d',
-                                    'active' => false,
-                                ],
-                                [
-                                    'title' => 'Atuty',
-                                    'href' => route('developro.show', $investment->slug).'#atuty',
-                                    'active' => false,
-                                ],
-                                [
-                                    'title' => 'Lokalizacja',
-                                    'href' => route('developro.show', $investment->slug).'#lokalizacja',
-                                    'active' => false,
-                                ],
-                                // Conditional link
-                                $investment->articles->count() > 0 ? [
-                                    'title' => 'Dziennik inwestycji',
-                                    'href' => route('developro.investment.news', $investment->slug),
-                                    'active' => false,
-                                ] : null,
-                                [
-                                    'title' => 'Kontakt',
-                                    'href' => route('developro.show', $investment->slug).'#kontakt',
-                                    'active' => false,
-                                ],
-                            ],
-                        ])
+                        @include('front.investments.submenu', ['menuIds' => $investment->menu])
                     </div>
                 </div>
             </div>

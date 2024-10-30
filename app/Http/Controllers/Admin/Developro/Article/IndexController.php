@@ -27,7 +27,10 @@ class IndexController extends Controller
 
     public function index(Investment $investment)
     {
-        return view('admin.developro.investment_article.index', ['list' => $this->repository->allSortBy('date', 'ASC'), 'investment' => $investment]);
+        return view('admin.developro.investment_article.index', [
+            'list' => Model::where('investment_id', '=', $investment->id)->orderBy('date', 'ASC')->get(),
+            'investment' => $investment
+        ]);
     }
 
     public function create(Investment $investment)
@@ -95,7 +98,7 @@ class IndexController extends Controller
                 'slug' => $o->tag ?? null,
                 'date' => $o->data ?? null,
                 'file' => $o->plik ?? null,
-                'file_webp' => null,
+                'file_webp' => $o->plik_webp ?? null,
                 'meta_robots' => 'index, follow',
                 'active' => $o->status ?? null
             ]);

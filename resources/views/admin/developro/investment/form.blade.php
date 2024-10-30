@@ -206,6 +206,18 @@
                             'value' => $entry->gradient_header,
                         ])
                     </div>
+                    <div class="col-4">
+                        @include('form-elements.html-select-multiple', ['label' => 'Podstrony inwestycji', 'sublabel' => 'Menu inwestycji','name' => 'menu', 'selected' => multiselect($entry->menu), 'select' => [
+                            '1' => 'Opis inwestycji',
+                            '2' => 'Wyszukaj z rzutu',
+                            '3' => 'Wyszukaj z modelu 3D',
+                            '4' => 'Lokalizacja',
+                            '5' => 'Atuty',
+                            '6' => 'Dziennik inwestycji',
+                            '7' => 'Kontakt'
+                            ]
+                        ])
+                    </div>
                 </div>
 
                 <div class="row w-100 mb-4">
@@ -277,6 +289,14 @@
                         'value' => $entry->end_content,
                         'rows' => 11,
                         'class' => 'tinymce',
+                    ])
+                </div>
+                <div class="row w-100 form-group">
+                    @include('form-elements.textarea-fullwidth', [
+                        'label' => 'Kod makiety 3D',
+                        'name' => 'mockup',
+                        'value' => $entry->mockup,
+                        'rows' => 11,
                     ])
                 </div>
             </div>

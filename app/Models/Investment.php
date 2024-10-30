@@ -42,6 +42,8 @@ class Investment extends Model
         'room_range',
         'floor_range',
         'sort',
+        'menu',
+        'mockup',
         'office_address',
         'meta_title',
         'meta_description',
