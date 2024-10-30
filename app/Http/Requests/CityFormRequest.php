@@ -30,10 +30,10 @@ class CityFormRequest extends FormRequest
             'contact_text' => 'required'
         ];
 
-        // Conditionally require 'email' and 'active' if 'lang' is 'pl'
         if ($this->input('lang') === 'pl') {
             $rules['email'] = 'required';
             $rules['active'] = 'boolean|required';
+            $rules['completed'] = 'boolean|required';
         }
 
         return $rules;

@@ -23,6 +23,7 @@ class City extends Model
         'contact_text',
         'email',
         'active',
+        'completed',
         'sort'
     ];
 }

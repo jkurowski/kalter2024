@@ -36,6 +36,9 @@
                                 <div class="row w-100 form-group">
                                     @include('form-elements.html-select', ['label' => 'Status', 'name' => 'active', 'selected' => $entry->active, 'select' => ['1' => 'Pokaż na liście', '0' => 'Ukryj na liście']])
                                 </div>
+                                    <div class="row w-100 form-group">
+                                        @include('form-elements.html-select', ['label' => 'Pokaż w zrealizowanych', 'name' => 'completed', 'selected' => $entry->completed, 'select' => ['1' => 'Tak', '0' => 'Nie']])
+                                    </div>
                                 @endif
 
                                 <div class="row w-100 form-group">

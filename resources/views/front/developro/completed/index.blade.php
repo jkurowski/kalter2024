@@ -22,9 +22,11 @@
                         <nav>
                             <ul class="navbar-nav nav-snap-md-down flex-row justify-content-center gap-40 with-underline-active" style="--bs-nav-link-color: var(--bs-secondary);--bs-nav-link-hover-color: var(--bs-primary); --bs-navbar-active-color: var(--bs-secondary);">
                                 <?php foreach ($cities as $city) : ?>
+                                @if($city->completed)
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('developro.completed.city', $city->slug) }}">{{ $city->name }}</a>
                                 </li>
+                                @endif
                                 <?php endforeach; ?>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('developro.completed') }}">Wszystkie</a>
