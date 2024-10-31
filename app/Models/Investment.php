@@ -96,6 +96,15 @@ class Investment extends Model
     }
 
     /**
+     * Get a list of floor ids and names for the investment.
+     *
+     */
+    public function selectFloors()
+    {
+        return $this->floors()->orderByDesc('position')->pluck('name', 'id');
+    }
+
+    /**
      * Get investment floor
      * @return HasOne
      */

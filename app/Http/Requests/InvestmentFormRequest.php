@@ -35,6 +35,8 @@ class InvestmentFormRequest extends FormRequest
             'date_end' => '',
             'areas_amount' => '',
             'area_range' => '',
+            'floor_range' => '',
+            'room_range' => '',
             'office_address' => '',
             'meta_title' => '',
             'meta_description' => '',

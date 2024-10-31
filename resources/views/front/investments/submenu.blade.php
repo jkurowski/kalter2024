@@ -19,7 +19,7 @@
         [
             'id' => '3',
             'title' => 'Wyszukaj z modelu 3D',
-            'href' => route('developro.plan', $investment->slug).'#model-3d',
+            'href' => route('developro.mockup', $investment->slug),
             'active' => false,
         ],
         [

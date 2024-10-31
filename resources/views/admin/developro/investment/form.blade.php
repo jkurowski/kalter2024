@@ -133,19 +133,35 @@
 
                 <div class="row w-100 mb-4">
                     <div class="col-4">
-                        @include('form-elements.html-input-text', [
-                            'label' => 'Ilość lokali',
-                            'sublabel' => '(tylko liczby)',
-                            'name' => 'areas_amount',
-                            'value' => $entry->areas_amount,
-                        ])
-                    </div>
-                    <div class="col-4">
                         @include('form-elements.input-text', [
                             'label' => 'Zakres powierzchni w wyszukiwarce xx-xx',
                             'sublabel' => '(zakresy oddzielone przecinkiem)',
                             'name' => 'area_range',
                             'value' => $entry->area_range,
+                        ])
+                    </div>
+                    <div class="col-4">
+                        @include('form-elements.html-input-text', [
+                            'label' => 'Zakres pokoi w wyszukiwarce',
+                            'sublabel' => '(liczby oddzielone przecinkiem)',
+                            'name' => 'room_range',
+                            'value' => $entry->room_range
+                        ])
+                    </div>
+                    <div class="col-4 d-none">
+                        @include('form-elements.html-input-text', [
+                            'label' => 'Zakres pięter w wyszukiwarce',
+                            'sublabel' => '(liczby oddzielone przecinkiem)',
+                            'name' => 'floor_range',
+                            'value' => $entry->floor_range
+                        ])
+                    </div>
+                    <div class="col-4">
+                        @include('form-elements.html-input-text', [
+                            'label' => 'Ilość lokali',
+                            'sublabel' => '(tylko liczby)',
+                            'name' => 'areas_amount',
+                            'value' => $entry->areas_amount,
                         ])
                     </div>
                     <div class="col-4">

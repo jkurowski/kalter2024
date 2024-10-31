@@ -118,6 +118,7 @@ Route::middleware(['restrictIp'])->group(function () {
 
             Route::get('/i/{slug}', 'InvestmentController@show')->name('show');
             Route::get('/i/{slug}/plan-inwestycji', 'InvestmentPlanController@index')->name('plan');
+            Route::get('/i/{slug}/plan-inwestycji-3d', 'InvestmentPlanController@mockup')->name('mockup');
             Route::get('/i/{slug}/pietro/{floor},{floor_slug}', 'InvestmentFloorController@index')->name('floor');
             Route::get('/i/{slug}/pietro/{floor}/m/{property}', 'InvestmentPropertyController@index')->name('property');
 

@@ -126,6 +126,18 @@ class InvestmentPlanController extends Controller
             'page' => $page
         ]);
     }
+
+    public function mockup($lang, $slug)
+    {
+        $investment = Investment::findBySlug($slug);
+
+        $page = Page::where('id', $this->pageId)->first();
+
+        return view('front.developro.investment_plan.mockup', [
+            'investment' => $investment,
+            'page' => $page
+        ]);
+    }
 }
 
 
