@@ -28,14 +28,20 @@
                             </div>
                         @endif
 
-                        <div class="col">
-                            <select name="floor" id="filtr-floor" class="form-select">
-                                <option value="">Piętro</option>
-                                @foreach ($investment->selectFloors() as $id => $name)
-                                    <option value="{{ $id }}">{{ $name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                        @php
+                            $floors = $investment->selectFloors();
+                        @endphp
+
+                        @if($floors->isNotEmpty())
+                            <div class="col">
+                                <select name="floor" id="filtr-floor" class="form-select">
+                                    <option value="">Piętro</option>
+                                    @foreach ($floors as $id => $name)
+                                        <option value="{{ $id }}">{{ $name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        @endif
 
                         <div class="col">
                             <select name="kitchen" id="filtr-kitchen" class="form-select">
