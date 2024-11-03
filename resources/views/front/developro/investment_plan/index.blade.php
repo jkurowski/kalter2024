@@ -72,7 +72,7 @@
                                                 @foreach($investment->buildings as $building)
                                                     <area
                                                             shape="poly"
-                                                            href="{{route('developro.building', [$investment->slug, $building, 'building_slug' => Str::slug($building->name)])}}"
+                                                            href="{{route('developro.building', [$investment->slug, $building, 'buildingSlug' => Str::slug($building->name)])}}"
                                                             alt="{{$building->slug}}"
                                                             data-item="{{$building->id}}" title="{{$building->name}}"
                                                             data-roomnumber="{{$building->number}}"
@@ -90,7 +90,7 @@
                                                 @if($floor->html)
                                                     <area
                                                             shape="poly"
-                                                            href="{{route('developro.floor', [$investment->slug, $floor, 'floor_slug' => Str::slug($floor->name)])}}"
+                                                            href="{{route('developro.floor', [$investment->slug, $floor, 'floorSlug' => Str::slug($floor->name)])}}"
                                                             title="{{$floor->name}}"
                                                             alt="floor-{{$floor->id}}"
                                                             data-item="{{$floor->id}}"

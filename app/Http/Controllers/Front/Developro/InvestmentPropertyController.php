@@ -17,7 +17,9 @@ class InvestmentPropertyController extends Controller
         $this->pageId = 8;
     }
 
-    public function index($lang, $slug, Floor $floor, Property $property)
+
+    #'/i/{slug}/{floor},{floorSlug}/{property},{propertySlug},{propertyFloor},{propertyRooms},{propertyArea}'
+    public function index($lang, $slug, Floor $floor, $floorSlug, Property $property, $propertySlug)
     {
         $property->timestamps = false;
         $property->increment('views');

@@ -45,7 +45,7 @@
             </div>
         </section>
 
-        <section class="single-investment-search search section-search">
+        <section class="single-investment-search search section-search d-none">
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-lg-10 col-xl-8 offset-lg-1 offset-xl-2">
@@ -125,7 +125,7 @@
                 <div id="planNav" class="row">
                     <div class="col-6 col-sm-4">
                         @if($prev_floor)
-                            <a href="{{route('developro.floor', [$investment->slug, $prev_floor, 'floor_slug' => Str::slug($prev_floor->name)])}}" class="btn btn-primary  px-3 min-w-max-content flex-fill d-inline-flex align-items-center  gap-1">
+                            <a href="{{route('developro.floor', [$investment->slug, $prev_floor, 'floorSlug' => Str::slug($prev_floor->name)])}}" class="btn btn-primary  px-3 min-w-max-content flex-fill d-inline-flex align-items-center  gap-1">
                                 <svg class="me-2 me-sm-3 me-md-4" xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062">
                                     <path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(362.073 -672.938) rotate(180)" fill="currentColor"></path>
                                 </svg>
@@ -140,7 +140,7 @@
 
                     <div class="col-6 col-sm-4 text-end">
                         @if($next_floor)
-                        <a href="{{route('developro.floor', [$investment->slug, $next_floor, 'floor_slug' => Str::slug($next_floor->name)])}}" class="btn btn-primary  px-3 min-w-max-content flex-fill d-inline-flex align-items-center  gap-1">
+                        <a href="{{route('developro.floor', [$investment->slug, $next_floor, 'floorSlug' => Str::slug($next_floor->name)])}}" class="btn btn-primary  px-3 min-w-max-content flex-fill d-inline-flex align-items-center  gap-1">
                             {{$next_floor->name}}
                             <svg class="ms-2 ms-sm-3 ms-md-4" xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062">
                                 <path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor"></path>
@@ -167,7 +167,16 @@
                                             @if($r->html)
                                                 <area
                                                         shape="poly"
-                                                        href="#"
+                                                        href="{{ route('developro.property', [
+                                                            $investment->slug,
+                                                            $r->floor,
+                                                            Str::slug($r->floor->name),
+                                                            $r,
+                                                            Str::slug($r->name),
+                                                            floorLevel($r->floor->number, true),
+                                                            number2RoomsName($r->rooms, true),
+                                                            round(floatval($r->area), 2).'-m2'
+                                                        ]) }}"
                                                         data-item="{{$r->id}}"
                                                         title="{{$r->name}}<br>Powierzchnia: <b class=fr>{{$r->area}} m<sup>2</sup></b><br />Pokoje: <b class=fr>{{$r->rooms}}</b><br><b>{{ roomStatus($r->status) }}</b>"
                                                         alt="{{$r->slug}}"

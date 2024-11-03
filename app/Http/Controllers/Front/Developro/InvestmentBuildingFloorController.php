@@ -7,12 +7,16 @@ use App\Http\Controllers\Controller;
 use App\Models\Investment;
 use App\Models\Building;
 use App\Models\Floor;
+use App\Models\Page;
 use Illuminate\Http\Request;
 
 class InvestmentBuildingFloorController extends Controller
 {
-    public function index(Investment $investment, Building $building, Floor $floor, Request $request)
+    public function index($lang, $slug, Building $building, $buildingSlug, Floor $floor, $floorSlug, Request $request)
     {
+        $investment = Investment::findBySlug($slug);
+        $page = Page::where('id', 8)->first();
+
         $investment_room = $investment->load(array(
             'buildingRooms' => function($query) use ($building, $floor, $request)
             {
@@ -42,8 +46,11 @@ class InvestmentBuildingFloorController extends Controller
             }
         ));
 
-        return view('front.investment_building_floor.index', [
+        return view('front.developro.investment_building_floor.index', [
+            'page' => $page,
             'investment' => $investment_room,
+            'building' => $building,
+            'floor' => $floor,
             'properties' => $investment->buildingRooms,
             'next_floor' => $floor->findNext($investment->id, $building->id, $floor->id),
             'prev_floor' => $floor->findPrev($investment->id, $building->id, $floor->id)

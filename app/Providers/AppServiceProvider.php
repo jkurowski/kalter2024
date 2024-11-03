@@ -165,13 +165,21 @@ class AppServiceProvider extends ServiceProvider
             }
         });
 
-        view()->composer('*', function ($view) {
-            $view->with('current_locale', app()->getLocale());
-            $view->with('available_locales', config('app.available_locales'));
-            $view->with('rules', RodoRules::orderBy('sort')->whereActive(1)->get());
-            $view->with('cities', City::where('active', 1)->orderBy('sort')->get());
-            $view->with('current_investment', Investment::where('status', 1)->with('city')->get(['slug', 'name', 'file_thumb', 'file_logo', 'date_end', 'city_id', 'gradient_thumb', 'entry_content']));
-        });
+        View::share('current_locale', app()->getLocale());
+        View::share('available_locales', config('app.available_locales'));
+        View::share('rules', RodoRules::orderBy('sort')->whereActive(1)->get());
+        View::share('cities', City::where('active', 1)->orderBy('sort')->get());
+        View::share('current_investment', Investment::where('status', 1)->with('city')->get([
+            'slug', 'name', 'file_thumb', 'file_logo', 'date_end', 'city_id', 'gradient_thumb', 'entry_content'
+        ]));
+
+//        view()->composer('*', function ($view) {
+//            $view->with('current_locale', app()->getLocale());
+//            $view->with('available_locales', config('app.available_locales'));
+//            $view->with('rules', RodoRules::orderBy('sort')->whereActive(1)->get());
+//            $view->with('cities', City::where('active', 1)->orderBy('sort')->get());
+//            $view->with('current_investment', Investment::where('status', 1)->with('city')->get(['slug', 'name', 'file_thumb', 'file_logo', 'date_end', 'city_id', 'gradient_thumb', 'entry_content']));
+//        });
 
         view()->composer(['admin.crm.offer.form', 'admin.crm.inbox.index'], function ($view) {
             $view->with('investments', Investment::all()->pluck('name', 'id'));

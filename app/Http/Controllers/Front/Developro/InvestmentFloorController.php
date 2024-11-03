@@ -22,7 +22,7 @@ class InvestmentFloorController extends Controller
         $this->pageId = 2;
     }
 
-    public function index($lang, $slug, Floor $floor, Request $request)
+    public function index($lang, $slug, Floor $floor, $floorSlug, Request $request)
     {
         $investment = Investment::findBySlug($slug);
 
