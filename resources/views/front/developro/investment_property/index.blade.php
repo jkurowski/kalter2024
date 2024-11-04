@@ -59,8 +59,18 @@
             <div class="container">
                 <div class="row row-gap-3 justify-content-between small">
                     <div class="col-6 col-sm-4">
-                        @if($investment->type == 1)
-                        <a href="#" class="btn btn-primary  px-3 min-w-max-content flex-fill d-inline-flex align-items-center gap-1">
+                        @if($investment->type == 1 && $prev)
+                        <a href="{{ route('developro.building.floor.property', [
+                                                            $investment->slug,
+                                                            $building,
+                                                            Str::slug($building->name),
+                                                            $prev->floor,
+                                                            Str::slug($floor->name),
+                                                            $prev,
+                                                            Str::slug($prev->name),
+                                                            number2RoomsName($prev->rooms, true),
+                                                            round(floatval($prev->area), 2).'-m2'
+                                                        ]) }}" class="btn btn-primary  px-3 min-w-max-content flex-fill d-inline-flex align-items-center gap-1">
                             <svg class="me-2 me-sm-3 me-md-4" xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062">
                                 <path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(362.073 -672.938) rotate(180)" fill="currentColor" />
                             </svg>
@@ -90,8 +100,18 @@
                         @endif
                     </div>
                     <div class="col-6 col-sm-4 text-end">
-                        @if($investment->type == 1)
-                        <a href="" class="btn btn-primary px-3 min-w-max-content flex-fill d-inline-flex align-items-center  gap-1">
+                        @if($investment->type == 1 && $next)
+                        <a href="{{ route('developro.building.floor.property', [
+                                                            $investment->slug,
+                                                            $building,
+                                                            Str::slug($building->name),
+                                                            $next->floor,
+                                                            Str::slug($next->name),
+                                                            $next,
+                                                            Str::slug($next->name),
+                                                            number2RoomsName($next->rooms, true),
+                                                            round(floatval($next->area), 2).'-m2'
+                                                        ]) }}" class="btn btn-primary px-3 min-w-max-content flex-fill d-inline-flex align-items-center  gap-1">
                             Następne
                             <svg class="ms-2 ms-sm-3 ms-md-4" xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062">
                                 <path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor" />

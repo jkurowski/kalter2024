@@ -81,13 +81,17 @@ class Property extends Model
      * @param int $current_number_order
      * @return Property
      */
-    public function findNext(int $investment, int $current_number_order, ?int $floor_id = null)
+    public function findNext(int $investment, int $current_number_order, ?int $floor_id = null, ?int $building_id = null)
     {
 
         $query = $this->where('investment_id', $investment)->where('number_order', '>', $current_number_order);
 
         if (!is_null($floor_id)) {
             $query->where('floor_id', $floor_id);
+        }
+
+        if (!is_null($building_id)) {
+            $query->where('building_id', $building_id);
         }
 
         return $query->first();
@@ -99,12 +103,16 @@ class Property extends Model
      * @param int $current_number_order
      * @return Property
      */
-    public function findPrev(int $investment, int $current_number_order, ?int $floor_id = null)
+    public function findPrev(int $investment, int $current_number_order, ?int $floor_id = null, ?int $building_id = null)
     {
         $query = $this->where('investment_id', $investment)->where('number_order', '<', $current_number_order)->orderByDesc('number_order');
 
         if (!is_null($floor_id)) {
             $query->where('floor_id', $floor_id);
+        }
+
+        if (!is_null($building_id)) {
+            $query->where('building_id', $building_id);
         }
 
         return $query->first();
