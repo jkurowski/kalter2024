@@ -22,15 +22,27 @@
                         <nav aria-label="breadcrumb small text-white" data-aos="fade" class="aos-init aos-animate">
                             <ol class="breadcrumb opacity-50">
                                 <li class="breadcrumb-item">
-                                    <a href="/"
-                                       style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">Strona
-                                        główna</a>
+                                    <a href="/" style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">Strona główna</a>
                                 </li>
                                 <li class="breadcrumb-item" style="--bs-breadcrumb-divider-color: var(--bs-white);">
-                                    <a href="#" style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">{{ $investment->name }}</a>
+                                    <a href="{{ route('developro.show', $investment->slug) }}" style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">{{ $investment->name }}</a>
                                 </li>
+                                @isset($building->name)
+                                    <li class="breadcrumb-item" style="--bs-breadcrumb-divider-color: var(--bs-white);">
+                                        <a href="{{route('developro.building', [$investment->slug, $building, 'buildingSlug' => Str::slug($building->name)])}}" style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">{{ $building->name }}</a>
+                                    </li>
+                                @endisset
                                 <li class="breadcrumb-item" style="--bs-breadcrumb-divider-color: var(--bs-white);">
-                                    <a href="#" style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">{{ $floor->name }}</a>
+                                    @if($investment->type == 1)
+                                        <a href="{{route('developro.building.floor', [$investment->slug, $building, 'buildingSlug' => Str::slug($building->name), $floor, 'floorSlug' => Str::slug($floor->name)])}}" style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">
+                                            {{ $floor->name }}
+                                        </a>
+                                    @endif
+                                    @if($investment->type == 2)
+                                        <a href="{{route('developro.floor', [$investment->slug, $floor, 'floorSlug' => Str::slug($floor->name)])}}" style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">
+                                            {{ $floor->name }}
+                                        </a>
+                                    @endif
                                 </li>
                             </ol>
                         </nav>
@@ -39,7 +51,12 @@
                         @isset($investment->name)
                             <h1 class="h2 mb-3 text-uppercase" data-aos="fade-up">{{ $investment->name }}</h1>
                         @endisset
-                        <p class="text-pretty" data-aos="fade-up" data-aos-delay="200">{{ $floor->name }}</p>
+                        <p class="text-pretty" data-aos="fade-up" data-aos-delay="200">
+                            @isset($building->name)
+                                {{ $building->name }} -
+                            @endisset
+                            {{ $floor->name }}
+                        </p>
                     </div>
                 </div>
             </div>

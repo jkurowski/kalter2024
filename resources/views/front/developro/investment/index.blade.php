@@ -17,15 +17,11 @@
                     <nav aria-label="breadcrumb small text-white" data-aos="fade" class="aos-init aos-animate">
                         <ol class="breadcrumb opacity-50">
                             <li class="breadcrumb-item">
-                                <a href="/"
-                                    style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">Strona
-                                    główna</a>
+                                <a href="/" style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">Strona główna</a>
                             </li>
                             <li class="breadcrumb-item" style="--bs-breadcrumb-divider-color: var(--bs-white);">
-                                <a href="#"
-                                    style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">{{ $page->title }}</a>
+                                <a href="#" style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">{{ $page->title }}</a>
                             </li>
-
                         </ol>
                     </nav>
                 </div>

@@ -22,12 +22,10 @@
                         <nav aria-label="breadcrumb small text-white" data-aos="fade" class="aos-init aos-animate">
                             <ol class="breadcrumb opacity-50">
                                 <li class="breadcrumb-item">
-                                    <a href="/"
-                                       style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">Strona
-                                        główna</a>
+                                    <a href="/" style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">Strona główna</a>
                                 </li>
                                 <li class="breadcrumb-item" style="--bs-breadcrumb-divider-color: var(--bs-white);">
-                                    <a href="#" style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">{{ $investment->name }}</a>
+                                    <a href="{{ route('developro.show', $investment->slug) }}" style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">{{ $investment->name }}</a>
                                 </li>
                                 <li class="breadcrumb-item" style="--bs-breadcrumb-divider-color: var(--bs-white);">
                                     <a href="#" style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">{{ $building->name }}</a>
@@ -196,9 +194,29 @@
                                             <?php endif; ?>
                                         </div>
                                         <div class="position-relative z-2 col-xl-auto">
-                                            <a class="btn btn-primary btn-with-icon text-nowrap" href="#">Sprawdź<svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062"><path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor" /></svg></a>
+                                            <a class="btn btn-primary btn-with-icon text-nowrap" href="{{ route('developro.building.floor.property', [
+                                                            $investment->slug,
+                                                            $building,
+                                                            Str::slug($building->name),
+                                                            $p->floor,
+                                                            Str::slug($p->floor->name),
+                                                            $p,
+                                                            Str::slug($p->name),
+                                                            number2RoomsName($p->rooms, true),
+                                                            round(floatval($p->area), 2).'-m2'
+                                                        ]) }}">Sprawdź<svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062"><path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor" /></svg></a>
                                         </div>
-                                        <a class="stretched-link d-contents" href="#"></a>
+                                        <a class="stretched-list-link" href="{{ route('developro.building.floor.property', [
+                                                            $investment->slug,
+                                                            $building,
+                                                            Str::slug($building->name),
+                                                            $p->floor,
+                                                            Str::slug($p->floor->name),
+                                                            $p,
+                                                            Str::slug($p->name),
+                                                            number2RoomsName($p->rooms, true),
+                                                            round(floatval($p->area), 2).'-m2'
+                                                        ]) }}"></a>
                                     </div>
                                 </div>
                             @endforeach

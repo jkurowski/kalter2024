@@ -150,6 +150,11 @@ class Property extends Model
         return $this->belongsTo(Floor::class);
     }
 
+    public function building()
+    {
+        return $this->belongsTo(Building::class);
+    }
+
     /**
      * Get the client that owns the property.
      */

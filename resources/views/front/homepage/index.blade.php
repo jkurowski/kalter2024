@@ -190,6 +190,7 @@
         </div>
     </section>
 
+    @if($promotion->count() > 0)
     <section>
         <div class="container">
             <div class="row">
@@ -197,23 +198,15 @@
                     <div style="--translate-x: 0;"
                         class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                         <div class="position-absolute top-50 start-50 translate-middle z-2">
-                            <img src="img/sygnet_secondary.svg" alt="" width="168" height="168" loading="lazy"
-                                decoding="async" data-aos="fade">
+                            <img src="img/sygnet_secondary.svg" alt="" width="168" height="168" loading="lazy" decoding="async" data-aos="fade">
                         </div>
                         <h2 class="fw-bold text-center text-uppercase">
-                            <span data-aos="fade-up" data-aos-delay="200">
-                                Aktualne
-                            </span>
-                            <span class="fw-900 fs-4 d-block text-center text-primary text-shadow" data-aos="fade-up"
-                                data-aos-delay="400">
-                                Promocje
-                            </span>
+                            <span data-aos="fade-up" data-aos-delay="200">Aktualne</span>
+                            <span class="fw-900 fs-4 d-block text-center text-primary text-shadow" data-aos="fade-up" data-aos-delay="400">Promocje</span>
                         </h2>
                     </div>
                     <div class="pt-4 mt-3 text-center" data-aos="fade">
-                        <p>
-                            Być może Twoje wymarzone mieszkanie jest w super promocyjnej cenie?<br>Sprawdź to!
-                        </p>
+                        <p>Być może Twoje wymarzone mieszkanie jest w super promocyjnej cenie?<br>Sprawdź to!</p>
                     </div>
                 </div>
             </div>
@@ -249,147 +242,131 @@
         ];
         ?>
         <div class="invests-horizontal-slider mt-4" data-slick='<?= json_encode($slider_options) ?>'>
-            <div>
-                <div class="invest-card-horizontal position-relative d-flex flex-column-reverse flex-sm-row justify-content-between  bg-white">
-                    <a href="#" class="stretched-link"></a>
-                    <div class="text-secondary invest-card-horizontal-left flex-fill">
-                        <p class="h3 mb-0">
-                            Mieszkanie A/3
-                        </p>
-                        <p class="fs-10 text-uppercase fw-900 mb-2">
-                            Na falistej
-                        </p>
-                        <p class="h3 mb-1">
-                            <span class="me-2">
-                                611 000 Zł
-                            </span>
-                            <span class="text-body-emphasis opacity-50 fs-6 align-middle text-decoration-line-through">
-                                640 000 Zł
-                            </span>
-                        </p>
-                        <p class="fs-8 text-black">
-                            Najniższa cena z ostatnich 30 dni:....
-                        </p>
-                        <div class="small mb-40">
-                            <table class="w-100">
-                                <tbody>
+            @foreach($promotion as $p)
+                <div>
+                    <div class="invest-card-horizontal position-relative d-flex flex-column-reverse flex-sm-row justify-content-between  bg-white">
+                        @if($p->investment->type == 1)
+                            <a href="{{ route('developro.building.floor.property', [
+                                                            $p->investment->slug,
+                                                            $p->building,
+                                                            Str::slug($p->building->name),
+                                                            $p->floor,
+                                                            Str::slug($p->floor->name),
+                                                            $p,
+                                                            Str::slug($p->name),
+                                                            number2RoomsName($p->rooms, true),
+                                                            round(floatval($p->area), 2).'-m2'
+                                                        ]) }}" class="stretched-link"></a>
+                        @endif
+                        @if($p->investment->type == 2)
+                        <a href="{{ route('developro.property', [
+                                                            $p->investment->slug,
+                                                            $p->floor,
+                                                            Str::slug($p->floor->name),
+                                                            $p,
+                                                            Str::slug($p->name),
+                                                            number2RoomsName($p->rooms, true),
+                                                            round(floatval($p->area), 2).'-m2'
+                                                        ]) }}" class="stretched-link"></a>
+                        @endif
+                        <div class="text-secondary invest-card-horizontal-left flex-fill">
+                            <p class="h3 mb-0">{{ $p->name }}</p>
+                            <p class="fs-10 text-uppercase fw-900 mb-2">{{ $p->investment->name }}</p>
+                            <p class="h3 mb-1">
+                                @if($p->price && !$p->highlighted)
+                                    <span class="me-2">@money($p->price)</span>
+                                @else
+                                    @if($p->promotion_price)
+                                        <span class="me-2">@money($p->promotion_price)</span>
+                                    @endif
+                                    @if($p->price)
+                                        <span class="text-body-emphasis opacity-50 fs-6 align-middle text-decoration-line-through">@money($p->price)</span>
+                                    @endif
+                                @endif
+                            </p>
+                            @if($p->price_30)
+                                <p class="fs-8 text-black">
+                                    Najniższa cena z ostatnich 30 dni: @money($p->price_30)
+                                </p>
+                            @endif
+                            <div class="small mb-40">
+                                <table class="w-100">
+                                    <tbody>
                                     <tr>
-                                        <td class="td-with-icon"><img src="img/tile.svg" alt="" loading="lazy"
-                                                decoding="async" class="w-10 h-10 object-fit-contain" width="12"
-                                                height="12"></td>
+                                        <td class="td-with-icon">
+                                            <img src="{{ asset('img/tile.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="12" height="12">
+                                        </td>
                                         <td>Piętro</td>
-                                        <td class="text-end">Parter</td>
+                                        <td class="text-end">{{ $p->floor->name }}</td>
                                     </tr>
                                     <tr>
-                                        <td class="td-with-icon"><img src="img/blueprint.svg" alt=""
-                                                loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain"
-                                                width="12" height="12"></td>
+                                        <td class="td-with-icon">
+                                            <img src="{{ asset('img/blueprint.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="12" height="12">
+                                        </td>
                                         <td>Metraż</td>
-                                        <td class="text-end">83,78 m<sup>2</sup></td>
+                                        <td class="text-end">{{ $p->area }} m<sup>2</sup></td>
                                     </tr>
                                     <tr>
-                                        <td class="td-with-icon"><img src="img/rooms.svg" alt="" loading="lazy"
-                                                decoding="async" class="w-10 h-10 object-fit-contain" width="12"
-                                                height="12"></td>
+                                        <td class="td-with-icon">
+                                            <img src="{{ asset('img/rooms.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="12" height="12">
+                                        </td>
                                         <td>Liczba Pokoi</td>
-                                        <td class="text-end">4</td>
+                                        <td class="text-end">{{ $p->rooms }}</td>
                                     </tr>
-                                </tbody>
-                            </table>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="position-relatieve z-2">
+                                @if($p->investment->type == 1)
+                                    <a class="btn btn-primary btn-with-icon " href="{{ route('developro.building.floor.property', [
+                                                            $p->investment->slug,
+                                                            $p->building,
+                                                            Str::slug($p->building->name),
+                                                            $p->floor,
+                                                            Str::slug($p->floor->name),
+                                                            $p,
+                                                            Str::slug($p->name),
+                                                            number2RoomsName($p->rooms, true),
+                                                            round(floatval($p->area), 2).'-m2'
+                                                        ]) }}">
+                                        Sprawdź
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062"><path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor" /></svg>
+                                    </a>
+                                @endif
+                                @if($p->investment->type == 2)
+                                <a class="btn btn-primary btn-with-icon " href="{{ route('developro.property', [
+                                                            $p->investment->slug,
+                                                            $p->floor,
+                                                            Str::slug($p->floor->name),
+                                                            $p,
+                                                            Str::slug($p->name),
+                                                            number2RoomsName($p->rooms, true),
+                                                            round(floatval($p->area), 2).'-m2'
+                                                        ]) }}">
+                                    Sprawdź
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062"><path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor" /></svg>
+                                </a>
+                                @endif
+                            </div>
                         </div>
-                        <div class="position-relatieve z-2">
-                            <a class="btn btn-primary btn-with-icon " href="#">
-                                Sprawdź
-                                <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062"
-                                    viewBox="0 0 6.073 11.062">
-                                    <path id="chevron_right_FILL0_wght100_GRAD0_opsz24"
-                                        d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z"
-                                        transform="translate(-356 684)" fill="currentColor" />
-                                </svg>
 
-                            </a>
+                        <div class="invest-card-horizontal-right">
+                            @if($p->file)
+                                <picture>
+                                    @if($p->file_webp)
+                                        <source type="image/webp" srcset="{{ asset('/investment/property/thumbs/webp/'.$p->file_webp) }}">
+                                    @endif
+                                    <source type="image/jpeg" srcset="{{ asset('/investment/property/thumbs/'.$p->file) }}">
+                                    <img src="{{ asset('/investment/property/thumbs/'.$p->file) }}" alt="{{$p->name}}" loading="lazy" decoding="async" class="w-100 h-100 object-fit-contain">
+                                </picture>
+                            @endif
                         </div>
                     </div>
-
-                    <div class="invest-card-horizontal-right">
-                        <img src="img/investment_plan.png" alt="" loading="lazy" decoding="async"
-                            class="w-100 h-100 object-fit-contain" width="440" height="310">
-                    </div>
-
                 </div>
-            </div>
-            <div>
-                <div
-                    class="invest-card-horizontal position-relative d-flex flex-column-reverse flex-sm-row justify-content-between  bg-white">
-                    <a href="#" class="stretched-link"></a>
-                    <div class="text-secondary invest-card-horizontal-left flex-fill">
-                        <p class="h3 mb-0">
-                            Mieszkanie A/3
-                        </p>
-                        <p class="fs-10 text-uppercase fw-900 mb-2">
-                            Na falistej
-                        </p>
-                        <p class="h3 mb-1">
-                            <span class="me-2">
-                                611 000 Zł
-                            </span>
-                            <span class="text-body-emphasis opacity-50 fs-6 align-middle text-decoration-line-through">
-                                640 000 Zł
-                            </span>
-                        </p>
-                        <p class="fs-8 text-black">
-                            Najniższa cena z ostatnich 30 dni:....
-                        </p>
-                        <div class="small mb-40">
-                            <table class="w-100">
-                                <tbody>
-                                    <tr>
-                                        <td class="td-with-icon"><img src="img/tile.svg" alt="" loading="lazy"
-                                                decoding="async" class="w-10 h-10 object-fit-contain" width="12"
-                                                height="12"></td>
-                                        <td>Piętro</td>
-                                        <td class="text-end">Parter</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="td-with-icon"><img src="img/blueprint.svg" alt=""
-                                                loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain"
-                                                width="12" height="12"></td>
-                                        <td>Metraż</td>
-                                        <td class="text-end">83,78 m<sup>2</sup></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="td-with-icon"><img src="img/rooms.svg" alt="" loading="lazy"
-                                                decoding="async" class="w-10 h-10 object-fit-contain" width="12"
-                                                height="12"></td>
-                                        <td>Liczba Pokoi</td>
-                                        <td class="text-end">4</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="position-relatieve z-2">
-                            <a class="btn btn-primary btn-with-icon " href="#">
-                                Sprawdź
-                                <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062"
-                                    viewBox="0 0 6.073 11.062">
-                                    <path id="chevron_right_FILL0_wght100_GRAD0_opsz24"
-                                        d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z"
-                                        transform="translate(-356 684)" fill="currentColor" />
-                                </svg>
-
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="invest-card-horizontal-right">
-                        <img src="img/investment_plan.png" alt="" loading="lazy" decoding="async"
-                            class="w-100 h-100 object-fit-contain" width="440" height="310">
-                    </div>
-
-                </div>
-            </div>
+            @endforeach
         </div>
     </section>
+    @endif
 
     <section class="home-about">
         <div class="container">
