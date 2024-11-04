@@ -259,9 +259,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row w-100 form-group">
-
-                                </div>
 
                                 <div class="row w-100 form-group">
                                     <div class="container">
@@ -284,7 +281,19 @@
                                 </div>
 
                                 <div class="row w-100 form-group">
-                                    @include('form-elements.input-text', ['label' => 'Cena', 'sublabel'=> 'Tylko liczby', 'name' => 'price', 'value' => $entry->price])
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                @include('form-elements.input-text', ['label' => 'Cena', 'sublabel'=> 'Tylko liczby', 'name' => 'price', 'value' => $entry->price])
+                                            </div>
+                                            <div class="col-4">
+                                                @include('form-elements.input-text', ['label' => 'Cena (szukana)', 'sublabel'=> 'Tylko liczby', 'name' => 'price_search', 'value' => $entry->price_search])
+                                            </div>
+                                            <div class="col-4">
+                                                @include('form-elements.input-text', ['label' => 'Cena (najniższa z 30 dni)', 'sublabel'=> 'Tylko liczby', 'name' => 'price_30', 'value' => $entry->price_30])
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="row w-100 form-group">
                                     @include('form-elements.input-text', ['label' => 'Wielkość działki', 'sublabel'=> 'Pow. w m<sup>2</sup>, tylko liczby', 'name' => 'plot_area', 'value' => $entry->plot_area])
@@ -305,12 +314,14 @@
                                     @include('form-elements.input-text', ['label' => 'Loggia', 'sublabel'=> 'Pow. w m<sup>2</sup>, tylko liczby', 'name' => 'loggia_area', 'value' => $entry->loggia_area])
                                 </div>
                                 <div class="row w-100 form-group">
+                                    <h2 class="mb-3">Ustawienia SEO</h2>
                                     @include('form-elements.html-input-text-count', ['label' => 'Nagłówek strony', 'sublabel'=> 'Meta tag - title', 'name' => 'meta_title', 'value' => $entry->meta_title, 'maxlength' => 60])
                                 </div>
                                 <div class="row w-100 form-group">
                                     @include('form-elements.html-input-text-count', ['label' => 'Opis strony', 'sublabel'=> 'Meta tag - description', 'name' => 'meta_description', 'value' => $entry->meta_description, 'maxlength' => 158])
                                 </div>
                                 <div class="row w-100 form-group">
+                                    <h2 class="mb-3">Plany</h2>
                                     @include('form-elements.html-input-file', [
                                         'label' => 'Plan mieszkania',
                                         'sublabel' => '(wymiary: '.config('images.property_plan.width').'px / '.config('images.property_plan.height').'px)',
@@ -329,11 +340,32 @@
                                         'file_preview' => config('images.property.preview_pdf_path')
                                     ])
                                 </div>
+                                <div class="row w-100 form-group">
+                                    @include('form-elements.textarea', [
+                                        'label' => 'Makieta 3D',
+                                        'name' => 'model_3d',
+                                        'value' => $entry->model_3d,
+                                        'rows' => 5,
+                                    ])
+                                </div>
+                                <div class="row w-100 form-group">
+                                    @include('form-elements.textarea', [
+                                        'label' => 'Wirtualny spacer',
+                                        'name' => 'walk_3d',
+                                        'value' => $entry->walk_3d,
+                                        'rows' => 5,
+                                    ])
+                                </div>
+                                <div class="row w-100 form-group">
+                                    <h2 class="mb-3">Opis</h2>
+                                    @include('form-elements.textarea-fullwidth', ['label' => 'Opis mieszkania', 'name' => 'text', 'value' => $entry->text, 'rows' => 21, 'class' => 'tinymce'])
+                                </div>
                             </div>
                         </div>
                         @include('form-elements.submit', ['name' => 'submit', 'value' => 'Zapisz'])
                     </div>
                 </form>
+                @include('form-elements.tintmce')
                 @endsection
 @push('scripts')
 <script src="{{ asset('/js/typeahead.min.js') }}" charset="utf-8"></script>

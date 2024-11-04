@@ -37,6 +37,9 @@ class Property extends Model
         'area',
         'area_search',
         'price',
+        'price_search',
+        'price_30',
+        'text',
         'garden_area',
         'balcony_area',
         'balcony_area_2',
@@ -75,23 +78,36 @@ class Property extends Model
     /**
      * Get next property
      * @param int $investment
-     * @param int $number_order
-     * @return Property|null
+     * @param int $current_number_order
+     * @return Property
      */
-    public function findNext(int $investment, int $number_order): ?Property
+    public function findNext(int $investment, int $current_number_order, ?int $floor_id = null)
     {
-        return $this->where('investment_id', $investment)->where('number_order', '>', $number_order)->first();
+
+        $query = $this->where('investment_id', $investment)->where('number_order', '>', $current_number_order);
+
+        if (!is_null($floor_id)) {
+            $query->where('floor_id', $floor_id);
+        }
+
+        return $query->first();
     }
 
     /**
      * Get previous property
      * @param int $investment
-     * @param int $number_order
-     * @return Property|null
+     * @param int $current_number_order
+     * @return Property
      */
-    public function findPrev(int $investment, int $number_order): ?Property
+    public function findPrev(int $investment, int $current_number_order, ?int $floor_id = null)
     {
-        return $this->where('investment_id', $investment)->where('number_order', '<', $number_order)->first();
+        $query = $this->where('investment_id', $investment)->where('number_order', '<', $current_number_order)->orderByDesc('number_order');
+
+        if (!is_null($floor_id)) {
+            $query->where('floor_id', $floor_id);
+        }
+
+        return $query->first();
     }
 
     /**

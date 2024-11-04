@@ -26,11 +26,23 @@ class InvestmentPropertyController extends Controller
         $page = Page::where('id', $this->pageId)->first();
         $investment = Investment::findBySlug($slug);
 
+        $areaSearch = $property->area_search;
+
+        $similarProperties = Property::whereBetween('area_search', [$areaSearch - 5, $areaSearch + 5])
+            ->where('id', '!=', $property->id)
+            ->where('investment_id', '=', $investment->id)
+            ->inRandomOrder()
+            ->take(5)
+            ->get();
+
         return view('front.developro.investment_property.index', [
             'investment' => $investment,
             'floor' => $floor,
             'property' => $property,
-            'page' => $page
+            'page' => $page,
+            'next' => $property->findNext($investment->id, $property->number_order, $property->floor_id),
+            'prev' => $property->findPrev($investment->id, $property->number_order, $property->floor_id),
+            'similarProperties' => $similarProperties
         ]);
     }
 }

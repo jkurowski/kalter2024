@@ -250,8 +250,7 @@
         ?>
         <div class="invests-horizontal-slider mt-4" data-slick='<?= json_encode($slider_options) ?>'>
             <div>
-                <div
-                    class="invest-card-horizontal position-relative d-flex flex-column-reverse flex-sm-row justify-content-between  bg-white">
+                <div class="invest-card-horizontal position-relative d-flex flex-column-reverse flex-sm-row justify-content-between  bg-white">
                     <a href="#" class="stretched-link"></a>
                     <div class="text-secondary invest-card-horizontal-left flex-fill">
                         <p class="h3 mb-0">

@@ -126,7 +126,7 @@ Route::middleware(['restrictIp'])->group(function () {
             Route::get('/i/{slug}/{floor},{floorSlug}', 'InvestmentFloorController@index')->name('floor');
 
             #Inwestycja budynkowa - pietro - mieszkanie
-            Route::get('/i/{slug}/{floor},{floorSlug}/{property},{propertySlug},{propertyFloor},{propertyRooms},{propertyArea}', 'InvestmentPropertyController@index')->name('property');
+            Route::get('/i/{slug}/{floor},{floorSlug}/{property},{propertySlug},{propertyRooms},{propertyArea}', 'InvestmentPropertyController@index')->name('property');
 
             #Inwestycja osiedlowa - budynek
             Route::get('/i/{slug}/b/{building},{buildingSlug}', 'InvestmentBuildingController@index')->name('building');
@@ -135,7 +135,7 @@ Route::middleware(['restrictIp'])->group(function () {
             Route::get('/i/{slug}/b/{building},{buildingSlug}/{floor},{floorSlug}', 'InvestmentBuildingFloorController@index')->name('building.floor');
 
             #Inwestycja osiedlowa - budynek - pietro - mieszkanie
-            Route::get('/i/{slug}/b/{building},{buildingSlug}/{floor},{floorSlug}/{property},{propertySlug},{propertyFloor},{propertyRooms},{propertyArea}', 'InvestmentBuildingPropertyController@index')->name('building.floor.property');
+            Route::get('/i/{slug}/b/{building},{buildingSlug}/{floor},{floorSlug}/{property},{propertySlug},{propertyRooms},{propertyArea}', 'InvestmentBuildingPropertyController@index')->name('building.floor.property');
 
             // Inwestycja domkowa
             Route::get('/{slug}/d/{property}', 'InvestmentHouseController@index')->name('house');
