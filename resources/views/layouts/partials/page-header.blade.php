@@ -13,7 +13,7 @@
                             <a href="/" style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">Strona główna</a>
                         </li>
                         <li class="breadcrumb-item" style="--bs-breadcrumb-divider-color: var(--bs-white);">
-                            <a href="#" style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">Kontakt</a>
+                            <a href="#" style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">{{ $h1 }}</a>
                         </li>
                     </ol>
                 </nav>

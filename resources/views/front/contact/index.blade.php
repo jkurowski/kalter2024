@@ -17,10 +17,7 @@
                                 <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168" height="168" loading="lazy" decoding="async" data-aos="fade">
                             </div>
                             <h2 class="fw-bold text-center text-uppercase">
-                            <span data-aos="fade-up" data-aos-delay="200">
-                                Siedziba Firmy
-                            </span>
-
+                            <span data-aos="fade-up" data-aos-delay="200">Siedziba Firmy</span>
                             </h2>
                         </div>
                     </div>

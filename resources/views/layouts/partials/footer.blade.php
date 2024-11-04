@@ -1,6 +1,5 @@
 <footer class="page-footer fs-14">
     <div class="container">
-
         <div class="row row-gap-3">
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="mb-4 col-5">

@@ -3,20 +3,9 @@
 @section('content')
     <?php
     // Zmienne do slidera
-    $arrow_prev = '<button  class="slick-prev slick-arrow" aria-label="Previous" type="button">
-                        
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="9.05" height="16.484" viewBox="0 0 9.05 16.484">
-                                    <path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M363.434-675.758,356-683.192l.808-.808,8.242,8.242-8.242,8.242-.808-.808Z" transform="translate(365.05 -667.516) rotate(180)" fill="#fff"/>
-                                  </svg>
-                        
-                                </button>';
+    $arrow_prev = '<button  class="slick-prev slick-arrow" aria-label="Previous" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="9.05" height="16.484" viewBox="0 0 9.05 16.484"><path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M363.434-675.758,356-683.192l.808-.808,8.242,8.242-8.242,8.242-.808-.808Z" transform="translate(365.05 -667.516) rotate(180)" fill="#fff"/></svg></button>';
     
-    $arrow_next = '<button  class="slick-next slick-arrow" aria-label="Next" type="button">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="9.05" height="16.484" viewBox="0 0 9.05 16.484">
-                        <path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M363.434-675.758,356-683.192l.808-.808,8.242,8.242-8.242,8.242-.808-.808Z" transform="translate(-356 684)" fill="#fff"/>
-                        </svg>
-                        
-                            </button>'; ?>
+    $arrow_next = '<button  class="slick-next slick-arrow" aria-label="Next" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="9.05" height="16.484" viewBox="0 0 9.05 16.484"><path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M363.434-675.758,356-683.192l.808-.808,8.242,8.242-8.242,8.242-.808-.808Z" transform="translate(-356 684)" fill="#fff"/></svg></button>'; ?>
 
 
     <section class="pb-0 home-hero position-relative">
@@ -69,12 +58,7 @@
                         <div class="mt-30 hero-slide-button">
                             <a href="{{ $s->link }}" class="btn btn-primary btn-with-icon" target="{{ $s->link_target }}">
                                 {{ $s->link_button }}
-                                <svg class="mb-1" xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062"
-                                    viewBox="0 0 6.073 11.062">
-                                    <path id="chevron_right_FILL0_wght100_GRAD0_opsz24"
-                                        d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z"
-                                        transform="translate(-356 684)" fill="currentColor" />
-                                </svg>
+                                <svg class="mb-1" xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062"><path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor" /></svg>
                             </a>
                         </div>
                         @endif
@@ -95,16 +79,11 @@
                     <div style="--translate-x: 0;"
                         class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                         <div class="position-absolute top-50 start-50 translate-middle z-2">
-                            <img src="img/sygnet_secondary.svg" alt="" width="168" height="168" loading="lazy"
-                                decoding="async" data-aos="fade">
+                            <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168" height="168" loading="lazy" decoding="async" data-aos="fade">
                         </div>
                         <h2 class="fw-bold text-center text-uppercase">
-                            <span data-aos="fade-up" data-aos-delay="200">
-                                Dostępne
-                            </span>
-                            <span class="fw-900 fs-4 d-block text-center " data-aos="fade-up" data-aos-delay="400">
-                                Inwestycje
-                            </span>
+                            <span data-aos="fade-up" data-aos-delay="200">@lang('website.homepage_dostepne_title_1')</span>
+                            <span class="fw-900 fs-4 d-block text-center" data-aos="fade-up" data-aos-delay="400">@lang('website.homepage_dostepne_title_2')</span>
                         </h2>
                     </div>
 
@@ -148,7 +127,7 @@
                     <div class="invest-card position-relative">
                         <a href="{{ route('developro.show', $p->slug) }}" class="stretched-link z-2"></a>
                         <div class="position-absolute w-100 h-100 top-0 start-0">
-                            <img src="{{ asset('investment/thumbs/' . $p->file_thumb) }}" alt="" class="w-100 h-100 object-fit-cover invest-card-bg">
+                            <img src="{{ asset('investment/thumbs/' . $p->file_thumb) }}" alt="Wizualizacja inwestycji {{ $p->name }}" class="w-100 h-100 object-fit-cover invest-card-bg">
                             <div style="position: absolute;opacity: 0.8;width: 100%;height: 100%;top: 0;left: 0;background-image: linear-gradient(#000, rgba(255, 255, 255, 0) {{ $p->gradient_thumb ?: '100%' }});"></div>
                         </div>
                         <div class="d-flex isolation-isolate justify-content-between gap-3 text-white">
@@ -158,14 +137,12 @@
                             </div>
                             @if ($p->file_logo)
                                 <div class='invest-card-logo-wrapper'>
-                                    <img src="{{ asset('investment/logo/' . $p->file_logo) }}" alt=""
-                                        class="rounded-circle invest-card-logo img-fluid" loading="lazy" decoding="async"
-                                        width="71" height="71">
+                                    <img src="{{ asset('investment/logo/' . $p->file_logo) }}" alt="Logo inwestycji {{ $p->name }}" class="rounded-circle invest-card-logo img-fluid" loading="lazy" decoding="async" width="71" height="71">
                                 </div>
                             @endif
                         </div>
                         <div class="isolation-isolate text-white fw-semibold mb-auto fs-13">
-                            <p class="text-uppercase mb-0">Termin oddania:</p>
+                            <p class="text-uppercase mb-0">@lang('website.label_termin_oddania'):</p>
                             <p class="mb-0">{{ $p->date_end }}</p>
 
                             @if($p->entry_content)
@@ -175,13 +152,8 @@
 
                         <div class="position-relative z-2">
                             <a href="{{ route('developro.show', $p->slug) }}" class="btn btn-primary btn-with-icon ">
-                                Sprawdź
-                                <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062"
-                                    viewBox="0 0 6.073 11.062">
-                                    <path id="chevron_right_FILL0_wght100_GRAD0_opsz24"
-                                        d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z"
-                                        transform="translate(-356 684)" fill="currentColor" />
-                                </svg>
+                                @lang('website.button_sprawdz')
+                                <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062"><path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor" /></svg>
                             </a>
                         </div>
                     </div>
@@ -198,15 +170,15 @@
                     <div style="--translate-x: 0;"
                         class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                         <div class="position-absolute top-50 start-50 translate-middle z-2">
-                            <img src="img/sygnet_secondary.svg" alt="" width="168" height="168" loading="lazy" decoding="async" data-aos="fade">
+                            <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168" height="168" loading="lazy" decoding="async" data-aos="fade">
                         </div>
                         <h2 class="fw-bold text-center text-uppercase">
-                            <span data-aos="fade-up" data-aos-delay="200">Aktualne</span>
-                            <span class="fw-900 fs-4 d-block text-center text-primary text-shadow" data-aos="fade-up" data-aos-delay="400">Promocje</span>
+                            <span data-aos="fade-up" data-aos-delay="200">@lang('website.homepage_promocje_title_1')</span>
+                            <span class="fw-900 fs-4 d-block text-center text-primary text-shadow" data-aos="fade-up" data-aos-delay="400">@lang('website.homepage_promocje_title_2')</span>
                         </h2>
                     </div>
                     <div class="pt-4 mt-3 text-center" data-aos="fade">
-                        <p>Być może Twoje wymarzone mieszkanie jest w super promocyjnej cenie?<br>Sprawdź to!</p>
+                        <p>@lang('website.homepage_promocje_text')</p>
                     </div>
                 </div>
             </div>
@@ -286,7 +258,7 @@
                             </p>
                             @if($p->price_30)
                                 <p class="fs-8 text-black">
-                                    Najniższa cena z ostatnich 30 dni: @money($p->price_30)
+                                    @lang('website.label_cena_30') @money($p->price_30)
                                 </p>
                             @endif
                             <div class="small mb-40">
@@ -296,21 +268,21 @@
                                         <td class="td-with-icon">
                                             <img src="{{ asset('img/tile.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="12" height="12">
                                         </td>
-                                        <td>Piętro</td>
+                                        <td>@lang('website.label_pietro')</td>
                                         <td class="text-end">{{ $p->floor->name }}</td>
                                     </tr>
                                     <tr>
                                         <td class="td-with-icon">
                                             <img src="{{ asset('img/blueprint.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="12" height="12">
                                         </td>
-                                        <td>Metraż</td>
+                                        <td>@lang('website.label_metraz')</td>
                                         <td class="text-end">{{ $p->area }} m<sup>2</sup></td>
                                     </tr>
                                     <tr>
                                         <td class="td-with-icon">
                                             <img src="{{ asset('img/rooms.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="12" height="12">
                                         </td>
-                                        <td>Liczba Pokoi</td>
+                                        <td>@lang('website.label_liczba_pokoi')</td>
                                         <td class="text-end">{{ $p->rooms }}</td>
                                     </tr>
                                     </tbody>
@@ -329,7 +301,7 @@
                                                             number2RoomsName($p->rooms, true),
                                                             round(floatval($p->area), 2).'-m2'
                                                         ]) }}">
-                                        Sprawdź
+                                        @lang('website.button_sprawdz')
                                         <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062"><path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor" /></svg>
                                     </a>
                                 @endif
@@ -343,7 +315,7 @@
                                                             number2RoomsName($p->rooms, true),
                                                             round(floatval($p->area), 2).'-m2'
                                                         ]) }}">
-                                    Sprawdź
+                                    @lang('website.button_sprawdz')
                                     <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062"><path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor" /></svg>
                                 </a>
                                 @endif
@@ -357,7 +329,7 @@
                                         <source type="image/webp" srcset="{{ asset('/investment/property/thumbs/webp/'.$p->file_webp) }}">
                                     @endif
                                     <source type="image/jpeg" srcset="{{ asset('/investment/property/thumbs/'.$p->file) }}">
-                                    <img src="{{ asset('/investment/property/thumbs/'.$p->file) }}" alt="{{$p->name}}" loading="lazy" decoding="async" class="w-100 h-100 object-fit-contain">
+                                    <img src="{{ asset('/investment/property/thumbs/'.$p->file) }}" alt="Plan mieszkania {{$p->name}}" loading="lazy" decoding="async" class="w-100 h-100 object-fit-contain">
                                 </picture>
                             @endif
                         </div>
@@ -374,7 +346,7 @@
                 <div class="col-12 col-lg-6">
                     <div class="row row-gap-4">
                         <div class="col-12 col-md-6 text-center order-last order-md-first">
-                            <img src="img/home_o_firmie.webp" alt="" width="321" height="471"
+                            <img src="{{ asset('img/home_o_firmie.webp') }}" alt="" width="321" height="471"
                                 loading="lazy" decoding="async" data-aos="fade" class="img-fluid rounded">
                         </div>
 
@@ -382,25 +354,16 @@
                             <div style="--translate-x: -3%;"
                                 class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
-                                    <img src="img/sygnet_secondary.svg" alt="" width="168" height="168"
+                                    <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168" height="168"
                                         loading="lazy" decoding="async" data-aos="fade">
                                 </div>
                                 <h2 class="fw-bold text-center text-uppercase">
-                                    <span data-aos="fade-up" data-aos-delay="200">
-                                        Grupa Kalter
-                                    </span>
-                                    <span class="fw-900 fs-4 d-block text-center" data-aos="fade-up"
-                                        data-aos-delay="400">
-                                        O firmie
-                                    </span>
+                                    <span data-aos="fade-up" data-aos-delay="200">@lang('website.homepage_firma_title_1')</span>
+                                    <span class="fw-900 fs-4 d-block text-center" data-aos="fade-up" data-aos-delay="400">@lang('website.homepage_firma_title_2')</span>
                                 </h2>
                             </div>
                             <div class="pt-4 mt-3" data-aos="fade">
-                                <p>
-                                    Kalter Nieruchmości to spółka Grupy Kalter utworzona w celu przygotowania, realizacji i
-                                    sprzedaży własnych inwestycji deweloperskich. Bazujemy na wieloletnim doświadczeniu
-                                    Kalter Sp. z o.o., uznanego na rynku wykonawcy inwestycji kubaturowych.
-                                </p>
+                                <p>@lang('website.homepage_firma_text')</p>
                             </div>
                         </div>
                     </div>
@@ -449,7 +412,6 @@
                         <?php endforeach; ?>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
