@@ -82,7 +82,6 @@
                                 </td>
                                 <td class="option-120">
                                     <div class="btn-group">
-                                        <a href="#" class="btn action-button me-1 btn-activity" data-bs-toggle="tooltip" data-placement="top" data-bs-title="Historia" data-id="{{ $p->id }}"><i class="fe-activity"></i></a>
                                         <a href="{{route('admin.developro.investment.message.index', [$investment, $p])}}" class="btn action-button me-1" data-bs-toggle="tooltip" data-placement="top" data-bs-title="Pokaż wiadomości"><i class="fe-mail"></i></a>
                                         <a href="{{route('admin.developro.investment.properties.edit', [$investment, $floor, $p])}}" class="btn action-button me-1" data-bs-toggle="tooltip" data-placement="top" data-bs-title="Edytuj"><i class="fe-edit"></i></a>
                                         <form method="POST" action="{{route('admin.developro.investment.properties.destroy', [$investment, $floor, $p])}}">
@@ -118,29 +117,6 @@
                 return new bootstrap.Tooltip(tooltipTriggerEl)
             });
             @if (session('success')) toastr.options={closeButton:!0,progressBar:!0,positionClass:"toast-menu-bottom-right",timeOut:"3000"};toastr.success("{{ session('success') }}"); @endif
-
-            $(document).ready(function() {
-                $(".btn-activity").click((event) => {
-                    event.preventDefault();
-                    const modalHolder = $('#modalHistory');
-                    const dataId = event.currentTarget.dataset.id;
-                    modalHolder.empty();
-
-                    jQuery.ajax({
-                        url: route('admin.developro.investment.property.history', {
-                            investment: '{{ $investment->id }}',
-                            property: dataId,
-                        }),
-                        success: function (response) {
-                            if (response) {
-                                modalHolder.append(response);
-                            } else {
-                                alert('Error');
-                            }
-                        }
-                    });
-                });
-            });
         </script>
     @endpush
 @endsection

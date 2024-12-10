@@ -4,20 +4,25 @@ namespace App\Http\Controllers\Admin\Developro\Building;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PropertyFormRequest;
+use App\Jobs\EndPropertyPromotion;
 use App\Models\Building;
 use App\Models\Floor;
 use App\Models\Investment;
 use App\Models\Property;
+use App\Models\PropertyProperty;
+use App\Repositories\InvestmentRepository;
 use App\Repositories\PropertyRepository;
 use App\Services\PropertyService;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 class BuildingPropertyController extends Controller
 {
-    private $repository;
-    private $service;
+    private PropertyRepository $repository;
+    private PropertyService $service;
+    private InvestmentRepository $investmentRepository;
 
-    public function __construct(PropertyRepository $repository, PropertyService $service)
+    public function __construct(PropertyRepository $repository, PropertyService $service, InvestmentRepository $investmentRepository)
     {
 //        $this->middleware('permission:box-list|box-create|box-edit|box-delete', [
 //            'only' => ['index','store']
@@ -34,6 +39,7 @@ class BuildingPropertyController extends Controller
 
         $this->repository = $repository;
         $this->service = $service;
+        $this->investmentRepository = $investmentRepository;
     }
 
     public function index(Investment $investment, Building $building, Floor $floor)
@@ -87,6 +93,13 @@ class BuildingPropertyController extends Controller
 
     public function edit(Investment $investment, Building $building, Floor $floor, Property $property)
     {
+        // Get all properties for the investment except the current property
+        $others = Property::where('id', '<>', $property->id)
+            ->where('investment_id', '=', $investment->id)
+            //->where('type', '<>', 1)
+            ->pluck('name', 'id');
+
+        $related = $property->relatedProperties;
 
         return view('admin.developro.investment_building_property.form', [
             'cardTitle' => 'Edytuj mieszkanie',
@@ -95,6 +108,8 @@ class BuildingPropertyController extends Controller
             'building' => $building,
             'investment' => $investment,
             'entry' => $property,
+            'others' => $others,
+            'related' => $related
         ]);
     }
 
@@ -110,6 +125,21 @@ class BuildingPropertyController extends Controller
             $this->service->uploadPdf($request->name, $request->file('file_pdf'), $property, true);
         }
 
+        // Dispatch the EndPropertyPromotion job if the promotion end date is set
+        if ($request->filled('promotion_end_date') && $request->highlighted == 1) {
+//            $promotionEndDate = $request->input('promotion_end_date');
+//            $delay = now()->diffInSeconds($promotionEndDate, false);
+//
+//            if ($delay > 0) {  // Only dispatch if the end date is in the future
+//                EndPropertyPromotion::dispatch($property)->delay($delay);
+//            }
+
+            $delay = now()->addSeconds(3600);  // Delay for 1 minute for testing
+            EndPropertyPromotion::dispatch($property->id)->delay($delay);
+        }
+
+        $this->investmentRepository->sendMessageToInvestmentSupervisors($investment, 'Zmiana parametrów: '.$property->name);
+
         return redirect()->route('admin.developro.investment.building.floor.properties.index', [$investment, $building, $floor])->with('success', 'Powierzchnia zaktualizowana');
     }
 
@@ -118,4 +148,37 @@ class BuildingPropertyController extends Controller
         $this->repository->delete($property->id);
         return response()->json('Deleted');
     }
+
+    public function fetchProperties(Investment $investment) {
+        $properties = $investment->selectProperties()->get();
+        $types = $properties->groupBy('type');
+        $result = [];
+        foreach ($types as $type => $properties) {
+            $result[$type] = $properties;
+        }
+        return response()->json($result);
+    }
+
+    public function storerelated(Request $request, $investmentId, $floorId, $propertyId)
+    {
+        $request->validate([
+            'related_property_id' => 'required|exists:properties,id',
+        ]);
+
+        $related_id = $request->input('related_property_id');
+
+        $isRelated = PropertyProperty::where('related_property_id', $related_id)->exists();
+        $related_property = Property::findOrFail($related_id);
+
+        if ($isRelated) {
+            return getRelatedType($related_property->type);
+        }
+
+        $property = Property::findOrFail($propertyId);
+        $property->relatedProperties()->attach($related_id);
+
+        // Return a response
+        return view('admin.developro.investment_shared.related', ['property' => $related_property]);
+    }
+
 }

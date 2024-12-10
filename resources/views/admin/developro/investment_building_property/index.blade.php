@@ -72,8 +72,14 @@
                                 <td class="text-center">{{ $p->views }}</td>
                                 <td class="text-center">{{ $p->roomsNotifications()->count() }}</td>
                                 <td class="text-center">{!! status($p->active) !!}</td>
-                                <td>{{ $p->updated_at }}</td>
-                                <td>{{ $p->saled_at }}</td>
+                                <td class="text-center">{!! tableDate($p->updated_at) !!}</td>
+                                <td class="text-center">
+                                    {!! tableDate($p->saled_at) !!}
+                                    @if($p->status == 3 && $p->client_id != null)
+                                        <br>
+                                        <a href="{{ route('admin.crm.clients.show', $p->client->id) }}">{{ $p->client->name }} {{ $p->client->lastname }}</a>
+                                    @endif
+                                </td>
                                 <td class="option-120">
                                     <div class="btn-group">
                                         <a href="{{route('admin.developro.investment.message.index', [$investment, $p])}}" class="btn action-button me-1" data-bs-toggle="tooltip" data-placement="top" data-bs-title="Pokaż wiadomości"><i class="fe-mail"></i></a>
@@ -102,6 +108,8 @@
             </div>
         </div>
     </div>
+    <div id="modalHistory"></div>
+    @routes('property')
     @push('scripts')
         <script>
             const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
