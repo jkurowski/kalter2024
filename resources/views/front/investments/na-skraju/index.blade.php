@@ -59,48 +59,44 @@
 
         <div data-bs-spy="scroll" data-bs-target="#navbar-secondary" class="position-relative with-bigger-section-spacing">
 
+  
+
             <section class="s0 mt-5" id="opis-inwestycji">
                 <div class="container">
                     <div class="row row-gap-4">
-                        <div class="col-12 ">
-                            <div style="--translate-x: 0;"
-                                class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
+                        <div class="col-12 col-md-6">
+                            <div style="--translate-x: -19%;" class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
-                                    <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168"
-                                        height="168" loading="lazy" decoding="async" data-aos="fade">
+                                    <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168" height="168" loading="lazy" decoding="async" data-aos="fade" class="">
                                 </div>
                                 <h2 class="fw-bold text-center text-uppercase">
-                                    <span data-aos="fade-up" data-aos-delay="200">
-                                        Nowe mieszkania<br>w Ursusie
+                                    <span data-aos="fade-up" data-aos-delay="200" class="">
+                                        Nowe mieszkania
+                                    </span>
+                                    <span class="fw-900 fs-4 d-block text-center " data-aos="fade-up" data-aos-delay="400">
+                                        W ursusie
                                     </span>
                                 </h2>
                             </div>
-                            <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
+                            <div class="text-pretty mt-4 mt-md-40 " data-aos="fade">
                                 <p>
-                                    Zaprojektowaliśmy niski,
-                                    czterokondygnacyjny, kameralny budynek z wewnętrznym patio otwartym na południe. W
-                                    budynku znajdują się dwie klatki schodowe z windami i raptem <strong>72 mieszkania o
-                                        powierzchni
-                                        od 35 do 100 m2.</strong> W celu zapewnienia maksymalnego komfortu użytkowania
-                                    zaplanowano
-                                    optymalne układy pomieszczeń z oknami dającymi dużo naturalnego światła. Wszystkie nowe
-                                    mieszkania posiadają powierzchnię dodatkową w postaci przestronnych ogródków, balkonów
-                                    lub tarasów.
+                                    „Na Skraju”, to nasza najnowsza inwestycja usytuowana w dynamicznie rozwijającej
+                                    się dzielnicy Ursus przy ul. Henryka Brodatego 51. Zaprojektowaliśmy niski, czterokondygnacyjny, kameralny budynek z wewnętrznym patio otwartym na południe.
                                 </p>
                                 <p>
-                                    Projekt zakłada <strong>zastosowanie ekologicznych i energooszczędnych
-                                        rozwiązań</strong> zmniejszających
-                                    koszty utrzymania budynku i mieszkań, takich jak: panele fotowoltaiczne na dachu,
-                                    zbiorniki
-                                    retencyjne na wodę szarą i wodę do podlewania zieleni wspólnej, wentylacje części
-                                    wspólnych
-                                    z rekuperacją, energooszczędne oświetlenie LED części wspólnych oraz stanowiska do
-                                    ładowania
-                                    samochodów elektrycznych na parkingu naziemnym.
+                                    W budynku znajdują się dwie klatki schodowe z windami i raptem 72 mieszkania o powierzchni od 35 do 100 m2. W celu zapewnienia maksymalnego komfortu użytkowania zaplanowano optymalne układy pomieszczeń z oknami dającymi dużo naturalnego światła. Wszystkie nowe mieszkania posiadają powierzchnię dodatkową w postaci przestronnych ogródków, balkonów lub tarasów.
                                 </p>
-                                <p class="fw-semibold">
+                                <p>
+                                    Projekt zakłada zastosowanie ekologicznych i energooszczędnych rozwiązań zmniejszających koszty utrzymania budynku i mieszkań, takich jak: panele fotowoltaiczne na dachu, zbiorniki retencyjne na wodę szarą i wodę do podlewania zieleni wspólnej, wentylacje części wspólnych z rekuperacją, energooszczędne oświetlenie LED części wspólnych oraz stanowiska do ładowania samochodów elektrycznych na parkingu naziemnym
+                                </p>
+                                <p>
                                     Planowany termin oddania inwestycji to II kw. 2025r.
                                 </p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
+                            <div class="w-100 h-100 " data-aos="fade">
+                                <img class="img-fluid rounded" src="{{ asset('img/opis_inwestycji_hero.webp') }}" alt="" width="555" height="629" loading="eager">
                             </div>
                         </div>
                     </div>
@@ -152,24 +148,23 @@
                 </div>
             </section>
 
-            <section class="s2">
+            <section class="s2 mb-130-lg">
                 <div class="container">
-                    <div class="row row-gap-4 align-items-center">
-
-                        <div class="col-12 col-md-6 col-lg-5">
-                            <div style="--translate-x: 0;"
-                                class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
+                    <div class="row row-gap-4">
+                        <div class="col-12 col-lg-4 ">
+                            <div style="--translate-x: 0;" class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
-                                    <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168"
-                                        height="168" loading="lazy" decoding="async" data-aos="fade">
+                                    <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168" height="168" loading="lazy" decoding="async" data-aos="fade" class="">
                                 </div>
                                 <h2 class="fw-bold text-center text-uppercase">
-                                    <span data-aos="fade-up" data-aos-delay="200">
-                                        Wykorzystanie przestrzeni
+                                    <span data-aos="fade-up" data-aos-delay="200" class="">
+                                        Wykorzystanie<br>
+                                        przestrzeni
                                     </span>
+        
                                 </h2>
                             </div>
-                            <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
+                            <div class="text-pretty mt-4 mt-md-40 " data-aos="fade">
                                 <p>
                                     Położyliśmy nacisk na optymalne wykorzystanie przestrzeni przy zachowaniu:<br>
                                     - funkcjonalności pomieszczeń,<br>
@@ -188,12 +183,44 @@
                                     poziomie
                                     parteru, przewidziano kolejne 11 miejsc parkingowych oraz stojaki na rowery.
                                 </p>
+        
                             </div>
                         </div>
-                        <div class="col-12 col-md-6 offset-lg-1">
-                            <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded" src="{{ asset('img/na-skraju/s2.jpg') }}" alt=""
-                                    width="555" height="699" loading="lazy" decoding="async">
+                        <div class="col-12 col-lg-8 position-relative">
+                            <div data-aos="fade" class="">
+                                <img class="img-fluid rounded" src="{{ asset('img/o_inwestycji_s3.webp') }}" alt="" width="906" height="492" loading="lazy" decoding="async">
+                            </div>
+                            <div class="position-absolute-lg translate-middle-y-lg top-50 w-calc-lg">
+                                <div class="row">
+                                    <div class="col-12 col-xl-10 offset-xl-1 " data-aos="fade-up">
+                                        <div class="bg-white p-3 px-xl-40">
+                                            <div class="col-12  col-xxl-6 offset-xxl-3">
+                                                <p class="text-center text-pretty mb-20">Położyliśmy nacisk na optymalne wykorzystanie przestrzeni przy zachowaniu:</p>
+                                            </div>
+        
+                                            <div class="row row-gap-3 justify-content-center">
+                                                <div class="col-6 col-sm-4">
+                                                    <div class="bg-white icon-shadow mx-auto rounded-circle d-flex align-items-center justify-content-center" style="width: 87px; height: 87px;">
+                                                        <img src="{{ asset('img/circle_plans.svg') }}" width="42" height="42" alt="" loading="lazy" decoding="async" class="img-fluid">
+                                                    </div>
+                                                    <p class="text-secondary text-center mt-3 mt-lg-30">Funkcjonalności<br> pomieszczeń</p>
+                                                </div>
+                                                <div class="col-6 col-sm-4">
+                                                    <div class="bg-white icon-shadow mx-auto rounded-circle d-flex align-items-center justify-content-center" style="width: 87px; height: 87px;">
+                                                        <img src="{{ asset('img/circle_living_room.svg') }}" width="42" height="42" alt="" loading="lazy" decoding="async" class="img-fluid">
+                                                    </div>
+                                                    <p class="text-secondary text-center mt-3 mt-lg-30">Różnorodności<br> aranżacyjnych<br> rozwiązań</p>
+                                                </div>
+                                                <div class="col-6 col-sm-4">
+                                                    <div class="bg-white icon-shadow mx-auto rounded-circle d-flex align-items-center justify-content-center" style="width: 87px; height: 87px;">
+                                                        <img src="{{ asset('img/circle_area.svg') }}" width="42" height="42" alt="" loading="lazy" decoding="async" class="img-fluid">
+                                                    </div>
+                                                    <p class="text-secondary text-center mt-3 mt-lg-30">Dużej wygody<br> użytkowania</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -386,52 +413,73 @@
                 </div>
             </section>
 
+    
+
             <section class="s7">
                 <div class="container">
-                    <div class="row row-gap-4 align-items-center">
-                        <div class="col-12 col-md-6 col-lg-5 order-last order-md-0 ">
-                            <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded" src="{{ asset('img/na-skraju/s7.jpg') }}" alt=""
-                                    width="672" height="448" loading="lazy" decoding="async">
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
-                            <div style="--translate-x: 0;"
-                                class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
+                    <div class="row row-gap-4">
+                        <div class="col-12 col-md-10 col-xl-8 offset-md-1 offset-xl-2">
+                            <div style="--translate-x: 0;" class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
-                                    <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168"
-                                        height="168" loading="lazy" decoding="async" data-aos="fade">
+                                    <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168" height="168" loading="lazy" decoding="async" data-aos="fade" class="">
                                 </div>
                                 <h2 class="fw-bold text-center text-uppercase">
-                                    <span data-aos="fade-up" data-aos-delay="200">
-                                        Bogata infrastruktura
+                                    <span data-aos="fade-up" data-aos-delay="200" class="">
+                                        Bogata <br>
+                                        infrastruktura
                                     </span>
-
+        
                                 </h2>
                             </div>
-                            <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
-                                <p>
-                                    Mieszkańcy w bliskim otoczeniu inwestycji znajdą liczne sklepy, restauracje, kawiarnie,
-                                    ośrodki medyczne oraz centra handlowe, takie jak Galeria Gawra i Centrum Handlowe Piast.
-                                    Okolica „Na Skraju” oferuje również bogatą infrastrukturę oświatową z licznymi żłobkami,
-                                    przedszkolami i szkołą podstawową.
-                                </p>
-
-                                <p>
-                                    W niedalekiej okolicy znajduje się Ośrodek Sportu i Rekreacji z dostępem do pływalni i
-                                    boisk
-                                    oraz hali sportowej. Kolejny ciekawy punkt na mapie Ursusa to znany w całej okolicy klub
-                                    tenisowy - Tenes Club. Dla entuzjastów wodnych szaleństw idealnym miejscem do
-                                    odwiedzenia
-                                    będzie popularna Pływalnia Albatros.
-                                </p>
+                            <div class="row  mt-4 mt-md-40">
+                                <div class="col-12 col-sm-6">
+                                    <div class="text-pretty " data-aos="fade">
+                                        <p>
+                                            Mieszkańcy w bliskim otoczeniu inwestycji znajdą liczne sklepy, restauracje, kawiarnie, ośrodki medyczne oraz centra handlowe, takie jak Galeria Gawra i Centrum Handlowe Piast.
+                                        </p>
+                                        <p>
+                                            Okolica „Na Skraju” oferuje również bogatą infrastrukturę oświatową z licznymi żłobkami, przedszkolami i szkołą podstawową.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="text-pretty " data-aos="fade">
+                                        <p>
+                                            W niedalekiej okolicy znajduje się Ośrodek Sportu i Rekreacji z dostępem do pływalni i boisk oraz hali sportowej. Kolejny ciekawy punkt na mapie Ursusa to znany w całej okolicy klub tenisowy - Tenes Club.
+                                        </p>
+                                        <p>
+                                            Dla entuzjastów wodnych szaleństw idealnym miejscem do odwiedzenia będzie popularna Pływalnia Albatros.
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
-
+        
+                        </div>
+                    </div>
+                    <div class="row row-gap-4 mt-4 mt-md-50">
+                        <div class="col-6 col-md-3">
+                            <div data-aos="fade" class="">
+                                <img class="w-100 h-100 object-fit-cover" src="{{ asset('img/o_inwestycji_s8_1.webp') }}" alt="" width="672" height="448" loading="lazy" decoding="async">
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="mt-md-3 mt-lg-30 " data-aos="fade">
+                                <img class="w-100 h-100 object-fit-cover" src="{{ asset('img/o_inwestycji_s8_2.webp') }}" alt="" width="672" height="448" loading="lazy" decoding="async">
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div data-aos="fade" class="">
+                                <img class="w-100 h-100 object-fit-cover" src="{{ asset('img/o_inwestycji_s8_3.webp') }}" alt="" width="672" height="448" loading="lazy" decoding="async">
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="mt-md-3 mt-lg-30 " data-aos="fade">
+                                <img class="w-100 h-100 object-fit-cover" src="{{ asset('img/o_inwestycji_s8_4.webp') }}" alt="" width="672" height="448" loading="lazy" decoding="async">
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
-
 
 
             <section class="section-localization mt-50" id="lokalizacja">
