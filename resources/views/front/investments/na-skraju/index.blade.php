@@ -427,6 +427,234 @@
                     </div>
                 </div>
             </section>
+            <section class="s9">
+                <div class="container">
+                    <div class="row row-gap-4">
+                        <div class="col-12 col-md-6 col-lg-5">
+                            <div style="--translate-x: -25%;" class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
+                                <div class="position-absolute top-50 start-50 translate-middle z-2">
+                                    <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168" height="168" loading="lazy" decoding="async" data-aos="fade">
+                                </div>
+                                <h2 class="fw-bold text-center text-uppercase">
+                                    <span data-aos="fade-up" data-aos-delay="200">
+                                        Lokalizacja
+                                    </span>
+                                    <span class="fw-900 fs-4 d-block text-center " data-aos="fade-up" data-aos-delay="400">
+                                        osiedla
+                                    </span>
+                                </h2>
+                            </div>
+                            <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
+                                <p>
+                                    Doskonała lokalizacja gwarantuje idealne połączenie z pozostałą częścią miasta, zapewnia bogatą infrastrukturę oraz otoczenie pełne zieleni, tworząc niezwykłą harmonię pomiędzy dostępem do wszystkich udogodnień miejskich, a bliskością natury.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 offset-lg-1">
+                            <div class="ratio ratio-16x9" data-aos="fade">
+                                <div id="map" class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" tabindex="0"><div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(0px, 0px, 0px);"><div class="leaflet-pane leaflet-tile-pane"><div class="leaflet-layer " style="z-index: 1; opacity: 1;"><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 19; transform: translate3d(0px, 0px, 0px) scale(1);"><img alt="" src="https://tile.openstreetmap.org/13/4538/2714.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(58px, -37px, 0px); opacity: 1;"><img alt="" src="https://tile.openstreetmap.org/13/4539/2714.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(314px, -37px, 0px); opacity: 1;"><img alt="" src="https://tile.openstreetmap.org/13/4538/2715.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(58px, 219px, 0px); opacity: 1;"><img alt="" src="https://tile.openstreetmap.org/13/4539/2715.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(314px, 219px, 0px); opacity: 1;"><img alt="" src="https://tile.openstreetmap.org/13/4537/2714.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-198px, -37px, 0px); opacity: 1;"><img alt="" src="https://tile.openstreetmap.org/13/4540/2714.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(570px, -37px, 0px); opacity: 1;"><img alt="" src="https://tile.openstreetmap.org/13/4537/2715.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-198px, 219px, 0px); opacity: 1;"><img alt="" src="https://tile.openstreetmap.org/13/4540/2715.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(570px, 219px, 0px); opacity: 1;"></div></div></div><div class="leaflet-pane leaflet-overlay-pane"></div><div class="leaflet-pane leaflet-shadow-pane"></div><div class="leaflet-pane leaflet-marker-pane"><img src="img/marker.svg" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="Marker" tabindex="0" role="button" style="margin-left: -28px; margin-top: -94px; width: 55px; height: 88px; transform: translate3d(332px, 186px, 0px); z-index: 186;"></div><div class="leaflet-pane leaflet-tooltip-pane"></div><div class="leaflet-pane leaflet-popup-pane"></div><div class="leaflet-proxy leaflet-zoom-animated"></div></div><div class="leaflet-control-container"><div class="leaflet-top leaflet-left"><div class="leaflet-control-zoom leaflet-bar leaflet-control"><a class="leaflet-control-zoom-in" href="#" title="Zoom in" role="button" aria-label="Zoom in" aria-disabled="false"><span aria-hidden="true">+</span></a><a class="leaflet-control-zoom-out" href="#" title="Zoom out" role="button" aria-label="Zoom out" aria-disabled="false"><span aria-hidden="true">−</span></a></div></div><div class="leaflet-top leaflet-right"></div><div class="leaflet-bottom leaflet-left"></div><div class="leaflet-bottom leaflet-right"><div class="leaflet-control-attribution leaflet-control"><a href="https://leafletjs.com" title="A JavaScript library for interactive maps"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8" class="leaflet-attribution-flag"><path fill="#4C7BE1" d="M0 0h12v4H0z"></path><path fill="#FFD500" d="M0 4h12v3H0z"></path><path fill="#E0BC00" d="M0 7h12v1H0z"></path></svg> Leaflet</a> <span aria-hidden="true">|</span> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a></div></div></div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center pt-md-50 mt-30">
+                        <div class="col-12">
+                            <p class="h5 fw-semibold text-secondary mb-3 mb-md-30">Infrastruktura w otoczeniu inwestycji:</p>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-4">
+                            <ul>
+                                <li>
+                                    <div class="d-inline-flex justify-content-between gap-3 w-100">
+                                        <p>
+                                            przystanek autobusowy linii 187, 194, N35:
+                                        </p>
+                                        <p class="text-secondary">
+                                            600m
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="d-inline-flex justify-content-between gap-3 w-100">
+                                        <p>
+                                            przystanek autobusowy linii 716, N85:
+                                        </p>
+                                        <p class="text-secondary">
+                                            750m
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="d-inline-flex justify-content-between gap-3 w-100">
+                                        <p>
+                                            przystanek autobusowy linii 501, 517:
+                                        </p>
+                                        <p class="text-secondary">
+                                            950m
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="d-inline-flex justify-content-between gap-3 w-100">
+                                        <p>
+                                            przystanek autobusowy linii 177:
+                                        </p>
+                                        <p class="text-secondary">
+                                            800m
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="d-inline-flex justify-content-between gap-3 w-100">
+                                        <p>
+                                            stacja kolejowa:
+                                        </p>
+                                        <p class="text-secondary">
+                                            1,5km
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="d-inline-flex justify-content-between gap-3 w-100">
+                                        <p>
+                                            plac zabaw:
+                                        </p>
+                                        <p class="text-secondary">
+                                            350m
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-4">
+                            <ul>
+                                <li>
+                                    <div class="d-inline-flex justify-content-between gap-3 w-100">
+                                        <p>
+                                            tereny sportowe i rekreacyjne:
+                                        </p>
+                                        <p class="text-secondary">
+                                            900m
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="d-inline-flex justify-content-between gap-3 w-100">
+                                        <p>
+                                            park:
+                                        </p>
+                                        <p class="text-secondary">
+                                            1,3km
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="d-inline-flex justify-content-between gap-3 w-100">
+                                        <p>
+                                            centrum handlowe:
+                                        </p>
+                                        <p class="text-secondary">
+                                            850m
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="d-inline-flex justify-content-between gap-3 w-100">
+                                        <p>
+                                            żłobek:
+                                        </p>
+                                        <p class="text-secondary">
+                                            400m
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="d-inline-flex justify-content-between gap-3 w-100">
+                                        <p>
+                                            przedszkole publiczne
+                                        </p>
+                                        <p class="text-secondary">
+                                            800m
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="d-inline-flex justify-content-between gap-3 w-100">
+                                        <p>
+                                            przychodnia:
+                                        </p>
+                                        <p class="text-secondary">
+                                            1,2km
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-4">
+                            <ul>
+                                <li>
+                                    <div class="d-inline-flex justify-content-between gap-3 w-100">
+                                        <p>
+                                            Szkoła podstawowa:
+                                        </p>
+                                        <p class="text-secondary">
+                                            650m
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="d-inline-flex justify-content-between gap-3 w-100">
+                                        <p>
+                                            market spożywczy:
+                                        </p>
+                                        <p class="text-secondary">
+                                            950m
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="d-inline-flex justify-content-between gap-3 w-100">
+                                        <p>
+                                            sklep osiedlowy:
+                                        </p>
+                                        <p class="text-secondary">
+                                            500m
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="d-inline-flex justify-content-between gap-3 w-100">
+                                        <p>
+                                            bazar:
+                                        </p>
+                                        <p class="text-secondary">
+                                            1,3km
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="d-inline-flex justify-content-between gap-3 w-100">
+                                        <p>
+                                            kościół:
+                                        </p>
+                                        <p class="text-secondary">
+                                            900m
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="d-inline-flex justify-content-between gap-3 w-100">
+                                        <p>
+                                            apteka:
+                                        </p>
+                                        <p class="text-secondary">
+                                            950m
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
 
 
