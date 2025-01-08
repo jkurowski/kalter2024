@@ -69,24 +69,26 @@
                 </small>
             </p>
 
-            <p class="h4 mb-1 d-flex flex-wrap align-items-center column-gap-2 ff-secondary">
-                @if($p->price && !$p->highlighted)
-                    <span>@money($p->price)</span>
-                @else
-                    @if($p->promotion_price)
-                        <span>@money($p->promotion_price)</span>
+            @if($p->investment->show_prices)
+                <p class="h4 mb-1 d-flex flex-wrap align-items-center column-gap-2 ff-secondary">
+                    @if($p->price && !$p->highlighted)
+                        <span>@money($p->price)</span>
+                    @else
+                        @if($p->promotion_price)
+                            <span>@money($p->promotion_price)</span>
+                        @endif
+                        @if($p->price)
+                            <span class="text-body-emphasis opacity-50 fs-6 align-middle text-decoration-line-through">@money($p->price)</span>
+                        @endif
                     @endif
-                    @if($p->price)
-                        <span class="text-body-emphasis opacity-50 fs-6 align-middle text-decoration-line-through">@money($p->price)</span>
-                    @endif
-                @endif
-            </p>
+                </p>
 
-            @if($p->promotion_price)
-                @if($p->price_30)
-                    <p class="fs-8 text-black mb-0">
-                        Najniższa cena z ostatnich 30 dni: @money($p->price_30)
-                    </p>
+                @if($p->promotion_price)
+                    @if($p->price_30)
+                        <p class="fs-8 text-black mb-0">
+                            Najniższa cena z ostatnich 30 dni: @money($p->price_30)
+                        </p>
+                    @endif
                 @endif
             @endif
 

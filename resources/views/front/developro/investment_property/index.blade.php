@@ -157,22 +157,24 @@
                             <p class="text-uppercase fw-900 fs-15 ff-secondary mb-0 lh-1">{{$investment->name}}</p>
                             <p class="mb-20"><small>Etap? {{$investment->progress}}</small></p>
                             <p class="text-uppercase fw-bold fs-5 text-success">Dostępny</p>
-                            <p class="h4 mb-1 d-flex flex-wrap align-items-center column-gap-3 ff-secondary">
-                                @if($property->price && !$property->highlighted)
-                                    <span class="fs-24">@money($property->price)</span>
-                                @else
-                                    @if($property->promotion_price)
-                                        <span class="fs-24">@money($property->promotion_price)</span>
+                            @if($investment->show_prices)
+                                <p class="h4 mb-1 d-flex flex-wrap align-items-center column-gap-3 ff-secondary">
+                                    @if($property->price && !$property->highlighted)
+                                        <span class="fs-24">@money($property->price)</span>
+                                    @else
+                                        @if($property->promotion_price)
+                                            <span class="fs-24">@money($property->promotion_price)</span>
+                                        @endif
+                                        @if($property->price)
+                                            <span class="text-body-emphasis opacity-50 fs-6 align-middle text-decoration-line-through">@money($property->price)</span>
+                                        @endif
                                     @endif
-                                    @if($property->price)
-                                        <span class="text-body-emphasis opacity-50 fs-6 align-middle text-decoration-line-through">@money($property->price)</span>
-                                    @endif
-                                @endif
-                            </p>
-                            @if($property->price_30)
-                                <p class="fs-10 text-black mb-0">
-                                    Najniższa cena z ostatnich 30 dni: @money($property->price_30)
                                 </p>
+                                @if($property->price_30)
+                                    <p class="fs-10 text-black mb-0">
+                                        Najniższa cena z ostatnich 30 dni: @money($property->price_30)
+                                    </p>
+                                @endif
                             @endif
                             <div class="mb-50 mt-4">
                                 <table class="text-sm-down-small w-100">
