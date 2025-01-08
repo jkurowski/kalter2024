@@ -70,19 +70,37 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // list/grid switcher
-    const switchers = [...document.querySelectorAll('[data-layout-switcher]')]
-    const layout = document.querySelector('[data-layout]')
-    if (switchers.length > 0) {
+    // const switchers = [...document.querySelectorAll('[data-layout-switcher]')]
+    // const layout = document.querySelector('[data-layout]')
+    // if (switchers.length > 0) {
+    //
+    //     switchers.forEach(switcher => {
+    //         switcher.addEventListener('click', () => {
+    //             const layoutType = switcher.dataset.layoutSwitcher
+    //             layout.dataset.layout = layoutType
+    //             switchers.forEach(s => s.classList.remove('text-opacity-25'))
+    //             switcher.classList.add('text-opacity-25')
+    //         })
+    //     })
+    // }
 
-        switchers.forEach(switcher => {
-            switcher.addEventListener('click', () => {
-                const layoutType = switcher.dataset.layoutSwitcher
-                layout.dataset.layout = layoutType
-                switchers.forEach(s => s.classList.remove('text-opacity-25'))
-                switcher.classList.add('text-opacity-25')
-            })
-        })
-    }
+    const layoutContainer = document.getElementById("layout-container");
+    const listLayoutBtn = document.getElementById("list-layout");
+    const gridLayoutBtn = document.getElementById("grid-layout");
+
+    listLayoutBtn.addEventListener("click", () => {
+        layoutContainer.classList.remove("grid-layout");
+        layoutContainer.classList.add("list-layout");
+        listLayoutBtn.classList.add("active", "opacity-25");
+        gridLayoutBtn.classList.remove("active", "opacity-25");
+    });
+
+    gridLayoutBtn.addEventListener("click", () => {
+        layoutContainer.classList.remove("list-layout");
+        layoutContainer.classList.add("grid-layout");
+        gridLayoutBtn.classList.add("active", "opacity-25");
+        listLayoutBtn.classList.remove("active", "opacity-25");
+    });
 })
 
 

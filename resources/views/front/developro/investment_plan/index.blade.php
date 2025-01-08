@@ -59,8 +59,8 @@
 
         <section>
             <div class="container">
-                <div class="row">
-                    <div class="col-12">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-lg-10">
                         @if($investment->show_properties == 1)
                             @if($investment->plan)
                                 <div id="plan-holder">
@@ -130,6 +130,67 @@
 
         <section>
             <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <ul class="nav justify-content-end" role="tablist">
+                            <li class="nav-item layout-switcher" role="presentation">
+                                <button class="nav-link active opacity-25" id="list-layout" type="button" aria-selected="true">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="34" height="29" viewBox="0 0 34 29">
+                                        <g id="list" opacity="1">
+                                            <g id="Rectangle_441" data-name="Rectangle 441" transform="translate(0 24)" fill="#fff" stroke="currentColor" stroke-width="1">
+                                                <rect width="34" height="5" rx="1" stroke="none" />
+                                                <rect x="0.5" y="0.5" width="33" height="4" rx="0.5" fill="none" />
+                                            </g>
+                                            <g id="Rectangle_442" data-name="Rectangle 442" transform="translate(0 16)" fill="#fff" stroke="currentColor" stroke-width="1">
+                                                <rect width="34" height="5" rx="1" stroke="none" />
+                                                <rect x="0.5" y="0.5" width="33" height="4" rx="0.5" fill="none" />
+                                            </g>
+                                            <g id="Rectangle_443" data-name="Rectangle 443" fill="#fff" stroke="currentColor" stroke-width="1">
+                                                <rect width="34" height="5" rx="1" stroke="none" />
+                                                <rect x="0.5" y="0.5" width="33" height="4" rx="0.5" fill="none" />
+                                            </g>
+                                            <g id="Rectangle_444" data-name="Rectangle 444" transform="translate(0 8)" fill="#fff" stroke="currentColor" stroke-width="1">
+                                                <rect width="34" height="5" rx="1" stroke="none" />
+                                                <rect x="0.5" y="0.5" width="33" height="4" rx="0.5" fill="none" />
+                                            </g>
+                                        </g>
+                                    </svg>
+
+                                </button>
+                            </li>
+                            <li class="nav-item layout-switcher" role="presentation">
+                                <button class="nav-link" id="grid-layout" type="button" aria-selected="false">
+                                    <svg id="grid" xmlns="http://www.w3.org/2000/svg" width="34" height="29" viewBox="0 0 34 29">
+                                        <g id="Rectangle_430" data-name="Rectangle 430" fill="#fff" stroke="currentColor" stroke-width="1">
+                                            <rect width="15" height="7" rx="1" stroke="none" />
+                                            <rect x="0.5" y="0.5" width="14" height="6" rx="0.5" fill="none" />
+                                        </g>
+                                        <g id="Rectangle_433" data-name="Rectangle 433" transform="translate(0 11)" fill="#fff" stroke="currentColor" stroke-width="1">
+                                            <rect width="15" height="7" rx="1" stroke="none" />
+                                            <rect x="0.5" y="0.5" width="14" height="6" rx="0.5" fill="none" />
+                                        </g>
+                                        <g id="Rectangle_435" data-name="Rectangle 435" transform="translate(0 22)" fill="#fff" stroke="currentColor" stroke-width="1">
+                                            <rect width="15" height="7" rx="1" stroke="none" />
+                                            <rect x="0.5" y="0.5" width="14" height="6" rx="0.5" fill="none" />
+                                        </g>
+                                        <g id="Rectangle_431" data-name="Rectangle 431" transform="translate(19)" fill="#fff" stroke="currentColor" stroke-width="1">
+                                            <rect width="15" height="7" rx="1" stroke="none" />
+                                            <rect x="0.5" y="0.5" width="14" height="6" rx="0.5" fill="none" />
+                                        </g>
+                                        <g id="Rectangle_432" data-name="Rectangle 432" transform="translate(19 11)" fill="#fff" stroke="currentColor" stroke-width="1">
+                                            <rect width="15" height="7" rx="1" stroke="none" />
+                                            <rect x="0.5" y="0.5" width="14" height="6" rx="0.5" fill="none" />
+                                        </g>
+                                        <g id="Rectangle_434" data-name="Rectangle 434" transform="translate(19 22)" fill="#fff" stroke="currentColor" stroke-width="1">
+                                            <rect width="15" height="7" rx="1" stroke="none" />
+                                            <rect x="0.5" y="0.5" width="14" height="6" rx="0.5" fill="none" />
+                                        </g>
+                                    </svg>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
                 <div class="row mt-30">
                     <div class="col-12">
                         <div class="row row-cols-1 row-gap-4">
