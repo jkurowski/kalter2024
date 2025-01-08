@@ -14206,3 +14206,28 @@ blockquote p {
     border: 0;
     padding: 4px 10px;
 }
+
+.list-layout .layout-item .invest-card-horizontal,
+.grid-layout .layout-item .invest-card-list {
+    display: none !important;
+}
+
+.list-layout .layout-item .invest-card-list,
+.grid-layout .layout-item .invest-card-horizontal {
+    display: flex !important;
+}
+
+.grid-layout {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+@media (max-width: 420px) {
+    .grid-layout {
+        grid-template-columns: 1fr;
+    }
+}
+.list-layout .layout-item {
+    margin-bottom: 1rem;
+}
