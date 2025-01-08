@@ -70,14 +70,24 @@
             </p>
 
             <p class="h4 mb-1 d-flex flex-wrap align-items-center column-gap-2 ff-secondary">
-                <span>611 000 Zł</span>
-                <span class="text-body-emphasis opacity-50 fs-6 align-middle text-decoration-line-through">640 000 Zł</span>
+                @if($p->price && !$p->highlighted)
+                    <span>@money($p->price)</span>
+                @else
+                    @if($p->promotion_price)
+                        <span>@money($p->promotion_price)</span>
+                    @endif
+                    @if($p->price)
+                        <span class="text-body-emphasis opacity-50 fs-6 align-middle text-decoration-line-through">@money($p->price)</span>
+                    @endif
+                @endif
             </p>
 
-            @if($p->price_30)
-                <p class="fs-8 text-black mb-0">
-                    Najniższa cena z ostatnich 30 dni: @money($p->price_30)
-                </p>
+            @if($p->promotion_price)
+                @if($p->price_30)
+                    <p class="fs-8 text-black mb-0">
+                        Najniższa cena z ostatnich 30 dni: @money($p->price_30)
+                    </p>
+                @endif
             @endif
 
             <?php if ($p->status == 3) : ?>
