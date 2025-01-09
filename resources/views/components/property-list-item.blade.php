@@ -45,13 +45,34 @@
             <?php endif; ?>
         </div>
         <div class="position-relative z-2 col-xl-auto">
-            <a class="btn btn-primary btn-with-icon text-nowrap" href="#">
-                Sprawdź
-                <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062"><path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor"></path></svg>
-            </a>
+            @if($p->investment->type == 1)
+                <a class="btn btn-primary btn-with-icon text-nowrap" href="{{ route('developro.building.floor.property', [
+                                                            $p->investment->slug,
+                                                            $p->building,
+                                                            Str::slug($p->building->name),
+                                                            $p->floor,
+                                                            Str::slug($p->floor->name),
+                                                            $p,
+                                                            Str::slug($p->name),
+                                                            number2RoomsName($p->rooms, true),
+                                                            round(floatval($p->area), 2).'-m2'
+                                                        ]) }}">
+                    @endif
+                    @if($p->investment->type == 2)
+                        <a class="btn btn-primary btn-with-icon text-nowrap" href="{{ route('developro.property', [
+                                                            $p->investment->slug,
+                                                            $p->floor,
+                                                            Str::slug($p->floor->name),
+                                                            $p,
+                                                            Str::slug($p->name),
+                                                            number2RoomsName($p->rooms, true),
+                                                            round(floatval($p->area), 2).'-m2'
+                                                        ]) }}">
+                            @endif
+                            Sprawdź
+                            <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062"><path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor"></path></svg>
+                        </a>
         </div>
-        <a class="stretched-link d-contents" href="#">
-        </a>
     </div>
 
     <!-- Grid layout content -->
@@ -86,7 +107,7 @@
                 @if($p->promotion_price)
                     @if($p->price_30)
                         <p class="fs-8 text-black mb-0">
-                            Najniższa cena z ostatnich 30 dni: @money($p->price_30)
+                            @lang('website.label_cena_30') @money($p->price_30)
                         </p>
                     @endif
                 @endif
@@ -105,27 +126,50 @@
                     <tbody>
                     <tr>
                         <td class="td-with-icon"><img src="{{ asset('img/tile.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="12" height="12"></td>
-                        <td>Piętro</td>
+                        <td>@lang('website.label_pietro')</td>
                         <td class="text-end">{{ $p->floor->name }}</td>
                     </tr>
                     <tr>
                         <td class="td-with-icon"><img src="{{ asset('img/blueprint.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="12" height="12"></td>
-                        <td>Metraż</td>
+                        <td>@lang('website.label_metraz')</td>
                         <td class="text-end">{{ $p->area }} m<sup>2</sup></td>
                     </tr>
                     <tr>
                         <td class="td-with-icon"><img src="{{ asset('img/rooms.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="12" height="12"></td>
-                        <td>Liczba Pokoi</td>
+                        <td>@lang('website.label_liczba_pokoi')</td>
                         <td class="text-end">{{ $p->rooms }}</td>
                     </tr>
                     </tbody>
                 </table>
             </div>
             <div class="position-relative z-2">
-                <a class="btn btn-primary btn-with-icon text-nowrap" href="#">
-                    Sprawdź
-                    <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062"><path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor"></path></svg>
-                </a>
+                @if($p->investment->type == 1)
+                    <a class="btn btn-primary btn-with-icon text-nowrap" href="{{ route('developro.building.floor.property', [
+                                                            $p->investment->slug,
+                                                            $p->building,
+                                                            Str::slug($p->building->name),
+                                                            $p->floor,
+                                                            Str::slug($p->floor->name),
+                                                            $p,
+                                                            Str::slug($p->name),
+                                                            number2RoomsName($p->rooms, true),
+                                                            round(floatval($p->area), 2).'-m2'
+                                                        ]) }}">
+                        @endif
+                        @if($p->investment->type == 2)
+                            <a class="btn btn-primary btn-with-icon text-nowrap" href="{{ route('developro.property', [
+                                                            $p->investment->slug,
+                                                            $p->floor,
+                                                            Str::slug($p->floor->name),
+                                                            $p,
+                                                            Str::slug($p->name),
+                                                            number2RoomsName($p->rooms, true),
+                                                            round(floatval($p->area), 2).'-m2'
+                                                        ]) }}">
+                                @endif
+                                @lang('website.button_sprawdz')
+                                <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062"><path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor"></path></svg>
+                            </a>
             </div>
         </div>
 
@@ -140,6 +184,5 @@
                 </picture>
             @endif
         </div>
-        <a class="stretched-link" href="#"></a>
     </div>
 </div>
