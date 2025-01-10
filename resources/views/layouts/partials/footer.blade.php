@@ -13,11 +13,15 @@
             <div class="col-12 col-md-6 col-lg-3">
                 <p class="text-uppercase text-secondary mb-md-4 fw-semibold fs-6">Oferta</p>
                 <ul class="list-unstyled">
-                    @foreach ($current_investment as $p)
-                        <li class='mb-2'>
-                            <a class='text-uppercase' href="{{ route('developro.show', $p->slug) }}">{{ $p->name }}</a>
-                        </li>
-                    @endforeach
+                    <li class="mb-2">
+                        <a href="{{ route('developro.index') }}">Lokale mieszkalne</a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="{{ route('developro.index') }}">Lokale usługowe</a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="{{ route('developro.index') }}">Gotowe do odbioru</a>
+                    </li>
                 </ul>
             </div>
             <div class="col-12 col-md-6 col-lg-3">

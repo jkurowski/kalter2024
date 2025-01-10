@@ -112,6 +112,8 @@ Route::middleware(['restrictIp'])->group(function () {
             Route::get('/unsubscribe/{hash}', 'Property\NotificationController@unsubscribe')->name('properties.notifications.unsubscribe');
 
             Route::get('/oferta-mieszkan', 'IndexController@index')->name('index');
+            Route::get('/wyniki-wyszukiwania', 'SearchController@index')->name('search.index');
+
             Route::get('/inwestycje-zrealizowane', 'CompletedController@index')->name('completed');
             Route::get('/inwestycje-zrealizowane/{slug}', 'CompletedController@show')->name('completed.city');
 

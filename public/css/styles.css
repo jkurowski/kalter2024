@@ -14231,3 +14231,47 @@ blockquote p {
 .list-layout .layout-item {
     margin-bottom: 1rem;
 }
+
+.investment-list-item {
+
+}
+.investment-list-item .investment-apla {
+    position: absolute;
+    opacity: 0.7;
+    background:rgba(0,0,0,0.6);
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    display:flex;
+    align-items:end
+}
+.investment-list-desc h2 {
+    color: white;
+    opacity: 1;
+    font-size: 27px;
+    margin: 0;
+}
+.investment-list-desc p {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    margin: 0;
+}
+.investment-list-desc span {
+    font-size: 16px;
+    color: white;
+    margin: 0;
+}
+.investment-list-desc {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+}
+.investment-list-noimage {
+    width: 100%;
+    height: 130px;
+    background: #024282;
+}

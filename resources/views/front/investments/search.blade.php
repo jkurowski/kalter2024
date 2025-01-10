@@ -11,11 +11,10 @@
                             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 row-cols-xxl-5 align-items-end">
                                 <div class="col">
                                     <select name="city" id="city" class="form-select">
-                                        <option value="0" selected>Miasto</option>
-                                        <option value="Warszawa">Warszawa</option>
-                                        <option value="Krakow">Krakow</option>
-                                        <option value="Wroclaw">Wroclaw</option>
-                                        <option value="Poznan">Poznan</option>
+                                        <option value="" selected>Miasto</option>
+                                        @foreach($cities as $c)
+                                            <option value="{{ $c->id }}">{{ $c->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="col">
@@ -39,7 +38,7 @@
                                 </div>
                                 <div class="col">
                                     <select name="advanced" id="advanced" class="form-select">
-                                        <option value="0" selected>Zaawansowanie</option>
+                                        <option value="" selected>Zaawansowanie</option>
                                         <option value="1">Przedsprzedaż</option>
                                         <option value="2">Realizacja 25%</option>
                                         <option value="3">Realizacja 50%</option>
@@ -53,7 +52,6 @@
                                         <option value="0" selected>Inwestycja</option>
                                         <option value="1">Na skraju</option>
                                         <option value="2">Słonimska Residence</option>
-
                                     </select>
                                 </div>
                                 <div class="col">
@@ -61,7 +59,6 @@
                                         <option value="0" selected>Status</option>
                                         <option value="1">Dostępny</option>
                                         <option value="2">Niedostępny</option>
-
                                     </select>
                                 </div>
                                 <div class="col">
@@ -91,11 +88,9 @@
                                     </select>
                                 </div>
                                 <div class="col">
-                                    <select name="apartment" id="apartment" class="form-select">
-                                        <option value="0" selected>Lokal Mieszkalny</option>
-                                        <option value="1">A</option>
-                                        <option value="2">B</option>
-
+                                    <select name="type" id="apartment" class="form-select">
+                                        <option value="1" {{ request('type') == 1 ? 'selected' : '' }}>Lokal Mieszkalny</option>
+                                        <option value="2" {{ request('type') == 2 ? 'selected' : '' }}>Lokal użytkowy</option>
                                     </select>
                                 </div>
                             </div>
