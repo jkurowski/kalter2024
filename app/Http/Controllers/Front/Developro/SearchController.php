@@ -22,13 +22,27 @@ class SearchController extends Controller
     {
         $page = Page::find($this->pageId);
 
-        // Extract query parameters
+// Extract query parameters with default values
         $filters = $request->only([
             'city', 'rooms', 'area', 'advanced', 'invest', 'status',
             'kitchen', 'garden', 'price', 'type'
         ]);
 
-        // Filter Investments
+// Provide default values for missing filters
+        $filters = array_merge([
+            'city' => null,
+            'rooms' => null,
+            'area' => null,
+            'advanced' => null,
+            'invest' => null,
+            'status' => null,
+            'kitchen' => null,
+            'garden' => null,
+            'price' => null,
+            'type' => null,
+        ], $filters);
+
+// Filter Investments
         $investments = Investment::query()
             ->where('status', '=', 1)
             ->when($filters['city'], fn($query, $city) => $query->where('city_id', $city))
@@ -36,7 +50,7 @@ class SearchController extends Controller
             ->when($filters['advanced'], fn($query, $advanced) => $query->where('progress', $advanced))
             ->get();
 
-        // Filter Properties
+// Filter Properties
         $properties = Property::query()
             ->when($filters['rooms'], fn($query, $rooms) => $query->where('rooms', '>=', $rooms))
             ->when($filters['area'], fn($query, $area) => $query->where('area', '>=', $area))
