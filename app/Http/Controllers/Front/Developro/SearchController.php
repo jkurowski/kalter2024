@@ -52,7 +52,7 @@ class SearchController extends Controller
 
 // Filter Properties
         $properties = Property::query()
-            ->when($filters['rooms'], fn($query, $rooms) => $query->where('rooms', '>=', $rooms))
+            ->when($filters['rooms'], fn($query, $rooms) => $query->where('rooms', $rooms))
             ->when($filters['area'], fn($query, $area) => $query->where('area', '>=', $area))
             ->when($filters['price'], fn($query, $price) => $query->where('price', '<=', $price))
             ->when($filters['status'], fn($query, $status) => $query->where('status', $status))

@@ -19,11 +19,12 @@
                                 </div>
                                 <div class="col">
                                     <select name="rooms" id="rooms" class="form-select">
-                                        <option value="0" selected>Pokoje</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
+                                        <option value="" selected>Pokoje</option>
+                                        <option value="1" {{ request('rooms') == 1 ? 'selected' : '' }}>1</option>
+                                        <option value="2" {{ request('rooms') == 2 ? 'selected' : '' }}>2</option>
+                                        <option value="3" {{ request('rooms') == 3 ? 'selected' : '' }}>3</option>
+                                        <option value="4" {{ request('rooms') == 4 ? 'selected' : '' }}>4</option>
+                                        <option value="5" {{ request('rooms') == 5 ? 'selected' : '' }}>4</option>
                                     </select>
                                 </div>
                                 <div class="col">
@@ -56,24 +57,24 @@
                                 </div>
                                 <div class="col">
                                     <select name="status" id="status" class="form-select">
-                                        <option value="0" selected>Status</option>
-                                        <option value="1">Dostępny</option>
-                                        <option value="2">Niedostępny</option>
+                                        <option value="" selected>Status</option>
+                                        <option value="1" {{ request('status') == 1 ? 'selected' : '' }}>Dostępny</option>
+                                        <option value="2" {{ request('status') == 2 ? 'selected' : '' }}>Rezerwacja</option>
                                     </select>
                                 </div>
                                 <div class="col">
                                     <select name="kitchen" id="kitchen" class="form-select">
-                                        <option value="0" selected>Aneks/Kuchnia</option>
-                                        <option value="1">Tak</option>
-                                        <option value="2">Nie</option>
+                                        <option value="" selected>Aneks/Kuchnia</option>
+                                        <option value="1" {{ request('kitchen') == 1 ? 'selected' : '' }}>Tak</option>
+                                        <option value="2" {{ request('kitchen') == 2 ? 'selected' : '' }}>Nie</option>
 
                                     </select>
                                 </div>
                                 <div class="col">
                                     <select name="garden" id="garden" class="form-select">
-                                        <option value="0" selected>Ogródek</option>
-                                        <option value="1">Tak</option>
-                                        <option value="2">Nie</option>
+                                        <option value="" selected>Ogródek</option>
+                                        <option value="1" {{ request('garden') == 1 ? 'selected' : '' }}>Tak</option>
+                                        <option value="2" {{ request('garden') == 2 ? 'selected' : '' }}>Nie</option>
 
                                     </select>
                                 </div>
