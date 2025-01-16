@@ -4,9 +4,14 @@
           @if(isset($full))
           <div class="col-12 col-lg-10">
           @else
-          <div class="col-12 col-lg-10 col-xl-8 offset-lg-1 offset-xl-2">
+          <div class="col-12 col-lg-10 col-xl-8">
           @endif
-              <form action="#properties" class="bg-secondary text-white rounded d-flex row-gap-0 flex-wrap flex-sm-nowrap search-form" autocomplete="off" method="get">
+              <form
+                      action="{{ Route::is(['developro.plan', 'developro.page', 'developro.mockup', 'developro.investment.news', 'developro.investment.news.show', 'developro.show']) ? route('developro.plan', $investment->slug) . '#properties' : '#properties' }}"
+                      class="bg-secondary text-white rounded d-flex row-gap-0 flex-wrap flex-sm-nowrap search-form"
+                      autocomplete="off"
+                      method="get"
+              >
                 <div class="row row-cols-1 row-cols-md-2 @if(!isset($is_floor)) row-cols-lg-4 @else  row-cols-lg-3 @endif row-gap-3 align-items-end px-30 py-3 w-md-100 pb-md-40 pb-20">
                     <p class="col-12 w-100 text-uppercase mb-0 d-none">Wyszukiwarka</p>
                     @if($investment->room_range)

@@ -123,7 +123,7 @@
 
         @include('front.investments.single-investment-search', ['investment' => $investment->floor, 'full' => 1, 'is_floor' => 1])
 
-        <section>
+        <section id="properties">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
