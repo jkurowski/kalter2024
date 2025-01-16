@@ -1,52 +1,48 @@
-<!-- "Dostępne automatycznie od na górze strony, później zarezerwowane i sprzedane, ale tych nie powinno być widać - dopiero jak klient zaznaczy w wyszukiwarce, że chce wszystkie"  -->
-
 <section class="single-investment-search search section-search">
   <div class="container">
-      <div class="row">
+      <div class="row justify-content-center">
+          @if(isset($full))
+          <div class="col-12 col-lg-10">
+          @else
           <div class="col-12 col-lg-10 col-xl-8 offset-lg-1 offset-xl-2">
-              <form action="" class="bg-secondary text-white rounded d-flex row-gap-0 flex-wrap flex-sm-nowrap search-form" autocomplete="off">
-                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 row-gap-3 align-items-end px-30 py-3 w-md-100 pb-md-40 pb-20">
-                    <p class="col-12 w-100 text-uppercase mb-0">Wyszukiwarka</p>
-                    <div class="col">
-                        <select name="city" id="city" class="form-select">
-                            <option value="0" selected>Miasto</option>
-                            <option value="Warszawa">Warszawa</option>
-                            <option value="Krakow">Krakow</option>
-                            <option value="Wroclaw">Wroclaw</option>
-                            <option value="Poznan">Poznan</option>
-                        </select>
-                    </div>
+          @endif
+              <form action="#properties" class="bg-secondary text-white rounded d-flex row-gap-0 flex-wrap flex-sm-nowrap search-form" autocomplete="off" method="get">
+                <div class="row row-cols-1 row-cols-md-2 @if(!isset($is_floor)) row-cols-lg-4 @else  row-cols-lg-3 @endif row-gap-3 align-items-end px-30 py-3 w-md-100 pb-md-40 pb-20">
+                    <p class="col-12 w-100 text-uppercase mb-0 d-none">Wyszukiwarka</p>
+                    @if($investment->room_range)
+                        @php $rooms = explode(',', $investment->room_range) @endphp
                     <div class="col">
                         <select name="rooms" id="rooms" class="form-select">
-                            <option value="0" selected>Pokoje</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
+                            <option value="">Pokoje</option>
+                            @foreach($rooms as $room)
+                                <option value="{{ $room }}" @if(request()->input('rooms') == $room) selected @endif>{{ $room }}</option>
+                            @endforeach
                         </select>
                     </div>
+                    @endif
                     <div class="col">
                         <select name="area" id="area" class="form-select">
-                            <option value="0" selected>Powierzchnia</option>
-                            <option value="1">30-50 m<sup>2</sup></option>
-                            <option value="2">51-70 m<sup>2</sup></option>
-                            <option value="3">71-90 m<sup>2</sup></option>
-                            <option value="4">91-110 m<sup>2</sup></option>
-                            <option value="5">> 110 m<sup>2</sup></option>
+                            <option value="">Powierzchnia</option>
+                            {!! area2Select($investment->area_range) !!}
                         </select>
                     </div>
+
+                    @if(!isset($is_floor))
                     <div class="col">
-                       
-                            <select name="advanced" id="advanced" class="form-select">
-                                <option value="0" selected>Zaawansowanie</option>
-                                <option value="1">Przedsprzedaż</option>
-                                <option value="2">Realizacja 25%</option>
-                                <option value="3">Realizacja 50%</option>
-                                <option value="4">Realizacja 75%</option>
-                                <option value="5">Realizacja 100%</option>
-                                <option value="6">Gotowe do odbioru</option>
-                            </select>
-                        
+                        <select name="floor" id="floor" class="form-select">
+                            <option value="">Piętro</option>
+                            {!! floorToSelect($investment->floors) !!}
+                        </select>
+                    </div>
+                    @endif
+
+                    <div class="col">
+                        <select name="status" id="status" class="form-select">
+                            <option value="">Status</option>
+                            <option value="1" @if(request()->input('status') == 1) selected @endif>Na sprzedaż</option>
+                            <option value="2" @if(request()->input('status') == 2) selected @endif>Rezerwacja</option>
+                            <option value="3" @if(request()->input('status') == 3) selected @endif>Sprzedane</option>
+                        </select>
                     </div>
                 </div>
                   <div class="flex-fill">

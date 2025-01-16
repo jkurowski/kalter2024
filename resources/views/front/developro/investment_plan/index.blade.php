@@ -8,7 +8,7 @@
 @section('content')
     <main>
         <section class="position-relative page-hero-section">
-            <div class="position-absolute top-0 start-0 w-100 h-100 with-image-overlay-gradient ">
+            <div class="position-absolute top-0 start-0 w-100 h-100">
                 @if($investment->file_header)
                     <img src="{{ asset('investment/header/'.$investment->file_header) }}" alt="" width="1920" height="386" loading="eager" decoding="async" class="w-100 h-100 object-fit-cover">
                     <div style="position: absolute;opacity: 0.7;width: 100%;height: 100%;top: 0;left: 0;background-image: linear-gradient(#000, rgba(255, 255, 255, 0) {{ $investment->gradient_header ?: '100%' }});"></div>
@@ -45,7 +45,7 @@
             </div>
         </section>
 
-        @include('front.developro.investment_shared.filtr', [$investment, $uniqueRooms, 'area_range' => $investment->area_range])
+        @include('front.investments.single-investment-search', ['investment' => $investment])
 
         <section class="sticky-top py-0 bg-white sticky-top-menu">
             <div class="container">
@@ -128,7 +128,9 @@
             </div>
         </section>
 
-        <section>
+        @include('front.investments.single-investment-search', ['investment' => $investment, 'full' => 1])
+
+        <section id="properties">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
@@ -202,7 +204,6 @@
                 </div>
             </div>
         </section>
-        <!--  -->
     </main>
 @endsection
 @push('scripts')
