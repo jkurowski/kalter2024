@@ -28,10 +28,10 @@
                                     @foreach($current_investment as $p)
                                         <li><a class="dropdown-item text-uppercase" href="{{ route('developro.show', $p->slug) }}">{{ $p->name }}</a></li>
                                     @endforeach
+
+                                        <li><a class="dropdown-item text-uppercase" href="/pl/wyniki-wyszukiwania?type=1">Lokale mieszkalne</a></li>
+                                        <li><a class="dropdown-item text-uppercase" href="/pl/wyniki-wyszukiwania?type=2">Lokale usługowe</a></li>
                                 </ul>
-                            </li>
-                            <li class="nav-item dropdown d-none">
-                                <a class="nav-link" href="/lokale-uslugowe.php">Lokale usługowe</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-hover" href="#" data-bs-hover="dropdown" aria-expanded="false">
