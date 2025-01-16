@@ -25,12 +25,8 @@
                                     </svg>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    @foreach($current_investment as $p)
-                                        <li><a class="dropdown-item text-uppercase" href="{{ route('developro.show', $p->slug) }}">{{ $p->name }}</a></li>
-                                    @endforeach
-
-                                        <li><a class="dropdown-item text-uppercase" href="/pl/wyniki-wyszukiwania?type=1">Lokale mieszkalne</a></li>
-                                        <li><a class="dropdown-item text-uppercase" href="/pl/wyniki-wyszukiwania?type=2">Lokale usługowe</a></li>
+                                    <li><a class="dropdown-item text-uppercase" href="/pl/wyniki-wyszukiwania?type=1">Lokale mieszkalne</a></li>
+                                    <li><a class="dropdown-item text-uppercase" href="/pl/wyniki-wyszukiwania?type=2">Lokale usługowe</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
