@@ -12,13 +12,26 @@ if (!function_exists('floorToSelect')) {
     {
         $html = '';
 
+        // Sort floors by 'position'
+        $floors = $floors->sortBy('position');
+
         foreach ($floors as $floor) {
-            $value = htmlspecialchars($floor->$valueField);
-            $label = htmlspecialchars($floor->$labelField);
-            $selected = request()->input('floor') == $value ? ' selected' : '';
-            $html .= '<option value="' . $value . '"' . $selected . '>';
-            $html .= $label;
-            $html .= '</option>';
+            // Filter by type
+            if ($floor->type == 1) {
+                $value = htmlspecialchars($floor->$valueField);
+                $label = htmlspecialchars($floor->$labelField);
+
+                // Check if building_id is not 0
+                if ($floor->building_id != 0 && isset($floor->building)) {
+                    $buildingName = htmlspecialchars($floor->building->name);
+                    $label = $buildingName . ' - ' . $label;
+                }
+
+                $selected = request()->input('floor') == $value ? ' selected' : '';
+                $html .= '<option value="' . $value . '"' . $selected . '>';
+                $html .= $label;
+                $html .= '</option>';
+            }
         }
 
         return $html;

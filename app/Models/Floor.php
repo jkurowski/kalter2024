@@ -72,6 +72,11 @@ class Floor extends Model
         return $prev->first();
     }
 
+    public function building()
+    {
+        return $this->belongsTo(Building::class);
+    }
+
     /**
      * The "boot" method of the model.
      *
