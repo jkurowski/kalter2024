@@ -33,9 +33,15 @@ class InvestmentPlanController extends Controller
                     if ($request->input('rooms')) {
                         $query->where('rooms', $request->input('rooms'));
                     }
+
                     if ($request->input('status')) {
                         $query->where('status', $request->input('status'));
                     }
+
+                    if ($request->input('floor')) {
+                        $query->where('floor_id', $request->input('floor'));
+                    }
+
                     if ($request->input('area')) {
                         $area_param = explode('-', $request->input('area'));
                         $min = $area_param[0];
