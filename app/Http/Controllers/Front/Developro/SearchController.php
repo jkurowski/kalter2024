@@ -53,7 +53,16 @@ class SearchController extends Controller
 // Filter Properties
         $properties = Property::query()
             ->when($filters['rooms'], fn($query, $rooms) => $query->where('rooms', $rooms))
-            ->when($filters['area'], fn($query, $area) => $query->where('area', '>=', $area))
+            ->when($filters['area'], function ($query, $area) {
+                // Check if area contains a range (e.g., "30-50")
+                if (strpos($area, '-') !== false) {
+                    [$min, $max] = explode('-', $area);
+                    $query->whereBetween('area', [(float) $min, (float) $max]);
+                } else {
+                    // If not a range, use it as a minimum value
+                    $query->where('area', '>=', (float) $area);
+                }
+            })
             ->when($filters['price'], fn($query, $price) => $query->where('price', '<=', $price))
             ->when($filters['status'], fn($query, $status) => $query->where('status', $status))
             ->when($filters['kitchen'], fn($query, $kitchen) => $query->where('kitchen', $kitchen))

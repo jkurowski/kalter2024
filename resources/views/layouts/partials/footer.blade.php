@@ -17,10 +17,10 @@
                         <a href="{{ route('developro.index') }}">Lokale mieszkalne</a>
                     </li>
                     <li class="mb-2">
-                        <a href="{{ route('developro.index') }}">Lokale usługowe</a>
+                        <a href="/pl/wyniki-wyszukiwania?type=2">Lokale usługowe</a>
                     </li>
                     <li class="mb-2">
-                        <a href="{{ route('developro.index') }}">Gotowe do odbioru</a>
+                        <a href="/pl/wyniki-wyszukiwania?city=&rooms=&area=&advanced=6&invest=&status=1&kitchen=&garden=&price=&type=1">Gotowe do odbioru</a>
                     </li>
                 </ul>
             </div>

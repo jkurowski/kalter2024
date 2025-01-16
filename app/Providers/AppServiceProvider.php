@@ -170,7 +170,7 @@ class AppServiceProvider extends ServiceProvider
         View::share('rules', RodoRules::orderBy('sort')->whereActive(1)->get());
         View::share('cities', City::where('active', 1)->orderBy('sort')->get());
         View::share('current_investment', Investment::where('status', 1)->with('city')->get([
-            'slug', 'name', 'file_thumb', 'file_logo', 'date_end', 'city_id', 'gradient_thumb', 'entry_content'
+            'id', 'slug', 'name', 'file_thumb', 'file_logo', 'date_end', 'city_id', 'gradient_thumb', 'entry_content'
         ]));
 
 //        view()->composer('*', function ($view) {

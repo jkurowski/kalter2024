@@ -10,49 +10,50 @@
                         <div class="col-12">
                             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 row-cols-xxl-5 align-items-end">
                                 <div class="col">
-                                    <select name="city" id="city" class="form-select">
-                                        <option value="" selected>Miasto</option>
+                                    <select name="city" id="city-select" class="form-select">
+                                        <option value="">Miasto</option>
                                         @foreach($cities as $c)
-                                            <option value="{{ $c->id }}">{{ $c->name }}</option>
+                                            <option value="{{ $c->id }}" {{ request('city') == $c->id ? 'selected' : '' }}>{{ $c->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="col">
                                     <select name="rooms" id="rooms" class="form-select">
-                                        <option value="" selected>Pokoje</option>
+                                        <option value="">Pokoje</option>
                                         <option value="1" {{ request('rooms') == 1 ? 'selected' : '' }}>1</option>
                                         <option value="2" {{ request('rooms') == 2 ? 'selected' : '' }}>2</option>
                                         <option value="3" {{ request('rooms') == 3 ? 'selected' : '' }}>3</option>
                                         <option value="4" {{ request('rooms') == 4 ? 'selected' : '' }}>4</option>
-                                        <option value="5" {{ request('rooms') == 5 ? 'selected' : '' }}>4</option>
+                                        <option value="5" {{ request('rooms') == 5 ? 'selected' : '' }}>5</option>
                                     </select>
                                 </div>
                                 <div class="col">
                                     <select name="area" id="area" class="form-select">
-                                        <option value="0" selected>Powierzchnia</option>
-                                        <option value="1">30-50 m<sup>2</sup></option>
-                                        <option value="2">51-70 m<sup>2</sup></option>
-                                        <option value="3">71-90 m<sup>2</sup></option>
-                                        <option value="4">91-110 m<sup>2</sup></option>
-                                        <option value="5">> 110 m<sup>2</sup></option>
+                                        <option value="">Powierzchnia</option>
+                                        <option value="30-50" {{ request('area') == '30-50' ? 'selected' : '' }}>30-50 m²</option>
+                                        <option value="51-70" {{ request('area') == '51-70' ? 'selected' : '' }}>51-70 m²</option>
+                                        <option value="71-90" {{ request('area') == '71-90' ? 'selected' : '' }}>71-90 m²</option>
+                                        <option value="91-110" {{ request('area') == '91-110' ? 'selected' : '' }}>91-110 m²</option>
+                                        <option value="111-300" {{ request('area') == '111-300' ? 'selected' : '' }}>> 110 m²</option>
                                     </select>
                                 </div>
                                 <div class="col">
                                     <select name="advanced" id="advanced" class="form-select">
-                                        <option value="" selected>Zaawansowanie</option>
-                                        <option value="1">Przedsprzedaż</option>
-                                        <option value="2">Realizacja 25%</option>
-                                        <option value="3">Realizacja 50%</option>
-                                        <option value="4">Realizacja 75%</option>
-                                        <option value="5">Realizacja 100%</option>
-                                        <option value="6">Gotowe do odbioru</option>
+                                        <option value="">Zaawansowanie</option>
+                                        <option value="1" {{ request('advanced') == 1 ? 'selected' : '' }}>Przedsprzedaż</option>
+                                        <option value="2" {{ request('advanced') == 2 ? 'selected' : '' }}>Realizacja 25%</option>
+                                        <option value="3" {{ request('advanced') == 3 ? 'selected' : '' }}>Realizacja 50%</option>
+                                        <option value="4" {{ request('advanced') == 4 ? 'selected' : '' }}>Realizacja 75%</option>
+                                        <option value="5" {{ request('advanced') == 5 ? 'selected' : '' }}>Realizacja 100%</option>
+                                        <option value="6" {{ request('advanced') == 6 ? 'selected' : '' }}>Gotowe do odbioru</option>
                                     </select>
                                 </div>
                                 <div class="col">
-                                    <select name="invest" id="invest" class="form-select">
-                                        <option value="0" selected>Inwestycja</option>
-                                        <option value="1">Na skraju</option>
-                                        <option value="2">Słonimska Residence</option>
+                                    <select name="invest" id="invest-select" class="form-select">
+                                        <option value="">Inwestycja</option>
+                                        @foreach($current_investment as $p)
+                                            <option value="{{ $p->id }}" {{ request('invest') == $p->id ? 'selected' : '' }} data-city="{{ $p->city ? $p->city->id : '' }}">{{ $p->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="col">
@@ -80,12 +81,12 @@
                                 </div>
                                 <div class="col">
                                     <select name="price" id="price" class="form-select">
-                                        <option value="0" selected>Przedział cenowy</option>
-                                        <option value="1">300-450 tyś. PLN</option>
-                                        <option value="2">450-600 tyś. PLN</option>
-                                        <option value="3">600-800 tyś. PLN</option>
-                                        <option value="4">800-999 tyś. PLN</option>
-                                        <option value="5">powyżej 1,0 mln PLN</option>
+                                        <option value="" selected>Przedział cenowy</option>
+                                        <option value="300000-450000" {{ request('garden') == '300000-450000' ? 'selected' : '' }}>300-450 tyś. PLN</option>
+                                        <option value="450000-600000" {{ request('garden') == '450000-600000' ? 'selected' : '' }}>450-600 tyś. PLN</option>
+                                        <option value="600000-800000" {{ request('garden') == '600000-800000' ? 'selected' : '' }}>600-800 tyś. PLN</option>
+                                        <option value="800000-999000" {{ request('garden') == '800000-999000' ? 'selected' : '' }}>800-999 tyś. PLN</option>
+                                        <option value="1000000-4000000" {{ request('garden') == '1000000-4000000' ? 'selected' : '' }}>powyżej 1,0 mln PLN</option>
                                     </select>
                                 </div>
                                 <div class="col">
@@ -117,3 +118,29 @@
         </div>
     </div>
 </section>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const citySelect = document.getElementById('city-select');
+        const investSelect = document.getElementById('invest-select');
+
+        citySelect.value = "";
+        investSelect.value = "";
+
+        citySelect.addEventListener('change', function() {
+
+            console.log("citySelect.addEventListener.change");
+
+            const selectedCity = citySelect.value;
+            Array.from(investSelect.options).forEach(option => {
+                if (selectedCity === '' || option.getAttribute('data-city') === selectedCity) {
+                    option.style.display = 'block';
+                } else {
+                    option.style.display = 'none';
+                }
+            });
+            if (selectedCity === '') {
+                investSelect.value = '';
+            }
+        });
+    });
+</script>
