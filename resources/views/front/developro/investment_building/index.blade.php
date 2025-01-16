@@ -120,6 +120,36 @@
 
         <section>
             <div class="container">
+                <div id="planNav" class="row">
+                    <div class="col-6 col-sm-4">
+                        @if($prev_building)
+                            <a href="{{route('developro.building', [$investment->slug, $prev_building, 'buildingSlug' => Str::slug($prev_building->name)])}}" class="btn btn-primary  px-3 min-w-max-content flex-fill d-inline-flex align-items-center  gap-1">
+                                <svg class="me-2 me-sm-3 me-md-4" xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062">
+                                    <path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(362.073 -672.938) rotate(180)" fill="currentColor"></path>
+                                </svg>
+                                {{$prev_building->name}}
+                            </a>
+                        @endif
+                    </div>
+
+                    <div class="col-12 col-sm-4 text-center order-first order-sm-0">
+                        <a href="{{route('developro.plan', $investment->slug)}}" class="btn btn-outline-primary" style="--bs-btn-hover-color: var(--bs-white);">Plan inwestycji</a>
+                    </div>
+
+                    <div class="col-6 col-sm-4 text-end">
+                        @if($next_building)
+                            <a href="{{route('developro.building', [$investment->slug, $next_building, 'buildingSlug' => Str::slug($next_building->name)])}}" class="btn btn-primary  px-3 min-w-max-content flex-fill d-inline-flex align-items-center  gap-1">
+                                {{$next_building->name}}
+                                <svg class="ms-2 ms-sm-3 ms-md-4" xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062">
+                                    <path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor"></path>
+                                </svg>
+                            </a>
+                        @endif
+                    </div>
+                </div>
+            </div>
+
+            <div class="container mt-4">
                 <div class="row justify-content-center">
                     <div class="col-12 col-lg-10">
                         @if($investment->show_properties == 1)

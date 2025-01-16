@@ -54,13 +54,15 @@ class InvestmentFloorController extends Controller
         ));
 
         $page = Page::where('id', $this->pageId)->first();
+        $next_floor = $floor->findNext($investment->id, $floor->position, null);
+        $prev_floor = $floor->findPrev($investment->id, $floor->position, null);
 
         return view('front.developro.investment_floor.index', [
             'investment' => $investment_room,
             'properties' => $investment_room->floorRooms,
             'uniqueRooms' => $this->repository->getUniqueRooms($floor->properties()),
-            'next_floor' => $floor->findNext($investment->id, $floor->id, null),
-            'prev_floor' => $floor->findPrev($investment->id, $floor->id, null),
+            'next_floor' => $next_floor,
+            'prev_floor' => $prev_floor,
             'page' => $page
         ]);
     }

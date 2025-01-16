@@ -123,8 +123,8 @@
         const citySelect = document.getElementById('city-select');
         const investSelect = document.getElementById('invest-select');
 
-        citySelect.value = "";
-        investSelect.value = "";
+        //citySelect.value = "";
+        //investSelect.value = "";
 
         citySelect.addEventListener('change', function() {
 
