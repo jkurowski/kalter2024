@@ -427,7 +427,8 @@
                     </div>
                 </div>
             </section>
-            <section class="s9">
+
+            <section id="lokalizacja" class="s9">
                 <div class="container">
                     <div class="row row-gap-4">
                         <div class="col-12 col-md-6 col-lg-5">

@@ -66,7 +66,14 @@ class SearchController extends Controller
             ->when($filters['price'], fn($query, $price) => $query->where('price', '<=', $price))
             ->when($filters['status'], fn($query, $status) => $query->where('status', $status))
             ->when($filters['kitchen'], fn($query, $kitchen) => $query->where('kitchen', $kitchen))
-            ->when($filters['garden'], fn($query, $garden) => $query->where('garden', $garden))
+
+            ->when(filled($filters['garden']) && $filters['garden'] == 1, fn($query) =>
+            $query->whereNotNull('garden_area')->where('garden_area', '!=', '')
+            )
+            ->when(filled($filters['garden']) && $filters['garden'] == 2, fn($query) =>
+            $query->whereNull('garden_area')->orWhere('garden_area', '')
+            )
+
             ->when($filters['type'], fn($query, $type) => $query->where('type', $type))
             ->get();
 

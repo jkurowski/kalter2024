@@ -13,7 +13,7 @@
             <div class="investment-list-desc">
                 <h2>{{ $investment->name }}</h2>
                 <p>{{ $investment->city->name }}</p>
-                <span>{{ $investment->progress }}</span>
+                <span>{!! investmentAdvanced($investment->progress) !!}</span>
             </div>
         </div>
 

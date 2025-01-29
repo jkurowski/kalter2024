@@ -51,7 +51,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-lg-10 offset-lg-1">
-                        @include('front.investments.submenu', ['menuIds' => $investment->menu])
+                        @include('front.investments.submenu', ['menuIds' => $investment->menu, 'activeMenuId' => 6])
                     </div>
                 </div>
             </div>

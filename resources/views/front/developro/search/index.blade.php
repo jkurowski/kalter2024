@@ -39,6 +39,11 @@
     @include('front.investments.search')
     <section>
         <div class="container">
+            <div class="row pb-4">
+                <div class="col-12">
+                    Liczba wyników: {{ $results->sum(fn($result) => $result['properties']->count()) }}
+                </div>
+            </div>
             <div class="row">
                 @foreach ($results as $result)
                     <x-investment-list-item :investment="$result['investment']" :properties="$result['properties']" />

@@ -41,11 +41,12 @@
                             <select name="advanced" id="advanced" class="form-select">
                                 <option value="">Zaawansowanie</option>
                                 <option value="1">Przedsprzedaż</option>
-                                <option value="2">Realizacja 25%</option>
-                                <option value="3">Realizacja 50%</option>
-                                <option value="4">Realizacja 75%</option>
-                                <option value="5">Realizacja 100%</option>
-                                <option value="6">Gotowe do odbioru</option>
+                                <option value="2">Realizacja 20%</option>
+                                <option value="3">Realizacja 40%</option>
+                                <option value="4">Realizacja 60%</option>
+                                <option value="5">Realizacja 80%</option>
+                                <option value="6">Realizacja 100%</option>
+                                <option value="7">Gotowe do odbioru</option>
                             </select>
                         </div>
                     </div>

@@ -226,7 +226,7 @@
                                 <div class="row w-100 form-group">
                                     <div class="container">
                                         <div class="row">
-                                            <div class="col-3">
+                                            <div class="col-4">
                                                 @include('form-elements.html-select', ['label' => 'Pokoje', 'name' => 'rooms', 'selected' => $entry->rooms, 'select' => [
                                                   '1' => '1',
                                                   '2' => '2',
@@ -237,13 +237,13 @@
                                                   ]
                                               ])
                                             </div>
-                                            <div class="col-3">
+                                            <div class="col-4">
                                                 @include('form-elements.input-text', ['label' => 'Powierzchnia', 'name' => 'area', 'value' => $entry->area, 'required' => 1])
                                             </div>
-                                            <div class="col-3">
+                                            <div class="col-4">
                                                 @include('form-elements.input-text', ['label' => 'Powierzchnia (szukana)', 'name' => 'area_search', 'value' => $entry->area_search, 'required' => 1])
                                             </div>
-                                            <div class="col-3">
+                                            <div class="col-4">
                                                 @include('form-elements.html-select-multiple', ['label' => 'Wystawa okienna', 'name' => 'window', 'selected' => multiselect($entry->window), 'select' => [
                                                     '1' => 'Północ',
                                                     '2' => 'Południe',
@@ -255,6 +255,14 @@
                                                     '8' => 'Południowy zachód'
                                                     ]
                                                 ])
+                                            </div>
+                                            <div class="col-4">
+                                                @include('form-elements.html-select', ['label' => 'Rochaj kuchni', 'name' => 'kitchen', 'selected' => $entry->kitchen, 'select' => [
+                                                  '0' => 'Brak',
+                                                  '1' => 'Kuchnia',
+                                                  '2' => 'Aneks kuchenny'
+                                                  ]
+                                              ])
                                             </div>
                                         </div>
                                     </div>

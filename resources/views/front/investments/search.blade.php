@@ -41,11 +41,12 @@
                                     <select name="advanced" id="advanced" class="form-select">
                                         <option value="">Zaawansowanie</option>
                                         <option value="1" {{ request('advanced') == 1 ? 'selected' : '' }}>Przedsprzedaż</option>
-                                        <option value="2" {{ request('advanced') == 2 ? 'selected' : '' }}>Realizacja 25%</option>
-                                        <option value="3" {{ request('advanced') == 3 ? 'selected' : '' }}>Realizacja 50%</option>
-                                        <option value="4" {{ request('advanced') == 4 ? 'selected' : '' }}>Realizacja 75%</option>
-                                        <option value="5" {{ request('advanced') == 5 ? 'selected' : '' }}>Realizacja 100%</option>
-                                        <option value="6" {{ request('advanced') == 6 ? 'selected' : '' }}>Gotowe do odbioru</option>
+                                        <option value="2" {{ request('advanced') == 2 ? 'selected' : '' }}>Realizacja 20%</option>
+                                        <option value="3" {{ request('advanced') == 3 ? 'selected' : '' }}>Realizacja 40%</option>
+                                        <option value="4" {{ request('advanced') == 4 ? 'selected' : '' }}>Realizacja 60%</option>
+                                        <option value="5" {{ request('advanced') == 5 ? 'selected' : '' }}>Realizacja 80%</option>
+                                        <option value="6" {{ request('advanced') == 6 ? 'selected' : '' }}>Realizacja 100%</option>
+                                        <option value="7" {{ request('advanced') == 7 ? 'selected' : '' }}>Gotowe do odbioru</option>
                                     </select>
                                 </div>
                                 <div class="col">
@@ -61,14 +62,14 @@
                                         <option value="" selected>Status</option>
                                         <option value="1" {{ request('status') == 1 ? 'selected' : '' }}>Dostępny</option>
                                         <option value="2" {{ request('status') == 2 ? 'selected' : '' }}>Rezerwacja</option>
+                                        <option value="3" {{ request('status') == 3 ? 'selected' : '' }}>Sprzedane</option>
                                     </select>
                                 </div>
                                 <div class="col">
                                     <select name="kitchen" id="kitchen" class="form-select">
-                                        <option value="" selected>Aneks/Kuchnia</option>
-                                        <option value="1" {{ request('kitchen') == 1 ? 'selected' : '' }}>Tak</option>
-                                        <option value="2" {{ request('kitchen') == 2 ? 'selected' : '' }}>Nie</option>
-
+                                        <option value="" selected>Kuchnia/Aneks</option>
+                                        <option value="1" {{ request('kitchen') == 1 ? 'selected' : '' }}>Kuchnia</option>
+                                        <option value="2" {{ request('kitchen') == 2 ? 'selected' : '' }}>Aneks</option>
                                     </select>
                                 </div>
                                 <div class="col">
@@ -76,7 +77,6 @@
                                         <option value="" selected>Ogródek</option>
                                         <option value="1" {{ request('garden') == 1 ? 'selected' : '' }}>Tak</option>
                                         <option value="2" {{ request('garden') == 2 ? 'selected' : '' }}>Nie</option>
-
                                     </select>
                                 </div>
                                 <div class="col">
