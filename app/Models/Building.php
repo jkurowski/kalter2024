@@ -65,14 +65,14 @@ class Building extends Model
     public function findNext(int $investment, int $id)
     {
         $next = $this->where('investment_id', $investment);
-        $next->where('id', '>', $id);
+        $next->where('id', '>', $id)->where('active', 1);
         return $next->first();
     }
 
     public function findPrev(int $investment, int $id)
     {
         $prev = $this->where('investment_id', $investment);
-        $prev->orderByDesc('id')->where('id', '<', $id);
+        $prev->orderByDesc('id')->where('id', '<', $id)->where('active', 1);
         return $prev->first();
     }
 

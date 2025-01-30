@@ -461,7 +461,6 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const anchor = document.querySelector('.widget3dEstate');
-
             if (anchor) {
                 anchor.classList.add(
                     'btn',
@@ -475,6 +474,7 @@
                     'min-w-max-content',
                     'flex-fill'
                 );
+                anchor.textContent = "Wirtualny Spacer";
             }
         });
     </script>

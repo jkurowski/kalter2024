@@ -68,7 +68,7 @@
                             'file' => $entry->file,
                             'file_preview' => config('images.building_plan.preview_file_path')
                             ])
-                        @include('form-elements.textarea-fullwidth', ['label' => 'Opis', 'name' => 'content', 'value' => $entry->content, 'rows' => 11, 'class' => 'tinymce', 'required' => 1])
+{{--                        @include('form-elements.textarea-fullwidth', ['label' => 'Opis', 'name' => 'content', 'value' => $entry->content, 'rows' => 11, 'class' => 'tinymce', 'required' => 1])--}}
                     </div>
                 </div>
             </div>

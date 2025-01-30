@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-lg-10 offset-lg-1">
-                <form action=""
+                <form action="{{ route('developro.search.index') }}"
                     class="bg-secondary text-white rounded d-flex row-gap-0 flex-wrap flex-sm-nowrap search-form"
                     autocomplete="off">
                     <div class="row row-gap-3 align-items-end px-30 py-3 pb-30">
@@ -82,11 +82,11 @@
                                 <div class="col">
                                     <select name="price" id="price" class="form-select">
                                         <option value="" selected>Przedział cenowy</option>
-                                        <option value="300000-450000" {{ request('garden') == '300000-450000' ? 'selected' : '' }}>300-450 tyś. PLN</option>
-                                        <option value="450000-600000" {{ request('garden') == '450000-600000' ? 'selected' : '' }}>450-600 tyś. PLN</option>
-                                        <option value="600000-800000" {{ request('garden') == '600000-800000' ? 'selected' : '' }}>600-800 tyś. PLN</option>
-                                        <option value="800000-999000" {{ request('garden') == '800000-999000' ? 'selected' : '' }}>800-999 tyś. PLN</option>
-                                        <option value="1000000-4000000" {{ request('garden') == '1000000-4000000' ? 'selected' : '' }}>powyżej 1,0 mln PLN</option>
+                                        <option value="300000-450000" {{ request('price') == '300000-450000' ? 'selected' : '' }}>300-450 tyś. PLN</option>
+                                        <option value="450000-600000" {{ request('price') == '450000-600000' ? 'selected' : '' }}>450-600 tyś. PLN</option>
+                                        <option value="600000-800000" {{ request('price') == '600000-800000' ? 'selected' : '' }}>600-800 tyś. PLN</option>
+                                        <option value="800000-999000" {{ request('price') == '800000-999000' ? 'selected' : '' }}>800-999 tyś. PLN</option>
+                                        <option value="1000000-4000000" {{ request('price') == '1000000-4000000' ? 'selected' : '' }}>powyżej 1,0 mln PLN</option>
                                     </select>
                                 </div>
                                 <div class="col">

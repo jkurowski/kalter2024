@@ -79,13 +79,7 @@
     <div class="col-12">
         <div class="form-check text-start pb-4 pb-md-5">
             <input class="form-check-input validate[required]" type="checkbox" value="" id="terms-check" name="terms">
-            <label class="form-check-label small fw-medium" for="terms-check">
-                Akceptuję
-                <a class="link-hover-primary text-decoration-underline"
-                    href="/polityka-prywatnosci.html">politykę
-                    prywatności.</a>
-                <span class="text-danger">*</span>
-            </label>
+            <label class="form-check-label small fw-medium" for="terms-check">Akceptuję <a class="link-hover-primary text-decoration-underline" href="/pl/polityka-prywatnosci/" target="_blank">politykę prywatności.</a><span class="text-danger">*</span></label>
         </div>
     </div>
     <div class="col-12 text-center text-md-start">

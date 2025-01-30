@@ -152,7 +152,7 @@ class Investment extends Model
      */
     public function buildings(): HasMany
     {
-        return $this->hasMany('App\Models\Building');
+        return $this->hasMany('App\Models\Building')->where('active', 1);
     }
 
     /**
@@ -177,7 +177,7 @@ class Investment extends Model
             'building_id',
             'id',
             'id'
-        );
+        )->where('buildings.active', 1);
     }
 
     /**

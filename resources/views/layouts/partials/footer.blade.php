@@ -8,7 +8,7 @@
                     </a>
                 </div>
                 <p class="text-balance">Gwarantujemy wysoką jakość świadczonych usług, zapewniamy profesjonalną, stałą współpracę z klientem oraz pewność, że powierzone nam zadania znajdują się w rękach fachowców.</p>
-                <p><a class="small link-body-primary text-decoration-underline" href="/polityka-prywatnosci">Polityka prywatności*</a></p>
+                <p><a class="small link-body-primary text-decoration-underline" href="/pl/polityka-prywatnosci" target="_blank">Polityka prywatności*</a></p>
             </div>
             <div class="col-12 col-md-6 col-lg-3">
                 <p class="text-uppercase text-secondary mb-md-4 fw-semibold fs-6">Oferta</p>

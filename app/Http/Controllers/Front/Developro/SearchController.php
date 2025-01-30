@@ -52,6 +52,7 @@ class SearchController extends Controller
 
 // Filter Properties
         $properties = Property::query()
+            ->whereHas('building', fn($query) => $query->where('active', 1))
             ->when($filters['rooms'], fn($query, $rooms) => $query->where('rooms', $rooms))
             ->when($filters['area'], function ($query, $area) {
                 // Check if area contains a range (e.g., "30-50")
@@ -63,7 +64,12 @@ class SearchController extends Controller
                     $query->where('area', '>=', (float) $area);
                 }
             })
-            ->when($filters['price'], fn($query, $price) => $query->where('price', '<=', $price))
+            ->when($filters['price'] ?? null, function ($query, $price) {
+                $range = explode('-', $price);
+                if (count($range) === 2) {
+                    $query->whereBetween('price_search', [$range[0], $range[1]]);
+                }
+            })
             ->when($filters['status'], fn($query, $status) => $query->where('status', $status))
             ->when($filters['kitchen'], fn($query, $kitchen) => $query->where('kitchen', $kitchen))
 
