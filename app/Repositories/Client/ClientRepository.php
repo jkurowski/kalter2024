@@ -105,8 +105,10 @@ class ClientRepository extends BaseRepository implements ClientRepositoryInterfa
     {
         Log::info('Call createClient');
 
+        $utm_array = []; // Initialize as an empty array
+
         if (isset($attributes['cookie']) && is_array($attributes['cookie'])) {
-            $utm_array = array_filter($attributes->cookie());
+            $utm_array = array_filter($attributes->cookie()); // Set only if cookies exist
             unset($utm_array['XSRF-TOKEN'], $utm_array['laravel_session']);
         }
 
@@ -192,12 +194,30 @@ class ClientRepository extends BaseRepository implements ClientRepositoryInterfa
                 $arguments['is_external'] = $attributes['is_external_source'];
             }
 
-            $arguments = array_merge($arguments, ['investment_name' => $attributes['investment_name']], ['property_name' => $attributes['property_name']]);
+            if (isset($attributes['investment_id']) && isset($attributes['investment_name'])) {
+                $arguments = array_merge(
+                    $arguments,
+                    ['investment_id' => $attributes['investment_id']],
+                    ['investment_name' => $attributes['investment_name']]
+                );
+            }
+
+            if (isset($attributes['property_name'])) {
+                $arguments = array_merge($arguments, ['property_name' => $attributes['property_name']]);
+            }
 
             if (!empty($arguments)) {
                 $msg->arguments = json_encode($arguments);
             }
 
+            $msg->save();
+        } else {
+            $msg = ClientMessage::create([
+                'client_id' => $client->id,
+                'message' => 'Klient dodany w systemie',
+                'ip' => '127.0.0.1',
+                'source' => 'Formularz w systemie',
+            ]);
 
             $msg->save();
         }

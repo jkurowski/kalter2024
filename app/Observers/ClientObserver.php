@@ -26,20 +26,16 @@ class ClientObserver
 
         $checkboxes = preg_grep("/rule_([0-9])/i", array_keys($this->request->all()));
 
-
-        
-
         if (!$checkboxes) {
             $checkboxes = ['rule1', 'rule2', 'rule3'];
         }
-
 
         Log::info('Checkbox: ' . print_r($checkboxes, true));
         foreach ($checkboxes as $rule) {
 
             // Get rule_id from request
             $rule_id = preg_replace('/[^0-9]/', '', $rule);
-                $status = $this->request[$rule];
+                $status = $this->request[$rule] ?? 1;
 
             // Get rodo_rule by rule_id
             $rodo_rule = RodoRules::whereId($rule_id)->first();

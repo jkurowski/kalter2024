@@ -410,7 +410,7 @@
                             </div>
                             <p class="fs-5 text-uppercase fw-semibold text-secondary">FORMULARZ KONTAKTOWY</p>
 
-                            @include('components.contact-form', ['page' => $page->title])
+                            @include('components.contact-form', ['pageTitle' => $page->title, 'back' => true])
                         </div>
                     </div>
                 </div>

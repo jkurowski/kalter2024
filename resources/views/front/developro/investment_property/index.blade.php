@@ -155,7 +155,7 @@
                         <div class="text-secondary">
                             <h2 class="mb-0">{{$property->name}}</h2>
                             <p class="text-uppercase fw-900 fs-15 ff-secondary mb-0 lh-1">{{$investment->name}}</p>
-                            <p class="mb-20"><small>Etap? {{$investment->progress}}</small></p>
+                            <p class="mb-20"><small>{{ investmentAdvanced($investment->progress) }}</small></p>
                             <p class="text-uppercase fw-bold fs-5 text-success">Dostępny</p>
                             @if($investment->show_prices)
                                 <p class="h4 mb-1 d-flex flex-wrap align-items-center column-gap-3 ff-secondary">
@@ -229,11 +229,7 @@
                                 </table>
                             </div>
                             <div class="d-flex flex-wrap gap-2">
-                                <a href="#" class="btn btn-primary btn-with-icon px-3 min-w-max-content flex-fill d-inline-flex align-items-center justify-content-center gap-1">
-                                    Zapytaj o ofertę
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062">
-                                        <path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor" />
-                                    </svg>
+                                <a href="#" class="btn btn-primary btn-with-icon px-3 min-w-max-content flex-fill d-inline-flex align-items-center justify-content-center gap-1">Zapytaj o ofertę <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062"><path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor" /></svg>
                                 </a>
 
                                 @if($property->file_pdf)
@@ -302,6 +298,10 @@
             </div>
         </section>
 
+        <div id="kontakt">
+            @include('layouts.partials.cta', ['pageTitle' => $property->name, 'propertyId' => $property->id, 'investmentName' => $investment->name, 'investmentId' => $investment->id, 'back' => true, 'sectionTitle' => $property->name, 'sectionSubTitle' => 'Wyślij zapytanie' ])
+        </div>
+
         @if($property->text)
             <section>
                 <div class="container">
@@ -313,7 +313,7 @@
                                 </div>
                                 <h2 class="fw-bold text-center text-uppercase">
                                     <span data-aos="fade-up" data-aos-delay="200">Opis mieszkania</span>
-                                    <span class="fw-900 fs-4 d-block text-center " data-aos="fade-up" data-aos-delay="400">Na skraju</span>
+                                    <span class="fw-900 fs-4 d-block text-center " data-aos="fade-up" data-aos-delay="400">{{ $investment->name }}</span>
                                 </h2>
                             </div>
                         </div>
@@ -474,7 +474,7 @@
                     'min-w-max-content',
                     'flex-fill'
                 );
-                anchor.textContent = "Wirtualny Spacer";
+                anchor.innerHTML = 'Wirtualny Spacer <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062"><path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor" /></svg>';
             }
         });
     </script>

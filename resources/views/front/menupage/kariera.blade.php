@@ -185,24 +185,12 @@
                                     height="168" loading="lazy" decoding="async" data-aos="fade">
                             </div>
                             <h2 class="fw-bold text-center text-uppercase">
-                                <span data-aos="fade-up" data-aos-delay="200">
-                                    Dołącz
-                                </span>
-                                <span class="fw-900 fs-4 d-block text-center " data-aos="fade-up" data-aos-delay="400">
-                                    do zespołu
-                                </span>
+                                <span data-aos="fade-up" data-aos-delay="200">Dołącz</span>
+                                <span class="fw-900 fs-4 d-block text-center " data-aos="fade-up" data-aos-delay="400">do zespołu</span>
                             </h2>
                         </div>
                         <div class="text-pretty mt-4 mt-md-40 text-secondary" data-aos="fade">
-                            <p>
-
-                                Będąc dynamicznie rozwijającą się polską firmą, w swojej pracy kierujemy się wartościami.
-                                Stawiamy przede wszystkim na ludzi, szanujemy środowisko naturalne, odpowiedzialnie
-                                traktujemy podjęte zobowiązania umowne i zawsze dotrzymujemy słowa. Takie podejście
-                                przekazujemy również naszym pracownikom.
-                            </p>
-
-
+                            <p>Będąc dynamicznie rozwijającą się polską firmą, w swojej pracy kierujemy się wartościami. Stawiamy przede wszystkim na ludzi, szanujemy środowisko naturalne, odpowiedzialnie traktujemy podjęte zobowiązania umowne i zawsze dotrzymujemy słowa. Takie podejście przekazujemy również naszym pracownikom.</p>
                         </div>
                     </div>
                     <div class="col-12 col-md-6 col-lg-5 offset-lg-2 offset-xl-3">
