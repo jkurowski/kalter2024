@@ -26,6 +26,8 @@ class City extends Model
         'phone2',
         'address_line_1',
         'address_line_2',
+        'lat',
+        'lng',
         'active',
         'completed',
         'sort'

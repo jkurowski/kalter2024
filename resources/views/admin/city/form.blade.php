@@ -60,6 +60,14 @@
                                 <div class="row w-100 form-group">
                                     @include('form-elements.html-input-text', ['label' => 'Adres linia 2', 'name' => 'address_line_2', 'value' => $entry->address_line_2, 'required' => 0])
                                 </div>
+
+                                <div class="row w-100 form-group">
+                                    @include('form-elements.html-input-text', ['label' => 'Szerokość geograficzna', 'name' => 'lat', 'value' => $entry->lat, 'required' => 0])
+                                </div>
+                                <div class="row w-100 form-group">
+                                    @include('form-elements.html-input-text', ['label' => 'Długość geograficzna', 'name' => 'lng', 'value' => $entry->lng, 'required' => 0])
+                                </div>
+
                                     @endif
                                 <div class="row w-100 form-group">
                                     @include('form-elements.html-input-text', ['label' => 'Nagłówek', 'sublabel' => 'Na podstronie Kontakt', 'name' => 'contact_title', 'value' => $entry->contact_title, 'required' => 1])
