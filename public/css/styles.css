@@ -14203,8 +14203,9 @@ blockquote p {
     margin-bottom: 5px;
 }
 
-.investment-list-item {
-
+.investment-list-item .investment-header {
+    height: 131px;
+    overflow: hidden;
 }
 .investment-list-item .investment-apla {
     position: absolute;

@@ -4,7 +4,7 @@
 
     $links = collect([
         ['id' => '1', 'title' => 'Opis inwestycji', 'href' => route('developro.show', $investment->slug).'#opis-inwestycji'],
-        ['id' => '2', 'title' => 'Wyszukaj z rzutu', 'href' => route('developro.plan', $investment->slug)],
+        ['id' => '2', 'title' => 'Wyszukaj z rzutu', 'href' => route('developro.plan', $investment->slug).'#invesmentplan'],
         ['id' => '3', 'title' => 'Wyszukaj z modelu 3D', 'href' => route('developro.mockup', $investment->slug)],
         ['id' => '4', 'title' => 'Lokalizacja', 'href' => route('developro.show', $investment->slug).'#lokalizacja'],
         ['id' => '5', 'title' => 'Atuty', 'href' => route('developro.show', $investment->slug).'#atuty'],

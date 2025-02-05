@@ -5,9 +5,9 @@
 @if($properties->count() > 0)
 <div class="col-12">
     <div class="investment-list-item">
-        <div class="position-relative @if(!$investment->file_header) investment-list-noimage @endif">
+        <div class="position-relative @if(!$investment->file_header) investment-list-noimage @endif investment-header">
             @if($investment->file_header)
-                <img src="{{ asset('investment/header/'.$investment->file_header) }}" alt="{{ $investment->name }}" loading="eager" decoding="async" class="w-100">
+                <img src="{{ asset('investment/header/'.$investment->file_header) }}" alt="{{ $investment->name }}" loading="eager" decoding="async" class="w-100 position-absolute bottom-0">
             @endif
             <div class="investment-apla"></div>
             <div class="investment-list-desc">
