@@ -244,7 +244,7 @@
                 {
                     id: "map{{$city->id}}",
                     center: [{{$city->lat}}, {{$city->lng}}],
-                    popupText: "{{$city->contact_title}}"
+                    popupText: "{{$city->name}}"
                 },
                 @endforeach
             ];
