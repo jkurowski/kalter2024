@@ -8,7 +8,7 @@
 @section('content')
     <main>
         <section class="position-relative page-hero-section page-hero-section-small">
-            <div class="position-absolute top-0 start-0 w-100 h-100 with-image-overlay-gradient ">
+            <div class="position-absolute top-0 start-0 w-100 h-100">
                 @if($investment->file_header)
                     <img src="{{ asset('investment/header/'.$investment->file_header) }}" alt="" width="1920" height="386" loading="eager" decoding="async" class="w-100 h-100 object-fit-cover">
                     <div style="position: absolute;opacity: 0.7;width: 100%;height: 100%;top: 0;left: 0;background-image: linear-gradient(#000, rgba(255, 255, 255, 0) {{ $investment->gradient_header ?: '100%' }});"></div>
