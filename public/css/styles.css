@@ -13137,48 +13137,14 @@ input[name="lang"]:checked + label > img {
 }
 .invest-card-horizontal .invest-card-horizontal-left {
     min-width: 300px;
-    padding: 1rem;
+    padding: 15px;
 }
-@media (min-width: 576px) {
-    .invest-card-horizontal .invest-card-horizontal-left {
-        padding-block: 1rem;
-        padding-left: calc(1.35625rem + 0.95625vw);
-        padding-right: calc(1.275rem + 0.225vw);
-    }
-}
-@media (min-width: 576px) and (min-width: 1600px) {
-    .invest-card-horizontal .invest-card-horizontal-left {
-        padding-left: 2.3125rem;
-    }
-}
-@media (min-width: 576px) and (min-width: 1600px) {
-    .invest-card-horizontal .invest-card-horizontal-left {
-        padding-right: 1.5rem;
-    }
-}
+
 .invest-card-list {
-    padding-top: calc(1.45rem + 1.8vw);
-    padding-right: 1.25rem;
-    padding-bottom: calc(1.3875rem + 1.2375vw);
-    padding-left: calc(1.53125rem + 2.53125vw);
+    padding: 15px 30px;
     box-shadow: 0 2px 35px rgba(var(--bs-black-rgb), 0.03);
     border-radius: 5px;
     transition: all 0.3s linear;
-}
-@media (min-width: 1600px) {
-    .invest-card-list {
-        padding-top: 3.25rem;
-    }
-}
-@media (min-width: 1600px) {
-    .invest-card-list {
-        padding-bottom: 2.625rem;
-    }
-}
-@media (min-width: 1600px) {
-    .invest-card-list {
-        padding-left: 4.0625rem;
-    }
 }
 .invest-card-list:hover {
     box-shadow: 0 2px 35px rgba(var(--bs-black-rgb), 0.15);
@@ -13766,6 +13732,11 @@ main > section {
     padding: 0;
     min-height: max(300px, 20.0520833333vw);
 }
+.page-hero-section.page-hero-section-small {
+    padding: 0;
+    min-height: inherit;
+    height: 250px;
+}
 .page-hero-section .container {
     min-height: inherit;
     padding-block: calc(1.4rem + 1.35vw);
@@ -14229,7 +14200,7 @@ blockquote p {
     }
 }
 .list-layout .layout-item {
-    margin-bottom: 1rem;
+    margin-bottom: 5px;
 }
 
 .investment-list-item {

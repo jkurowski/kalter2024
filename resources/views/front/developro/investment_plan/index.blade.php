@@ -7,7 +7,7 @@
 
 @section('content')
     <main>
-        <section class="position-relative page-hero-section">
+        <section class="position-relative page-hero-section page-hero-section-small">
             <div class="position-absolute top-0 start-0 w-100 h-100">
                 @if($investment->file_header)
                     <img src="{{ asset('investment/header/'.$investment->file_header) }}" alt="" width="1920" height="386" loading="eager" decoding="async" class="w-100 h-100 object-fit-cover">
@@ -17,7 +17,7 @@
                 @endif
             </div>
             <div class="container isolation-isolate">
-                <div class="row row-gap-30">
+                <div class="row row-gap-10">
                     <div class="col-12">
                         <nav aria-label="breadcrumb small text-white" data-aos="fade" class="aos-init aos-animate">
                             <ol class="breadcrumb opacity-50">
