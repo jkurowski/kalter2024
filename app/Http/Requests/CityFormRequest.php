@@ -25,15 +25,13 @@ class CityFormRequest extends FormRequest
     {
         $rules = [
             'name' => 'required|string|min:3|max:100',
-            'footer' => '',
             'phone' => '',
             'phone2' => '',
             'address_line_1' => '',
             'address_line_2' => '',
             'lat' => '',
             'lng' => '',
-            'contact_title' => 'required',
-            'contact_text' => 'required'
+            'contact_title' => 'required'
         ];
 
         if ($this->input('lang') === 'pl') {

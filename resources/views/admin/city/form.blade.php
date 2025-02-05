@@ -72,12 +72,6 @@
                                 <div class="row w-100 form-group">
                                     @include('form-elements.html-input-text', ['label' => 'Nagłówek', 'sublabel' => 'Na podstronie Kontakt', 'name' => 'contact_title', 'value' => $entry->contact_title, 'required' => 1])
                                 </div>
-                                <div class="row w-100 form-group">
-                                    @include('form-elements.html-textarea', ['label' => 'Treść', 'sublabel' => 'Kod HTML', 'name' => 'contact_text', 'value' => $entry->contact_text, 'required' => 1, 'rows' => 15, 'cols' => 10])
-                                </div>
-                                <div class="row w-100 form-group">
-                                    @include('form-elements.html-textarea', ['label' => 'Stopka', 'sublabel' => 'Kod HTML', 'name' => 'footer', 'value' => $entry->footer, 'rows' => 15, 'cols' => 10])
-                                </div>
                             </div>
                         </div>
                     </div>
