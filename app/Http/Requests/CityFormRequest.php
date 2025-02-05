@@ -26,6 +26,10 @@ class CityFormRequest extends FormRequest
         $rules = [
             'name' => 'required|string|min:3|max:100',
             'footer' => '',
+            'phone' => '',
+            'phone2' => '',
+            'address_line_1' => '',
+            'address_line_2' => '',
             'contact_title' => 'required',
             'contact_text' => 'required'
         ];

@@ -48,6 +48,18 @@
                                 <div class="row w-100 form-group">
                                     @include('form-elements.html-input-text', ['label' => 'Adres e-mail', 'name' => 'email', 'value' => $entry->email, 'required' => 1])
                                 </div>
+                                <div class="row w-100 form-group">
+                                    @include('form-elements.html-input-text', ['label' => 'Telefon 1', 'name' => 'phone', 'value' => $entry->phone, 'required' => 0])
+                                </div>
+                                <div class="row w-100 form-group">
+                                    @include('form-elements.html-input-text', ['label' => 'Telefon 2', 'name' => 'phone2', 'value' => $entry->phone2, 'required' => 0])
+                                </div>
+                                <div class="row w-100 form-group">
+                                    @include('form-elements.html-input-text', ['label' => 'Adres linia 1', 'name' => 'address_line_1', 'value' => $entry->address_line_1, 'required' => 0])
+                                </div>
+                                <div class="row w-100 form-group">
+                                    @include('form-elements.html-input-text', ['label' => 'Adres linia 2', 'name' => 'address_line_2', 'value' => $entry->address_line_2, 'required' => 0])
+                                </div>
                                     @endif
                                 <div class="row w-100 form-group">
                                     @include('form-elements.html-input-text', ['label' => 'Nagłówek', 'sublabel' => 'Na podstronie Kontakt', 'name' => 'contact_title', 'value' => $entry->contact_title, 'required' => 1])

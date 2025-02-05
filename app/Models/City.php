@@ -22,6 +22,10 @@ class City extends Model
         'contact_title',
         'contact_text',
         'email',
+        'phone',
+        'phone2',
+        'address_line_1',
+        'address_line_2',
         'active',
         'completed',
         'sort'
