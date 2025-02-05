@@ -133,13 +133,13 @@
 
         @include('front.investments.single-investment-search', ['investment' => $investment->floor, 'full' => 1, 'is_floor' => 1])
 
-        <section id="properties">
+        <section id="properties" class="pt-0">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
                         <ul class="nav justify-content-end" role="tablist">
                             <li class="nav-item layout-switcher" role="presentation">
-                                <button class="nav-link active opacity-25" id="list-layout" type="button" aria-selected="true">
+                                <button class="nav-link" id="list-layout" type="button" aria-selected="true">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="34" height="29" viewBox="0 0 34 29">
                                         <g id="list" opacity="1">
                                             <g id="Rectangle_441" data-name="Rectangle 441" transform="translate(0 24)" fill="#fff" stroke="currentColor" stroke-width="1">
@@ -164,7 +164,7 @@
                                 </button>
                             </li>
                             <li class="nav-item layout-switcher" role="presentation">
-                                <button class="nav-link" id="grid-layout" type="button" aria-selected="false">
+                                <button class="nav-link active opacity-25" id="grid-layout" type="button" aria-selected="false">
                                     <svg id="grid" xmlns="http://www.w3.org/2000/svg" width="34" height="29" viewBox="0 0 34 29">
                                         <g id="Rectangle_430" data-name="Rectangle 430" fill="#fff" stroke="currentColor" stroke-width="1">
                                             <rect width="15" height="7" rx="1" stroke="none" />
@@ -198,7 +198,7 @@
                 </div>
                 <div class="row mt-30">
                     <div class="col-12">
-                        <div id="layout-container" class="list-layout">
+                        <div id="layout-container" class="grid-layout">
                             @foreach($properties as $p)
                                 <x-property-list-item :p="$p"></x-property-list-item>
                             @endforeach

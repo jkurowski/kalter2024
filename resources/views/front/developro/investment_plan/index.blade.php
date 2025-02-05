@@ -128,7 +128,7 @@
 
         @include('front.investments.single-investment-search', ['investment' => $investment, 'full' => 1])
 
-        <section id="properties">
+        <section id="properties" class="pt-0">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
