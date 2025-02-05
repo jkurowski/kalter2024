@@ -240,26 +240,13 @@
     <script defer>
         document.addEventListener("DOMContentLoaded", function() {
             const mapData = [
+                @foreach($cities as $city)
                 {
-                    id: "map1",
-                    center: [53.12408961877622, 23.17818596758672],
-                    popupText: "Biuro Sprzedaży Łódź"
+                    id: "map{{$city->id}}",
+                    center: [{{$city->lat}}, {{$city->lng}}],
+                    popupText: "{{$city->contact_title}}"
                 },
-                {
-                    id: "map2",
-                    center: [52.231062467027925, 20.989080484052327],
-                    popupText: "Biuro Sprzedaży Warszawa"
-                },
-                {
-                    id: "map3",
-                    center: [51.76257784135881, 19.4686501834008],
-                    popupText: "Biuro Sprzedaży Białystok"
-                },
-                {
-                    id: 'map4',
-                    center: [52.28251491554414, 21.12952375814099],
-                    popupText: 'Biuro Sprzedaży Ząbki'
-                }
+                @endforeach
             ];
 
             const createMap = ({ id, center, popupText }) => {
