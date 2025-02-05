@@ -6,7 +6,6 @@
                     class="bg-secondary text-white rounded d-flex row-gap-0 flex-wrap flex-sm-nowrap search-form"
                     autocomplete="off">
                     <div class="row row-gap-3 align-items-end px-30 py-3 pb-30">
-                        <p class="col-12 text-uppercase mb-0">Wyszukiwarka</p>
                         <div class="col-12">
                             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 row-cols-xxl-5 align-items-end">
                                 <div class="col">
