@@ -64,7 +64,7 @@
                         <div class="col-12">
                             <article class="shadow-post-article rounded">
                                 <div class="row ">
-                                    <div class="col-12 col-md-7 col-lg-8">
+                                    <div class="col-12 col-lg-8 col-xl-5">
                                         <div class="h-100">
                                             <a href="{{route('developro.investment.news.show', [$investment->slug, $n->slug])}}" title="{{ $n->title }}" itemprop="url">
                                                 <picture>
@@ -78,8 +78,8 @@
                                             </a>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-5 col-lg-4">
-                                        <div class="d-flex flex-column justify-content-between h-100 p-3 py-md-4 ps-md-0 ">
+                                    <div class="col-12 col-lg-4 col-xl-7">
+                                        <div class="d-flex flex-column justify-content-between h-100 p-3 py-lg-3">
                                             <div>
                                                 <p class="fs-24 ff-secondary text-secondary text-balance mb-1">
                                                     <a href="{{route('developro.investment.news.show', [$investment->slug, $n->slug])}}" itemprop="url"><span itemprop="name headline">{{ $n->title }}</span></a>
