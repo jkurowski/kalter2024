@@ -37,8 +37,8 @@ class InvestmentArticleService
         $file_path = public_path('investment/articles/' . $name);
         $file_thumb_path = public_path('investment/articles/thumbs/' . $name);
 
-        Image::make($file_path)->fit(config('images.article.big_width'), config('images.article.big_height'))->save($file_path);
-        Image::make($file_path)->fit(config('images.article.thumb_width'), config('images.article.thumb_height'))->save($file_thumb_path);
+        Image::make($file_path)->fit(config('investment_article.big_width'), config('investment_article.big_height'))->save($file_path);
+        Image::make($file_path)->fit(config('investment_article.thumb_width'), config('investment_article.thumb_height'))->save($file_thumb_path);
 
         // WebP
         $file_path_webp = public_path('investment/articles/webp/' . $name_webp);

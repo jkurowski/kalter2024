@@ -86,6 +86,23 @@ return [
     |--------------------------------------------------------------------------
     */
 
+    'investment_article' => [
+        'big_width' => 1170,
+        'big_height' => 602,
+        'thumb_width' => 640,
+        'thumb_height' => 370,
+        'file_path' => 'uploads/articles/',
+        'thumb_file_path' => 'uploads/articles/thumbs/',
+        'preview_file_path' => 'uploads/articles/thumbs/',
+        'facebook_file_path' => 'uploads/articles/share/',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Articles
+    |--------------------------------------------------------------------------
+    */
+
     'article' => [
         'big_width' => 1472,
         'big_height' => 1104,
