@@ -32,8 +32,8 @@
 
         <section class="pt-0">
             <div class="container">
-                <div class="row">
-                    <div class="col-12 col-md-10 col-xl-8 offset-md-1 offset-xl-2">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-10">
                         <div class="text-secondary text-center post-hero-padding">
                             <h1 class="h2">{{$article->title}}</h1>
                             <p class="fs-14 fw-900 ff-secondary">{{$article->posted_at}}</p>
