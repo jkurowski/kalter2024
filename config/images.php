@@ -104,10 +104,10 @@ return [
     */
 
     'article' => [
-        'big_width' => 1472,
-        'big_height' => 1104,
-        'thumb_width' => 792,
-        'thumb_height' => 594,
+        'big_width' => 1170,
+        'big_height' => 602,
+        'thumb_width' => 640,
+        'thumb_height' => 370,
         'file_path' => 'uploads/articles/',
         'thumb_file_path' => 'uploads/articles/thumbs/',
         'preview_file_path' => 'uploads/articles/thumbs/',
