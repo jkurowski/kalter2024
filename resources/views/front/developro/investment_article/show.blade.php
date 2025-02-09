@@ -66,10 +66,10 @@
                             <p class="fs-14 fw-900 ff-secondary">{{ $investment_news->date }}</p>
                             <picture>
                                 @if($investment_news->file_webp)
-                                    <source type="image/webp" srcset="{{asset('uploads/articles/webp/'.$investment_news->file_webp) }}">
+                                    <source type="image/webp" srcset="{{asset('investment/articles/webp/'.$investment_news->file_webp) }}">
                                 @endif
-                                <source type="image/jpeg" srcset="{{asset('uploads/articles/'.$investment_news->file) }}">
-                                <img src="{{asset('uploads/articles/'.$investment_news->file) }}" alt="@if($investment_news->file_alt){{$investment_news->file_alt}}@else{{$investment_news->title}}@endif" class="img-fluid rounded mt-4 mt-md-30">
+                                <source type="image/jpeg" srcset="{{asset('investment/articles/'.$investment_news->file) }}">
+                                <img src="{{asset('investment/articles/'.$investment_news->file) }}" alt="@if($investment_news->file_alt){{$investment_news->file_alt}}@else{{$investment_news->title}}@endif" class="img-fluid rounded mt-4 mt-md-30">
                             </picture>
                         </div>
 

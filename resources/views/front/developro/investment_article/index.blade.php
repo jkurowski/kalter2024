@@ -69,11 +69,11 @@
                                             <a href="{{route('developro.investment.news.show', [$investment->slug, $n->slug])}}" title="{{ $n->title }}" itemprop="url">
                                                 <picture>
                                                     @if($n->file_webp)
-                                                        <source type="image/webp" srcset="{{asset('uploads/articles/thumbs/webp/'.$n->file_webp) }}">
+                                                        <source type="image/webp" srcset="{{asset('investment/articles/thumbs/webp/'.$n->file_webp) }}">
                                                     @endif
-                                                    <source type="image/jpeg" srcset="{{asset('uploads/articles/thumbs/'.$n->file) }}">
+                                                    <source type="image/jpeg" srcset="{{asset('investment/articles/thumbs/'.$n->file) }}">
 
-                                                    <img src="{{asset('uploads/articles/thumbs/'.$n->file) }}" alt="@if($n->file_alt){{$n->file_alt}}@else{{$n->title}}@endif" loading="lazy" decoding="async" fetchpriority="low" class="w-100 h-auto object-fit-cover">
+                                                    <img src="{{asset('investment/articles/thumbs/'.$n->file) }}" alt="@if($n->file_alt){{$n->file_alt}}@else{{$n->title}}@endif" loading="lazy" decoding="async" fetchpriority="low" class="w-100 h-auto object-fit-cover">
                                                 </picture>
                                             </a>
                                         </div>
