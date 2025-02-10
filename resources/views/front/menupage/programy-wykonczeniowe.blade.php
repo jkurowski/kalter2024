@@ -382,7 +382,6 @@
         </div>
 
         <section class="position-relative cta">
-            <img src="{{ asset('img/cta_bg.webp') }}" alt="Tło call to action" width="1920" height="1080" class="w-100 h-100 position-absolute top-0 start-0 object-fit-cover" loading="lazy" decoding="async">
             <div class="container z-2">
                 <div class="row">
                     <div class="col-12 text-white mb-5 pb-4">
