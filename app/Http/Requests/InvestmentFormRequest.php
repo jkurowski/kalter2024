@@ -38,7 +38,7 @@ class InvestmentFormRequest extends FormRequest
             'floor_range' => '',
             'room_range' => '',
             'office_address' => '',
-            'office_emails' => '',
+            'office_emails' => 'required',
             'meta_title' => '',
             'meta_description' => '',
             'meta_robots' => '',
