@@ -50,7 +50,7 @@
             </div>
         </section>
 
-        <section>
+        <section id="plan">
             <div class="container">
                 <div id="planNav" class="row">
                     <div class="col-6 col-sm-4">

@@ -70,7 +70,7 @@
                                                 @foreach($investment->buildings as $building)
                                                     <area
                                                             shape="poly"
-                                                            href="{{route('developro.building', [$investment->slug, $building, 'buildingSlug' => Str::slug($building->name)])}}"
+                                                            href="{{route('developro.building', [$investment->slug, $building, 'buildingSlug' => Str::slug($building->name)])}}#plan"
                                                             alt="{{$building->slug}}"
                                                             data-item="{{$building->id}}" title="{{$building->name}}"
                                                             data-roomnumber="{{$building->number}}"
@@ -88,7 +88,7 @@
                                                 @if($floor->html)
                                                     <area
                                                             shape="poly"
-                                                            href="{{route('developro.floor', [$investment->slug, $floor, 'floorSlug' => Str::slug($floor->name)])}}"
+                                                            href="{{route('developro.floor', [$investment->slug, $floor, 'floorSlug' => Str::slug($floor->name)])}}#plan"
                                                             title="{{$floor->name}}"
                                                             alt="floor-{{$floor->id}}"
                                                             data-item="{{$floor->id}}"
@@ -106,7 +106,7 @@
                                                 @foreach($investment->properties as $house)
                                                     <area
                                                             shape="poly"
-                                                            href="{{route('front.developro.house', [$investment->slug, $house])}}"
+                                                            href="{{route('front.developro.house', [$investment->slug, $house])}}#plan"
                                                             title="{{$house->name}}"
                                                             alt="{{$house->slug}}"
                                                             data-item="{{$house->id}}"
