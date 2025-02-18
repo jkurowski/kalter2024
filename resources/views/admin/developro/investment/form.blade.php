@@ -238,6 +238,15 @@
 
                 <div class="row w-100 mb-4">
                     @include('form-elements.html-input-text', [
+                        'label' => 'E-mail do powiadomień',
+                        'sublabel' => 'Może być kilka',
+                        'name' => 'office_emails',
+                        'value' => $entry->office_emails,
+                    ])
+                </div>
+
+                <div class="row w-100 mb-4">
+                    @include('form-elements.html-input-text', [
                         'label' => 'Krótki opis na liście',
                         'name' => 'entry_content',
                         'value' => $entry->entry_content,
@@ -325,7 +334,7 @@
 @push('scripts')
     <script>
         $(document).ready(function() {
-            $('[name=supervisors]').tagify({
+            $('[name="supervisors"], [name="office_emails"]').tagify({
                 'autoComplete.enabled': false
             });
         });

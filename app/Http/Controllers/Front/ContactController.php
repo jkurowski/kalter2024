@@ -100,7 +100,7 @@ class ContactController extends Controller
 
             $property->notify(new PropertyNotification($request, $property));
 
-            $emailsData = settings()->get("page_email");
+            $emailsData = $property->investment->office_emails;
 
             if (!is_array($emailsData)) {
                 $emailsData = json_decode($emailsData, true); // Decode JSON if necessary

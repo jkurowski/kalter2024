@@ -45,6 +45,7 @@ class Investment extends Model
         'menu',
         'mockup',
         'office_address',
+        'office_emails',
         'meta_title',
         'meta_description',
         'meta_robots',
