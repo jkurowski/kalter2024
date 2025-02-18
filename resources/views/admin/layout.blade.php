@@ -84,6 +84,12 @@
                                         <span class="bullet bullet-dot"></span>
                                     </span> Ustawienia</a>
                             </li>
+                            <li {{ Request::routeIs('admin.job.*') ? 'class=active' : '' }}>
+                                <a href="{{ route('admin.job.index') }}">
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span> Oferty pracy</a>
+                            </li>
                             <li class="d-none">
                                 <a href="">
                                     <span class="menu-bullet">
