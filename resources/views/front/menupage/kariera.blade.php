@@ -82,99 +82,40 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="row row-gap-4">
                     <div class="col-12 col-lg-10 offset-lg-1">
                         <div class="accordion" id="accordionPanelsStayOpenExample" data-aos="fade">
+                            @foreach($data['jobofferts'] as $offer)
                             <div class="accordion-item shadow-post-article mb-30">
                                 <h2 class="accordion-header">
                                     <button class="accordion-button fs-24" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
-                                        aria-controls="panelsStayOpen-collapseOne">
-                                        Specjalista Ds. Nieruchomości
+                                            data-bs-target="#panelsStayOpen-collapse{{ $offer->id }}" aria-expanded="true"
+                                            aria-controls="panelsStayOpen-collapse{{ $offer->id }}">
+                                        {{ $offer->name }}
                                     </button>
                                 </h2>
-                                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+                                <div id="panelsStayOpen-collapse{{ $offer->id }}" class="accordion-collapse collapse @if($loop->first)show @endif">
                                     <div class="accordion-body">
-                                        <p>Zawiążemy współpracę ze specjalistą do spraw nieruchomości, którego zadaniem
-                                            byłoby poszukiwanie nowych gruntów pod inwestycje deweloperskie (budownictwo
-                                            mieszkaniowe wielorodzinne) w rejonie Warszawy i Białegostoku. </p>
-                                        <p class="fw-semibold fs-5 text-secondary pt-4 mb-2">Zadania</p>
-                                        <ul>
-                                            <li class="mb-2">poszukiwanie nowych nieruchomości gruntowych pod zabudowę
-                                                mieszkaniową,</li>
-                                            <li class="mb-2">zbieranie informacji na temat lokalizacji, powierzchni, planu
-                                                miejscowego lub studium,</li>
-                                            <li class="mb-2">sporządzanie i przedstawianie Spółce zebranych informacji na
-                                                temat nieruchomości,</li>
-                                            <li class="mb-2">udział w negocjacjach ze Sprzedającym</li>
-                                        </ul>
-                                        <p class="fw-semibold fs-5 text-secondary pt-4 mb-2">Oferujemy</p>
-                                        <p>Oferujemy atrakcyjne wynagrodzenie prowizyjne ustalane na podstawie efektów
-                                            wykonanej pracy. </p>
+                                        {!! $offer->text !!}
                                         <div class="pt-4 pt-md-40">
-                                            <a href="#aplikuj"
-                                                class="btn btn-primary btn-with-icon min-w-max-content flex-fill d-inline-flex align-items-center justify-content-center gap-1">
+                                            <a target="_blank" href="mailto:{{ $offer->email }}?subject=Dot. oferty {{ urlencode($offer->name) }}" title="Aplikuj na stanowisko: {{ $offer->name }}"
+                                               class="btn btn-primary btn-with-icon min-w-max-content flex-fill d-inline-flex align-items-center justify-content-center gap-1">
                                                 Aplikuj
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062"
-                                                    viewBox="0 0 6.073 11.062">
-                                                    <path id="chevron_right_FILL0_wght100_GRAD0_opsz24"
-                                                        d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z"
-                                                        transform="translate(-356 684)" fill="currentColor"></path>
-                                                </svg>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062"><path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z"  transform="translate(-356 684)" fill="currentColor"></path></svg>
                                             </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="accordion-item shadow-post-article">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed fs-24" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo"
-                                        aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-                                        Kierownik projektów deweloperskich
-                                    </button>
-                                </h2>
-                                <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
-                                    <div class="accordion-body">
-                                        <p>Zawiążemy współpracę ze specjalistą do spraw nieruchomości, którego zadaniem
-                                            byłoby poszukiwanie nowych gruntów pod inwestycje deweloperskie (budownictwo
-                                            mieszkaniowe wielorodzinne) w rejonie Warszawy i Białegostoku. </p>
-                                        <p class="fw-semibold fs-5 text-secondary pt-4 mb-2">Zadania</p>
-                                        <ul>
-                                            <li class="mb-2">poszukiwanie nowych nieruchomości gruntowych pod zabudowę
-                                                mieszkaniową,</li>
-                                            <li class="mb-2">zbieranie informacji na temat lokalizacji, powierzchni, planu
-                                                miejscowego lub studium,</li>
-                                            <li class="mb-2">sporządzanie i przedstawianie Spółce zebranych informacji na
-                                                temat nieruchomości,</li>
-                                            <li class="mb-2">udział w negocjacjach ze Sprzedającym</li>
-                                        </ul>
-                                        <p class="fw-semibold fs-5 text-secondary pt-4 mb-2">Oferujemy</p>
-                                        <p>Oferujemy atrakcyjne wynagrodzenie prowizyjne ustalane na podstawie efektów
-                                            wykonanej pracy. </p>
-                                        <div class="pt-4 pt-md-40">
-                                            <a href="#aplikuj"
-                                                class="btn btn-primary btn-with-icon min-w-max-content flex-fill d-inline-flex align-items-center justify-content-center gap-1">
-                                                Aplikuj
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062"
-                                                    viewBox="0 0 6.073 11.062">
-                                                    <path id="chevron_right_FILL0_wght100_GRAD0_opsz24"
-                                                        d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z"
-                                                        transform="translate(-356 684)" fill="currentColor"></path>
-                                                </svg>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
+                            @endforeach
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="s3" id="aplikuj">
+        <section class="s3 d-none" id="aplikuj">
             <div class="container">
                 <div class="row row-gap-4">
                     <div class="col-12 col-md-6 col-lg-5 col-xl-4">

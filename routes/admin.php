@@ -21,7 +21,7 @@ Route::group([
     Route::post('image/set', 'Gallery\ImageController@sort')->name('image.sort');
     Route::post('box/set', 'Box\IndexController@sort')->name('box.sort');
     Route::post('invest-page/set', 'Developro\Page\IndexController@sort')->name('investment_page.sort');
-
+    Route::post('job/set', 'Job\IndexController@sort')->name('job.sort');
     Route::post('ux/properties', 'UX\IndexController@properties')->name('ux.properties');
 
     Route::get('contract/show/{contract}', 'Contract\IndexController@show')->name('contract.show');
@@ -72,6 +72,7 @@ Route::group([
         'ux' => 'UX\IndexController',
         'box' => 'Box\IndexController',
         'city'=> 'City\IndexController',
+        'job'=> 'Job\IndexController',
     ]);
 
     // Settings
