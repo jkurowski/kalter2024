@@ -156,7 +156,15 @@
                             <h2 class="mb-0">{{$property->name}}</h2>
                             <p class="text-uppercase fw-900 fs-15 ff-secondary mb-0 lh-1">{{$investment->name}}</p>
                             <p class="mb-20"><small>{{ investmentAdvanced($investment->progress) }}</small></p>
-                            <p class="text-uppercase fw-bold fs-5 text-success">Dostępny</p>
+
+                            <?php if ($property->status == 3) : ?>
+                            <p class="text-danger text-uppercase fw-bold fs-5">Sprzedany</p>
+                            <?php elseif ($property->status == 1) : ?>
+                            <p class="text-success text-uppercase fw-bold fs-5">Dostępny</p>
+                            <?php else : ?>
+                            <p class="text-warning text-uppercase fw-bold fs-5">Rezerwacja</p>
+                            <?php endif; ?>
+
                             @if($investment->show_prices)
                                 <p class="h4 mb-1 d-flex flex-wrap align-items-center column-gap-3 ff-secondary">
                                     @if($property->price && !$property->highlighted)
