@@ -17,7 +17,7 @@
         <div class="col-xl-auto d-flex column-gap-30 row-gap-3 align-items-center flex-wrap flex-lg-nowrap flex-fill justify-content-md-center">
             <div class="d-flex gap-2">
                 <div><img src="{{ asset('img/location.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="13" height="13"></div>
-                <div>{{ $p->investment->city->name }}</div>
+                <div>{{ $p->city->name }}</div>
             </div>
             <div class="vr" style="color:#DFDEDE;"></div>
             <div class="fs-13 d-flex gap-2">
@@ -148,7 +148,7 @@
                                                             $investment->slug,
                                                             $p->building,
                                                             Str::slug($p->building->name),
-                                                            $p->floor,
+                                                            $p->floor->id,
                                                             Str::slug($p->floor->name),
                                                             $p,
                                                             Str::slug($p->name),
@@ -159,7 +159,7 @@
                         @if($investment->type == 2)
                             <a class="btn btn-primary btn-with-icon text-nowrap" href="{{ route('developro.property', [
                                                             $investment->slug,
-                                                            $p->floor,
+                                                            $p->floor->id,
                                                             Str::slug($p->floor->name),
                                                             $p,
                                                             Str::slug($p->name),

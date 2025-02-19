@@ -145,6 +145,18 @@ class Property extends Model
         return $this->belongsTo(Investment::class);
     }
 
+    public function city()
+    {
+        return $this->hasOneThrough(
+            City::class,
+            Investment::class,
+            'id',            // Primary key in investments
+            'id',            // Primary key in cities
+            'investment_id',  // Foreign key in properties (points to investments)
+            'city_id'        // Foreign key in investments (points to cities)
+        )->select(['cities.id as city_id', 'cities.name']); // Avoid ID ambiguity
+    }
+
     public function floor()
     {
         return $this->belongsTo(Floor::class);

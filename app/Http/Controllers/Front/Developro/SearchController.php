@@ -52,7 +52,10 @@ class SearchController extends Controller
 
 // Filter Properties
         $properties = Property::query()
-            ->whereHas('building', fn($query) => $query->where('active', 1))
+            ->with(['building' => fn($query) => $query->select('id', 'active', 'name')])
+            ->with(['floor' => fn($query) => $query->select('id', 'name')])
+            ->with(['city' => fn($query) => $query->select('cities.id as city_id', 'cities.name')])
+            //->whereHas('building', fn($query) => $query->where('active', 1))
             ->when($filters['rooms'], fn($query, $rooms) => $query->where('rooms', $rooms))
             ->when($filters['area'], function ($query, $area) {
                 // Check if area contains a range (e.g., "30-50")

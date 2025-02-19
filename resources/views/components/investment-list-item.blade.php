@@ -19,7 +19,13 @@
 
         <div id="layout-container" class="list-layout">
         @foreach ($properties as $property)
-            <x-property-searchlist-item :p="$property" :investment="$investment"></x-property-searchlist-item>
+            @if($investment->type == 1)
+                @if(optional($property->building)->active == 1)
+                    <x-property-searchlist-item :p="$property" :investment="$investment"></x-property-searchlist-item>
+                @endif
+            @else
+                <x-property-searchlist-item :p="$property" :investment="$investment"></x-property-searchlist-item>
+            @endif
         @endforeach
         </div>
     </div>

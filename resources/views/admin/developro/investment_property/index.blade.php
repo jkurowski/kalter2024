@@ -49,6 +49,7 @@
                         <thead class="thead-default">
                         <tr>
                             <th>#</th>
+                            <th></th>
                             <th>Nazwa</th>
                             <th class="text-center">Status</th>
                             <th class="text-center">Pokoje</th>
@@ -65,6 +66,17 @@
                         @foreach ($list->floorRooms as $index => $p)
                             <tr id="recordsArray_{{ $p->id }}">
                                 <th class="position" scope="row">{{ $index+1 }}</th>
+                                <td>
+                                    <a href="{{ asset('/investment/property/'.$p->file) }}" target="_blank">
+                                    <picture>
+                                        @if($p->file_webp)
+                                            <source type="image/webp" srcset="{{ asset('/investment/property/thumbs/webp/'.$p->file_webp) }}">
+                                        @endif
+                                        <source type="image/jpeg" srcset="{{ asset('/investment/property/thumbs/'.$p->file) }}">
+                                        <img src="{{ asset('/investment/property/thumbs/'.$p->file) }}" alt="{{$p->name}}" style="width:100px">
+                                    </picture>
+                                    </a>
+                                </td>
                                 <td>{{ $p->name }}</td>
                                 <td><span class="badge room-list-status-{{ $p->status }}">{{ roomStatus($p->status) }}</span></td>
                                 <td class="text-center">{{ $p->rooms }}</td>
