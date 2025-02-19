@@ -7,6 +7,9 @@ function dropdownMobile() {
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    // Youtube
+    $('iframe[src*="youtube"]').wrap("<div class='video-container'></div>");
+
     // Image lightbox
     const glightbox = new GLightbox();
 
