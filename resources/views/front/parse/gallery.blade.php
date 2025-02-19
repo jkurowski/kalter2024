@@ -4,11 +4,8 @@
         @foreach ($list as $p)
         <div class="col-6 col-md-4 col-xl-3 p-0">
             <div class="col-gallery-thumb m-2">
-                <a href="/uploads/gallery/images/{{$p->file}}" class="swipebox" rel="gallery-1" title="">
+                <a href="/uploads/gallery/images/{{$p->file}}" class="glightbox" rel="gallery-1" title="">
                     <picture>
-                        @if($p->file_webp)
-                        <source type="image/webp" srcset="{{asset('uploads/gallery/images/thumbs/webp/'.$p->file_webp) }}">
-                        @endif
                         <source type="image/jpeg" srcset="{{asset('uploads/gallery/images/thumbs/'.$p->file) }}">
                         <img src="{{asset('uploads/gallery/images/thumbs/'.$p->file) }}" alt="{{ $p->name }}" class="img-fluid">
                     </picture>
