@@ -66,7 +66,7 @@
                         @foreach ($list->floorRooms as $index => $p)
                             <tr id="recordsArray_{{ $p->id }}">
                                 <th class="position" scope="row">{{ $index+1 }}</th>
-                                <td>
+                                <td class="option-120">
                                     <a href="{{ asset('/investment/property/'.$p->file) }}" target="_blank">
                                     <picture>
                                         @if($p->file_webp)

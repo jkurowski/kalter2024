@@ -66,14 +66,14 @@
                         @foreach ($list->floorRooms as $index => $p)
                             <tr id="recordsArray_{{ $p->id }}">
                                 <th class="position" scope="row">{{ $index+1 }}</th>
-                                <td>
+                                <td class="option-120">
                                     <a href="{{ asset('/investment/property/'.$p->file) }}" target="_blank">
                                     <picture>
                                         @if($p->file_webp)
                                             <source type="image/webp" srcset="{{ asset('/investment/property/thumbs/webp/'.$p->file_webp) }}">
                                         @endif
                                         <source type="image/jpeg" srcset="{{ asset('/investment/property/thumbs/'.$p->file) }}">
-                                        <img src="{{ asset('/investment/property/thumbs/'.$p->file) }}" alt="{{$p->name}}" style="width:100px">
+                                        <img src="{{ asset('/investment/property/thumbs/'.$p->file) }}" alt="{{$p->name}}" class="w-100">
                                     </picture>
                                     </a>
                                 </td>
