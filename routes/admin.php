@@ -55,6 +55,9 @@ Route::group([
 
     Route::post('city/set', 'City\IndexController@sort')->name('city.sort');
 
+    // Gallery
+    Route::get('ajaxGetGalleries', 'Gallery\IndexController@ajaxGetGalleries')->name('ajaxGetGalleries');
+
     Route::resources([
         'page' => 'Page\IndexController',
         'url' => 'Url\IndexController',
