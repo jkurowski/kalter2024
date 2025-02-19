@@ -30,6 +30,10 @@ if (! function_exists('makeGallery')) {
             return view('front.parse.gallery', ['list' => $photos])->render();
         }
 
+        if ($input[1] == 'galeria') {
+            return view('front.parse.gallery', ['list' => $photos])->render();
+        }
+
         if ($input[1] == 'carousel') {
             return view('front.parse.slick-carousel', ['list' => $photos])->render();
         }
