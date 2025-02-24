@@ -256,6 +256,32 @@
                         </div>
                     </div>
                 </section>
+
+                <section class="s4">
+                    <div class="container">
+                        <div class="row row-gap-4 align-items-center mb-50 mb-md-100">
+                            <div class="col-12">
+                                <div style="--translate-x: 0;" class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
+                                    <div class="position-absolute top-50 start-50 translate-middle z-2">
+                                        <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168" height="168" loading="lazy" decoding="async" data-aos="fade">
+                                    </div>
+                                    <h2 class="fw-bold text-center text-uppercase">
+                                        <span data-aos="fade-up" data-aos-delay="200">Masz</span>
+                                        <span class="fw-900 fs-4 d-block text-center " data-aos="fade-up" data-aos-delay="400">pytania?</span>
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-12 col-md-4 pb-4 pb-md-0 text-center">
+                                <p class="mb-0"><strong>JOANNA BIAŁA</strong></p>
+                                <p class="mb-0"><em>Doradca klienta</em></p>
+                                <p class="mb-0"><a href="tel:+48667376667">+48 667 376 667</a></p>
+                                <p class="mb-0"><a href="mailto:joanna.biala@homeplaner.pl">joanna.biala@homeplaner.pl</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
             <div class="tab-pane fade" id="program-2" role="tabpanel">
                 <section class="s1">
@@ -380,42 +406,6 @@
                 </section>
             </div>
         </div>
-
-        <section class="position-relative cta">
-            <div class="container z-2">
-                <div class="row">
-                    <div class="col-12 text-white mb-5 pb-4">
-
-                        <div style="--translate-x: 0;" class="position-relative text-center d-flex flex-column justify-content-center align-items-center ">
-                            <div class="position-absolute top-50 start-50 translate-middle z-2">
-                                <img src="{{ asset('img/sygnet.svg') }}" alt="" width="168" height="168" loading="lazy" decoding="async" data-aos="fade" class="aos-init aos-animate">
-                            </div>
-                            <h2 class="fw-bold text-center text-uppercase">
-                            <span data-aos="fade-up" data-aos-delay="200" class="aos-init aos-animate">
-                                Masz pytania?
-                            </span>
-                                <span class="fw-900 fs-4 d-block text-center aos-init aos-animate" data-aos="fade-up" data-aos-delay="400">
-                                Napisz do nas!
-                            </span>
-                            </h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row row-gap-4">
-                    <div class="col-12 col-lg-10">
-                        <div class="contact-form-container text-secondary pe-lg-5">
-                            <div class="position-absolute cta-person z-2">
-                                <img class="img-fluid" src="{{ asset('img/cta_person.webp') }}" alt="" width="475" height="710" loading="lazy" decoding="async">
-                            </div>
-                            <p class="fs-5 text-uppercase fw-semibold text-secondary">FORMULARZ KONTAKTOWY</p>
-
-                            @include('components.contact-form', ['pageTitle' => $page->title, 'back' => true])
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
     </main>
 @endsection
 @push('scripts')

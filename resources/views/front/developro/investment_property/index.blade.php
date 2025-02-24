@@ -262,7 +262,11 @@
                             </div>
                         </div>
                     </div>
+
+
+
                     <div class="col-12 col-md-6 offset-lg-1 order-first order-md-0">
+                        Karta: {{ $property->file }}
                         <ul class="nav justify-content-center justify-content-md-end mb-4 mb-sm-30 gap-30" role="tablist">
                             @if($property->model_3d)
                                 <li class="nav-item tab-switcher" role="presentation">
@@ -286,7 +290,7 @@
                                 </div>
                             @endif
                             @if($property->file)
-                                <div class="tab-pane fade" id="btn-2d-pane" role="tabpanel" aria-labelledby="btn-2d" tabindex="0">
+                                <div class="tab-pane fade @if(!$property->model_3d) show active @endif" id="btn-2d-pane" role="tabpanel" aria-labelledby="btn-2d" tabindex="0">
                                     <div class="w-100 h-100">
                                         <a href="{{ asset('/investment/property/'.$property->file) }}" class="swipebox">
                                             <picture>

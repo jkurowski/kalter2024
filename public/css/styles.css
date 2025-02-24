@@ -14391,3 +14391,10 @@ blockquote p {
 .slick-carousel-text {
     margin-top: 30px;
 }
+
+.cta-white, .cta-white .contact-form-container, .cta-white .form-control {
+    background: #f9f9f9;
+}
+.cta-white h2 {
+    color: #024282;
+}
