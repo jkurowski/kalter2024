@@ -70,7 +70,7 @@
                     </div>
 
                     <div class="col-12 col-sm-4 text-center order-first order-sm-0">
-                        <a href="{{route('developro.plan', $investment->slug)}}#invesmentplan" class="btn btn-outline-primary" style="--bs-btn-hover-color: var(--bs-white);">Plan budunku</a>
+                        <a href="{{route('developro.plan', $investment->slug)}}?status=1#invesmentplan" class="btn btn-outline-primary" style="--bs-btn-hover-color: var(--bs-white);">Plan budunku</a>
                     </div>
 
                     <div class="col-6 col-sm-4 text-end">
