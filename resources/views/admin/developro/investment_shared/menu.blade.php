@@ -36,9 +36,5 @@
         <a class="nav-link {{ Request::routeIs('admin.developro.investment.log') ? ' active' : '' }}" href="{{route('admin.developro.investment.log', $investment)}}"><span class="fe-activity"></span> Logi aktywności</a>
 
         <a class="nav-link {{ Request::routeIs('admin.developro.investment.popup.*') ? 'active' : '' }}" href="{{route('admin.developro.investment.popup.index', $investment)}}"><span class="fe-airplay"></span> Baner na start</a>
-        
-        <a class="nav-link {{ Request::routeIs('admin.developro.investment.iframe.index') ? 'active' : '' }}" href="{{ route('admin.developro.investment.iframe.index', $investment) }}"> <span class='fe-share'></span> Osadź w witrynie</a>
-
-        <a class="nav-link {{ Request::routeIs('admin.developro.investment.payments') ? 'active' : '' }}" href="{{route('admin.developro.investment.payments', $investment)}}"><span class="fe-calendar"></span> Harmonogram płatności</a>
     </nav>
 </div>
