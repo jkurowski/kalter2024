@@ -50,21 +50,10 @@
                                 <td>{{ $p->updated_at }}</td>
                                 <td class="option-120">
                                     <div class="btn-group">
-                                        
-                                        <a href="{{ route('admin.email.generator.index') }}" class="btn action-button me-1"
-                                            data-bs-toggle="tooltip" data-placement="top" data-bs-title="Szablony email">
-                                            <i class="fe-mail"></i>
-                                        </a>
-                                        <a href="{{ route('admin.developro.investment.templates', $p) }}" class="btn action-button me-1"
-                                            data-bs-toggle="tooltip" data-placement="top" data-bs-title="Ustaw szablony email">
-                                            <i class="fe-mail"></i>
-                                        </a>
+
                                         <a href="{{ route('admin.developro.investment.log', $p) }}"
                                             class="btn action-button me-1" data-bs-toggle="tooltip" data-placement="top"
                                             data-bs-title="Pokaż aktywność"><i class="fe-activity"></i></a>
-
-                                        <a href="" class="btn action-button me-1" data-bs-toggle="tooltip"
-                                            data-placement="top" data-bs-title="Harmonogram"><i class="fe-book"></i></a>
 
                                         <a href="{{ route('admin.developro.investment.plan.index', $p) }}"
                                             class="btn action-button me-1" data-bs-toggle="tooltip" data-placement="top"
@@ -98,6 +87,7 @@
                                             data-bs-title="Edytuj">
                                             <i class="fe-edit" aria-hidden="true"></i>
                                         </a>
+                                        @if($p->status != 1)
                                         <form method="POST"
                                             action="{{ route('admin.developro.investment.destroy', $p) }}">
                                             {{ csrf_field() }}
@@ -107,6 +97,7 @@
                                                 data-bs-title="Usuń inwestycje" data-id="{{ $p->id }}"><i
                                                     class="fe-trash-2"></i></button>
                                         </form>
+                                        @endif
                                     </div>
                                 </td>
                             </tr>
