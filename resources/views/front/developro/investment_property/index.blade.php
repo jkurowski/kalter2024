@@ -266,7 +266,7 @@
 
 
                     <div class="col-12 col-md-6 offset-lg-1 order-first order-md-0">
-                        Karta: {{ $property->file }}
+                        @if($property->file && $property->model_3d)
                         <ul class="nav justify-content-center justify-content-md-end mb-4 mb-sm-30 gap-30" role="tablist">
                             @if($property->model_3d)
                                 <li class="nav-item tab-switcher" role="presentation">
@@ -279,6 +279,7 @@
                                 </li>
                             @endif
                         </ul>
+                        @endif
                         <div class="tab-content">
                             @if($property->model_3d)
                                 <div class="tab-pane fade show active" id="btn-3d-pane" role="tabpanel" aria-labelledby="btn-3d" tabindex="0">
