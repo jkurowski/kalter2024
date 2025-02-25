@@ -80,20 +80,11 @@
                                             <div class="col-4 mb-4">
                                                 @include('form-elements.html-select', ['label' => 'Typ powierzchni', 'name' => 'type', 'selected' => $entry->type, 'select' => [
                                                     '1' => 'Mieszkanie / Apartament',
-                                                    '2' => 'Komórka lokatorska',
-                                                    '3' => 'Miejsce parkingowe'
+                                                    '2' => 'Lokal usługowy',
+                                                    '3' => 'Miejsce parkingowe naziemne',
+                                                    '4' => 'Miejsce parkingowe podziemne'
                                                     ]
                                                 ])
-                                            </div>
-                                            <div class="col-4 mb-4">
-                                                @include('form-elements.html-select', [
-                                                     'label' => 'Lokal usługowy',
-                                                     'name' => 'comercial_area',
-                                                     'selected' => $entry->comercial_area,
-                                                     'select' => [
-                                                         '0' => 'Nie',
-                                                         '1' => 'Tak'
-                                                 ]])
                                             </div>
                                             <div class="col-4 mb-3">
                                                 @include('form-elements.html-select', [
