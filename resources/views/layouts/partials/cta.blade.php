@@ -20,7 +20,7 @@
                         @if(!$propertyId)
                         <img src="{{ asset('img/sygnet.svg') }}" alt="" width="168" height="168" loading="lazy" decoding="async" data-aos="fade" class="aos-init aos-animate">
                         @else
-                        <img src="https://newkalter.test/img/sygnet_secondary.svg" alt="" width="168" height="168" loading="lazy" decoding="async" data-aos="fade" class="aos-init aos-animate">
+                        <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168" height="168" loading="lazy" decoding="async" data-aos="fade" class="aos-init aos-animate">
                         @endif
                     </div>
                     <h2 class="fw-bold text-center text-uppercase">
