@@ -20,7 +20,8 @@
                             <th scope="col">ID</th>
                             <th scope="col">Nazwa</th>
                             <th scope="col" class="text-center">Status</th>
-                            <th scope="col">Typ</th>
+                            <th scope="col" class="text-center">Typ</th>
+                            <th scope="col" class="text-center">Postęp inwestycji</th>
                             <th scope="col">Data modyfikacji</th>
                             <th scope="col"></th>
                         </tr>
@@ -28,7 +29,7 @@
                     <tbody class="content">
                         @foreach ($list as $index => $p)
                             <tr id="recordsArray_{{ $p->id }}">
-                                <th class="position" scope="row">{{ $p->id }}</th>
+                                <td class="position" scope="row">{{ $p->id }}</td>
                                 <td>
                                     @if ($p->type == 1)
                                         <a
@@ -43,10 +44,11 @@
                                             href="{{ route('admin.developro.investment.houses.index', $p) }}">{{ $p->name }}</a>
                                     @endif
                                 </td>
-                                <td><span
-                                        class="badge inwest-list-status-{{ $p->status }}">{{ investmentStatus($p->status) }}</span>
+                                <td>
+                                    <span class="badge inwest-list-status-{{ $p->status }}">{{ investmentStatus($p->status) }}</span>
                                 </td>
-                                <td>{{ investmentType($p->type) }}</td>
+                                <td class="text-center">{{ investmentType($p->type) }}</td>
+                                <td class="text-center">{{ investmentAdvanced($p->progress) }}</td>
                                 <td>{{ $p->updated_at }}</td>
                                 <td class="option-120">
                                     <div class="btn-group">

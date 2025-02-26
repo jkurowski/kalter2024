@@ -72,6 +72,7 @@
                                 '4' => 'Realizacja 60%',
                                 '5' => 'Realizacja 80%',
                                 '6' => 'Realizacja 100%',
+                                '7' => 'Gotowe do odbioru',
                             ],
                         ])
                     </div>

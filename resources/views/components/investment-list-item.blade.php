@@ -17,7 +17,7 @@
             </div>
         </div>
 
-        <div id="layout-container" class="list-layout">
+        <div id="layout-container" class="list-layout d-none">
         @foreach ($properties as $property)
             @if($investment->type == 1)
                 @if(optional($property->building)->active == 1)

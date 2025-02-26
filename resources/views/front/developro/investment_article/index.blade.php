@@ -65,7 +65,7 @@
                             <article class="shadow-post-article rounded">
                                 <div class="row ">
                                     <div class="col-12 col-lg-8 col-xl-5">
-                                        <div class="h-100">
+                                        <div class="h-100 position-relative">
                                             <a href="{{route('developro.investment.news.show', [$investment->slug, $n->slug])}}" title="{{ $n->title }}" itemprop="url">
                                                 <picture>
                                                     @if($n->file_webp)
@@ -76,6 +76,7 @@
                                                     <img src="{{asset('investment/articles/thumbs/'.$n->file) }}" alt="@if($n->file_alt){{$n->file_alt}}@else{{$n->title}}@endif" loading="lazy" decoding="async" fetchpriority="low" class="w-100 h-auto object-fit-cover">
                                                 </picture>
                                             </a>
+                                            <span class="post-date">{{$n->date}}</span>
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-4 col-xl-7">

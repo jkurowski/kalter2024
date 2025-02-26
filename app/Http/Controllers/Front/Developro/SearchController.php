@@ -44,11 +44,21 @@ class SearchController extends Controller
 
 // Filter Investments
         $investments = Investment::query()
-            ->where('status', '=', 1)
+            ->where('status', 1)
             ->when($filters['city'], fn($query, $city) => $query->where('city_id', $city))
             ->when($filters['invest'], fn($query, $invest) => $query->where('id', $invest))
-            ->when($filters['advanced'], fn($query, $advanced) => $query->where('progress', $advanced))
+            ->when($filters['advanced'], function ($query, $advanced) {
+                if (in_array($advanced, [1, 7])) {
+                    // Strict match for 1 and 7
+                    $query->where('progress', $advanced);
+                } else {
+                    // Show all progress values from the selected one upwards
+                    $query->where('progress', '>=', $advanced);
+                }
+            })
+            ->orderByDesc('progress') // Sort progress from high to low (7 → 1)
             ->get();
+
 
 // Filter Properties
         $properties = Property::query()
