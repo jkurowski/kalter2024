@@ -31,6 +31,8 @@ class CityFormRequest extends FormRequest
             'address_line_2' => '',
             'lat' => '',
             'lng' => '',
+            'working_hours' => '',
+            'short_message' => '',
             'contact_title' => 'required'
         ];
 

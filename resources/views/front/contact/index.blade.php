@@ -145,11 +145,22 @@
 
                                             <a href="mailto:{{ $city->email }}">{{ $city->email }}</a>
                                         </div>
-                                        <div class="d-flex gap-3 align-items-start mb-2 mb-md-3">
+                                        <div class="d-flex gap-3 align-items-start mb-2">
                                             <svg class="text-secondary" xmlns="http://www.w3.org/2000/svg" width="12.204" height="17.435" viewBox="0 0 12.204 17.435"><path id="Icon_material-location-on" data-name="Icon material-location-on" d="M13.6,3A6.1,6.1,0,0,0,7.5,9.1c0,4.577,6.1,11.333,6.1,11.333S19.7,13.679,19.7,9.1A6.1,6.1,0,0,0,13.6,3Zm0,8.282A2.179,2.179,0,1,1,15.782,9.1,2.18,2.18,0,0,1,13.6,11.282Z" transform="translate(-7.5 -3)" fill="currentcolor"></path></svg>
 
                                             <p class="mb-0">{{ $city->address_line_1 }},<br>{{ $city->address_line_2 }}</p>
                                         </div>
+                                        @if($city->working_hours)
+                                        <div class="d-flex gap-3 align-items-start mb-2 mb-md-3">
+                                            <svg class="text-secondary" xmlns="http://www.w3.org/2000/svg" height="19" viewBox="0 0 24 24" width="19"><g><path d="M0,0h24v24H0V0z" fill="none"/></g><g><path d="M11.99,2C6.47,2,2,6.48,2,12s4.47,10,9.99,10C17.52,22,22,17.52,22,12S17.52,2,11.99,2z M15.29,16.71L11,12.41V7h2v4.59 l3.71,3.71L15.29,16.71z" fill="currentcolor"/></g></svg>
+                                            <p class="mb-0">{{ $city->working_hours }}</p>
+                                        </div>
+                                        @endif
+                                        @if($city->short_message)
+                                        <div class="d-flex gap-3 align-items-start mb-2 mb-md-3">
+                                        <p class="mb-0">{{ $city->short_message }}</p>
+                                        </div>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-4">
