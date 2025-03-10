@@ -39,7 +39,7 @@
     @include('front.investments.search')
     <section>
         <div class="container">
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 row-gap-4">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 row-gap-4 justify-content-center">
                 @foreach ($current_investment as $p)
                     <div class="col">
                         <div class="invest-card position-relative">
