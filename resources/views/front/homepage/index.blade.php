@@ -121,7 +121,7 @@
             ],
         ];
         ?>
-        <div class="invests-vertical-slider mt-4" data-slick='<?= json_encode($slider_options) ?>'>
+        <div class="invests-vertical-slider mt-4 @if($current_investment->count() < 4) disable-blur @endif" data-slick='<?= json_encode($slider_options) ?>'>
             @foreach ($current_investment as $p)
                 <div>
                     <div class="invest-card position-relative">
