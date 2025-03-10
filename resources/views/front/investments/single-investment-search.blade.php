@@ -25,12 +25,15 @@
                         </select>
                     </div>
                     @endif
+
+                    @if($investment->area_range)
                     <div class="col">
                         <select name="area" id="area" class="form-select">
                             <option value="">Powierzchnia</option>
                             {!! area2Select($investment->area_range) !!}
                         </select>
                     </div>
+                    @endif
 
                     @if(!isset($is_floor))
                     <div class="col">
