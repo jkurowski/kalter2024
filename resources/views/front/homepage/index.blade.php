@@ -246,10 +246,10 @@
                             <p class="fs-10 text-uppercase fw-900 mb-2">{{ $p->investment->name }}</p>
                             <p class="h3 mb-1">
                                 @if($p->price && !$p->highlighted)
-                                    <span class="me-2">- @money($p->price)</span>
+                                    <span class="me-2">@money($p->price)</span>
                                 @else
                                     @if($p->promotion_price)
-                                        <span class="me-2">-- @money($p->promotion_price)</span>
+                                        <span class="me-2">@money($p->promotion_price)</span>
                                     @endif
                                     @if($p->price)
                                         <span class="text-body-emphasis opacity-50 fs-6 align-middle text-decoration-line-through">@money($p->price)</span>
