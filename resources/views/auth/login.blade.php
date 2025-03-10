@@ -8,6 +8,15 @@
             <img src="{{ asset('/cms/logo-biale.png') }}" alt="DeveloPro">
         </div>
     </div>
+    @if (session('verified'))
+        <div class="row">
+            <div class="col-md-8 offset-md-4">
+                <div class="alert alert-success" role="alert">
+                    Twoja konto zostało poprawnie aktywowane.
+                </div>
+            </div>
+        </div>
+    @endif
     <div class="form-group row">
         <label for="email" class="col-md-4 col-form-label text-md-right">Adres e-mail</label>
         <div class="col-md-8">

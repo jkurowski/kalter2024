@@ -5,10 +5,13 @@ use App\Http\Controllers\Front\IframePageController;
 use App\Http\Controllers\SMSController;
 use App\Http\Middleware\IframeContactMiddleware;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use App\Http\Requests\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Access\AuthorizationException;
 
 
 /*
@@ -30,19 +33,36 @@ Route::get('routes', function () {
     return '<pre>' . Artisan::output() . '</pre>';
 });
 
-Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-    $request->fulfill();
-    return redirect('/login');
-})->middleware(['auth', 'signed'])->name('verification.verify');
+Route::get('/email/verify/{id}/{hash}', function ($id, $hash) {
+    // Pobierz użytkownika na podstawie ID z URL
+    $user = User::find($id);
+
+    if (!$user) {
+        throw new AuthorizationException('User not found');
+    }
+
+    // Sprawdź, czy hash e-maila zgadza się z tym, który jest w URL
+    if (!hash_equals(sha1($user->getEmailForVerification()), $hash)) {
+        throw new AuthorizationException('Invalid verification link');
+    }
+
+    // Jeśli hash pasuje, zweryfikuj e-mail użytkownika
+    $user->markEmailAsVerified();
+    $user->active = 1;
+    $user->save();
+
+    // Przekieruj użytkownika na stronę logowania
+    return redirect('/login')->with('verified', true);
+})->middleware(['signed'])->name('verification.verify');
 
 Route::get('/email/verify', function () {
     return view('auth.verify-email');
-})->middleware('auth')->name('verification.notice');
+})->name('verification.notice');
 
 Route::post('/email/verification-notification', function (Request $request) {
     $request->user()->sendEmailVerificationNotification();
     return back()->with('message', 'Wiadomość z link aktywacyjnym wysłana!');
-})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+})->middleware(['throttle:6,1'])->name('verification.send');
 
 
 Route::middleware(['restrictIp'])->group(function () {

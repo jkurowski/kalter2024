@@ -293,7 +293,7 @@
                             @if($property->file)
                                 <div class="tab-pane fade @if(!$property->model_3d) show active @endif" id="btn-2d-pane" role="tabpanel" aria-labelledby="btn-2d" tabindex="0">
                                     <div class="w-100 h-100">
-                                        <a href="{{ asset('/investment/property/'.$property->file) }}" class="swipebox">
+                                        <a href="{{ asset('/investment/property/'.$property->file) }}" class="glightbox">
                                             <picture>
                                                 @if($property->file_webp)
                                                     <source type="image/webp" srcset="{{ asset('/investment/property/thumbs/webp/'.$property->file_webp) }}">
