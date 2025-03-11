@@ -253,14 +253,15 @@
                                         @endif
                                         @if($p->price)
                                             <span class="text-body-emphasis opacity-50 fs-6 align-middle text-decoration-line-through">@money($p->price)</span>
-                                   @endif
-                                    @if($p->price && $p->promotion_price)
-                                    @php
-                                        $rabat = $p->price - $p->promotion_price;
-                                    @endphp
-                                    <p class="rabat">Rabat: @money($rabat)</p>
+                                         @endif
+                                        @if($p->price && $p->promotion_price)
+                                            @php
+                                            $rabat = $p->price - $p->promotion_price;
+                                            @endphp
+                                            <p class="rabat">Rabat: @money($rabat)</p>
+                                        @endif
                                     @endif
-                                    </p>
+                                </p>
                                     @if($p->price_30)
                                         <p class="fs-8 text-black">
                                             @lang('website.label_cena_30') @money($p->price_30)
