@@ -172,10 +172,16 @@
                                     @else
                                         @if($property->promotion_price)
                                             <span class="fs-24">@money($property->promotion_price)</span>
-                                            <span class="fs-24">Rabat: @money($property->price - $property->promotion_price)</span>
                                         @endif
                                         @if($property->price)
                                             <span class="text-body-emphasis opacity-50 fs-6 align-middle text-decoration-line-through">@money($property->price)</span>
+                                        @endif
+
+                                        @if($property->price && $property->promotion_price)
+                                            @php
+                                                $rabat = $property->price - $property->promotion_price;
+                                            @endphp
+                                            <p class="rabat h4">Rabat: @money($rabat)</p>
                                         @endif
                                     @endif
                                 </p>
