@@ -250,7 +250,10 @@
                                 @else
                                     @if($p->promotion_price)
                                         <span class="me-2">@money($p->promotion_price)</span>
-                                        <span class="fs-24">Rabat: @money($p->price - $p->promotion_price)</span>
+                                        @php
+                                            $rabat = $p->price - $p->promotion_price;
+                                        @endphp
+                                        <span class="fs-24">Rabat: @money($rabat)</span>
                                     @endif
                                     @if($p->price)
                                         <span class="text-body-emphasis opacity-50 fs-6 align-middle text-decoration-line-through">@money($p->price)</span>
