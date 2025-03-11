@@ -253,6 +253,8 @@
                                         @php
                                             $rabat = $p->price - $p->promotion_price;
                                         @endphp
+                                        <span class="fs-24">Cena: @money($p->price)</span>
+                                        <span class="fs-24">Promocja: @money($p->promotion_price)</span>
                                         <span class="fs-24">Rabat: @money($rabat)</span>
                                     @endif
                                     @if($p->price)
