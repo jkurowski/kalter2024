@@ -258,7 +258,7 @@
                                             @php
                                             $rabat = $p->price - $p->promotion_price;
                                             @endphp
-                                            <p class="rabat">Rabat: @money($rabat)</p>
+                                            <p class="rabat h4">Rabat: @money($rabat)</p>
                                         @endif
                                     @endif
                                 </p>
