@@ -181,7 +181,7 @@
                                             @php
                                                 $rabat = $property->price - $property->promotion_price;
                                             @endphp
-                                            <span class="rabat h4">Rabat: @money($rabat)</span>
+                                            <span class="rabat h4 d-block w-100">Rabat: @money($rabat)</span>
                                         @endif
                                    @endif
                                 </p>
@@ -200,7 +200,7 @@
                                         @php
                                             $rabat = $property->price - $property->promotion_price;
                                         @endphp
-                                        <span class="rabat h4">Rabat: @money($rabat)</span>
+                                        <span class="rabat h4 d-block w-100">Rabat: @money($rabat)</span>
                                     @endif
                                 </p>
                                 @if($property->price_30)
