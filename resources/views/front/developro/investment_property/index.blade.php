@@ -181,8 +181,26 @@
                                             @php
                                                 $rabat = $property->price - $property->promotion_price;
                                             @endphp
-                                            <p class="rabat h4">Rabat: @money($rabat)</p>
+                                            <span class="rabat h4">Rabat: @money($rabat)</span>
                                         @endif
+                                   @endif
+                                </p>
+                                @if($property->price_30)
+                                    <p class="fs-10 text-black mb-0">
+                                        Najniższa cena z ostatnich 30 dni: @money($property->price_30)
+                                    </p>
+                                @endif
+                            @else
+                                <p class="h4 mb-1 d-flex flex-wrap align-items-center column-gap-3 ff-secondary">
+                                    @if($property->promotion_price)
+                                        <span class="fs-24">@money($property->promotion_price)</span>
+                                    @endif
+                                    @if($property->price && $property->promotion_price)
+                                        <span class="text-body-emphasis opacity-50 fs-6 align-middle text-decoration-line-through">@money($property->price)</span>
+                                        @php
+                                            $rabat = $property->price - $property->promotion_price;
+                                        @endphp
+                                        <span class="rabat h4">Rabat: @money($rabat)</span>
                                     @endif
                                 </p>
                                 @if($property->price_30)
