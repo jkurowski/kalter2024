@@ -40,9 +40,9 @@
                             </div>
                             <div class="col-3 d-flex justify-content-center align-items-center text-center">
                                 <div>
-                                    @if($property->price)
+                                    @if($property->price_brutto)
                                     <h4>Kwota za całość:</h4>
-                                    <h3>{{ number_format($property->price, 2, '.', ' ') }} zł</h3>
+                                    <h3>{{ number_format($property->price_brutto, 2, '.', ' ') }} zł</h3>
                                     @else
                                         <div class="alert alert-warning m-0" role="alert">
                                             Brak wprowadzonej ceny
@@ -59,7 +59,7 @@
 
                                     @endif
 
-                                    @if($property->price)
+                                    @if($property->price_brutto)
                                         @if($property->investment->payments->count() > 0)
                                         <button class="btn btn-primary mt-3" id="generatePaymentsButton">Generuj harmonogram</button>
                                         @else
