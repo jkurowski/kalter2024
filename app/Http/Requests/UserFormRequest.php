@@ -23,20 +23,19 @@ class UserFormRequest extends FormRequest
      */
     public function rules()
     {
-        if ($this->method() == 'PUT') {
-            return [
-                'name' => 'required',
-                'email' => 'required|email|unique:users,email,' . $this->route()->user,
-                'password' => 'same:confirm-password',
-                'roles' => 'required'
-            ];
+        $rules = [
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email,' . ($this->route()->user ?? ''),
+            'password' => $this->method() === 'PUT' ? 'nullable|same:confirm-password' : 'required|same:confirm-password',
+        ];
+
+        // Make 'roles' required only if the user is an Administrator
+        if (Auth::user()->hasRole('Administrator')) {
+            $rules['roles'] = 'required';
         } else {
-            return [
-                'name' => 'required',
-                'email' => 'required|email|unique:users,email',
-                'password' => 'required|same:confirm-password',
-                'roles' => 'required'
-            ];
+            $rules['roles'] = 'nullable'; // Non-admin users don't need to provide roles
         }
+
+        return $rules;
     }
 }
