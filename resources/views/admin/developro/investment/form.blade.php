@@ -317,6 +317,16 @@
                         'class' => 'tinymce',
                     ])
                 </div>
+
+                <div class="row w-100 mb-4">
+                    @include('form-elements.textarea-fullwidth', [
+                        'label' => 'Dane przy formularzu',
+                        'name' => 'contact_content',
+                        'value' => $entry->contact_content,
+                        'rows' => 11,
+                        'class' => 'tinymce',
+                    ])
+                </div>
                 <div class="row w-100 form-group">
                     @include('form-elements.textarea-fullwidth', [
                         'label' => 'Kod makiety 3D',

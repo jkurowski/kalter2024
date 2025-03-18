@@ -4,6 +4,7 @@
     'sectionSubTitle' => 'Napisz do nas!',
     'investmentName' => $investmentName ?? null,
     'investmentId' => $investmentName ?? null,
+    'investmentText' => $investmentText ?? null,
     'propertyId' => $propertyId ?? null,
     'back' => $back ?? false,
 ])
@@ -31,7 +32,15 @@
             </div>
         </div>
         <div class="row row-gap-4">
-            <div class="col-12 col-lg-10 ">
+            @isset($investmentText)
+            <div class="col-12 col-lg-3">
+                <div class="contact-form-container">
+                    <p class="fs-5 text-uppercase fw-semibold text-secondary">DANE KONTAKTOWE</p>
+                    {!! $investmentText !!}
+                </div>
+            </div>
+            @endisset
+            <div class="@isset($investmentText) col-12 col-lg-7 @else col-12 @endisset">
                 <div class="contact-form-container text-secondary">
                     <div class="position-absolute cta-person z-2">
                         <img class="img-fluid" src="{{ asset('img/cta_person.webp') }}" alt="" width="475" height="710" loading="lazy" decoding="async">

@@ -52,6 +52,7 @@ class Investment extends Model
         'entry_content',
         'content',
         'end_content',
+        'contact_content',
         'show_prices',
         'show_properties',
         'file_thumb',

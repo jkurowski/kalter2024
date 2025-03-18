@@ -582,7 +582,7 @@
             ])
 
             <div id="kontakt">
-                @include('layouts.partials.cta', ['pageTitle' => 'Strona inwestycji', 'investmentName' => $investment->name, 'investmentId' => $investment->id, 'back' => true])
+                @include('layouts.partials.cta', ['pageTitle' => 'Strona inwestycji', 'investmentName' => $investment->name, 'investmentId' => $investment->id, 'back' => true, 'investmentText' => $investment->contact_content])
             </div>
         </div>
 

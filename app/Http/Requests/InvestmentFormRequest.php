@@ -48,6 +48,7 @@ class InvestmentFormRequest extends FormRequest
             'commercial' => '',
             'content' => '',
             'end_content' => '',
+            'contact_content' => '',
             'menu' => '',
             'mockup' => '',
             'show_prices' => 'boolean',
