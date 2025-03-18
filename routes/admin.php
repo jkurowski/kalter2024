@@ -42,6 +42,7 @@ Route::group([
 
     Route::get('user/datatable', 'User\IndexController@datatable')->name('user.datatable');
     Route::get('user/send-notification', 'User\IndexController@sendNotification')->name('user.sendNotification');
+    Route::get('user/roles', 'User\IndexController@showAllRoles')->name('user.roles');
 
     //Route::get('article/convert', 'Article\IndexController@convert');
     //Route::get('article/translate', 'Article\IndexController@translate');

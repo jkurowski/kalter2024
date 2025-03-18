@@ -30,6 +30,7 @@ class IndexController extends Controller
 
     public function __construct(UserRepositoryInterface $repository)
     {
+
         $this->middleware('permission:user-list|user-create|user-edit|user-delete', [
             'only' => ['index','store']
         ]);
@@ -47,8 +48,7 @@ class IndexController extends Controller
 
     public function index()
     {
-
-        return view('admin.user.index', [
+       return view('admin.user.index', [
             'list' => $this->repository->all()
         ]);
     }
@@ -197,5 +197,11 @@ class IndexController extends Controller
         broadcast(new PublicNotification($message))->toOthers();
 
         \Log::info('Notification event dispatched.');
+    }
+
+    public function showAllRoles()
+    {
+        $permissions = Auth::user()->getPermissionsViaRoles()->pluck('name'); // Extract only the names
+        dd($permissions);
     }
 }
