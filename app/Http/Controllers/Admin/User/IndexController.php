@@ -33,11 +33,8 @@ class IndexController extends Controller
         $this->middleware('permission:user-list|user-create|user-edit|user-delete', [
             'only' => ['index','store']
         ]);
-        $this->middleware('permission:user-create', [
+        $this->middleware('permission:user-create|user-edit', [
             'only' => ['create','store']
-        ]);
-        $this->middleware('permission:user-edit', [
-            'only' => ['edit','update']
         ]);
         $this->middleware('permission:user-self', [
             'only' => ['edit','update']
