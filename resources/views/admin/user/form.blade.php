@@ -46,15 +46,13 @@
                                         'select' => $cities
                                     ])
                                 </div>
-                                @if(Auth::user()->hasRole('Administrator'))
                                 <div class="row w-100 form-group">
                                     @isset($selected)
-                                        @include('form-elements.html-select-multiple', ['label' => 'Role CRM', 'name' => 'roles', 'select' => $roles, 'selected' => $selected, 'required' => 1])
+                                        @include('form-elements.html-select-multiple', ['label' => 'Role CRM', 'name' => 'roles', 'select' => $roles, 'selected' => $selected, 'required' => 1, 'readonly' =>  !Auth::user()->hasRole('Administrator')])
                                     @else
-                                        @include('form-elements.html-select-multiple', ['label' => 'Role CRM', 'name' => 'roles', 'select' => $roles, 'required' => 1])
+                                        @include('form-elements.html-select-multiple', ['label' => 'Role CRM', 'name' => 'roles', 'select' => $roles, 'required' => 1, 'readonly' => !Auth::user()->hasRole('Administrator')])
                                     @endif
                                 </div>
-                                @endif
                                 <div class="row w-100 form-group">
                                     @include('form-elements.html-textarea', [
                                           'label' => 'Podpis e-mail',
