@@ -30,7 +30,6 @@ class UserFormRequest extends FormRequest
             'password' => $this->method() === 'PUT' ? 'nullable|same:confirm-password' : 'required|same:confirm-password',
         ];
 
-        // Make 'roles' required only if the user is an Administrator
         if (Auth::user()->hasRole('Administrator')) {
             $rules['roles'] = 'required';
         } else {
