@@ -9,8 +9,6 @@
         @endif
     @endcan
 
-    {{ Auth::user()->hasRole('Administrator') }}
-
     @if(!Auth::user()->hasRole('Administrator'))
         @if($row->id == Auth::id())
             <a href="{{route('admin.user.edit', $row->id)}}" class="btn action-button me-1" data-bs-toggle="tooltip" data-placement="top" data-bs-title="Edytuj"><i class="fe-edit"></i></a>
