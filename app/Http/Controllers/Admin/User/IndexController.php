@@ -39,6 +39,9 @@ class IndexController extends Controller
         $this->middleware('permission:user-edit', [
             'only' => ['edit','update']
         ]);
+        $this->middleware('permission:user-self', [
+            'only' => ['edit','update']
+        ]);
         $this->middleware('permission:user-delete', [
             'only' => ['destroy']
         ]);
@@ -78,22 +81,39 @@ class IndexController extends Controller
 
     public function edit($id)
     {
-//        if(Auth::user()->can('user-self') && $id <> Auth::id()) {
-//            abort(403, 'Unauthorized action.');
-//        }
 
         $user = $this->repository->find($id);
         $userRole = $user->roles->pluck('name', 'name')->all();
 
-        return view('admin.user.form', [
-            'cardTitle' => $user->name .' '.$user->surname,
-            'roles' => $this->repository->getRoles(),
-            'cities' => CustomField::where('group_id', 1)->pluck('value', 'id')->prepend('--- brak ---', 0),
-            'job_positions' => Department::all()->pluck('name', 'id'),
-            'selected' => $userRole,
-            'backButton' => route('admin.user.index'),
-            'entry' => $user
-        ]);
+
+        // If the user has 'user-edit', allow editing any account
+        if (Auth::user()->can('user-edit')) {
+            return view('admin.user.form', [
+                'cardTitle' => $user->name .' '.$user->surname,
+                'roles' => $this->repository->getRoles(),
+                'cities' => CustomField::where('group_id', 1)->pluck('value', 'id')->prepend('--- brak ---', 0),
+                'job_positions' => Department::all()->pluck('name', 'id'),
+                'selected' => $userRole,
+                'backButton' => route('admin.user.index'),
+                'entry' => $user
+            ]);
+        }
+
+        // If the user has 'user-self', allow editing only their own account
+        if (Auth::user()->can('user-self') && $user->id === Auth::id()) {
+            return view('admin.user.form', [
+                'cardTitle' => $user->name .' '.$user->surname,
+                'roles' => $this->repository->getRoles(),
+                'cities' => CustomField::where('group_id', 1)->pluck('value', 'id')->prepend('--- brak ---', 0),
+                'job_positions' => Department::all()->pluck('name', 'id'),
+                'selected' => $userRole,
+                'backButton' => route('admin.user.index'),
+                'entry' => $user
+            ]);
+        }
+
+        // Otherwise, deny access
+        abort(403, 'Unauthorized action.');
     }
 
     public function update(UserFormRequest $request, $id)
