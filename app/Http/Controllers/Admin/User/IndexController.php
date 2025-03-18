@@ -125,9 +125,8 @@ class IndexController extends Controller
         $user = $this->repository->find($id);
         $user->update($input);
 
-        DB::table('model_has_roles')->where('model_id', $id)->delete();
-
         if(Auth::user()->hasRole('Administrator')) {
+            DB::table('model_has_roles')->where('model_id', $id)->delete();
             $user->assignRole($request->input('roles'));
         }
 
