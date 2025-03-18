@@ -46,7 +46,7 @@
                                         'select' => $cities
                                     ])
                                 </div>
-                                @if(Auth::user()->role('Administrator'))
+                                @if(Auth::user()->hasRole('Administrator'))
                                 <div class="row w-100 form-group">
                                     @isset($selected)
                                         @include('form-elements.html-select-multiple', ['label' => 'Role CRM', 'name' => 'roles', 'select' => $roles, 'selected' => $selected, 'required' => 1])
