@@ -100,6 +100,7 @@ class IndexController extends Controller
         if (Auth::user()->can('user-self') && $user->id === Auth::id()) {
             return view('admin.user.form', [
                 'cardTitle' => $user->name .' '.$user->surname,
+                'roles' => $this->repository->getRoles(),
                 'cities' => CustomField::where('group_id', 1)->pluck('value', 'id')->prepend('--- brak ---', 0),
                 'job_positions' => Department::all()->pluck('name', 'id'),
                 'selected' => $userRole,
@@ -126,7 +127,9 @@ class IndexController extends Controller
 
         DB::table('model_has_roles')->where('model_id', $id)->delete();
 
-        $user->assignRole($request->input('roles'));
+        if(Auth::user()->hasRole('Administrator')) {
+            $user->assignRole($request->input('roles'));
+        }
 
         //$user->update($request->except(['_token', 'submit']));
         return redirect(route('admin.user.index'))->with('success', 'Użytkownik zaktualizowany');
