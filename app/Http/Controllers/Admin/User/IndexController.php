@@ -100,7 +100,6 @@ class IndexController extends Controller
         if (Auth::user()->can('user-self') && $user->id === Auth::id()) {
             return view('admin.user.form', [
                 'cardTitle' => $user->name .' '.$user->surname,
-                'roles' => $this->repository->getRoles(),
                 'cities' => CustomField::where('group_id', 1)->pluck('value', 'id')->prepend('--- brak ---', 0),
                 'job_positions' => Department::all()->pluck('name', 'id'),
                 'selected' => $userRole,
