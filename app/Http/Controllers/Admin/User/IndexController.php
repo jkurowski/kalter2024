@@ -78,9 +78,9 @@ class IndexController extends Controller
 
     public function edit($id)
     {
-        if(Auth::user()->can('user-self') && $id <> Auth::id()) {
-            abort(403, 'Unauthorized action.');
-        }
+//        if(Auth::user()->can('user-self') && $id <> Auth::id()) {
+//            abort(403, 'Unauthorized action.');
+//        }
 
         $user = $this->repository->find($id);
         $userRole = $user->roles->pluck('name', 'name')->all();
