@@ -1,5 +1,7 @@
 /* Inline
 ================================================== */
+@font-face{font-family:'FontAwesome';src:url('../../fonts/fontawesome-webfont.eot');src:url('../../fonts/fontawesome-webfont.eot?#iefix') format('embedded-opentype'),url('../../fonts/fontawesome-webfont.woff') format('woff'),url('../../fonts/fontawesome-webfont.ttf') format('truetype'),url('../../fonts/fontawesome-webfont.svg#fontawesomeregular') format('svg');font-weight:normal;font-style:normal}
+
 .btn.focus,
 .btn:focus,
 .btn:active:focus,
@@ -17,18 +19,36 @@ button:focus {
 
 .inline-btn {
     position: absolute;
-    width: 33px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     margin: auto;
     display: none;
-    z-index: 90
+    z-index: 90;
+    padding: 0;
 }
 .inline-bc .inline-btn {bottom:-1px;left:0;right:0;margin: auto}
-.inline-tc .inline-btn {top:-3px;left:0;right:0;margin: auto}
-.inline-tl .inline-btn {top:-3px;left:0}
-.inline-tr .inline-btn {top:-3px;right:0}
+.inline-tc .inline-btn {top:-20px;left:0;right:0;margin: auto}
+.inline-tl .inline-btn {top:-20px;left:0}
+.inline-tr .inline-btn {top:-20px;right:0}
 .inline-br .inline-btn {bottom:-1px;right:0}
 .inline-bl .inline-btn {bottom:-1px;left:0}
+
+.inline-btn button {
+    background: #00acc1;
+    border: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    svg {
+        width: 20px;
+        height: 20px;
+        path {
+            fill: #ffffff !important;
+        }
+    }
+}
 
 .inline-btn .btn-primary,
 #inlineModal .btn-primary {
@@ -36,6 +56,10 @@ button:focus {
     background-color: #00acc1;
     border: 0 #00acc1;
 }
+.inline-btn .btn:before {
+    background-color: transparent;
+}
+
 .modal {
     font-family: 'Poppins', sans-serif;
 }
@@ -45,21 +69,36 @@ button:focus {
     text-transform: uppercase;
     padding: 13px 15px;
 }
-.modal-header .close {
-    padding: 6px;
+.modal-header .btn-close {
+    padding: 0;
+    width: 30px;
+    height: 30px;
     text-shadow: none;
     opacity: 1;
-    color: white;
-    width: 29px;
-    background: rgba(255,255,255,0.06);
+    color: #00acc1;
+    background: #fff;
     -webkit-transition:all 100ms linear;
     -moz-transition:all 100ms linear;
     -o-transition:all 100ms linear;
     transition:all 100ms linear;
     border-radius: 3px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.modal-header .close:hover {
+.modal-header .btn-close:hover {
     background: #00acc1;
+    color: white;
+}
+.modal-header .btn-close svg {
+    width: 20px;
+    height: 20px
+}
+.modal-header .btn-close svg path {
+    fill: #00acc1 !important;
+}
+.modal-header .btn-close:hover svg path {
+    fill: #ffffff !important;
 }
 .modal-title {
     font-size: 16px;
@@ -143,6 +182,7 @@ button:focus {
     font-size: 14px;
     border: 1px solid #D5D5D5;
     border-radius: 3px !important;
+    padding: 7px 12px;
 }
 
 .modal-dialog .btn {
@@ -154,40 +194,4 @@ button:focus {
 
 .progress {
     display: none
-}
-
-
-.pantry-category {
-    width: 100%;
-    height: 100%;
-    padding: 10px 20px;
-    border-radius: 10px;
-    margin-bottom: 15px;
-    box-shadow: 5px 5px 1em gray;
-    .pantry-category-title {
-        margin: 0 0 5px 10px;
-        font-size: 20px;
-        font-family: Dosis;
-        font-weight: bold;
-    }
-    .pantry-category-products {
-        margin-left: 10px;
-        margin-top: 10px;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        .product {
-            display: flex;
-            height: 20px;
-            align-items: center;
-            margin-bottom: 10px;
-            margin-right: 15px;
-            font-size: 20px;
-            font-family: Dosis;
-            .checkbox {
-
-            }
-        }
-    }
 }

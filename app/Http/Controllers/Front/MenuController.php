@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Inline;
 use App\Models\Page;
 use App\Repositories\JobRepository;
 
@@ -25,12 +26,19 @@ class MenuController extends Controller
             $data['jobofferts'] = $this->repository->allSort('ASC');
         }
 
+        $inline = Inline::whereIdPlace(1)->get()->toArray();
+
+        if (!view()->exists('front.menupage.'.$uri)) {
+            abort(404);
+        }
+
         return view('front.menupage.'.$uri)
             ->with([
                 'page' => $page,
                 //'parent' => $parent
                 'uri' => $uri,
-                'data' => $data
+                'data' => $data,
+                'array' => $inline,
             ]);
     }
 }
