@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ContactFormRequest;
 use App\Models\City;
+use App\Models\Inline;
 use Http;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -32,10 +33,12 @@ class ContactController extends Controller
     function index()
     {
         $page = Page::where('id', 1)->first();
+        $inline = Inline::whereIdPlace(2)->get()->toArray();
 
         return view('front.contact.index', [
             'rules' => RodoRules::orderBy('sort')->whereActive(1)->get(),
-            'page' => $page
+            'page' => $page,
+            'array' => $inline
         ]);
     }
 

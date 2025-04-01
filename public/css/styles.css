@@ -14415,3 +14415,7 @@ blockquote p {
     font-size: 20px;
     color: #d52121;
 }
+
+.contact-data p {
+    margin-bottom: 0;
+}
