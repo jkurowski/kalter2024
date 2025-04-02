@@ -17,46 +17,26 @@
 
         <section class="s1">
             <div class="container">
-                <div class="row row-gap-4">
+                <div class="row row-gap-4 inline inline-tc">
                     <div class="col-12 col-md-6 col-lg-5">
                         <div style="--translate-x: 0;"
                             class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                             <div class="position-absolute top-50 start-50 translate-middle z-2">
-                                <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168"
-                                    height="168" loading="lazy" decoding="async" data-aos="fade">
+                                <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168" height="168" loading="lazy" decoding="async" data-aos="fade">
                             </div>
                             <h2 class="fw-bold text-center text-uppercase">
-                                <span data-aos="fade-up" data-aos-delay="200">
-                                    Szukasz pracy?
-                                </span>
-                                <span class="fw-900 fs-4 d-block text-center " data-aos="fade-up" data-aos-delay="400">
-                                    SPRAWDŹ NASZĄ OFERTĘ
-                                </span>
+                                <span data-aos="fade-up" data-aos-delay="200" data-modaltytul="14">{{ getInline($array, 14, 'modaltytul') }}</span>
+                                <span class="fw-900 fs-4 d-block text-center " data-aos="fade-up" data-aos-delay="400" data-modaleditor="14">{{ getInline($array, 14, 'modaleditor') }}</span>
                             </h2>
                         </div>
-                        <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
-                            <p>
-                                Dobrze dobrany zespół potrafi sprostać stawianym mu wyzwaniom, wzajemnie się wspierać,
-                                wspólnie rozwiązywac problemy i nawzajem się inspirować.
-                            </p>
-                            <p>
-                                Stworzyliśmy taki zespół i ciągle dbamy o jego rozwój poprzez różnego rodzaju szkolenia
-                                grupowe i indywidualne. Dbamy też o podtrzymywanie dobrych, nie tylko zawodowych więzi
-                                organizując spotkania i wyjazdy integracyjne.
-                            </p>
-                            <p>
-                                Naszą siłą jest różnorodność naszych wspólnych doświadczeń, kreatywność w rozwiązywaniu
-                                problemów i wzajemna pomoc zwłaszcza osobom nowozatrudnionym.
-                            </p>
-
-                        </div>
+                        <div class="text-pretty mt-4 mt-md-40" data-aos="fade" data-modaleditortext="14">{!! getInline($array, 14, 'modaleditortext') !!}</div>
                     </div>
                     <div class="col-12 col-md-6 col-lg-5 offset-lg-2">
                         <div class="w-100 h-100" data-aos="fade">
-                            <img class="img-fluid rounded" src="{{ asset('img/kariera_s1.webp') }}" alt=""
-                                width="555" height="471" loading="eager">
+                            <img src="{{ getInline($array, 14, 'file') }}" alt="{{ getInline($array, 14, 'file_alt') }}" data-img="14" loading="eager" class="img-fluid rounded">
                         </div>
                     </div>
+                    {!! inlineEditButton(14, 'modallink,modallinkbutton') !!}
                 </div>
             </div>
         </section>
@@ -143,8 +123,6 @@
                 </div>
             </div>
         </section>
-
-
     </main>
 @endsection
 @push('scripts')

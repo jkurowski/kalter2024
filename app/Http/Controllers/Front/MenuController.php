@@ -26,7 +26,7 @@ class MenuController extends Controller
             $data['jobofferts'] = $this->repository->allSort('ASC');
         }
 
-        $inline = Inline::whereIdPlace(1)->get()->toArray();
+        $inline = Inline::whereSlug($uri)->get()->toArray();
 
         if (!view()->exists('front.menupage.'.$uri)) {
             abort(404);
