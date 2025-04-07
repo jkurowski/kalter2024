@@ -55,44 +55,30 @@
                     <div class="row row-gap-4 align-items-center">
                         <div class="col-12 col-md-6 col-lg-5 order-last order-md-0">
                             <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded" src="{{ asset('img/slonimska/s1.jpg') }}" alt=""
-                                    width="555" height="629" loading="eager">
+                                <img class="img-fluid rounded"
+                                     src="{{ investmentSection($investment->sections, 1, 'file') }}"
+                                     alt="{{ investmentSection($investment->sections, 1, 'file_alt') }}"
+                                     loading="eager"
+                                >
                             </div>
                         </div>
                         <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
                             <div style="--translate-x: 0;"
-                                class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
+                                 class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
                                     <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168"
-                                        height="168" loading="lazy" decoding="async" data-aos="fade">
+                                         height="168" loading="lazy" decoding="async" data-aos="fade">
                                 </div>
                                 <h2 class="fw-bold text-center text-uppercase">
                                     <span data-aos="fade-up" data-aos-delay="200">
-                                        Nowe Mieszkania Białystok
+                                        {{ investmentSection($investment->sections, 1, 'title') }}
                                     </span>
                                 </h2>
                             </div>
                             <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
-                                <p>
-                                    „Słonimska Residence II” to planowany drugi etap i za razem najnowsza nieruchomość
-                                    mieszkaniowa dewelopera Kalter Nieruchomości usytuowana w centrum miasta Białystok.
-                                    Nowoczesna architektura budynku łączy klasyczne formy z aktualnymi i wyrazistymi
-                                    trendami
-                                    architektonicznymi. Inwestycja została zaprojektowana tak, aby wszystkie znajdujące się
-                                    w
-                                    niej nowe apartamenty były jasne, przestronne i doskonale oświetlone. Wszystko to za
-                                    sprawą
-                                    dogodnego usytuowania budynku – względem wszystkich czterech stron świata. Dodatkowym
-                                    atutem
-                                    inwestycji jest jej kameralna niska zabudowa, która daje komfort nieporównywalny z
-                                    wysoką
-                                    zabudową miejską. Dzięki takim rozwiązaniom mieszkańcy mają znacznie więcej możliwości
-                                    na
-                                    nawiązywanie pozytywnych relacji sąsiedzkich.
-                                </p>
+                                {!! investmentSection($investment->sections, 1, 'content') !!}
                             </div>
                         </div>
-
                     </div>
                 </div>
             </section>
@@ -103,37 +89,29 @@
 
                         <div class="col-12 col-md-6 col-lg-5">
                             <div style="--translate-x: 0;"
-                                class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
+                                 class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
                                     <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168"
-                                        height="168" loading="lazy" decoding="async" data-aos="fade">
+                                         height="168" loading="lazy" decoding="async" data-aos="fade">
                                 </div>
                                 <h2 class="fw-bold text-center text-uppercase">
                                     <span data-aos="fade-up" data-aos-delay="200">
-                                        Funkcjonalność<br>i styl
+                                        {{ investmentSection($investment->sections, 2, 'title') }}
                                     </span>
                                 </h2>
                             </div>
                             <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
-                                <p>
-                                    W naszej nowej inwestycji zaplanowaliśmy aż 37 funkcjonalnych lokali mieszkalnych o
-                                    metrażach od 28 do 86 m². Każde z mieszkań będzie w pełni przystosowane do wymogów i
-                                    oczekiwań nawet najbardziej wymagających mieszkańców. W budynku przewidziano wiele
-                                    udogodnień, z których jedną z najbardziej interesującyh, ma być duży i zaaranżowany
-                                    zielenią
-                                    taras widokowy na dachu budynku.
-                                </p>
-                                <p>
-                                    Kwintesencją nowoczesnego budownictwa w „Słonimska Residence”, mają być duże przestronne
-                                    okna oraz przepiękne lukarny i okna połaciowe, dzięki którym inwestycja wpisuje się w
-                                    najwyższe standardy mieszkaniowe dostępne na rynku nowych mieszkań w Białymstoku.
-                                </p>
+                                {!! investmentSection($investment->sections, 2, 'content') !!}
                             </div>
                         </div>
                         <div class="col-12 col-md-6 offset-lg-1">
                             <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded" src="{{ asset('img/slonimska/s2.jpg') }}" alt=""
-                                    width="555" height="699" loading="lazy" decoding="async">
+                                <img class="img-fluid rounded"
+                                     src="{{ investmentSection($investment->sections, 2, 'file') }}"
+                                     alt="{{ investmentSection($investment->sections, 2, 'file_alt') }}"
+                                     loading="lazy"
+                                     decoding="async"
+                                >
                             </div>
                         </div>
                     </div>
@@ -145,36 +123,30 @@
                     <div class="row align-items-center">
                         <div class="col-12 col-md-6 col-lg-5 order-last order-md-0 ">
                             <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded" src="{{ asset('img/slonimska/s3.jpg') }}" alt=""
-                                    width="672" height="448" loading="lazy" decoding="async">
+                                <img class="img-fluid rounded"
+                                     src="{{ investmentSection($investment->sections, 3, 'file') }}"
+                                     alt="{{ investmentSection($investment->sections, 3, 'file_alt') }}"
+                                     loading="lazy"
+                                     decoding="async"
+                                >
                             </div>
                         </div>
                         <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
                             <div style="--translate-x: 0;"
-                                class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
+                                 class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
                                     <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168"
-                                        height="168" loading="lazy" decoding="async" data-aos="fade">
+                                         height="168" loading="lazy" decoding="async" data-aos="fade">
                                 </div>
                                 <h2 class="fw-bold text-center text-uppercase">
                                     <span data-aos="fade-up" data-aos-delay="200">
-                                        Komfort<br>i przestrzeń
+                                        {{ investmentSection($investment->sections, 3, 'title') }}
                                     </span>
 
                                 </h2>
                             </div>
                             <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
-                                <p>
-                                    W każdym nowym mieszkaniu w Białymstoku przewidzieliśmy przestronne oświetlone balkony
-                                    oraz
-                                    loggie. Natomiast mieszkania znajdujące się na parterze mają mieć własne, spokojne
-                                    ogródki,
-                                    które pozwolą mieszkańcom cieszyć się urokami domowego życia w centrum miasta. Co
-                                    więcej,
-                                    ogródki mają być osłonięte budynkiem od strony ulicy, co dodatkowo podniesie komfort i
-                                    prywatność mieszkańców i pozwoli im cieszyć się z kameralnego klimatu w samym centrum
-                                    metropolii Białostockiej.
-                                </p>
+                                {!! investmentSection($investment->sections, 3, 'content') !!}
                             </div>
                         </div>
 
@@ -188,34 +160,29 @@
 
                         <div class="col-12 col-md-6 col-lg-5 order-last order-md-0 ">
                             <div style="--translate-x: 0;"
-                                class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
+                                 class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
                                     <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168"
-                                        height="168" loading="lazy" decoding="async" data-aos="fade">
+                                         height="168" loading="lazy" decoding="async" data-aos="fade">
                                 </div>
                                 <h2 class="fw-bold text-center text-uppercase">
                                     <span data-aos="fade-up" data-aos-delay="200">
-                                        Strefy relaksu
+                                        {{ investmentSection($investment->sections, 4, 'title') }}
                                     </span>
                                 </h2>
                             </div>
                             <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
-                                <p>
-                                    Na terenie inwestycji zaplanowaliśmy również dwie strefy rekreacyjne oraz komórki
-                                    lokatorskie, a także przestronny podziemny garaż z indywidualnymi miejscami parkingowymi
-                                    dopasowanymi do potrzeb mieszkańców i ich pojazdów. Inwestycja zostanie również
-                                    wyposażona w pięknie zaaranżowaną zieleń oraz małą architekturę. Bezpieczeństwo nowych
-                                    mieszkań w Białymstoku ma zapewniać nowoczesny system monitoringu wokół budynku oraz
-                                    bezawaryjne wideodomofony – w konsekwencji wszystkie osoby nieupoważnione nie będą miały
-                                    wstępu do budynku, a co za tym idzie, również do ogródków mieszczących się na terenie
-                                    inwestycji.
-                                </p>
+                                {!! investmentSection($investment->sections, 4, 'content') !!}
                             </div>
                         </div>
                         <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
                             <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded" src="{{ asset('img/slonimska/s4.jpg') }}" alt=""
-                                    width="555" height="699" loading="lazy" decoding="async">
+                                <img class="img-fluid rounded"
+                                     src="{{ investmentSection($investment->sections, 4, 'file') }}"
+                                     alt="{{ investmentSection($investment->sections, 4, 'file_alt') }}"
+                                     loading="lazy"
+                                     decoding="async"
+                                >
                             </div>
                         </div>
                     </div>
@@ -228,45 +195,30 @@
                         <div class="col-12 col-md-6 col-lg-5">
 
                             <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded" src="{{ asset('img/slonimska/s5.jpg') }}" alt=""
-                                    width="672" height="448" loading="lazy" decoding="async">
+                                <img class="img-fluid rounded"
+                                     src="{{ investmentSection($investment->sections, 5, 'file') }}"
+                                     alt="{{ investmentSection($investment->sections, 5, 'file_alt') }}"
+                                     loading="lazy"
+                                     decoding="async"
+                                >
                             </div>
                         </div>
                         <div class="col-12 col-md-6 offset-lg-1">
                             <div style="--translate-x: 0;"
-                            class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
-                            <div class="position-absolute top-50 start-50 translate-middle z-2">
-                                <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168"
-                                    height="168" loading="lazy" decoding="async" data-aos="fade">
-                            </div>
-                            <h2 class="fw-bold text-center text-uppercase">
+                                 class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
+                                <div class="position-absolute top-50 start-50 translate-middle z-2">
+                                    <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168"
+                                         height="168" loading="lazy" decoding="async" data-aos="fade">
+                                </div>
+                                <h2 class="fw-bold text-center text-uppercase">
                                 <span data-aos="fade-up" data-aos-delay="200">
-                                    Bezpieczeństwo
+                                    {{ investmentSection($investment->sections, 5, 'title') }}
                                 </span>
-
-                            </h2>
-                        </div>
-                        <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
-                            <p>
-                                Nieruchomość zostanie dodatkowo zabezpieczona solidnym ogrodzeniem od strony sąsiedniej
-                                zabudowy, dzięki czemu mieszkańcy będą mogli zaaranżować je w sposób indywidualny z
-                                naciskiem na prywatność.
-                            </p>
-
-                            <p>
-                                Na komfort mieszkańców pozytywnie wpłyną również ciekawie zaaranżowane przestrzenie
-                                wspólne
-                                wewnątrz budynku, a także przestronne korytarze i klatka schodowa.
-                            </p>
-
-                            <p class='fw-semibold'>
-                                Planowy termin rozpoczęcia budowy to 2024 rok.
-                            </p>
-                            <p class='fw-semibold'>
-                                Za to już dziś można zobaczyć standard i niepowtarzalny styl w jakim został zrealizowany
-                                pierwszy etap inwestycji!
-                            </p>
-                        </div>
+                                </h2>
+                            </div>
+                            <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
+                                {!! investmentSection($investment->sections, 5, 'content') !!}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -275,35 +227,32 @@
             <section class="s6">
                 <div class="container">
                     <div class="row row-gap-4 align-items-center">
-                        
+
                         <div class="col-12 col-md-6 col-lg-5">
                             <div style="--translate-x: 0;"
-                                class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
+                                 class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
                                     <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168"
-                                        height="168" loading="lazy" decoding="async" data-aos="fade">
+                                         height="168" loading="lazy" decoding="async" data-aos="fade">
                                 </div>
                                 <h2 class="fw-bold text-center text-uppercase">
                                     <span data-aos="fade-up" data-aos-delay="200">
-                                        Bojary - Białystok
+                                        {{ investmentSection($investment->sections, 6, 'title') }}
                                     </span>
                                 </h2>
                             </div>
                             <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
-                                <p>
-                                    Inwestycja „Słonimska Residence” zawdzięcza swoją nazwę od nazwy ulicy, przy której
-                                    powstaje. Budynek mieszkalny ma być usytuowany przy ulicy Słonimskiej 34, która znajduje
-                                    się na osiedlu Bojary w Białymstoku. Osiedle to jest jednym z najstarszych i zarazem
-                                    najbardziej zabytkowych osiedli w mieście – niegdyś Bojary stanowiły jedną z najbardziej
-                                    rozwiniętych dzielnic białostockich elit.
-                                </p>
-
+                                {!! investmentSection($investment->sections, 6, 'content') !!}
                             </div>
                         </div>
                         <div class="col-12 col-md-6 offset-lg-1">
                             <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded" src="{{ asset('img/slonimska/s6.jpg') }}" alt=""
-                                    width="555" height="699" loading="lazy" decoding="async">
+                                <img class="img-fluid rounded"
+                                     src="{{ investmentSection($investment->sections, 6, 'file') }}"
+                                     alt="{{ investmentSection($investment->sections, 6, 'file_alt') }}"
+                                     loading="lazy"
+                                     decoding="async"
+                                >
                             </div>
                         </div>
                     </div>
@@ -315,33 +264,29 @@
                     <div class="row row-gap-4 align-items-center">
                         <div class="col-12 col-md-6 col-lg-5 order-last order-md-0 ">
                             <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded" src="{{ asset('img/slonimska/s7.jpg') }}" alt=""
-                                    width="672" height="448" loading="lazy" decoding="async">
+                                <img class="img-fluid rounded"
+                                     src="{{ investmentSection($investment->sections, 7, 'file') }}"
+                                     alt="{{ investmentSection($investment->sections, 7, 'file_alt') }}"
+                                     loading="lazy"
+                                     decoding="async"
+                                >
                             </div>
                         </div>
                         <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
                             <div style="--translate-x: 0;"
-                                class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
+                                 class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
                                     <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168"
-                                        height="168" loading="lazy" decoding="async" data-aos="fade">
+                                         height="168" loading="lazy" decoding="async" data-aos="fade">
                                 </div>
                                 <h2 class="fw-bold text-center text-uppercase">
                                     <span data-aos="fade-up" data-aos-delay="200">
-                                        Historyczna dusza
+                                        {{ investmentSection($investment->sections, 7, 'title') }}
                                     </span>
-
                                 </h2>
                             </div>
                             <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
-                                <p>
-                                    Dziś na Bojarach dominują stylowe kamienice, zabytkowe nieruchomości mieszkalne i
-                                    powojenne domy oraz bloki mieszkalne. Nadzwyczaj ciekawy układ urbanistyczny tych
-                                    terenów jest pozostałością po dawnych szlakach komunikacyjnych. Dzielnica jest jednym z
-                                    bezcennych świadectw historii Białegostoku, a powstająca w niej nasza najnowsza
-                                    inwestycja „Słonimska Residence” oraz nowe mieszkania Bojary nieco przełamuje jej
-                                    kompozycję i wprowadza powiew świeżości w nowoczesnym stylu.
-                                </p>
+                                {!! investmentSection($investment->sections, 7, 'content') !!}
                             </div>
                         </div>
 
@@ -352,45 +297,37 @@
             <section class="s8">
                 <div class="container">
                     <div class="row row-gap-4 align-items-center">
-                      
+
                         <div class="col-12 col-md-6 col-lg-5">
                             <div style="--translate-x: 0;"
-                                class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
+                                 class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
                                     <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168"
-                                        height="168" loading="lazy" decoding="async" data-aos="fade">
+                                         height="168" loading="lazy" decoding="async" data-aos="fade">
                                 </div>
                                 <h2 class="fw-bold text-center text-uppercase">
                                     <span data-aos="fade-up" data-aos-delay="200">
-                                        Dogodna<br>infrastruktura
+                                        {{ investmentSection($investment->sections, 8, 'title') }}
                                     </span>
                                 </h2>
                             </div>
                             <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
-                                <p>
-                                    Inwestycja znajduje się w niezwykle atrakcyjnej lokalizacji. W bezpośrednim sąsiedztwie
-                                    nowych mieszkań w Białymstoku znajdą Państwo pełną infrastrukturę w postaci licznych
-                                    sklepów, aptek oraz placówek zdrowia i urzędów. Ponadto, bliskość licznych lokali
-                                    gastronomicznych i usługowych sprawi, że każdy z Państwa będzie mógł cieszyć się ze
-                                    spędzania wolnej chwili w kameralnym klimacie Szlaku Bojar. Dodatkowym atutem inwestycji
-                                    jest również bogata oferta instytucji oświatowych. Nowi mieszkańcy będą mogli liczyć
-                                    tutaj na łatwy dostęp do żłobków, przedszkoli oraz szkół podstawowych i
-                                    ponadpodstawowych.
-                                </p>
-
+                                {!! investmentSection($investment->sections, 8, 'content') !!}
                             </div>
                         </div>
                         <div class="col-12 col-md-6 offset-lg-1">
                             <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded" src="{{ asset('img/slonimska/s8.jpg') }}" alt=""
-                                    width="555" height="699" loading="lazy" decoding="async">
+                                <img class="img-fluid rounded"
+                                     src="{{ investmentSection($investment->sections, 8, 'file') }}"
+                                     alt="{{ investmentSection($investment->sections, 8, 'file_alt') }}"
+                                     loading="lazy"
+                                     decoding="async"
+                                >
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-
-
 
             <section class="section-localization mt-50" id="lokalizacja">
                 <div class="container">
@@ -402,39 +339,27 @@
                         </div>
                         <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
                             <div style="--translate-x: 0;"
-                                class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
+                                 class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
                                     <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168"
-                                        height="168" loading="lazy" decoding="async" data-aos="fade">
+                                         height="168" loading="lazy" decoding="async" data-aos="fade">
                                 </div>
                                 <h2 class="fw-bold text-center text-uppercase">
                                     <span data-aos="fade-up" data-aos-delay="200">
-                                        Lokalizacja
+                                        {{ investmentSection($investment->sections, 9, 'title') }}
                                     </span>
 
                                 </h2>
                             </div>
                             <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
-                                <p>
-                                    Dzięki dobrze rozwiniętej infrastrukturze komunikacyjnej inwestycja „Słonimska
-                                    ResidenceII”
-                                    będzie mogła zaoferować mieszkańcom bezpośredni i szybki dojazd do ścisłego centrum
-                                    miasta
-                                    Białystok. Dodatkowym atutem będzie również brak konieczności korzystania z samochodu,
-                                    aby
-                                    móc korzystać z licznych atrakcji miasta – w 15 minut można dojść spacerem do Pałacu
-                                    Branickich.
-                                </p>
+                                {!! investmentSection($investment->sections, 9, 'content') !!}
                             </div>
                         </div>
-                        
+
                     </div>
-
-
                     <div class="row justify-content-center pt-md-50 mt-30">
                         <div class="col-12">
-                            <p class="h5 fw-semibold text-secondary mb-3 mb-md-30">Infrastruktura w otoczeniu inwestycji
-                            </p>
+                            <p class="h5 fw-semibold text-secondary mb-3 mb-md-30">Infrastruktura w otoczeniu inwestycji</p>
                         </div>
                         <?php
                         $list1 = [
@@ -455,7 +380,7 @@
                                 'distance' => '1,4km',
                             ],
                         ];
-                        
+
                         $list2 = [
                             [
                                 'name' => 'żłobek',
@@ -474,7 +399,7 @@
                                 'distance' => '500m',
                             ],
                         ];
-                        
+
                         $list3 = [
                             [
                                 'name' => 'sklep osiedlowy',
@@ -493,7 +418,6 @@
                                 'distance' => '600m',
                             ],
                         ];
-                        
                         ?>
                         <div class="col-12 col-md-6 col-lg-4">
                             <ul class="mb-0">
@@ -543,8 +467,6 @@
                                 @endforeach
                             </ul>
                         </div>
-
-
                     </div>
                 </div>
             </section>

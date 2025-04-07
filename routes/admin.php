@@ -22,6 +22,7 @@ Route::group([
     Route::post('box/set', 'Box\IndexController@sort')->name('box.sort');
     Route::post('invest-page/set', 'Developro\Page\IndexController@sort')->name('investment_page.sort');
     Route::post('job/set', 'Job\IndexController@sort')->name('job.sort');
+    Route::post('section/set', 'Developro\Section\IndexController@sort')->name('section.sort');
     Route::post('ux/properties', 'UX\IndexController@properties')->name('ux.properties');
 
     Route::get('contract/show/{contract}', 'Contract\IndexController@show')->name('contract.show');
@@ -207,7 +208,7 @@ Route::group([
         Route::group(['namespace' => 'Funnel', 'prefix' => '/funnel', 'as' => 'funnel.'], function () {
             Route::get('/', 'IndexController@index')->name('index');
         });
-        
+
         // Assign leads
         Route::group(['namespace' => 'AssignLeads', 'prefix' => '/assign-leads', 'as' => 'assign-leads.'], function () {
             Route::get('/', 'IndexController@index')->name('index');
@@ -334,6 +335,7 @@ Route::group([
         Route::group(['middleware' => 'check.investment.permission', 'prefix' => '/investment', 'as' => 'investment.'], function () {
             Route::resources([
                 '{investment}/page' => 'Page\IndexController',
+                '{investment}/section' => 'Section\IndexController',
                 '{investment}/article' => 'Article\IndexController',
                 '{investment}/plan' => 'Plan\IndexController',
                 '{investment}/search' => 'Search\IndexController',

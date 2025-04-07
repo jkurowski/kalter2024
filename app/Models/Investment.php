@@ -167,6 +167,15 @@ class Investment extends Model
     }
 
     /**
+     * Get investment sections
+     * @return HasMany
+     */
+    public function sections(): HasMany
+    {
+        return $this->hasMany('App\Models\InvestmentSection');
+    }
+
+    /**
      * Get flats belonging to the floors of the investment
      * @return HasManyThrough
      */
