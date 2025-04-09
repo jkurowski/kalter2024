@@ -18,16 +18,16 @@
                             <ol class="breadcrumb opacity-50">
                                 <li class="breadcrumb-item">
                                     <a href="{{ route('index') }}"
-                                        style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">Strona
+                                       style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">Strona
                                         główna</a>
                                 </li>
                                 <li class="breadcrumb-item" style="--bs-breadcrumb-divider-color: var(--bs-white);">
                                     <a href="#"
-                                        style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">Oferta</a>
+                                       style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">Oferta</a>
                                 </li>
                                 <li class="breadcrumb-item" style="--bs-breadcrumb-divider-color: var(--bs-white);">
                                     <a href="#"
-                                        style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">{{ $investment->name }}</a>
+                                       style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">{{ $investment->name }}</a>
                                 </li>
                             </ol>
                         </nav>
@@ -59,89 +59,81 @@
                     <div class="row row-gap-4 align-items-center">
                         <div class="col-12 col-md-6 col-lg-5 order-last order-md-0 ">
                             <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded" src="{{ asset('img/ogrody-andersena/s1.png') }}"
-                                    alt="" width="555" height="629" loading="eager">
+                                <img class="img-fluid rounded"
+                                     src="{{ investmentSection($investment->sections, 19, 'file') }}"
+                                     alt="{{ investmentSection($investment->sections, 19, 'file_alt') }}"
+                                     loading="eager"
+                                >
                             </div>
                         </div>
                         <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
                             <div style="--translate-x: 0;"
-                                class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
+                                 class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
                                     <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168"
-                                        height="168" loading="lazy" decoding="async" data-aos="fade">
+                                         height="168" loading="lazy" decoding="async" data-aos="fade">
                                 </div>
                                 <h2 class="fw-bold text-center text-uppercase">
                                     <span data-aos="fade-up" data-aos-delay="200">
-                                        Nowe mieszkania<br>w Ząbkach
+                                        {{ investmentSection($investment->sections, 19, 'title') }}
                                     </span>
                                 </h2>
                             </div>
                             <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
-                                <p>
-                                    „OGRODY ANDERSENA”, to nasza najnowsza inwestycja usytuowana w dynamicznie rozwijających
-                                    się podwarszawskich ZĄBKACH przy ul. Andersena 13 oraz ul. Jagiellońskiej 18,
-                                    Jagiellońskiej 18A, Jagiellońskiej 18B. Na terenie powstaną 4 niskie,
-                                    pięciokondygnacyjne, kameralne budynki z windami, ze wspólną podziemną halą garażową
-                                    oraz z wewnętrznym terenem zielonym oferującym strefy relaksu dla mieszkańców. W
-                                    projekcie zaplanowano 123 mieszkania o powierzchni od 31 do 120 m2.
-                                </p>
-                                <p class='fw-semibold'>
-                                    Planowany termin oddania inwestycji to III kw. 2026 rok.
-                                </p>
+                                {!! investmentSection($investment->sections, 19, 'content') !!}
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
             </section>
 
             <section class="s2">
-
                 <div class="container">
                     <div class="row">
                         <div class="col-12 py-5">
                             <div class="row row-gap-3 justify-content-center">
                                 <div class="col-6 col-sm-4">
                                     <div class="bg-white icon-shadow mx-auto rounded-circle d-flex align-items-center justify-content-center"
-                                        style="width: 87px; height: 87px;">
+                                         style="width: 87px; height: 87px;">
                                         <img src="{{ asset('img/ogrody-andersena/ico_mieszkania.png') }}" width="42"
-                                            height="42" alt="" loading="lazy" decoding="async" class="img-fluid">
+                                             height="42" alt="" loading="lazy" decoding="async" class="img-fluid">
                                     </div>
                                     <p class="text-secondary text-center mt-3 mt-lg-30">Funkcjonalne mieszkania</p>
                                 </div>
                                 <div class="col-6 col-sm-4">
                                     <div class="bg-white icon-shadow mx-auto rounded-circle d-flex align-items-center justify-content-center"
-                                        style="width: 87px; height: 87px;">
+                                         style="width: 87px; height: 87px;">
                                         <img src="{{ asset('img/ogrody-andersena/ico_okna.png') }}" width="42"
-                                            height="42" alt="" loading="lazy" decoding="async" class="img-fluid">
+                                             height="42" alt="" loading="lazy" decoding="async" class="img-fluid">
                                     </div>
                                     <p class="text-secondary text-center mt-3 mt-lg-30">Duże okna</p>
                                 </div>
                                 <div class="col-6 col-sm-4">
                                     <div class="bg-white icon-shadow mx-auto rounded-circle d-flex align-items-center justify-content-center"
-                                        style="width: 87px; height: 87px;">
+                                         style="width: 87px; height: 87px;">
                                         <img src="{{ asset('img/ogrody-andersena/ico_windy.png') }}" width="42"
-                                            height="42" alt="" loading="lazy" decoding="async"
-                                            class="img-fluid">
+                                             height="42" alt="" loading="lazy" decoding="async"
+                                             class="img-fluid">
                                     </div>
                                     <p class="text-secondary text-center mt-3 mt-lg-30">Cichobieżne windy</p>
                                 </div>
                                 <div class="col-6 col-sm-4">
                                     <div class="bg-white icon-shadow mx-auto rounded-circle d-flex align-items-center justify-content-center"
-                                        style="width: 87px; height: 87px;">
+                                         style="width: 87px; height: 87px;">
                                         <img src="{{ asset('img/ogrody-andersena/ico_garaz.png') }}" width="42"
-                                            height="42" alt="" loading="lazy" decoding="async"
-                                            class="img-fluid">
+                                             height="42" alt="" loading="lazy" decoding="async"
+                                             class="img-fluid">
                                     </div>
                                     <p class="text-secondary text-center mt-3 mt-lg-30">Miejsca garażowe do kazdego
                                         mieszkania, również rodzinne</p>
                                 </div>
                                 <div class="col-6 col-sm-4">
                                     <div class="bg-white icon-shadow mx-auto rounded-circle d-flex align-items-center justify-content-center"
-                                        style="width: 87px; height: 87px;">
+                                         style="width: 87px; height: 87px;">
                                         <img src="{{ asset('img/ogrody-andersena/ico_wysokosc.png') }}" width="42"
-                                            height="42" alt="" loading="lazy" decoding="async"
-                                            class="img-fluid">
+                                             height="42" alt="" loading="lazy" decoding="async"
+                                             class="img-fluid">
                                     </div>
                                     <p class="text-secondary text-center mt-3 mt-lg-30">280cm wysokość pomieszczeń</p>
                                 </div>
@@ -149,41 +141,32 @@
                         </div>
                     </div>
                     <div class="row row-gap-4 align-items-center">
-                      
+
                         <div class="col-12 col-md-6 col-lg-5">
                             <div style="--translate-x: 0;"
-                                class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
+                                 class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
                                     <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168"
-                                        height="168" loading="lazy" decoding="async" data-aos="fade">
+                                         height="168" loading="lazy" decoding="async" data-aos="fade">
                                 </div>
                                 <h2 class="fw-bold text-center text-uppercase">
                                     <span data-aos="fade-up" data-aos-delay="200">
-                                        Mieszkaj wygodnie
+                                        {{ investmentSection($investment->sections, 20, 'title') }}
                                     </span>
                                 </h2>
                             </div>
                             <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
-                                <p>
-                                    Osiedle „OGRODY ANDERSENA” doskonale spełniające oczekiwania obecnych i przyszłych
-                                    pokoleń,
-                                    to niezwykłe miejsce, które posiada wiele zalet. Zaprojektowaliśmy różnorodne typy
-                                    mieszkań,
-                                    dostosowane do potrzeb różnych pokoleń i stylów życia. Znajdą tu swoje miejsce do życia
-                                    single, rodziny z dziećmi, a także seniorzy.
-                                </p>
-                                <p>
-                                    To idealne miejsce do zamieszkania dla osób ceniących sobie komfort, bezpieczeństwo oraz
-                                    wysoką jakość życia w otoczeniu natury. To projekt, który łączy w sobie nowoczesność z
-                                    przyjaznym, kameralnym charakterem, tworząc idealne warunki do życia dla każdego
-                                    pokolenia.
-                                </p>
+                                {!! investmentSection($investment->sections, 20, 'content') !!}
                             </div>
                         </div>
                         <div class="col-12 col-md-6 offset-lg-1">
                             <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded" src="{{ asset('img/ogrody-andersena/s2.png') }}"
-                                    alt="" width="555" height="699" loading="lazy" decoding="async">
+                                <img class="img-fluid rounded"
+                                     src="{{ investmentSection($investment->sections, 20, 'file') }}"
+                                     alt="{{ investmentSection($investment->sections, 20, 'file_alt') }}"
+                                     loading="lazy"
+                                     decoding="async"
+                                >
                             </div>
                         </div>
                     </div>
@@ -193,43 +176,46 @@
             <section class="s3">
                 <div class="container">
                     <div class="row row-gap-4">
-                                                <div class="col-12 col-lg-8 position-relative">
+                        <div class="col-12 col-lg-8 position-relative">
                             <div data-aos="fade">
-                                <img class="img-fluid rounded" src="{{ asset('img/ogrody-andersena/s3.png') }}"
-                                    alt="" width="906" height="492" loading="lazy" decoding="async">
+                                <img class="img-fluid rounded"
+                                     src="{{ investmentSection($investment->sections, 21, 'file') }}"
+                                     alt="{{ investmentSection($investment->sections, 21, 'file_alt') }}"
+                                     loading="lazy"
+                                     decoding="async"
+                                >
                             </div>
                             <div class="position-absolute-lg translate-middle-y-lg top-50 w-calc-lg">
                                 <div class="row">
                                     <div class="col-12 col-xl-10 offset-xl-1" data-aos="fade-up">
                                         <div class="bg-white p-3 px-xl-40">
-
                                             <div class="row row-gap-3 justify-content-center">
                                                 <div class="col-6 col-sm-4">
                                                     <div class="bg-white icon-shadow mx-auto rounded-circle d-flex align-items-center justify-content-center"
-                                                        style="width: 87px; height: 87px;">
+                                                         style="width: 87px; height: 87px;">
                                                         <img src="{{ asset('img/ogrody-andersena/ico_strefy.png') }}"
-                                                            width="42" height="42" alt="" loading="lazy"
-                                                            decoding="async" class="img-fluid">
+                                                             width="42" height="42" alt="" loading="lazy"
+                                                             decoding="async" class="img-fluid">
                                                     </div>
                                                     <p class="text-secondary text-center mt-3 mt-lg-30">Strefy rekreacyjne
                                                         dla mieszkańców</p>
                                                 </div>
                                                 <div class="col-6 col-sm-4">
                                                     <div class="bg-white icon-shadow mx-auto rounded-circle d-flex align-items-center justify-content-center"
-                                                        style="width: 87px; height: 87px;">
+                                                         style="width: 87px; height: 87px;">
                                                         <img src="{{ asset('img/ogrody-andersena/ico_plac_zabaw.png') }}"
-                                                            width="42" height="42" alt="" loading="lazy"
-                                                            decoding="async" class="img-fluid">
+                                                             width="42" height="42" alt="" loading="lazy"
+                                                             decoding="async" class="img-fluid">
                                                     </div>
                                                     <p class="text-secondary text-center mt-3 mt-lg-30">Plac zabaw dla
                                                         dzieci</p>
                                                 </div>
                                                 <div class="col-6 col-sm-4">
                                                     <div class="bg-white icon-shadow mx-auto rounded-circle d-flex align-items-center justify-content-center"
-                                                        style="width: 87px; height: 87px;">
+                                                         style="width: 87px; height: 87px;">
                                                         <img src="{{ asset('img/ogrody-andersena/ico_rowerownia.png') }}"
-                                                            width="42" height="42" alt="" loading="lazy"
-                                                            decoding="async" class="img-fluid">
+                                                             width="42" height="42" alt="" loading="lazy"
+                                                             decoding="async" class="img-fluid">
                                                     </div>
                                                     <p class="text-secondary text-center mt-3 mt-lg-30">Rowerownia</p>
                                                 </div>
@@ -241,33 +227,20 @@
                         </div>
                         <div class="col-12 col-lg-4 order-first order-lg-0">
                             <div style="--translate-x: 0;"
-                                class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
+                                 class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
                                     <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168"
-                                        height="168" loading="lazy" decoding="async" data-aos="fade">
+                                         height="168" loading="lazy" decoding="async" data-aos="fade">
                                 </div>
                                 <h2 class="fw-bold text-center text-uppercase">
                                     <span data-aos="fade-up" data-aos-delay="200">
-                                        Wykorzystanie<br>
-                                        przestrzeni
+                                        {{ investmentSection($investment->sections, 21, 'title') }}
                                     </span>
 
                                 </h2>
                             </div>
                             <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
-                                <p>
-                                    W ofercie dostępne są różne warianty mieszkań, w tym: z dwiema łazienkami, garderobą lub
-                                    oknem w kuchni.
-                                </p>
-                                <p>
-                                    Osiedle „Na skraju” posiada także podziemną halę garażową, w której znajduje się 80
-                                    miejsc postojowych, zapewniających wygodne parkowanie.
-                                </p>
-                                <p>
-                                    Dodatkowo, na zewnątrz budynku na poziomie parteru, przewidziano kolejne 11 miejsc
-                                    parkingowych oraz stojaki na rowery.
-                                </p>
-
+                                {!! investmentSection($investment->sections, 21, 'content') !!}
                             </div>
                         </div>
 
@@ -280,76 +253,62 @@
                     <div class="row row-gap-4">
                         <div class="col-12 col-lg-5 ">
                             <div style="--translate-x: 0;"
-                                class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
+                                 class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
                                     <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168"
-                                        height="168" loading="lazy" decoding="async" data-aos="fade">
+                                         height="168" loading="lazy" decoding="async" data-aos="fade">
                                 </div>
                                 <h2 class="fw-bold text-center text-uppercase">
                                     <span data-aos="fade-up" data-aos-delay="200">
-                                        Prywatne ogródki<br>i balkony
+                                        {{ investmentSection($investment->sections, 22, 'title') }}
                                     </span>
 
                                 </h2>
                             </div>
                             <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
-                                <p>
-                                    W inwestycji wszystkim nowym mieszkaniom na parterze zapewniono prywatne ogródki o
-                                    powierzchniach od 20 do 97 m2. Stanowią one idealne miejsce do aranżowania własnej
-                                    przestrzeni zielonej czy organizowania spotkań w gronie rodzinnym.
-                                </p>
-
-                                <p>
-                                    Mieszkania na wyższych kondygnacjach zostały wyposażone w przestronne, funkcjonalne
-                                    balkony
-                                    i tarasy, które dodają uroku a jednocześnie oferują równie interesującą przestrzeń do
-                                    aranżacji i relaksu na świeżym powietrzu.
-
-                                </p>
-                                <p>
-                                    Te wszystkie opcje pozwalają mieszkańcom wybrać rozwiązanie, które najlepiej odpowiada
-                                    ich
-                                    preferencjom i potrzebom.
-                                </p>
+                                {!! investmentSection($investment->sections, 22, 'content') !!}
                             </div>
                         </div>
                         <div class="col-12 col-lg-7 position-relative">
                             <div data-aos="fade">
-                                <img class="img-fluid rounded" src="{{ asset('img/ogrody-andersena/s4.png') }}"
-                                    alt="" width="906" height="492" loading="lazy" decoding="async">
+                                <img class="img-fluid rounded"
+                                     src="{{ investmentSection($investment->sections, 22, 'file') }}"
+                                     alt="{{ investmentSection($investment->sections, 22, 'file_alt') }}"
+                                     loading="lazy"
+                                     decoding="async"
+                                >
                             </div>
                             <div class="position-absolute-lg translate-middle-y-lg top-50 w-calc-lg">
                                 <div class="row">
                                     <div class="col-12 col-xl-10 offset-xl-1" data-aos="fade-up">
                                         <div class="bg-white p-3 px-xl-40">
-
                                             <div class="row row-gap-3 justify-content-center">
                                                 <div class="col-6 col-sm-4">
                                                     <div class="bg-white icon-shadow mx-auto rounded-circle d-flex align-items-center justify-content-center"
-                                                        style="width: 87px; height: 87px;">
+                                                         style="width: 87px; height: 87px;">
                                                         <img src="{{ asset('img/ogrody-andersena/ico_ogrodki.png') }}"
-                                                            width="42" height="42" alt="" loading="lazy"
-                                                            decoding="async" class="img-fluid">
+                                                             width="42" height="42" alt="" loading="lazy"
+                                                             decoding="async" class="img-fluid">
                                                     </div>
                                                     <p class="text-secondary text-center mt-3 mt-lg-30">Prywatne ogródki
                                                     </p>
                                                 </div>
                                                 <div class="col-6 col-sm-4">
                                                     <div class="bg-white icon-shadow mx-auto rounded-circle d-flex align-items-center justify-content-center"
-                                                        style="width: 87px; height: 87px;">
+                                                         style="width: 87px; height: 87px;">
                                                         <img src="{{ asset('img/ogrody-andersena/ico_balkony.png') }}"
-                                                            width="42" height="42" alt="" loading="lazy"
-                                                            decoding="async" class="img-fluid">
+                                                             width="42" height="42" alt="" loading="lazy"
+                                                             decoding="async" class="img-fluid">
                                                     </div>
                                                     <p class="text-secondary text-center mt-3 mt-lg-30">Tarasy i balkony
                                                     </p>
                                                 </div>
                                                 <div class="col-6 col-sm-4">
                                                     <div class="bg-white icon-shadow mx-auto rounded-circle d-flex align-items-center justify-content-center"
-                                                        style="width: 87px; height: 87px;">
+                                                         style="width: 87px; height: 87px;">
                                                         <img src="{{ asset('img/ogrody-andersena/ico_disabled.png') }}"
-                                                            width="42" height="42" alt="" loading="lazy"
-                                                            decoding="async" class="img-fluid">
+                                                             width="42" height="42" alt="" loading="lazy"
+                                                             decoding="async" class="img-fluid">
                                                     </div>
                                                     <p class="text-secondary text-center mt-3 mt-lg-30">Udogodnienia dla
                                                         niepełnosprawnych</p>
@@ -367,11 +326,14 @@
             <section class="s5">
                 <div class="container">
                     <div class="row row-gap-4">
-                        
                         <div class="col-12 col-lg-7 position-relative">
                             <div data-aos="fade">
-                                <img class="img-fluid rounded" src="{{ asset('img/ogrody-andersena/s5.png') }}"
-                                    alt="" width="906" height="492" loading="lazy" decoding="async">
+                                <img class="img-fluid rounded"
+                                     src="{{ investmentSection($investment->sections, 23, 'file') }}"
+                                     alt="{{ investmentSection($investment->sections, 23, 'file_alt') }}"
+                                     loading="lazy"
+                                     decoding="async"
+                                >
                             </div>
                             <div class="position-absolute-lg translate-middle-y-lg top-50 w-calc-lg">
                                 <div class="row">
@@ -380,10 +342,10 @@
                                             <div class="row row-gap-3 justify-content-center">
                                                 <div class="col-6 col-sm-4">
                                                     <div class="bg-white icon-shadow mx-auto rounded-circle d-flex align-items-center justify-content-center"
-                                                        style="width: 87px; height: 87px;">
+                                                         style="width: 87px; height: 87px;">
                                                         <img src="{{ asset('img/ogrody-andersena/ico_centrum.png') }}"
-                                                            width="42" height="42" alt="" loading="lazy"
-                                                            decoding="async" class="img-fluid">
+                                                             width="42" height="42" alt="" loading="lazy"
+                                                             decoding="async" class="img-fluid">
                                                     </div>
                                                     <p class="text-secondary text-center mt-3 mt-lg-30">20 min. samochodem
                                                         do centrum Warszawy
@@ -391,10 +353,10 @@
                                                 </div>
                                                 <div class="col-6 col-sm-4">
                                                     <div class="bg-white icon-shadow mx-auto rounded-circle d-flex align-items-center justify-content-center"
-                                                        style="width: 87px; height: 87px;">
+                                                         style="width: 87px; height: 87px;">
                                                         <img src="{{ asset('img/ogrody-andersena/ico_przystanki.png') }}"
-                                                            width="42" height="42" alt="" loading="lazy"
-                                                            decoding="async" class="img-fluid">
+                                                             width="42" height="42" alt="" loading="lazy"
+                                                             decoding="async" class="img-fluid">
                                                     </div>
                                                     <p class="text-secondary text-center mt-3 mt-lg-30">Przystanki
                                                         autobusowe
@@ -402,10 +364,10 @@
                                                 </div>
                                                 <div class="col-6 col-sm-4">
                                                     <div class="bg-white icon-shadow mx-auto rounded-circle d-flex align-items-center justify-content-center"
-                                                        style="width: 87px; height: 87px;">
+                                                         style="width: 87px; height: 87px;">
                                                         <img src="{{ asset('img/ogrody-andersena/ico_skm.png') }}"
-                                                            width="42" height="42" alt="" loading="lazy"
-                                                            decoding="async" class="img-fluid">
+                                                             width="42" height="42" alt="" loading="lazy"
+                                                             decoding="async" class="img-fluid">
                                                     </div>
                                                     <p class="text-secondary text-center mt-3 mt-lg-30">SKM - tylko 7 min.
                                                         do stacji Warszawa Wileńska</p>
@@ -418,37 +380,20 @@
                         </div>
                         <div class="col-12 col-lg-5 order-first order-md-0">
                             <div style="--translate-x: 0;"
-                                class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
+                                 class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
                                     <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168"
-                                        height="168" loading="lazy" decoding="async" data-aos="fade">
+                                         height="168" loading="lazy" decoding="async" data-aos="fade">
                                 </div>
                                 <h2 class="fw-bold text-center text-uppercase">
                                     <span data-aos="fade-up" data-aos-delay="200">
-                                        Dogodna komunikacja
+                                        {{ investmentSection($investment->sections, 23, 'title') }}
                                     </span>
 
                                 </h2>
                             </div>
                             <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
-                                <p>
-                                    Dzięki istniejącej bogatej infrastrukturze drogowej i rozwiniętej komunikacji miejskiej
-                                    miasta Ząbki, osiedle „Ogrody Andersena”, zapewni swoim mieszkańcom doskonałe połączenie
-                                    z
-                                    pozostałą częścią miasta oraz z Warszawą.
-                                </p>
-
-                                <p>
-                                    Dojazd samochodem do centrum Warszawy zajmuje zaledwie około 20 minut, a do Dworca
-                                    Warszawa
-                                    Wileńska można dotrzeć już w 15 minut. Komunikacja miejska na terenie Ząbek jest na
-                                    wysokim
-                                    poziomie, co umożliwia szybkie dotarcie do stacji Metra Trocka lub Kondratowicza za
-                                    pomocą
-                                    licznych linii autobusowych. Dodatkowym atutem miasta Ząbki jest bezpłatna część
-                                    połączeń
-                                    komunikacyjnych dla mieszkańców.
-                                </p>
+                                {!! investmentSection($investment->sections, 23, 'content') !!}
                             </div>
                         </div>
                     </div>
@@ -460,33 +405,30 @@
                     <div class="row row-gap-4">
                         <div class="col-12 col-lg-5 ">
                             <div style="--translate-x: 0;"
-                                class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
+                                 class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
                                     <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168"
-                                        height="168" loading="lazy" decoding="async" data-aos="fade">
+                                         height="168" loading="lazy" decoding="async" data-aos="fade">
                                 </div>
                                 <h2 class="fw-bold text-center text-uppercase">
                                     <span data-aos="fade-up" data-aos-delay="200">
-                                        Cicha i spokojna okolica
+                                        {{ investmentSection($investment->sections, 24, 'title') }}
                                     </span>
 
                                 </h2>
                             </div>
                             <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
-                                <p>
-                                    Najważniejszym atutem lokalizacji osiedla jest jego położenie w sąsiedztwie niskiej
-                                    zabudowy
-                                    jednorodzinnej. Inwestycja oferuje nie tylko komfortowe, nowe mieszkania, ale również
-                                    szerokie możliwości spędzania wolnego czasu w otoczeniu przyrody i atrakcyjnych miejsc
-                                    rekreacyjnych. Na terenie osiedla znajdują się trzy strefy dedykowane mieszkańcom: plac
-                                    zabaw dla dzieci, strefa rekreacyjna oraz miejsce do wypoczynku.
-                                </p>
+                                {!! investmentSection($investment->sections, 24, 'content') !!}
                             </div>
                         </div>
                         <div class="col-12 col-lg-7 position-relative">
                             <div data-aos="fade">
-                                <img class="img-fluid rounded" src="{{ asset('img/ogrody-andersena/s6.png') }}"
-                                    alt="" width="906" height="492" loading="lazy" decoding="async">
+                                <img class="img-fluid rounded"
+                                     src="{{ investmentSection($investment->sections, 24, 'file') }}"
+                                     alt="{{ investmentSection($investment->sections, 24, 'file_alt') }}"
+                                     loading="lazy"
+                                     decoding="async"
+                                >
                             </div>
                             <div class="position-absolute-lg translate-middle-y-20-lg top-50 w-calc-lg">
                                 <div class="row">
@@ -495,20 +437,20 @@
                                             <div class="row row-gap-3 justify-content-center">
                                                 <div class="col-6 col-sm-4">
                                                     <div class="bg-white icon-shadow mx-auto rounded-circle d-flex align-items-center justify-content-center"
-                                                        style="width: 87px; height: 87px;">
+                                                         style="width: 87px; height: 87px;">
                                                         <img src="{{ asset('img/ogrody-andersena/ico_monitoring.png') }}"
-                                                            width="42" height="42" alt="" loading="lazy"
-                                                            decoding="async" class="img-fluid">
+                                                             width="42" height="42" alt="" loading="lazy"
+                                                             decoding="async" class="img-fluid">
                                                     </div>
                                                     <p class="text-secondary text-center mt-3 mt-lg-30">Monitoring
                                                     </p>
                                                 </div>
                                                 <div class="col-6 col-sm-4">
                                                     <div class="bg-white icon-shadow mx-auto rounded-circle d-flex align-items-center justify-content-center"
-                                                        style="width: 87px; height: 87px;">
+                                                         style="width: 87px; height: 87px;">
                                                         <img src="{{ asset('img/ogrody-andersena/ico_zabudowa.png') }}"
-                                                            width="42" height="42" alt="" loading="lazy"
-                                                            decoding="async" class="img-fluid">
+                                                             width="42" height="42" alt="" loading="lazy"
+                                                             decoding="async" class="img-fluid">
                                                     </div>
                                                     <p class="text-secondary text-center mt-3 mt-lg-30">Jednorodzinna
                                                         zabudowa w sąsiedztwie
@@ -516,10 +458,10 @@
                                                 </div>
                                                 <div class="col-6 col-sm-4">
                                                     <div class="bg-white icon-shadow mx-auto rounded-circle d-flex align-items-center justify-content-center"
-                                                        style="width: 87px; height: 87px;">
+                                                         style="width: 87px; height: 87px;">
                                                         <img src="{{ asset('img/ogrody-andersena/ico_las.png') }}"
-                                                            width="42" height="42" alt="" loading="lazy"
-                                                            decoding="async" class="img-fluid">
+                                                             width="42" height="42" alt="" loading="lazy"
+                                                             decoding="async" class="img-fluid">
                                                     </div>
                                                     <p class="text-secondary text-center mt-3 mt-lg-30">Blisko lasu
                                                         rembertowskiego - ok. 10 min. spacerem</p>
@@ -537,11 +479,15 @@
             <section class="s7 mt-lg-5">
                 <div class="container mt-lg-5">
                     <div class="row row-gap-4">
-                        
+
                         <div class="col-12 col-lg-7 position-relative">
                             <div data-aos="fade">
-                                <img class="img-fluid rounded" src="{{ asset('img/ogrody-andersena/s7.png') }}"
-                                    alt="" width="906" height="492" loading="lazy" decoding="async">
+                                <img class="img-fluid rounded"
+                                     src="{{ investmentSection($investment->sections, 25, 'file') }}"
+                                     alt="{{ investmentSection($investment->sections, 25, 'file_alt') }}"
+                                     loading="lazy"
+                                     decoding="async"
+                                >
                             </div>
                             <div class="position-absolute-lg translate-middle-y-lg top-50 w-calc-lg">
                                 <div class="row">
@@ -550,30 +496,30 @@
                                             <div class="row row-gap-3 justify-content-center">
                                                 <div class="col-6 col-sm-4">
                                                     <div class="bg-white icon-shadow mx-auto rounded-circle d-flex align-items-center justify-content-center"
-                                                        style="width: 87px; height: 87px;">
+                                                         style="width: 87px; height: 87px;">
                                                         <img src="{{ asset('img/ogrody-andersena/ico_sklepy.png') }}"
-                                                            width="42" height="42" alt="" loading="lazy"
-                                                            decoding="async" class="img-fluid">
+                                                             width="42" height="42" alt="" loading="lazy"
+                                                             decoding="async" class="img-fluid">
                                                     </div>
                                                     <p class="text-secondary text-center mt-3 mt-lg-30">Sklepy
                                                     </p>
                                                 </div>
                                                 <div class="col-6 col-sm-4">
                                                     <div class="bg-white icon-shadow mx-auto rounded-circle d-flex align-items-center justify-content-center"
-                                                        style="width: 87px; height: 87px;">
+                                                         style="width: 87px; height: 87px;">
                                                         <img src="{{ asset('img/ogrody-andersena/ico_restauracje.png') }}"
-                                                            width="42" height="42" alt="" loading="lazy"
-                                                            decoding="async" class="img-fluid">
+                                                             width="42" height="42" alt="" loading="lazy"
+                                                             decoding="async" class="img-fluid">
                                                     </div>
                                                     <p class="text-secondary text-center mt-3 mt-lg-30">Restauracje
                                                     </p>
                                                 </div>
                                                 <div class="col-6 col-sm-4">
                                                     <div class="bg-white icon-shadow mx-auto rounded-circle d-flex align-items-center justify-content-center"
-                                                        style="width: 87px; height: 87px;">
+                                                         style="width: 87px; height: 87px;">
                                                         <img src="{{ asset('img/ogrody-andersena/ico_szkoly.png') }}"
-                                                            width="42" height="42" alt="" loading="lazy"
-                                                            decoding="async" class="img-fluid">
+                                                             width="42" height="42" alt="" loading="lazy"
+                                                             decoding="async" class="img-fluid">
                                                     </div>
                                                     <p class="text-secondary text-center mt-3 mt-lg-30">Szkoły i
                                                         przedzszkola</p>
@@ -586,38 +532,19 @@
                         </div>
                         <div class="col-12 col-lg-5 order-first order-md-0">
                             <div style="--translate-x: 0;"
-                                class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
+                                 class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
                                     <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168"
-                                        height="168" loading="lazy" decoding="async" data-aos="fade">
+                                         height="168" loading="lazy" decoding="async" data-aos="fade">
                                 </div>
                                 <h2 class="fw-bold text-center text-uppercase">
                                     <span data-aos="fade-up" data-aos-delay="200">
-                                        Bogata infrastruktura
+                                        {{ investmentSection($investment->sections, 25, 'title') }}
                                     </span>
-
                                 </h2>
                             </div>
                             <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
-                                <p>
-                                    Mieszkańcy osiedla mają w bliskim sąsiedztwie liczne sklepy, restauracje, kawiarnie,
-                                    ośrodki
-                                    medyczne oraz tereny zielone. Okolica „Ogrodów Andersena” charakteryzuje się również
-                                    bogatą
-                                    infrastrukturą oświatową, w której skład wchodzą liczne żłobki, przedszkola oraz szkoła
-                                    podstawowa.
-                                </p>
-
-                                <p>
-                                    Dzięki połączeniu nowoczesnej infrastruktury, dogodnych warunków komunikacyjnych oraz
-                                    licznych udogodnień, Ząbki stają się idealnym miejscem do zamieszkania dla osób
-                                    ceniących
-                                    sobie komfort życia codziennego, bliskość natury oraz łatwy dostęp do wielkomiejskich
-                                    atrakcji Warszawy. Wszystkie te elementy sprawiają, że mieszkanie w Ząbkach to
-                                    komfortowy
-                                    wybór dla osób ceniących sobie zarówno bliskość dużego miasta, jak i spokojną, przyjazną
-                                    okolicę pełną udogodnień.
-                                </p>
+                                {!! investmentSection($investment->sections, 25, 'content') !!}
                             </div>
                         </div>
                     </div>
@@ -628,32 +555,19 @@
                     <div class="row row-gap-4  align-items-center">
                         <div class="col-12 col-md-6 col-lg-5">
                             <div style="--translate-x: 0;"
-                                class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
+                                 class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
                                     <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168"
-                                        height="168" loading="lazy" decoding="async" data-aos="fade">
+                                         height="168" loading="lazy" decoding="async" data-aos="fade">
                                 </div>
                                 <h2 class="fw-bold text-center text-uppercase">
                                     <span data-aos="fade-up" data-aos-delay="200">
-                                        Lokalizacja
+                                        {{ investmentSection($investment->sections, 26, 'title') }}
                                     </span>
-
                                 </h2>
                             </div>
                             <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
-                                <p>
-                                    Dla rodzin z dziećmi szczególnie istotne będzie bliskie położenie licznych parków i
-                                    placów zabaw, które sprzyjają spędzaniu czasu na świeżym powietrzu. Również miłośnicy
-                                    sportu znajdą tu coś dla siebie, ponieważ w okolicy znajdują się liczne ścieżki rowerowe
-                                    oraz trasy do biegania.
-
-                                    Dzięki połączeniu nowoczesnej infrastruktury, dogodnych warunków komunikacyjnych oraz
-                                    licznych udogodnień, Ząbki stają się idealnym miejscem do zamieszkania dla osób
-                                    ceniących sobie komfort życia codziennego, bliskość natury oraz łatwy dostęp do
-                                    wielkomiejskich atrakcji Warszawy. Wszystkie te elementy sprawiają, że mieszkanie w
-                                    Ząbkach to komfortowy wybór dla osób ceniących sobie zarówno bliskość dużego miasta, jak
-                                    i spokojną, przyjazną okolicę pełną udogodnień.
-                                </p>
+                                {!! investmentSection($investment->sections, 26, 'content') !!}
                             </div>
                         </div>
                         <div class="col-12 col-md-6 offset-lg-1">
@@ -700,7 +614,7 @@
                                 'distance' => '60 m - 1 min',
                             ],
                         ];
-                        
+
                         $list2 = [
                             [
                                 'name' => 'Biedronka',
@@ -726,13 +640,13 @@
                                 'name' => 'Przystanek autobusowy linia 245',
                                 'distance' => '300 m - 4 min',
                             ],
-                        
+
                             [
                                 'name' => 'Stacja kolejowa',
                                 'distance' => '2,2 km - 31 min',
                             ],
                         ];
-                        
+
                         $list3 = [
                             [
                                 'name' => 'Żłobek',
@@ -759,7 +673,7 @@
                                 'distance' => '2,1 km - 29 min',
                             ],
                         ];
-                        
+
                         ?>
                         <div class="col-12 col-md-6 col-lg-4">
                             <ul class="mb-0">

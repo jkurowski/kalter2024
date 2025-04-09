@@ -59,6 +59,15 @@
             </div>
         </div>
     </div>
+    <div class="form-group form-group-submit">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 d-flex justify-content-end">
+                    <a href="{{route('admin.developro.investment.section.create', $investment)}}" class="btn btn-primary">Dodaj</a>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 @push('scripts')
     <script type="text/javascript">$(document).ready(function(){$("#sortable tbody.content").sortuj('{{route('admin.section.sort')}}');});</script>
