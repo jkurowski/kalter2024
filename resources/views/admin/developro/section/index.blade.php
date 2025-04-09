@@ -40,7 +40,7 @@
                                 <td class="text-center">{{ $item->updated_at }}</td>
                                 <td class="option-120 text-end">
                                     <div class="btn-group">
-                                        <span class="btn action-button move-button me-1"><i class="fe-move"></i></span>
+                                        <span class="btn action-button move-button me-1 d-none"><i class="fe-move"></i></span>
                                         <a href="{{route('admin.developro.investment.section.edit', [$investment, $item->id])}}" class="btn action-button me-1" data-bs-toggle="tooltip" data-placement="top" data-bs-title="Edytuj wpis"><i class="fe-edit"></i></a>
                                         @if(!$item->lock)
                                         <form method="POST" action="{{route('admin.developro.investment.section.destroy', [$investment, $item->id])}}">
