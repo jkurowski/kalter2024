@@ -19,7 +19,7 @@
 @endphp
 
 <nav class="fixed-top-menu bg-white" id="navbar-secondary">
-    <ul class="navbar-nav with-underline-active nav-snap-md-down flex-row justify-content-around py-3"
+    <ul class="navbar-nav with-underline-active nav-snap-md-down flex-row justify-content-center py-3"
         style="--bs-nav-link-color: var(--bs-secondary); --bs-nav-link-hover-color: var(--bs-primary); --bs-navbar-active-color: var(--bs-secondary);">
         @foreach ($links as $link)
             <li class="nav-item">

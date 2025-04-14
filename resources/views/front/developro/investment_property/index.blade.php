@@ -63,7 +63,7 @@
         </section>
 
         <section class="sticky-top py-0 bg-white sticky-top-menu">
-            <div class="container">
+            <div class="container-fluid container-xl">
                 <div class="row">
                     <div class="col-12 col-lg-10 offset-lg-1">
                         @include('front.investments.submenu', ['menuIds' => $investment->menu])

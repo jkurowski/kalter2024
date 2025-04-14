@@ -13806,18 +13806,16 @@ section.search + section {
 @media (max-width: 767.98px) {
     .nav-snap-md-down {
         display: flex;
-        overflow-x: scroll;
+        /*overflow-x: scroll;*/
         scroll-snap-type: x mandatory;
-        flex-wrap: nowrap;
+        flex-wrap: wrap;
         justify-content: start;
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-        gap: 30px;
+        /*-ms-overflow-style: none;*/
+        /*scrollbar-width: none;*/
+        /*gap: 30px;*/
     }
     .nav-snap-md-down > * {
-        scroll-snap-align: start;
-        flex: none;
-        width: max-content;
+        padding: 0 5px;
     }
 }
 .nav-snap::-webkit-scrollbar {
@@ -14475,7 +14473,13 @@ blockquote p {
 
 }
 @media (max-width: 575.98px) {
-
+    section.sticky-top a {
+        padding: 4px 0;
+        font-size: 14px;
+    }
+    section.sticky-top li {
+        padding: 0 18px
+    }
 }
 /* end of 575.98 */
 
