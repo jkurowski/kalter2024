@@ -31,23 +31,23 @@
                 </div>
             </div>
         </div>
-        <div class="row row-gap-4">
+        <div class="row row-gap-4 justify-content-center">
             @isset($investmentText)
-            <div class="col-12 col-lg-3">
+            <div class="col-12 col-xl-3">
                 <div class="contact-form-container">
                     <p class="fs-5 text-uppercase fw-semibold text-secondary">DANE KONTAKTOWE</p>
                     {!! $investmentText !!}
                 </div>
             </div>
             @endisset
-            <div class="@isset($investmentText) col-12 col-lg-7 @else col-12 @endisset">
+            <div class="@isset($investmentText) col-12 col-xl-6 @else col-12 col-lg-7 @endisset">
                 <div class="contact-form-container text-secondary">
-                    <div class="position-absolute cta-person z-2">
-                        <img class="img-fluid" src="{{ asset('img/cta_person.webp') }}" alt="" width="475" height="710" loading="lazy" decoding="async">
-                    </div>
                     <p class="fs-5 text-uppercase fw-semibold text-secondary">FORMULARZ KONTAKTOWY</p>
                     @include('components.contact-form', ['page' => $page, 'back' => $back])
                 </div>
+            </div>
+            <div class="@isset($investmentText) col-3 d-none d-xl-flex @else col-5 d-flex @endisset align-items-end">
+                <img class="img-fluid position-relative person-img" src="{{ asset('img/cta_person.webp') }}" alt="" width="475" height="710">
             </div>
         </div>
     </div>

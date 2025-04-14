@@ -59,7 +59,7 @@
                     <div class="row row-gap-4 align-items-center">
                         <div class="col-12 col-md-6 col-lg-5 order-last order-md-0 ">
                             <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded"
+                                <img class="img-fluid rounded w-100"
                                      src="{{ investmentSection($investment->sections, 19, 'file') }}"
                                      alt="{{ investmentSection($investment->sections, 19, 'file_alt') }}"
                                      loading="eager"
@@ -161,7 +161,7 @@
                         </div>
                         <div class="col-12 col-md-6 offset-lg-1">
                             <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded"
+                                <img class="img-fluid rounded w-100"
                                      src="{{ investmentSection($investment->sections, 20, 'file') }}"
                                      alt="{{ investmentSection($investment->sections, 20, 'file_alt') }}"
                                      loading="lazy"
@@ -178,7 +178,7 @@
                     <div class="row row-gap-4">
                         <div class="col-12 col-lg-8 position-relative">
                             <div data-aos="fade">
-                                <img class="img-fluid rounded"
+                                <img class="img-fluid rounded w-100"
                                      src="{{ investmentSection($investment->sections, 21, 'file') }}"
                                      alt="{{ investmentSection($investment->sections, 21, 'file_alt') }}"
                                      loading="lazy"
@@ -271,7 +271,7 @@
                         </div>
                         <div class="col-12 col-lg-7 position-relative">
                             <div data-aos="fade">
-                                <img class="img-fluid rounded"
+                                <img class="img-fluid rounded w-100"
                                      src="{{ investmentSection($investment->sections, 22, 'file') }}"
                                      alt="{{ investmentSection($investment->sections, 22, 'file_alt') }}"
                                      loading="lazy"
@@ -328,7 +328,7 @@
                     <div class="row row-gap-4">
                         <div class="col-12 col-lg-7 position-relative">
                             <div data-aos="fade">
-                                <img class="img-fluid rounded"
+                                <img class="img-fluid rounded w-100"
                                      src="{{ investmentSection($investment->sections, 23, 'file') }}"
                                      alt="{{ investmentSection($investment->sections, 23, 'file_alt') }}"
                                      loading="lazy"
@@ -423,7 +423,7 @@
                         </div>
                         <div class="col-12 col-lg-7 position-relative">
                             <div data-aos="fade">
-                                <img class="img-fluid rounded"
+                                <img class="img-fluid rounded w-100"
                                      src="{{ investmentSection($investment->sections, 24, 'file') }}"
                                      alt="{{ investmentSection($investment->sections, 24, 'file_alt') }}"
                                      loading="lazy"
@@ -482,7 +482,7 @@
 
                         <div class="col-12 col-lg-7 position-relative">
                             <div data-aos="fade">
-                                <img class="img-fluid rounded"
+                                <img class="img-fluid rounded w-100"
                                      src="{{ investmentSection($investment->sections, 25, 'file') }}"
                                      alt="{{ investmentSection($investment->sections, 25, 'file_alt') }}"
                                      loading="lazy"

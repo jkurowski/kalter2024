@@ -186,8 +186,9 @@
 
                 <?php
                 $slider_options = [
-                    'arrows' => false,
                     'mobileFirst' => true,
+                    'prevArrow' => $arrow_prev,
+                    'nextArrow' => $arrow_next,
                     'centerMode' => true,
                     'slidesToShow' => 1,
                     'centerPadding' => '15px',
@@ -213,7 +214,7 @@
                     ],
                 ];
                 ?>
-            <div class="invests-horizontal-slider mt-4" data-slick='<?= json_encode($slider_options) ?>'>
+            <div class="invests-vertical-slider mt-4" data-slick='<?= json_encode($slider_options) ?>'>
                 @foreach($promotion as $p)
                     <div>
                         <div class="invest-card-horizontal position-relative d-flex flex-column-reverse flex-sm-row justify-content-between  bg-white">

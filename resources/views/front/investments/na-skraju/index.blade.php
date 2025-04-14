@@ -63,7 +63,7 @@
                 <div class="container">
                     <div class="row row-gap-4">
                         <div class="col-12 col-md-6">
-                            <div style="--translate-x: -19%;" class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
+                            <div style="--translate-x: 0;" class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
                                     <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168" height="168" loading="lazy" decoding="async" data-aos="fade">
                                 </div>
@@ -82,7 +82,7 @@
                         </div>
                         <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
                             <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded"
+                                <img class="img-fluid rounded w-100"
                                      src="{{ investmentSection($investment->sections, 10, 'file') }}"
                                      alt="{{ investmentSection($investment->sections, 10, 'file_alt') }}"
                                      loading="eager"
@@ -98,7 +98,7 @@
                     <div class="row row-gap-4 align-items-center">
                         <div class="col-12 col-md-6 col-lg-5 order-last order-md-0">
                             <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded"
+                                <img class="img-fluid rounded w-100"
                                      src="{{ investmentSection($investment->sections, 11, 'file') }}"
                                      alt="{{ investmentSection($investment->sections, 11, 'file_alt') }}"
                                      loading="lazy"
@@ -146,7 +146,7 @@
                         </div>
                         <div class="col-12 col-lg-8 position-relative">
                             <div data-aos="fade">
-                                <img class="img-fluid rounded"
+                                <img class="img-fluid rounded w-100"
                                      src="{{ investmentSection($investment->sections, 12, 'file') }}"
                                      alt="{{ investmentSection($investment->sections, 12, 'file_alt') }}"
                                      loading="lazy"
@@ -195,7 +195,7 @@
                     <div class="row row-gap-4 align-items-center">
                         <div class="col-12 col-md-6 col-lg-5 order-last order-md-0">
                             <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded"
+                                <img class="img-fluid rounded w-100"
                                      src="{{ investmentSection($investment->sections, 13, 'file') }}"
                                      alt="{{ investmentSection($investment->sections, 13, 'file_alt') }}"
                                      loading="lazy"
@@ -245,7 +245,7 @@
                         </div>
                         <div class="col-12 col-md-6 col-lg-5">
                             <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded"
+                                <img class="img-fluid rounded w-100"
                                      src="{{ investmentSection($investment->sections, 14, 'file') }}"
                                      alt="{{ investmentSection($investment->sections, 14, 'file_alt') }}"
                                      loading="lazy"
@@ -262,7 +262,7 @@
                     <div class="row row-gap-4 align-items-center">
                         <div class="col-12 col-md-6 col-lg-5 order-last order-md-0">
                             <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded"
+                                <img class="img-fluid rounded w-100"
                                      src="{{ investmentSection($investment->sections, 15, 'file') }}"
                                      alt="{{ investmentSection($investment->sections, 15, 'file_alt') }}"
                                      loading="lazy"
@@ -311,7 +311,7 @@
                         </div>
                         <div class="col-12 col-md-6 offset-lg-1">
                             <div class="w-100 h-100" data-aos="fade">
-                                <img class="img-fluid rounded"
+                                <img class="img-fluid rounded w-100"
                                      src="{{ investmentSection($investment->sections, 16, 'file') }}"
                                      alt="{{ investmentSection($investment->sections, 16, 'file_alt') }}"
                                      loading="lazy"

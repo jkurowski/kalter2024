@@ -37,7 +37,7 @@
                             <img src="{{ getInline($array, 1, 'file') }}" alt="{{ getInline($array, 1, 'file_alt') }}" data-img="1" loading="eager" class="img-fluid rounded">
                         </div>
                     </div>
-                    {!! inlineEditButton(1, 'modaleditortext,modallink,modallinkbutton') !!}
+                    {!! inlineEditButton(1, 'modallink,modallinkbutton') !!}
                 </div>
             </div>
         </section>

@@ -384,11 +384,16 @@
                     </div>
                 </div>
             </div>
+            <?php
+            // Zmienne do slidera
+            $arrow_prev = '<button  class="slick-prev slick-arrow" aria-label="Previous" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="9.05" height="16.484" viewBox="0 0 9.05 16.484"><path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M363.434-675.758,356-683.192l.808-.808,8.242,8.242-8.242,8.242-.808-.808Z" transform="translate(365.05 -667.516) rotate(180)" fill="#fff"/></svg></button>';
 
+            $arrow_next = '<button  class="slick-next slick-arrow" aria-label="Next" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="9.05" height="16.484" viewBox="0 0 9.05 16.484"><path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M363.434-675.758,356-683.192l.808-.808,8.242,8.242-8.242,8.242-.808-.808Z" transform="translate(-356 684)" fill="#fff"/></svg></button>'; ?>
             <?php
             $slider_options = [
-                'arrows' => false,
                 'mobileFirst' => true,
+                'prevArrow' => $arrow_prev,
+                'nextArrow' => $arrow_next,
                 'centerMode' => true,
                 'slidesToShow' => 1,
                 'centerPadding' => '15px',
@@ -414,7 +419,7 @@
                 ]
             ];
             ?>
-            <div class="invests-horizontal-slider mt-4" data-slick='<?= json_encode($slider_options) ?>'>
+            <div class="invests-vertical-slider mt-4" data-slick='<?= json_encode($slider_options) ?>'>
                 @foreach($similarProperties as $p)
                     <div>
                         <div class="invest-card-horizontal position-relative d-flex flex-column-reverse flex-sm-row justify-content-between  bg-white">

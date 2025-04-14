@@ -7116,6 +7116,33 @@ fieldset:disabled .btn {
     left: 0;
     z-index: 1030;
 }
+header.sticky-top {
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    background: white;
+}
+.scrolled .header-paddings {
+    padding: 10px 0;
+}
+
+.scrolled .header-logo {
+    max-width: 100px;
+}
+section.sticky-top {
+    top: 64px
+}
+section.sticky-top.is-sticky, section.sticky-top.is-sticky .bg-white {background: #024282 !important}
+section.sticky-top.is-sticky .nav-link
+{
+    color: #fff !important
+}
+section.sticky-top.is-sticky ul.py-3 {
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
+}
+
 .sticky-top {
     position: sticky;
     top: 0;
@@ -7137,6 +7164,7 @@ fieldset:disabled .btn {
         bottom: 0;
         z-index: 1020;
     }
+
 }
 @media (min-width: 768px) {
     .sticky-md-top {
@@ -13443,6 +13471,9 @@ section.cta {
     padding-top: 70px;
     padding-bottom: 35px !important;
 }
+section.cta .person-img {
+    margin-bottom: -35px;
+}
 .contact-form-container {
     background: var(--bs-white);
     isolation: isolate;
@@ -14418,4 +14449,40 @@ blockquote p {
 
 .contact-data p {
     margin-bottom: 0;
+}
+
+.header-holder {
+    height: 80px;
+}
+@media (max-width: 1299.98px) {
+
+}
+/* end of 1199.98 */
+
+@media (max-width: 1199.98px) {
+
+}
+/* end of 1199.98 */
+
+@media (max-width: 991.98px) {
+    .header-holder {
+        height: 65px;
+    }
+}
+/* end of 991.98 */
+
+@media (max-width: 767.98px) {
+
+}
+@media (max-width: 575.98px) {
+
+}
+/* end of 575.98 */
+
+@media (max-width: 420px) {
+
+}
+/* end of 359.98 */
+@media (max-width: 359.98px) {
+
 }
