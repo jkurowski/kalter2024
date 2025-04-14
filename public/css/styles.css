@@ -7133,6 +7133,7 @@ header.sticky-top {
 section.sticky-top {
     top: 64px
 }
+section.sticky-top nav li {padding: 0 18px}
 section.sticky-top.is-sticky, section.sticky-top.is-sticky .bg-white {background: #024282 !important}
 section.sticky-top.is-sticky .nav-link
 {

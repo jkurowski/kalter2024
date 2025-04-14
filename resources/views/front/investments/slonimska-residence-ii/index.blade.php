@@ -39,9 +39,9 @@
         @include('front.investments.single-investment-search')
 
         <section class="sticky-top py-0 bg-white sticky-top-menu">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row">
-                    <div class="col-12 col-lg-10 offset-lg-1">
+                    <div class="col-12">
                         @include('front.investments.submenu', ['menuIds' => $investment->menu])
                     </div>
                 </div>
