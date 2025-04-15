@@ -32,15 +32,7 @@
             </div>
         </div>
         <div class="row row-gap-4 justify-content-center">
-            @isset($investmentText)
-            <div class="col-12 col-xl-3">
-                <div class="contact-form-container">
-                    <p class="fs-5 text-uppercase fw-semibold text-secondary">DANE KONTAKTOWE</p>
-                    {!! $investmentText !!}
-                </div>
-            </div>
-            @endisset
-            <div class="@isset($investmentText) col-12 col-xl-6 @else col-12 @endisset">
+            <div class="@isset($investmentText) col-12 @else col-12 @endisset">
                 <div class="contact-form-container text-secondary">
                     <div class="row">
                         <div class="col-8">

@@ -120,6 +120,10 @@
         </script>
         <noscript>Do poprawnego działania, Java musi być włączona.</noscript>
     </div>
+
+    <div class="investmentText">
+        {!! $investmentText !!}
+    </div>
 </form>
 
 @push('scripts')

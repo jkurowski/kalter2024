@@ -13475,6 +13475,14 @@ section.cta {
 section.cta .person-img {
     margin-bottom: -16px;
 }
+
+.investmentText {
+    margin-top: 30px;
+}
+.investmentText p {
+    margin-bottom: 0;
+}
+
 .contact-form-container {
     background: var(--bs-white);
     isolation: isolate;
