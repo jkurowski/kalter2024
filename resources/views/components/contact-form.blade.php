@@ -97,7 +97,7 @@
         </div>
     </div>
 
-    <div class="col-12 col-lg-11">
+    <div class="col-12">
         @foreach ($rules as $r)
             <div class="form-check text-start pt-2 pb-2 @error('rule_'.$r->id) is-invalid @enderror">
                 <input class="form-check-input @if($r->required === 1) validate[required] @endif" type="checkbox" value="1" id="rule_{{$r->id}}" name="rule_{{$r->id}}" data-prompt-position="topLeft:70px">
