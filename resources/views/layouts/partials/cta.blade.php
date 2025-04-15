@@ -40,14 +40,18 @@
                 </div>
             </div>
             @endisset
-            <div class="@isset($investmentText) col-12 col-xl-6 @else col-12 col-lg-7 @endisset">
+            <div class="@isset($investmentText) col-12 col-xl-6 @else col-12 @endisset">
                 <div class="contact-form-container text-secondary">
-                    <p class="fs-5 text-uppercase fw-semibold text-secondary">FORMULARZ KONTAKTOWY</p>
-                    @include('components.contact-form', ['page' => $page, 'back' => $back])
+                    <div class="row">
+                        <div class="col-8">
+                            <p class="fs-5 text-uppercase fw-semibold text-secondary">FORMULARZ KONTAKTOWY</p>
+                            @include('components.contact-form', ['page' => $page, 'back' => $back])
+                        </div>
+                        <div class="col-4 d-flex align-items-end">
+                            <img class="img-fluid position-relative person-img" src="{{ asset('img/cta_person_jpg.jpg') }}" alt="" width="475" height="710">
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="@isset($investmentText) col-3 d-none d-xl-flex @else col-5 d-flex @endisset align-items-end">
-                <img class="img-fluid position-relative person-img" src="{{ asset('img/cta_person.webp') }}" alt="" width="475" height="710">
             </div>
         </div>
     </div>

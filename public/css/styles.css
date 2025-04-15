@@ -13473,7 +13473,7 @@ section.cta {
     padding-bottom: 35px !important;
 }
 section.cta .person-img {
-    margin-bottom: -35px;
+    margin-bottom: -16px;
 }
 .contact-form-container {
     background: var(--bs-white);
