@@ -41,4 +41,40 @@ class MenuController extends Controller
                 'array' => $inline,
             ]);
     }
+
+    public function kredyty($locale)
+    {
+        $uri = 'kredyty';
+        $page = Page::where('uri', $uri)->firstOrFail();
+        $inline = Inline::whereSlug($uri)->get()->toArray();
+
+        if (!view()->exists('front.menupage.'.$uri)) {
+            abort(404);
+        }
+
+        return view('front.menupage.'.$uri)
+            ->with([
+                'page' => $page,
+                'uri' => $uri,
+                'array' => $inline,
+            ]);
+    }
+
+    public function wykonczeniowe($locale)
+    {
+        $uri = 'programy-wykonczeniowe';
+        $page = Page::where('uri', $uri)->firstOrFail();
+        $inline = Inline::whereSlug($uri)->get()->toArray();
+
+        if (!view()->exists('front.menupage.'.$uri)) {
+            abort(404);
+        }
+
+        return view('front.menupage.'.$uri)
+            ->with([
+                'page' => $page,
+                'uri' => $uri,
+                'array' => $inline,
+            ]);
+    }
 }

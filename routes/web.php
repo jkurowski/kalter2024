@@ -86,6 +86,9 @@ Route::middleware(['restrictIp'])->group(function () {
 //        Route::get('/i/ogrody-andersena/plan-inwestycji', 'Investments\IndexController@ogrodyAndersenaProperties')->name('offer.ogrody-andersena.properties');
 
 
+        Route::get('/kredyty', 'MenuController@kredyty')->name('kredyty');
+        Route::get('/programy-wykonczeniowe', 'MenuController@wykonczeniowe')->name('programy-wykonczeniowe');
+
         Route::get('/kontakt', 'ContactController@index')->name('contact');
         Route::post('/kontakt', 'ContactController@send')->name('contact.send');
 
