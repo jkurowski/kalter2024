@@ -281,10 +281,12 @@
                                     {!! $property->walk_3d !!}
                                 @endif
 
+                                <button id="addToFav" class="btn btn-primary btn-with-icon px-3 min-w-max-content flex-fill d-inline-flex align-items-center justify-content-center gap-1" data-id="{{$property->id}}">Dodaj do schowka <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062"><path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor" /></svg></button>
                                 <!--
                                 <a href="/kontakt.php" class="btn btn-primary btn-with-icon d-inline-flex align-items-center gap-1 justify-content-center px-3 min-w-max-content flex-fill">
                                 -->
                             </div>
+                            <div id="clipboardmessage"></div>
                         </div>
                     </div>
 
@@ -537,4 +539,29 @@
         window.API_IMPLEMENTATION_3D_ESTATE.renderDom();
     </script>
     <script src="https://implementations.3destate.pl/model360.js"></script>
+    <script>
+        const button = document.querySelector('#addToFav');
+        button.addEventListener('click', function() {
+            const xhr = new XMLHttpRequest();
+            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+            const property_id = button.getAttribute('data-id');
+
+            xhr.open('POST', '/pl/clipboard');
+            xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+            xhr.setRequestHeader('X-CSRF-TOKEN', csrfToken);
+            const data = { id: property_id };
+            const jsonData = JSON.stringify(data);
+            xhr.send(jsonData);
+
+            xhr.addEventListener('load', function() {
+                if (xhr.status === 200) {
+                    const response = JSON.parse(xhr.responseText);
+                    const message = response.message;
+                    const count = response.count;
+                    document.querySelector('#clipboardmessage').innerHTML = message;
+                    document.querySelector('#clipboardcount').innerHTML = count;
+                }
+            });
+        });
+    </script>
 @endpush

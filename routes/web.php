@@ -94,6 +94,10 @@ Route::middleware(['restrictIp'])->group(function () {
 
         Route::post('/kontakt/{property}', 'ContactController@property')->name('contact.property');
 
+        Route::post('/clipboard', 'Clipboard\IndexController@store')->name('clipboard.store');
+        Route::post('/clipboard/send', 'Clipboard\IndexController@send')->name('clipboard.send');
+        Route::get('/schowek', 'Clipboard\IndexController@index')->name('clipboard.index');
+        Route::delete('/clipboard', 'Clipboard\IndexController@destroy')->name('clipboard.destroy');
 
         Route::resources([
             '/aktualnosci' => 'ArticleController',
