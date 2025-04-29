@@ -704,4 +704,40 @@
             leafletMap.addControl(new customButton({ position: 'bottomleft' }));
         });
     </script>
+    <script>
+        $("#navbar-secondary .scroll").click(function (e) {
+            e.preventDefault();
+            const section = $(this).attr('href');
+            const $target = $(section); // Find the target section
+
+            // Check if the target section exists
+            if ($target.length) {
+                const aboveHeight = $('header').outerHeight();
+                const aboveNavHeight = $('#navbar-secondary').outerHeight();
+
+                // Scroll to the section
+                $('html, body').stop().animate({
+                    scrollTop: $target.offset().top - 120
+                }, 1500, 'easeInOutExpo');
+            } else {
+                console.warn("Target section not found: " + section); // Optional: log a warning
+            }
+        });
+
+        $(window).on('load', function() {
+            if (window.location.hash) {
+                const section = window.location.hash;
+                const $target = $(section);
+
+                if ($target.length) {
+                    $('html, body').stop().animate({
+                        scrollTop: $target.offset().top - 120
+                    }, 1500, 'easeInOutExpo');
+                }
+
+                // Optional: clear the hash
+                history.replaceState(null, null, ' ');
+            }
+        });
+    </script>
 @endpush
