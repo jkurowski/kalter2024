@@ -72,6 +72,17 @@
                         { duration: 500 }
                     ).onfinish = () => {
                         item.remove();
+
+                        const layoutContainer = document.querySelector('#layout-container');
+                        if (layoutContainer) {
+                            const remainingItems = layoutContainer.querySelectorAll('.invest-card-list').length;
+                            if (remainingItems === 0) {
+                                const clipboardWidget = document.querySelector('#clipboardwidget');
+                                if (clipboardWidget) {
+                                    clipboardWidget.remove();
+                                }
+                            }
+                        }
                     };
                 }
             });

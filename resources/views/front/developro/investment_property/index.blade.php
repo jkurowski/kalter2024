@@ -559,7 +559,18 @@
                     const message = response.message;
                     const count = response.count;
                     document.querySelector('#clipboardmessage').innerHTML = message;
-                    document.querySelector('#clipboardcount').innerHTML = count;
+
+                    // Check if count is truthy and element doesn't already exist
+                    if (count && !document.querySelector('#clipboardwidget')) {
+                        const li = document.createElement('li');
+                        li.id = 'clipboardwidget';
+                        li.innerHTML = '<a href="/pl/schowek" class="Clipboard"><span>Schowek</span></a>';
+
+                        const asideList = document.querySelector('aside ul');
+                        if (asideList) {
+                            asideList.appendChild(li);
+                        }
+                    }
                 }
             });
         });

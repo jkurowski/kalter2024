@@ -89,3 +89,12 @@
     </header>
 </div>
 <div id="megamenu-opacity"></div>
+
+<aside>
+    <ul>
+        <li><a rel="nofollow" target="_blank" class="Facebook" href="https://www.facebook.com/kalterdeweloper/"><span>Facebook</span></a></li>
+        @if($clipboardCount)
+            <li id="clipboardwidget"><a href="{{ route('clipboard.index') }}" class="Clipboard"><span>Schowek</span></a></li>
+        @endif
+    </ul>
+</aside>
