@@ -69,7 +69,7 @@ class IndexController extends Controller
     {
         $emptyInvestment = Investment::make();
         $cities_form = City::get()->pluck('name', 'id');
-        $galeries_form = Gallery::get()->pluck('name', 'id');
+        $galeries_form = Gallery::get()->pluck('name', 'id')->prepend('Brak', 0);
 
         return view('admin.developro.investment.form', [
             'users' => [],
@@ -106,7 +106,7 @@ class IndexController extends Controller
     {
         $investment = $this->repository->find($id);
         $cities_form = City::all()->pluck('name', 'id');
-        $galeries_form = Gallery::get()->pluck('name', 'id');
+        $galeries_form = Gallery::get()->pluck('name', 'id')->prepend('Brak', 0);
 
         return view('admin.developro.investment.form', [
             'entry' => $investment,
@@ -169,7 +169,7 @@ class IndexController extends Controller
 
         foreach ($old as $o) {
 
-            
+
             $entry = new Investment();
 
             $entry->fill([

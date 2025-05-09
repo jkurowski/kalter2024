@@ -124,7 +124,7 @@
                     </div>
                     <div class="col-4">
                         @include('form-elements.html-select', [
-                            'label' => 'Galeria na zakończenie',
+                            'label' => 'Galeria',
                             'name' => 'gallery_id',
                             'selected' => $entry->gallery_id,
                             'select' => $galeries_form,
@@ -282,6 +282,7 @@
                         'file_preview' => config('images.investment.header_preview_file_path'),
                     ])
                 </div>
+
                 <div class="row w-100 mb-4">
                     @include('form-elements.html-input-file', [
                         'label' => 'Logo',

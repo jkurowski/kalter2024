@@ -244,6 +244,12 @@ class Investment extends Model
     {
         return $this->hasMany('App\Models\InvestmentPayment');
     }
+
+    public function images()
+    {
+        return $this->hasMany(Image::class, 'gallery_id', 'gallery_id');
+    }
+
     /**
      * The "boot" method of the model.
      *

@@ -27,9 +27,11 @@ class InvestmentController extends Controller
         $page = Page::find($this->pageId);
 
         if($investment->status == 1){
+            $images = $investment->images()->get();
             return view('front.investments.'.$slug.'.index', [
                 'investment' => $investment,
-                'page' => $page
+                'page' => $page,
+                'images' => $images
             ]);
         } else if($investment->status == 2){
             return view('front.developro.completed.show', [

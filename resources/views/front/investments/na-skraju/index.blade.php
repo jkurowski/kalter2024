@@ -596,52 +596,12 @@
                 </div>
             </section>
 
+            @if($images && $images->isNotEmpty())
+                @include('front.investments.gallery-grid', [
+                    'images' => $images
+                ])
+            @endif
 
-
-            @include('front.investments.gallery', [
-                'images' => [
-                    [
-                        'url' => asset('img/na-skraju/img_slider_bot_1_1.jpg'),
-                        'alt' => 'Inwestycja „{{ $investment->name }}”',
-                    ],
-                    [
-                        'url' => asset('img/na-skraju/img_slider_bot_1_2.jpg'),
-                        'alt' => 'Inwestycja „{{ $investment->name }}”',
-                    ],
-                    [
-                        'url' => asset('img/na-skraju/img_slider_bot_1_3.jpg'),
-                        'alt' => 'Inwestycja „{{ $investment->name }}”',
-                    ],
-                    [
-                        'url' => asset('img/na-skraju/img_slider_bot_1_4.jpg'),
-                        'alt' => 'Inwestycja „{{ $investment->name }}”',
-                    ],
-                    [
-                        'url' => asset('img/na-skraju/img_slider_bot_1_5.jpg'),
-                        'alt' => 'Inwestycja „{{ $investment->name }}”',
-                    ],
-                    [
-                        'url' => asset('img/na-skraju/img_slider_bot_1_6.jpg'),
-                        'alt' => 'Inwestycja „{{ $investment->name }}”',
-                    ],
-                    [
-                        'url' => asset('img/na-skraju/img_slider_bot_2_1.jpg'),
-                        'alt' => 'Inwestycja „{{ $investment->name }}”',
-                    ],
-                    [
-                        'url' => asset('img/na-skraju/img_slider_bot_2_2.jpg'),
-                        'alt' => 'Inwestycja „{{ $investment->name }}”',
-                    ],
-                    [
-                        'url' => asset('img/na-skraju/img_slider_bot_2_3.jpg'),
-                        'alt' => 'Inwestycja „{{ $investment->name }}”',
-                    ],
-                    [
-                        'url' => asset('img/na-skraju/img_slider_bot_2_4.jpg'),
-                        'alt' => 'Inwestycja „{{ $investment->name }}”',
-                    ],
-                ],
-            ])
             <div id="kontakt">
                 @include('layouts.partials.cta', ['pageTitle' => 'Strona inwestycji', 'investmentName' => $investment->name, 'investmentId' => $investment->id, 'back' => true, 'investmentText' => $investment->contact_content])
             </div>
