@@ -29,7 +29,7 @@
             </div>
         </div>
     </div>
-    <div id="photos-list" class="container">
+    <div id="photos-list" class="container mt-4">
         <div class="row justify-content-center">
             @foreach ($images as $p)
                 <div class="col-6 col-md-4 col-xl-3 p-0">
