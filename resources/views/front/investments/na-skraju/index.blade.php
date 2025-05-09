@@ -65,7 +65,7 @@
                         <div class="col-12 col-md-6">
                             <div style="--translate-x: 0;" class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
-                                    <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168" height="168" loading="lazy" decoding="async" data-aos="fade">
+                                    <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168" height="168"  decoding="async" data-aos="fade">
                                 </div>
                                 <h2 class="fw-bold text-center text-uppercase">
                                     <span data-aos="fade-up" data-aos-delay="200">
@@ -101,7 +101,7 @@
                                 <img class="img-fluid rounded w-100"
                                      src="{{ investmentSection($investment->sections, 11, 'file') }}"
                                      alt="{{ investmentSection($investment->sections, 11, 'file_alt') }}"
-                                     loading="lazy"
+
                                      decoding="async"
                                 >
                             </div>
@@ -109,7 +109,7 @@
                         <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
                             <div style="--translate-x: 0;" class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
-                                    <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168" height="168" loading="lazy" decoding="async" data-aos="fade">
+                                    <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168" height="168"  decoding="async" data-aos="fade">
                                 </div>
                                 <h2 class="fw-bold text-center text-uppercase">
                                     <span data-aos="fade-up" data-aos-delay="200">
@@ -132,7 +132,7 @@
                         <div class="col-12 col-lg-4 ">
                             <div style="--translate-x: 0;" class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
-                                    <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168" height="168" loading="lazy" decoding="async" data-aos="fade">
+                                    <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168" height="168"  decoding="async" data-aos="fade">
                                 </div>
                                 <h2 class="fw-bold text-center text-uppercase">
                                     <span data-aos="fade-up" data-aos-delay="200">
@@ -149,7 +149,7 @@
                                 <img class="img-fluid rounded w-100"
                                      src="{{ investmentSection($investment->sections, 12, 'file') }}"
                                      alt="{{ investmentSection($investment->sections, 12, 'file_alt') }}"
-                                     loading="lazy"
+
                                      decoding="async"
                                 >
                             </div>
@@ -164,19 +164,19 @@
                                             <div class="row row-gap-3 justify-content-center">
                                                 <div class="col-6 col-sm-4">
                                                     <div class="bg-white icon-shadow mx-auto rounded-circle d-flex align-items-center justify-content-center" style="width: 87px; height: 87px;">
-                                                        <img src="{{ asset("img/circle_plans.svg") }}" width="42" height="42" alt="" loading="lazy" decoding="async" class="img-fluid">
+                                                        <img src="{{ asset("img/circle_plans.svg") }}" width="42" height="42" alt=""  decoding="async" class="img-fluid">
                                                     </div>
                                                     <p class="text-secondary text-center mt-3 mt-lg-30">Funkcjonalności<br> pomieszczeń</p>
                                                 </div>
                                                 <div class="col-6 col-sm-4">
                                                     <div class="bg-white icon-shadow mx-auto rounded-circle d-flex align-items-center justify-content-center" style="width: 87px; height: 87px;">
-                                                        <img src="{{ asset("img/circle_living_room.svg") }}" width="42" height="42" alt="" loading="lazy" decoding="async" class="img-fluid">
+                                                        <img src="{{ asset("img/circle_living_room.svg") }}" width="42" height="42" alt=""  decoding="async" class="img-fluid">
                                                     </div>
                                                     <p class="text-secondary text-center mt-3 mt-lg-30">Różnorodności<br> aranżacyjnych<br> rozwiązań</p>
                                                 </div>
                                                 <div class="col-6 col-sm-4">
                                                     <div class="bg-white icon-shadow mx-auto rounded-circle d-flex align-items-center justify-content-center" style="width: 87px; height: 87px;">
-                                                        <img src="{{ asset("img/circle_area.svg") }}" width="42" height="42" alt="" loading="lazy" decoding="async" class="img-fluid">
+                                                        <img src="{{ asset("img/circle_area.svg") }}" width="42" height="42" alt=""  decoding="async" class="img-fluid">
                                                     </div>
                                                     <p class="text-secondary text-center mt-3 mt-lg-30">Dużej wygody<br> użytkowania</p>
                                                 </div>
@@ -198,7 +198,7 @@
                                 <img class="img-fluid rounded w-100"
                                      src="{{ investmentSection($investment->sections, 13, 'file') }}"
                                      alt="{{ investmentSection($investment->sections, 13, 'file_alt') }}"
-                                     loading="lazy"
+
                                      decoding="async"
                                 >
                             </div>
@@ -206,7 +206,7 @@
                         <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
                             <div style="--translate-x: 0;" class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
-                                    <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168" height="168" loading="lazy" decoding="async" data-aos="fade">
+                                    <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168" height="168"  decoding="async" data-aos="fade">
                                 </div>
                                 <h2 class="fw-bold text-center text-uppercase">
                                     <span data-aos="fade-up" data-aos-delay="200">
@@ -230,7 +230,7 @@
                         <div class="col-12 col-md-6 col-lg-5 offset-lg-2">
                             <div style="--translate-x: 0;" class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
-                                    <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168" height="168" loading="lazy" decoding="async" data-aos="fade">
+                                    <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168" height="168"  decoding="async" data-aos="fade">
                                 </div>
                                 <h2 class="fw-bold text-center text-uppercase">
                                     <span data-aos="fade-up" data-aos-delay="200">
@@ -248,7 +248,7 @@
                                 <img class="img-fluid rounded w-100"
                                      src="{{ investmentSection($investment->sections, 14, 'file') }}"
                                      alt="{{ investmentSection($investment->sections, 14, 'file_alt') }}"
-                                     loading="lazy"
+
                                      decoding="async"
                                 >
                             </div>
@@ -265,7 +265,7 @@
                                 <img class="img-fluid rounded w-100"
                                      src="{{ investmentSection($investment->sections, 15, 'file') }}"
                                      alt="{{ investmentSection($investment->sections, 15, 'file_alt') }}"
-                                     loading="lazy"
+
                                      decoding="async"
                                 >
                             </div>
@@ -273,7 +273,7 @@
                         <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
                             <div style="--translate-x: 0;" class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
-                                    <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168" height="168" loading="lazy" decoding="async" data-aos="fade">
+                                    <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168" height="168"  decoding="async" data-aos="fade">
                                 </div>
                                 <h2 class="fw-bold text-center text-uppercase">
                                     <span data-aos="fade-up" data-aos-delay="200">
@@ -296,7 +296,7 @@
                         <div class="col-12 col-md-6 col-lg-5">
                             <div style="--translate-x: 0;" class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
-                                    <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168" height="168" loading="lazy" decoding="async" data-aos="fade">
+                                    <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168" height="168"  decoding="async" data-aos="fade">
                                 </div>
                                 <h2 class="fw-bold text-center text-uppercase">
                                     <span data-aos="fade-up" data-aos-delay="200">
@@ -314,7 +314,7 @@
                                 <img class="img-fluid rounded w-100"
                                      src="{{ investmentSection($investment->sections, 16, 'file') }}"
                                      alt="{{ investmentSection($investment->sections, 16, 'file_alt') }}"
-                                     loading="lazy"
+
                                      decoding="async"
                                 >
                             </div>
@@ -329,7 +329,7 @@
                         <div class="col-12 col-md-10 col-xl-8 offset-md-1 offset-xl-2">
                             <div style="--translate-x: 0;" class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
-                                    <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168" height="168" loading="lazy" decoding="async" data-aos="fade">
+                                    <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168" height="168"  decoding="async" data-aos="fade">
                                 </div>
                                 <h2 class="fw-bold text-center text-uppercase">
                                     <span data-aos="fade-up" data-aos-delay="200">
@@ -347,22 +347,22 @@
                     <div class="row row-gap-4 mt-4 mt-md-50">
                         <div class="col-6 col-md-3">
                             <div data-aos="fade">
-                                <img class="w-100 h-100 object-fit-cover" src="{{ asset("/img/o_inwestycji_s8_1.webp") }}" alt="" width="672" height="448" loading="lazy" decoding="async">
+                                <img class="w-100 h-100 object-fit-cover" src="{{ asset("/img/o_inwestycji_s8_1.webp") }}" alt="" width="672" height="448"  decoding="async">
                             </div>
                         </div>
                         <div class="col-6 col-md-3">
                             <div class="mt-md-3 mt-lg-30" data-aos="fade">
-                                <img class="w-100 h-100 object-fit-cover" src="{{ asset("/img/o_inwestycji_s8_2.webp") }}" alt="" width="672" height="448" loading="lazy" decoding="async">
+                                <img class="w-100 h-100 object-fit-cover" src="{{ asset("/img/o_inwestycji_s8_2.webp") }}" alt="" width="672" height="448"  decoding="async">
                             </div>
                         </div>
                         <div class="col-6 col-md-3">
                             <div data-aos="fade">
-                                <img class="w-100 h-100 object-fit-cover" src="{{ asset("/img/o_inwestycji_s8_3.webp") }}" alt="" width="672" height="448" loading="lazy" decoding="async">
+                                <img class="w-100 h-100 object-fit-cover" src="{{ asset("/img/o_inwestycji_s8_3.webp") }}" alt="" width="672" height="448"  decoding="async">
                             </div>
                         </div>
                         <div class="col-6 col-md-3">
                             <div class="mt-md-3 mt-lg-30" data-aos="fade">
-                                <img class="w-100 h-100 object-fit-cover" src="{{ asset("/img/o_inwestycji_s8_4.webp") }}" alt="" width="672" height="448" loading="lazy" decoding="async">
+                                <img class="w-100 h-100 object-fit-cover" src="{{ asset("/img/o_inwestycji_s8_4.webp") }}" alt="" width="672" height="448"  decoding="async">
                             </div>
                         </div>
                     </div>
@@ -375,7 +375,7 @@
                         <div class="col-12 col-md-6 col-lg-5">
                             <div style="--translate-x: -25%;" class="position-relative text-center d-flex flex-column justify-content-center align-items-center section-header text-secondary">
                                 <div class="position-absolute top-50 start-50 translate-middle z-2">
-                                    <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168" height="168" loading="lazy" decoding="async" data-aos="fade">
+                                    <img src="{{ asset('img/sygnet_secondary.svg') }}" alt="" width="168" height="168"  decoding="async" data-aos="fade">
                                 </div>
                                 <h2 class="fw-bold text-center text-uppercase">
                                     <span data-aos="fade-up" data-aos-delay="200">
@@ -642,13 +642,6 @@
                     ],
                 ],
             ])
-            @include('front.investments.gallery', [
-                'only_slider' => true,
-                'images' => [
-
-                ],
-            ])
-
             <div id="kontakt">
                 @include('layouts.partials.cta', ['pageTitle' => 'Strona inwestycji', 'investmentName' => $investment->name, 'investmentId' => $investment->id, 'back' => true, 'investmentText' => $investment->contact_content])
             </div>
@@ -705,23 +698,20 @@
         });
     </script>
     <script>
-        $("#navbar-secondary .scroll").click(function (e) {
-            e.preventDefault();
-            const section = $(this).attr('href');
-            const $target = $(section); // Find the target section
+        $(document).ready(function () {
+            $("#navbar-secondary .scroll").click(function (e) {
+                e.preventDefault();
+                const section = $(this).attr('href');
+                const $target = $(section);
 
-            // Check if the target section exists
-            if ($target.length) {
-                const aboveHeight = $('header').outerHeight();
-                const aboveNavHeight = $('#navbar-secondary').outerHeight();
-
-                // Scroll to the section
-                $('html, body').stop().animate({
-                    scrollTop: $target.offset().top - 120
-                }, 1500, 'easeInOutExpo');
-            } else {
-                console.warn("Target section not found: " + section); // Optional: log a warning
-            }
+                if ($target.length) {
+                    $('html, body').stop().animate({
+                        scrollTop: $target.offset().top - 120
+                    }, 1500, 'easeInOutExpo');
+                } else {
+                    console.warn("Target section not found: " + section);
+                }
+            });
         });
 
         $(window).on('load', function() {

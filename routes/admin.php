@@ -250,19 +250,6 @@ Route::group([
             Route::get('{client}/events/{event}', 'CalendarController@edit')->name('events.edit');
             Route::post('{client}/events/form', 'CalendarController@create')->name('events.create');
 
-            Route::get('{client}/payments', 'PaymentController@index')->name('payments');
-            Route::get('{client}/payments/{property}', 'PaymentController@show')->name('payments.show');
-            Route::post('{client}/payments/{property}/generate-payments', 'PaymentController@generatePayments')->name('payments.generate');
-            Route::get('{client}/payments/{property}/generate-table', 'PaymentController@generateTable')->name('payments.generate-table');
-
-            Route::group(['prefix' => 'payments', 'as' => 'payments.'], function () {
-                Route::delete('{payment}', 'PaymentController@destroy')->name('destroy');
-                Route::get('edit/{payment}', 'PaymentController@edit')->name('edit');
-                Route::put('edit/{payment}', 'PaymentController@update')->name('update');
-                Route::get('create/{property}', 'PaymentController@create')->name('create');
-                Route::post('/{property}', 'PaymentController@store')->name('store');
-            });
-
             // Client chat
             Route::group(['prefix' => '{client}/chat', 'as' => 'chat.'], function () {
                 Route::get('/', 'ChatController@show')->name('show');
