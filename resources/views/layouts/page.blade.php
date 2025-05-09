@@ -23,7 +23,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wght@700;900&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}?v=1404v3" />
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}?v=0905v1" />
     <link rel="stylesheet" href="{{ asset('css/slick.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/aos.css') }}" media="(min-width: 550px)" />
 
