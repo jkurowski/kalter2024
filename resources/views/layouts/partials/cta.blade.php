@@ -35,11 +35,11 @@
             <div class="@isset($investmentText) col-12 @else col-12 @endisset">
                 <div class="contact-form-container text-secondary">
                     <div class="row">
-                        <div class="col-8">
+                        <div class="col-12 col-lg-8">
                             <p class="fs-5 text-uppercase fw-semibold text-secondary">FORMULARZ KONTAKTOWY</p>
                             @include('components.contact-form', ['page' => $page, 'back' => $back])
                         </div>
-                        <div class="col-4 d-flex align-items-end">
+                        <div class="d-none d-lg-flex col-4 align-items-end">
                             <img class="img-fluid position-relative person-img" src="{{ asset('img/cta_person_jpg.jpg') }}" alt="" width="475" height="710">
                         </div>
                     </div>
