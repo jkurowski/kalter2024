@@ -514,19 +514,102 @@ document.addEventListener('DOMContentLoaded', () => {
 // Easing
 jQuery.easing.jswing=jQuery.easing.swing;jQuery.extend(jQuery.easing,{def:"easeOutQuad",swing:function(e,f,a,h,g){return jQuery.easing[jQuery.easing.def](e,f,a,h,g)},easeInQuad:function(e,f,a,h,g){return h*(f/=g)*f+a},easeOutQuad:function(e,f,a,h,g){return -h*(f/=g)*(f-2)+a},easeInOutQuad:function(e,f,a,h,g){if((f/=g/2)<1){return h/2*f*f+a}return -h/2*((--f)*(f-2)-1)+a},easeInCubic:function(e,f,a,h,g){return h*(f/=g)*f*f+a},easeOutCubic:function(e,f,a,h,g){return h*((f=f/g-1)*f*f+1)+a},easeInOutCubic:function(e,f,a,h,g){if((f/=g/2)<1){return h/2*f*f*f+a}return h/2*((f-=2)*f*f+2)+a},easeInQuart:function(e,f,a,h,g){return h*(f/=g)*f*f*f+a},easeOutQuart:function(e,f,a,h,g){return -h*((f=f/g-1)*f*f*f-1)+a},easeInOutQuart:function(e,f,a,h,g){if((f/=g/2)<1){return h/2*f*f*f*f+a}return -h/2*((f-=2)*f*f*f-2)+a},easeInQuint:function(e,f,a,h,g){return h*(f/=g)*f*f*f*f+a},easeOutQuint:function(e,f,a,h,g){return h*((f=f/g-1)*f*f*f*f+1)+a},easeInOutQuint:function(e,f,a,h,g){if((f/=g/2)<1){return h/2*f*f*f*f*f+a}return h/2*((f-=2)*f*f*f*f+2)+a},easeInSine:function(e,f,a,h,g){return -h*Math.cos(f/g*(Math.PI/2))+h+a},easeOutSine:function(e,f,a,h,g){return h*Math.sin(f/g*(Math.PI/2))+a},easeInOutSine:function(e,f,a,h,g){return -h/2*(Math.cos(Math.PI*f/g)-1)+a},easeInExpo:function(e,f,a,h,g){return(f==0)?a:h*Math.pow(2,10*(f/g-1))+a},easeOutExpo:function(e,f,a,h,g){return(f==g)?a+h:h*(-Math.pow(2,-10*f/g)+1)+a},easeInOutExpo:function(e,f,a,h,g){if(f==0){return a}if(f==g){return a+h}if((f/=g/2)<1){return h/2*Math.pow(2,10*(f-1))+a}return h/2*(-Math.pow(2,-10*--f)+2)+a},easeInCirc:function(e,f,a,h,g){return -h*(Math.sqrt(1-(f/=g)*f)-1)+a},easeOutCirc:function(e,f,a,h,g){return h*Math.sqrt(1-(f=f/g-1)*f)+a},easeInOutCirc:function(e,f,a,h,g){if((f/=g/2)<1){return -h/2*(Math.sqrt(1-f*f)-1)+a}return h/2*(Math.sqrt(1-(f-=2)*f)+1)+a},easeInElastic:function(f,h,e,l,k){var i=1.70158;var j=0;var g=l;if(h==0){return e}if((h/=k)==1){return e+l}if(!j){j=k*0.3}if(g<Math.abs(l)){g=l;var i=j/4}else{var i=j/(2*Math.PI)*Math.asin(l/g)}return -(g*Math.pow(2,10*(h-=1))*Math.sin((h*k-i)*(2*Math.PI)/j))+e},easeOutElastic:function(f,h,e,l,k){var i=1.70158;var j=0;var g=l;if(h==0){return e}if((h/=k)==1){return e+l}if(!j){j=k*0.3}if(g<Math.abs(l)){g=l;var i=j/4}else{var i=j/(2*Math.PI)*Math.asin(l/g)}return g*Math.pow(2,-10*h)*Math.sin((h*k-i)*(2*Math.PI)/j)+l+e},easeInOutElastic:function(f,h,e,l,k){var i=1.70158;var j=0;var g=l;if(h==0){return e}if((h/=k/2)==2){return e+l}if(!j){j=k*(0.3*1.5)}if(g<Math.abs(l)){g=l;var i=j/4}else{var i=j/(2*Math.PI)*Math.asin(l/g)}if(h<1){return -0.5*(g*Math.pow(2,10*(h-=1))*Math.sin((h*k-i)*(2*Math.PI)/j))+e}return g*Math.pow(2,-10*(h-=1))*Math.sin((h*k-i)*(2*Math.PI)/j)*0.5+l+e},easeInBack:function(e,f,a,i,h,g){if(g==undefined){g=1.70158}return i*(f/=h)*f*((g+1)*f-g)+a},easeOutBack:function(e,f,a,i,h,g){if(g==undefined){g=1.70158}return i*((f=f/h-1)*f*((g+1)*f+g)+1)+a},easeInOutBack:function(e,f,a,i,h,g){if(g==undefined){g=1.70158}if((f/=h/2)<1){return i/2*(f*f*(((g*=(1.525))+1)*f-g))+a}return i/2*((f-=2)*f*(((g*=(1.525))+1)*f+g)+2)+a},easeInBounce:function(e,f,a,h,g){return h-jQuery.easing.easeOutBounce(e,g-f,0,h,g)+a},easeOutBounce:function(e,f,a,h,g){if((f/=g)<(1/2.75)){return h*(7.5625*f*f)+a}else{if(f<(2/2.75)){return h*(7.5625*(f-=(1.5/2.75))*f+0.75)+a}else{if(f<(2.5/2.75)){return h*(7.5625*(f-=(2.25/2.75))*f+0.9375)+a}else{return h*(7.5625*(f-=(2.625/2.75))*f+0.984375)+a}}}},easeInOutBounce:function(e,f,a,h,g){if(f<g/2){return jQuery.easing.easeInBounce(e,f*2,0,h,g)*0.5+a}return jQuery.easing.easeOutBounce(e,f*2-g,0,h,g)*0.5+h*0.5+a}});
 
+/*
+ *   jQuery Sticky Plugin 1.0.1
+ *   https://github.com/garethdn/jquery-sticky
+ *
+ *   Copyright 2013, Bruno Tarmann & Gareth Nolan
+ *   http://tarmann.com.br
+ *   http://ie.linkedin.com/in/garethnolan/
 
-const header = document.querySelector('section.sticky-top');
+ *   Based on jQuery Boilerplate by Zeno Rocha with the help of Addy Osmani
+ *   http://jqueryboilerplate.com
+ *
+ *   Licensed under the MIT license:
+ *   http://www.opensource.org/licenses/MIT
+ */
 
-// Create a sentinel element before the sticky section
-const sentinel = document.createElement('div');
-sentinel.style.height = '1px';
-header.parentNode.insertBefore(sentinel, header);
+;(function ( $, window, document, undefined ) {
 
-const observer = new IntersectionObserver(
-    ([entry]) => {
-        header.classList.toggle('is-sticky', !entry.isIntersecting);
-    },
-    { threshold: [0] }
-);
+    var pluginName = "sticky";
+    var defaults = {
+        stickyClass: 'sdui-sticky-content',
+        anchorClass: 'sdui-sticky-content-anchor',
+        activeClass: 'is-active',
+        buffer: 0
+    };
 
-observer.observe(sentinel);
+    function Plugin ( element, options ) {
+        this.element = element;
+
+        this.settings = $.extend( {}, defaults, options );
+        this._defaults = defaults;
+        this._name = pluginName;
+        this.init();
+    }
+
+    Plugin.prototype = {
+        init: function () {
+            $(this.element).addClass(this.settings.stickyClass);
+
+            this.elementWidth = $(this.element).width();
+            this.elementHeight = $(this.element).outerHeight();
+            this.elementAnchor = this.createAnchor();
+
+            this.bindEvents();
+        },
+
+        bindEvents: function () {
+            var self = this;
+
+            $(window).scroll( function () {
+                self.refreshPosition();
+            });
+        },
+
+        createAnchor: function () {
+            return $('<div>').addClass(this.settings.anchorClass).insertBefore(this.element);
+        },
+
+        refreshPosition: function () {
+            var scrollTop = $(window).scrollTop(),
+                elementAnchorTop = this.elementAnchor.offset().top;
+
+            if ( (scrollTop + this.settings.buffer) > elementAnchorTop ) {
+                this.fixElement()
+            } else {
+                this.releaseElement();
+            }
+        },
+
+        fixElement: function () {
+            $(this.element).css({
+                position: 'fixed',
+                top: this.settings.buffer + 'px',
+                'z-index': 1000,
+                'width': this.elementWidth
+            }).addClass(this.settings.activeClass);
+
+            $(this.elementAnchor).height(this.elementHeight);
+        },
+
+        releaseElement: function () {
+            $(this.element).css({
+                position: 'relative',
+                top: ''
+            }).removeClass(this.settings.activeClass);
+
+            $(this.elementAnchor).height(0);
+        }
+    };
+
+    $.fn[ pluginName ] = function ( options ) {
+        return this.each(function() {
+            if ( !$.data( this, "plugin_" + pluginName ) ) {
+                $.data( this, "plugin_" + pluginName, new Plugin( this, options ) );
+            }
+        });
+    };
+
+})( jQuery, window, document );
+

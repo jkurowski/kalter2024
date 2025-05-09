@@ -70,7 +70,7 @@
                                                 @foreach($investment->buildings as $building)
                                                     <area
                                                             shape="poly"
-                                                            href="{{route('developro.building', [$investment->slug, $building, 'buildingSlug' => Str::slug($building->name)])}}?status=1#plan"
+                                                            href="{{route('developro.building', [$investment->slug, $building, 'buildingSlug' => Str::slug($building->name)])}}?status=1#submenu"
                                                             alt="{{$building->slug}}"
                                                             data-item="{{$building->id}}" title="{{$building->name}}"
                                                             data-roomnumber="{{$building->number}}"

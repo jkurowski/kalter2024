@@ -7149,6 +7149,10 @@ section.sticky-top.is-sticky ul.py-3 {
     top: 0;
     z-index: 1020;
 }
+section.sticky-top.is-active {
+    margin-top: 63px;
+}
+
 .sticky-bottom {
     position: sticky;
     bottom: 0;
