@@ -30,12 +30,15 @@
         </div>
     </div>
     <div id="photos-list" class="container">
-        <div class="row justify-content-center pt-4">
-            @foreach ($images as $image)
+        <div class="row justify-content-center">
+            @foreach ($images as $p)
                 <div class="col-6 col-md-4 col-xl-3 p-0">
                     <div class="col-gallery-thumb m-2">
-                        <a href="{{ $image['url'] }}" class="glightbox" rel="gallery-1" title="">
-                            <img loading="eager" src="{{ $image['url'] }}" alt="{{ $image['alt'] }}" class="img-fluid">
+                        <a href="/uploads/gallery/images/{{$p->file}}" class="glightbox" rel="gallery-1" title="">
+                            <picture>
+                                <source type="image/jpeg" srcset="{{asset('uploads/gallery/images/thumbs/'.$p->file) }}">
+                                <img src="{{asset('uploads/gallery/images/thumbs/'.$p->file) }}" alt="{{ $p->name }}" class="img-fluid">
+                            </picture>
                             <div><i class="las la-search-plus"></i></div>
                         </a>
                     </div>
