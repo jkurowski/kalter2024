@@ -776,38 +776,12 @@
                     </div>
                 </div>
             </section>
-            @include('front.investments.gallery', [
-                'images' => [
-                    [
-                        'url' => asset('img/downtown/img_slider_1.jpg'),
-                        'alt' => 'Inwestycja „{{ $investment->name }}”',
-                    ],
-                    [
-                        'url' => asset('img/downtown/img_slider_2.jpg'),
-                        'alt' => 'Inwestycja „{{ $investment->name }}”',
-                    ],
-                    [
-                        'url' => asset('img/downtown/img_slider_3.jpg'),
-                        'alt' => 'Inwestycja „{{ $investment->name }}”',
-                    ],
-                    [
-                        'url' => asset('img/downtown/img_slider_4.jpg'),
-                        'alt' => 'Inwestycja „{{ $investment->name }}”',
-                    ],
-                    [
-                        'url' => asset('img/downtown/img_slider_5.jpg'),
-                        'alt' => 'Inwestycja „{{ $investment->name }}”',
-                    ],
-                    [
-                        'url' => asset('img/downtown/img_slider_6.jpg'),
-                        'alt' => 'Inwestycja „{{ $investment->name }}”',
-                    ],
-                    [
-                        'url' => asset('img/downtown/img_slider_7.jpg'),
-                        'alt' => 'Inwestycja „{{ $investment->name }}”',
-                    ],
-                ],
-            ])
+
+            @if($images && $images->isNotEmpty())
+                @include('front.investments.gallery-grid', [
+                    'images' => $images
+                ])
+            @endif
 
             <div id="kontakt">
                 @include('layouts.partials.cta', ['pageTitle' => 'Strona inwestycji', 'investmentName' => $investment->name, 'investmentId' => $investment->id, 'back' => true, 'investmentText' => $investment->contact_content])
