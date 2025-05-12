@@ -425,7 +425,23 @@
                 @foreach($similarProperties as $p)
                     <div>
                         <div class="invest-card-horizontal position-relative d-flex flex-column-reverse flex-sm-row justify-content-between  bg-white">
+
+                            @if($investment->type == 1)
+                                <a href="{{ route('developro.building.floor.property', [
+                                                            $investment->slug,
+                                                            $building,
+                                                            Str::slug($building->name),
+                                                            $p->floor,
+                                                            Str::slug($p->name),
+                                                            $p,
+                                                            Str::slug($p->name),
+                                                            number2RoomsName($p->rooms, true),
+                                                            round(floatval($p->area), 2).'-m2'
+                                                        ]) }}" class="stretched-link"></a>
+                            @endif
+                            @if($investment->type == 2)
                             <a href="{{ route('developro.property', [$investment->slug, $p->floor, Str::slug($p->floor->name), $p, Str::slug($p->name), number2RoomsName($p->rooms, true), round(floatval($p->area), 2).'-m2']) }}" class="stretched-link"></a>
+                            @endif
                             <div class="text-secondary invest-card-horizontal-left flex-fill">
                                 <p class="h3 mb-0">{{ $p->name }}</p>
                                 <p class="fs-10 text-uppercase fw-900 mb-2">{{ $investment->name }}</p>
@@ -474,10 +490,28 @@
                                     </table>
                                 </div>
                                 <div class="position-relatieve z-2">
+                                    @if($investment->type == 1)
+                                        <a class="btn btn-primary btn-with-icon " href="{{ route('developro.building.floor.property', [
+                                                            $investment->slug,
+                                                            $building,
+                                                            Str::slug($building->name),
+                                                            $p->floor,
+                                                            Str::slug($p->name),
+                                                            $p,
+                                                            Str::slug($p->name),
+                                                            number2RoomsName($p->rooms, true),
+                                                            round(floatval($p->area), 2).'-m2'
+                                                        ]) }}">
+                                            Sprawdź
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062"><path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor" /></svg>
+                                        </a>
+                                    @endif
+                                    @if($investment->type == 2)
                                     <a class="btn btn-primary btn-with-icon " href="{{ route('developro.property', [$investment->slug, $p->floor, Str::slug($p->floor->name), $p, Str::slug($p->name), number2RoomsName($p->rooms, true), round(floatval($p->area), 2).'-m2']) }}">
                                         Sprawdź
                                         <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062"><path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor" /></svg>
                                     </a>
+                                    @endif
                                 </div>
                             </div>
 
