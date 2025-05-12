@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ClientMessage extends Model
 {
 
-    use BroadcastsEvents;
+    //use BroadcastsEvents;
 
     /**
      * The table associated with the model.
