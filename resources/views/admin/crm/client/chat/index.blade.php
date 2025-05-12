@@ -75,9 +75,9 @@
                 });
             });
 
-            const ClientMessage = ({ text, created, createdDate }) => `<div class="chat-box d-flex align-items-end float-end mb-4 flex-row-reverse"><div class="chat-avatar"><div class="avatar"><span class="avatar-title rounded-circle">J</span></div></div><div class="chat-text d-flex flex-wrap"><div class="chat-text-content w-100">${ text }</div></div></div><div class="clearfix"></div>`;
+            const ClientMessage = ({ text, created, createdDate }) => `<div class="chat-box d-flex align-items-end float-end mb-4 flex-row-reverse"><div class="chat-text d-flex flex-wrap"><div class="chat-text-content w-100">${ text }</div></div></div><div class="clearfix"></div>`;
 
-            const UserMessage = ({ text, created, createdDate}) => `<div class="chat-box d-flex align-items-end float-start mb-4"><div class="chat-avatar"><div class="avatar"><span class="avatar-title rounded-circle">J</span></div></div><div class="chat-text d-flex flex-wrap"><div class="chat-text-content w-100">${ text }</div></div></div><div class="clearfix"></div>`;
+            const UserMessage = ({ text, created, createdDate}) => `<div class="chat-box d-flex align-items-end float-start mb-4"><div class="chat-text d-flex flex-wrap"><div class="chat-text-content w-100">${ text }</div></div></div><div class="clearfix"></div>`;
 
             document.addEventListener('DOMContentLoaded', function () {
                 const messagesDiv = document.getElementById('messages');
