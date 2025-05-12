@@ -119,23 +119,11 @@
                                     </span> Inwestycje
                                 </a>
                             </li>
-                            <li {{ Request::routeIs('admin.crm.clients.*') ? 'class=active' : '' }}>
-                                <a href="{{ route('admin.crm.clients.index') }}">
-                                    <span class="menu-bullet">
-                                        <span class="bullet bullet-dot"></span>
-                                    </span> Klienci</a>
-                            </li>
                             <li {{ Request::routeIs('admin.crm.contact.*') ? 'class=active' : '' }}>
                                 <a href="{{ route('admin.crm.contact.index') }}">
                                     <span class="menu-bullet">
                                         <span class="bullet bullet-dot"></span>
                                     </span> Kontakty</a>
-                            </li>
-                            <li {{ Request::routeIs('admin.crm.calendar.*') ? 'class=active' : '' }}>
-                                <a href="{{ route('admin.crm.calendar.index') }}">
-                                    <span class="menu-bullet">
-                                        <span class="bullet bullet-dot"></span>
-                                    </span> Kalendarz</a>
                             </li>
                             <li {{ Request::routeIs('admin.crm.statistics.*') ? 'class=active' : '' }}>
                                 <a href="{{ route('admin.crm.statistics.index') }}">
@@ -148,12 +136,6 @@
                                     <span class="menu-bullet">
                                         <span class="bullet bullet-dot"></span>
                                     </span> Leads</a>
-                            </li>
-                            <li {{ Request::routeIs('admin.file.*') ? 'class=active' : '' }}>
-                                <a href="{{ route('admin.file.index') }}">
-                                    <span class="menu-bullet">
-                                        <span class="bullet bullet-dot"></span>
-                                    </span> Pliki</a>
                             </li>
                         </ul>
                     </li>
