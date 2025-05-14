@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front\Developro\Page;
 
 use App\Http\Controllers\Controller;
 use App\Models\Page;
+use App\Models\Property;
 use App\Models\RodoRules;
 use App\Models\RodoSettings;
 use App\Repositories\InvestmentRepository;

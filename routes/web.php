@@ -171,6 +171,8 @@ Route::middleware(['restrictIp'])->group(function () {
 
             //Pages
             Route::get('/{slug}/{page}', 'Page\IndexController@index')->name('page');
+
+            Route::get('/i/{slug}/json', 'Api\IndexController@json')->name('investment.json');
         });
 
         // Inline
