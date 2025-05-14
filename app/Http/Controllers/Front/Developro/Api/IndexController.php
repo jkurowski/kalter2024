@@ -38,6 +38,8 @@ class IndexController extends Controller
                 'balcony_area_2',
                 'price',
                 'promotion_price',
+                'file',
+                'file_pdf'
             )
             ->where('investment_id', $investment->id)
             ->get();
