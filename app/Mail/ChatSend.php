@@ -38,12 +38,12 @@ class ChatSend extends Mailable
      */
     public function build()
     {
-        return $this->subject('DeveloPro - masz nową wiadomość')->view('admin.crm.client.chat.mail-template',
+        return $this->subject('DeveloPro - masz nową wiadomość ze strony: '.$this->request->page)->view('admin.crm.client.chat.mail-template',
             [
                 'request' => $this->request,
                 'client' => $this->client,
                 'property' => $this->property,
-                'signature' => Auth::user()->signature
+                'signature' => optional(Auth::user())->signature,
             ]);
     }
 }

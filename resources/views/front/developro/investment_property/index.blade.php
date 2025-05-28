@@ -339,7 +339,7 @@
         </section>
 
         <div id="kontakt">
-            @include('layouts.partials.cta', ['pageTitle' => $property->name, 'propertyId' => $property->id, 'investmentName' => $investment->name, 'investmentId' => $investment->id, 'back' => true, 'sectionTitle' => $property->name, 'sectionSubTitle' => 'Wyślij zapytanie', 'investmentText' => $investment->contact_content])
+            @include('layouts.partials.cta', ['pageTitle' => $investment->name.' - '.$property->name, 'propertyId' => $property->id, 'investmentName' => $investment->name, 'investmentId' => $investment->id, 'back' => true, 'sectionTitle' => $property->name, 'sectionSubTitle' => 'Wyślij zapytanie', 'investmentText' => $investment->contact_content])
         </div>
 
         @if($property->text)

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ContactFormRequest;
 use App\Models\City;
 use App\Models\Inline;
+use App\Models\Investment;
 use Http;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -44,7 +45,6 @@ class ContactController extends Controller
 
     function send(ContactFormRequest $request)
     {
-
         try {
             $client = $this->repository->createClient($request);
 
@@ -61,8 +61,31 @@ class ContactController extends Controller
                 ->filter() // Remove null or empty values
                 ->toArray();
 
-            if (!empty($emails)) {
-                Mail::to($emails)->send(new ChatSend($request, $client));
+// Initialize office emails as empty
+            $officeEmails = [];
+
+            if ($request->has('investment_id')) {
+                $investment = Investment::find($request->input('investment_id'));
+
+                if ($investment && !is_array($investment->office_emails)) {
+                    $officeEmailsData = json_decode($investment->office_emails, true);
+                } else {
+                    $officeEmailsData = $investment->office_emails ?? [];
+                }
+
+                $officeEmails = collect($officeEmailsData)
+                    ->map(fn($item) => isset($item['value']) ? trim($item['value']) : null)
+                    ->filter()
+                    ->values()
+                    ->toArray();
+            }
+
+// ✅ Merge both email arrays and remove duplicates
+            $allEmails = array_unique(array_merge($emails, $officeEmails));
+
+// ✅ Send mail if we have any recipients
+            if (!empty($allEmails)) {
+                Mail::to($allEmails)->send(new ChatSend($request, $client));
             } else {
                 Log::error('No valid emails found in settings()->get("page_email")');
             }

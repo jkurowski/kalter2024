@@ -603,7 +603,7 @@
             @endif
 
             <div id="kontakt">
-                @include('layouts.partials.cta', ['pageTitle' => 'Strona inwestycji', 'investmentName' => $investment->name, 'investmentId' => $investment->id, 'back' => true, 'investmentText' => $investment->contact_content])
+                @include('layouts.partials.cta', ['pageTitle' => 'Strona inwestycji '.$investment->name, 'investmentName' => $investment->name, 'investmentId' => $investment->id, 'back' => true, 'investmentText' => $investment->contact_content])
             </div>
         </div>
 
