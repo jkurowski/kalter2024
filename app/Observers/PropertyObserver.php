@@ -87,9 +87,11 @@ class PropertyObserver
                     number_format($newPrice, 0, '.', ' ')
                 );
 
+                $originalPrice = is_numeric($originalPrice) ? $originalPrice : 0;
+
                 PropertyPrice::create([
                     'property_id' => $property->id,
-                    'price_brutto' => $originalPrice ?? 0,
+                    'price_brutto' => $originalPrice,
                     'new_price_brutto' => $newPrice,
                     'area' => $property->area,
                     'changed_at' => now(),
