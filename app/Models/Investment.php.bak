@@ -210,34 +210,21 @@ class Investment extends Model
     }
 
     /**
+     * Get investment pages
+     * @return HasMany
+     */
+    public function articles(): HasMany
+    {
+        return $this->hasMany('App\Models\InvestmentArticles');
+    }
+
+    /**
      * Get investment properties
      * @return HasMany
      */
     public function searchProperties(): HasMany
     {
-        return $this->hasMany('App\Models\Property')
-            ->select([
-                'id',
-                'client_id',
-                'investment_id',
-                'building_id',
-                'price',
-                'price_brutto',
-                'floor_id',
-                'garden_area',
-                'balcony_area',
-                'terrace_area',
-                'loggia_area',
-                'name',
-                'status',
-                'rooms',
-                'area',
-                'views',
-                'active',
-                'updated_at',
-                'type'
-            ])
-            ->with('floor');
+        return $this->hasMany('App\Models\Property')->select(['investment_id', 'name', 'status', 'rooms', 'area', 'views', 'active', 'updated_at']);
     }
 
     /**
@@ -247,18 +234,6 @@ class Investment extends Model
     public function selectProperties(): HasMany
     {
         return $this->hasMany('App\Models\Property')->select(['investment_id', 'id', 'name', 'type']);
-    }
-
-    /**
-     * Get available investment properties (status = 1)
-     * @return HasMany
-     */
-    public function selectAvailableProperties(): HasMany
-    {
-        return $this->hasMany('App\Models\Property')
-            ->where('status', 1)
-            ->whereNull('client_id')
-            ->select(['investment_id', 'id', 'name', 'type']);
     }
 
     /**

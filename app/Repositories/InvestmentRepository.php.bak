@@ -4,7 +4,6 @@ use App\Models\Event;
 use App\Models\Investment;
 use App\Models\User;
 use App\Notifications\SupervisorNotification;
-use App\Traits\PropertyLinkTrait;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Notification;
@@ -14,8 +13,6 @@ use Yajra\DataTables\DataTables;
 
 class InvestmentRepository extends BaseRepository
 {
-    use PropertyLinkTrait;
-
     protected $model;
 
     public function __construct(Investment $model)
@@ -67,34 +64,27 @@ class InvestmentRepository extends BaseRepository
     public function searchRooms(Investment $investment, Request $request)
     {
 
-        $query = $investment->searchProperties();
+        $query = $investment->load(array(
+            'searchProperties' => function ($query) use ($request) {
+                if ($request->input('rooms')) {
+                    $query->where('rooms', $request->input('rooms'));
+                }
+                if ($request->input('status')) {
+                    $query->where('status', $request->input('status'));
+                }
+                if ($request->input('area_from')) {
+                    $query->where('area', '>=', $request->input('area_from'));
+                }
+                if ($request->input('area_to')) {
+                    $query->where('area', '<=', $request->input('area_to'));
+                }
+                if ($request->input('name')) {
+                    $query->where('name', 'LIKE', '%'.$request->input('name').'%');
+                }
+            }
+        ));
 
-        // Apply filters
-        if ($request->input('rooms')) {
-            $query->where('rooms', $request->input('rooms'));
-        }
-        if ($request->input('status')) {
-            $query->where('status', $request->input('status'));
-        }
-        if ($request->input('area_from')) {
-            $query->where('area', '>=', $request->input('area_from'));
-        }
-        if ($request->input('area_to')) {
-            $query->where('area', '<=', $request->input('area_to'));
-        }
-        if ($request->input('name')) {
-            $query->where('name', 'LIKE', '%' . $request->input('name') . '%');
-        }
-
-        $query->with('client');
-
-        // Fetch results and transform to include `property_url`
-        $properties = $query->get()->map(function ($property) {
-            $property->property_url = $this->getLinkToProperty($property);
-            return $property;
-        });
-
-        return $properties;
+        return $query->searchProperties;
     }
 
     public function getDataTable(Investment $investment = null, string $minDate = null, string $maxDate = null){
