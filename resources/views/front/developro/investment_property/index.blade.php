@@ -167,19 +167,19 @@
 
                             @if($investment->show_prices)
                                 <p class="h4 mb-1 d-flex flex-wrap align-items-center column-gap-3 ff-secondary">
-                                    @if($property->price && !$property->highlighted)
-                                        <span class="fs-24">@money($property->price)</span>
+                                    @if($property->price_brutto && !$property->highlighted)
+                                        <span class="fs-24">@money($property->price_brutto)</span>
                                     @else
                                         @if($property->promotion_price)
                                             <span class="fs-24">@money($property->promotion_price)</span>
                                         @endif
-                                        @if($property->price)
-                                            <span class="text-body-emphasis opacity-50 fs-6 align-middle text-decoration-line-through">@money($property->price)</span>
+                                        @if($property->price_brutto)
+                                            <span class="text-body-emphasis opacity-50 fs-6 align-middle text-decoration-line-through">@money($property->price_brutto)</span>
                                         @endif
 
-                                        @if($property->price && $property->promotion_price)
+                                        @if($property->price_brutto && $property->promotion_price)
                                             @php
-                                                $rabat = $property->price - $property->promotion_price;
+                                                $rabat = $property->price_brutto - $property->promotion_price;
                                             @endphp
                                             <span class="rabat h4 d-block w-100">Rabat: @money($rabat)</span>
                                         @endif
@@ -196,10 +196,10 @@
                                         @if($property->promotion_price)
                                             <span class="fs-24">@money($property->promotion_price)</span>
                                         @endif
-                                        @if($property->price && $property->promotion_price)
-                                            <span class="text-body-emphasis opacity-50 fs-6 align-middle text-decoration-line-through">@money($property->price)</span>
+                                        @if($property->price_brutto && $property->promotion_price)
+                                            <span class="text-body-emphasis opacity-50 fs-6 align-middle text-decoration-line-through">@money($property->price_brutto)</span>
                                             @php
-                                                $rabat = $property->price - $property->promotion_price;
+                                                $rabat = $property->price_brutto - $property->promotion_price;
                                             @endphp
                                             <span class="rabat h4 d-block w-100">Rabat: @money($rabat)</span>
                                         @endif
@@ -448,14 +448,14 @@
                                 <p class="h3 mb-0">{{ $p->name }}</p>
                                 <p class="fs-10 text-uppercase fw-900 mb-2">{{ $investment->name }}</p>
                                 <p class="h3 mb-1">
-                                    @if($p->price && !$p->highlighted)
-                                        <span class="me-2">@money($p->price)</span>
+                                    @if($p->price_brutto && !$p->highlighted)
+                                        <span class="me-2">@money($p->price_brutto)</span>
                                     @else
                                         @if($p->promotion_price)
                                             <span class="me-2">@money($p->promotion_price)</span>
                                         @endif
-                                        @if($p->price)
-                                            <span class="text-body-emphasis opacity-50 fs-6 align-middle text-decoration-line-through">@money($p->price)</span>
+                                        @if($p->price_brutto)
+                                            <span class="text-body-emphasis opacity-50 fs-6 align-middle text-decoration-line-through">@money($p->price_brutto)</span>
                                         @endif
                                     @endif
                                 </p>

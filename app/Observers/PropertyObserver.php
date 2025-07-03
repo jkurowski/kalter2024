@@ -60,12 +60,12 @@ class PropertyObserver
     public function updated(Property $property)
     {
         $originalStatus = $property->getOriginal('status');
-        $originalPrice = $property->getOriginal('price');
+        $originalPrice = $property->getOriginal('price_brutto');
         $originalArea = $property->getOriginal('area');
 
         // Set flags for changes
         $statusChanged = $priceChanged = $areaChanged = false;
-        $message = sprintf('Zmiana parametrÛw: <b>%s</b>.', $property->name);
+        $message = sprintf('Zmiana parametr√≥w: <b>%s</b>.', $property->name);
 
         // Handle status change
         if ($property->isDirty('status')) {
@@ -80,8 +80,10 @@ class PropertyObserver
         if ($property->isDirty('price_brutto')) {
             $newPrice = $property->price_brutto;
             if ($originalPrice !== $newPrice) {
-                $message .= sprintf('<br>Cena: "<b>%s z≥</b>" -> "<b>%s z≥</b>".',
-                    number_format($originalPrice, 0, '.', ' '),
+                $message .= sprintf('<br>Cena: "<b>%s z≈Ç</b>" -> "<b>%s z≈Ç</b>".',
+                    ($originalPrice !== null && $originalPrice !== '')
+                        ? number_format($originalPrice, 0, '.', ' ')
+                        : 'brak',
                     number_format($newPrice, 0, '.', ' ')
                 );
 
