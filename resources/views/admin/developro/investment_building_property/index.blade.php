@@ -92,10 +92,20 @@
                                         <a href="{{ route('admin.crm.clients.show', $p->client->id) }}">{{ $p->client->name }} {{ $p->client->lastname }}</a>
                                     @endif
                                 </td>
-                                <td class="option-120">
+                                <td class="option-120 text-end">
                                     <div class="btn-group">
+                                        @if($p->type ==1)
+                                        <a href="{{ route('admin.crm.handover', $p) }}" class="btn action-button me-1" data-bs-toggle="tooltip" data-placement="top" data-bs-title="Odbiór" data-id="{{ $p->id }}"><svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path></svg></a>
+
+                                        <a href="#" class="btn action-button me-1 btn-activity" data-bs-toggle="tooltip" data-placement="top" data-bs-title="Historia" data-id="{{ $p->id }}"><i class="fe-activity"></i></a>
+
                                         <a href="{{route('admin.developro.investment.message.index', [$investment, $p])}}" class="btn action-button me-1" data-bs-toggle="tooltip" data-placement="top" data-bs-title="Pokaż wiadomości"><i class="fe-mail"></i></a>
-                                        <a href="{{route('admin.developro.investment.building.floor.properties.edit', [$investment, $building, $floor, $p])}}" class="btn action-button me-1" data-bs-toggle="tooltip" data-placement="top" data-bs-title="Edytuj"><i class="fe-edit"></i></a>
+                                        @endif
+                                        @if($p->type ==1)
+                                            <a href="{{route('admin.developro.investment.building.floor.properties.edit', [$investment, $building, $floor, $p])}}" class="btn action-button me-1" data-bs-toggle="tooltip" data-placement="top" data-bs-title="Edytuj"><i class="fe-edit"></i></a>
+                                        @else
+                                                <a href="{{route('admin.developro.investment.building.floor.others.edit', [$investment, $building, $floor, $p])}}" class="btn action-button me-1" data-bs-toggle="tooltip" data-placement="top" data-bs-title="Edytuj"><i class="fe-edit"></i></a>
+                                        @endif
                                         <form method="POST" action="{{route('admin.developro.investment.building.floor.properties.destroy', [$investment, $building, $floor, $p])}}">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
@@ -115,7 +125,8 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 d-flex justify-content-end">
-                    <a href="{{route('admin.developro.investment.building.floor.properties.create', [$investment, $building, $floor])}}" class="btn btn-primary">Dodaj</a>
+                    <a href="{{route('admin.developro.investment.building.floor.properties.create', [$investment, $building, $floor])}}" class="btn btn-primary me-2">Dodaj lokal mieszkalny / usługowy</a>
+                    <a href="{{route('admin.developro.investment.building.floor.others.create', [$investment, $building, $floor])}}" class="btn btn-primary">Dodaj inną powierzchnię</a>
                 </div>
             </div>
         </div>

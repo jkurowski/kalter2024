@@ -20,6 +20,7 @@ class BuildingPropertyController extends Controller
 {
     private PropertyRepository $repository;
     private PropertyService $service;
+
     private InvestmentRepository $investmentRepository;
 
     public function __construct(PropertyRepository $repository, PropertyService $service, InvestmentRepository $investmentRepository)
@@ -62,13 +63,31 @@ class BuildingPropertyController extends Controller
 
     public function create(Investment $investment, Building $building, Floor $floor)
     {
+        $others = Property::where('investment_id', '=', $investment->id)
+            ->where('status', '=', 1)
+            ->whereNull('client_id')
+            ->pluck('name', 'id');
+
+        $all = Property::where('investment_id', $investment->id)
+            ->get()
+            ->mapWithKeys(function ($prop) {
+                $name = $prop->name . ' (' . $prop->floor->name . ')';
+                if ($prop->building && $prop->building->name) {
+                    $name .= ' - ' . $prop->building->name;
+                }
+
+                return [$prop->id => $name];
+            });
 
         return view('admin.developro.investment_building_property.form', [
-            'cardTitle' => 'Dodaj mieszkanie',
+            'cardTitle' => 'Dodaj powierzchnię',
             'backButton' => route('admin.developro.investment.building.floor.properties.index', [$investment, $building, $floor]),
             'floor' => $floor,
             'building' => $building,
             'investment' => $investment,
+            'others' => $others,
+            'all' => $all,
+            'related' => collect()
         ])->with('entry', Property::make());
     }
 
@@ -94,12 +113,29 @@ class BuildingPropertyController extends Controller
     public function edit(Investment $investment, Building $building, Floor $floor, Property $property)
     {
         // Get all properties for the investment except the current property
-        $others = Property::where('id', '<>', $property->id)
-            ->where('investment_id', '=', $investment->id)
-            //->where('type', '<>', 1)
+        $others = Property::where('investment_id', '=', $investment->id)
+            ->where('id', '<>', $property->id)
+            ->where('status', '=', 1)
+            ->whereNull('client_id')
             ->pluck('name', 'id');
 
+        $all = Property::where('investment_id', $investment->id)
+            ->where('id', '<>', $property->id)
+            ->get()
+            ->mapWithKeys(function ($prop) {
+                $name = $prop->name . ' (' . $prop->floor->name . ')';
+
+                // Add building name if it exists
+                if ($prop->building && $prop->building->name) {
+                    $name .= ' - ' . $prop->building->name;
+                }
+
+                return [$prop->id => $name];
+            });
+
         $related = $property->relatedProperties;
+
+        $isRelated = PropertyProperty::where('related_property_id', $property->id)->exists();
 
         return view('admin.developro.investment_building_property.form', [
             'cardTitle' => 'Edytuj mieszkanie',
@@ -109,7 +145,9 @@ class BuildingPropertyController extends Controller
             'investment' => $investment,
             'entry' => $property,
             'others' => $others,
-            'related' => $related
+            'all' => $all,
+            'related' => $related,
+            'isRelated' => $isRelated
         ]);
     }
 
@@ -180,5 +218,4 @@ class BuildingPropertyController extends Controller
         // Return a response
         return view('admin.developro.investment_shared.related', ['property' => $related_property]);
     }
-
 }

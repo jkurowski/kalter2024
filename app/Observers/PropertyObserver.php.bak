@@ -2,24 +2,14 @@
 
 namespace App\Observers;
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 
 // CMS
-use App\Repositories\InvestmentRepository;
 use App\Models\PropertiesHistory;
-use App\Models\PropertyPrice;
 use App\Models\Property;
 
 class PropertyObserver
 {
-    private $investmentRepository;
-
-    public function __construct(InvestmentRepository $investmentRepository)
-    {
-        $this->investmentRepository = $investmentRepository;
-    }
-
     /**
      * Handle the Property "deleted" event.
      *
@@ -59,71 +49,6 @@ class PropertyObserver
      */
     public function updated(Property $property)
     {
-        $originalStatus = $property->getOriginal('status');
-        $originalPrice = $property->getOriginal('price');
-        $originalArea = $property->getOriginal('area');
-
-        // Set flags for changes
-        $statusChanged = $priceChanged = $areaChanged = false;
-        $message = sprintf('Zmiana parametrów: <b>%s</b>.', $property->name);
-
-        // Handle status change
-        if ($property->isDirty('status')) {
-            $newStatus = $property->status;
-            if ($originalStatus !== $newStatus) {
-                $message .= sprintf('<br>Status: "<b>%s</b>" -> "<b>%s</b>"', roomStatus($originalStatus), roomStatus($newStatus));
-                $statusChanged = true;
-            }
-        }
-
-        // Handle price change
-        if ($property->isDirty('price_brutto')) {
-            $newPrice = $property->price_brutto;
-            if ($originalPrice !== $newPrice) {
-                $message .= sprintf('<br>Cena: "<b>%s z³</b>" -> "<b>%s z³</b>".',
-                    number_format($originalPrice, 0, '.', ' '),
-                    number_format($newPrice, 0, '.', ' ')
-                );
-
-                PropertyPrice::create([
-                    'property_id' => $property->id,
-                    'price_brutto' => $originalPrice,
-                    'new_price_brutto' => $newPrice,
-                    'area' => $property->area,
-                    'changed_at' => now(),
-                    'changed_by' => Auth::id(),
-                ]);
-
-                $priceChanged = true;
-            }
-        }
-
-        // Handle area change
-        if ($property->isDirty('area')) {
-            $newArea = $property->area;
-            if ($originalArea !== $newArea) {
-                $message .= sprintf('<br>Powierzchnia: "<b>%s m2</b>" -> "<b>%s m2</b>"', $originalArea, $newArea);
-                $areaChanged = true;
-            }
-        }
-
-        // Send the notification only if a change occurred
-        if ($statusChanged || $priceChanged || $areaChanged) {
-            // Assuming you have a method to fetch the investment or any other context needed
-            $investment = $property->investment; // or whatever logic to get the investment
-            $this->sendMessageToInvestmentSupervisors($investment, $message);
-        }
-
-        // Update related properties
-        $relatedProperties = $property->relatedProperties; // Assume this is an empty collection or array.
-
-        foreach ($relatedProperties as $relatedProperty) {
-            $relatedProperty->status = $property->status;
-            $relatedProperty->client_id = $property->client_id;
-            $relatedProperty->save();
-        }
-
-        // Save the history for status change
         if ($property->isDirty('status')) {
             $newStatus = $property->status;
             $previousStatus = $property->getOriginal('status');
@@ -181,10 +106,5 @@ class PropertyObserver
                 }
             }
         }
-    }
-
-    protected function sendMessageToInvestmentSupervisors($investment, $message): void
-    {
-        $this->investmentRepository->sendMessageToInvestmentSupervisors($investment, $message);
     }
 }

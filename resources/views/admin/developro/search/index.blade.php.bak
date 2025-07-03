@@ -65,68 +65,27 @@
                     <table class="table mb-0" id="sortable">
                         <thead class="thead-default">
                         <tr>
+                            <th>#</th>
                             <th>Nazwa</th>
                             <th class="text-center">Status</th>
                             <th class="text-center">Pokoje</th>
                             <th class="text-center">Metraż</th>
-                            <th class="text-center">Cena brutto</th>
-                            <th class="text-center">Dodatkowe</th>
                             <th class="text-center">Wizyty</th>
-                            <th class="text-center">Klient</th>
                             <th class="text-center">Widoczność</th>
                             <th>Data modyfikacji</th>
-                            <th>Typ</th>
-                            <th></th>
                         </tr>
                         </thead>
                         <tbody class="content">
                         @foreach ($list as $index => $p)
                             <tr id="recordsArray_{{ $p->id }}">
-                                <td>
-                                    <p>{{ $p->name }}</p>
-                                    <span class="small-text">{{ $p->getLocation() }}</span>
-                                </td>
+                                <th class="position" scope="row">{{ $index+1 }}</th>
+                                <td>{{ $p->name }}</td>
                                 <td><span class="badge room-list-status-{{ $p->status }}">{{ roomStatus($p->status) }}</span></td>
                                 <td class="text-center">{{ $p->rooms }}</td>
                                 <td class="text-center">{{ $p->area }} m<sup>2</sup></td>
-                                <td class="text-center">
-                                    @if($p->price_brutto)
-                                        <p>@money($p->price_brutto)</p>
-                                    @endif
-                                    @if($p->price)
-                                        <span class="small-text">(netto: @money($p->price))</span>
-                                    @endif
-                                </td>
-                                <td class="text-center">
-                                    @if($p->garden_area)
-                                        <span class="d-block mb-2">Ogród: {{ $p->garden_area }} m<sup>2</sup></span>
-                                    @endif
-                                    @if($p->balcony_area)
-                                        <span class="d-block mb-2">Balkon: {{ $p->balcony_area }} m<sup>2</sup></span>
-                                    @endif
-                                    @if($p->terrace_area)
-                                        <span class="d-block mb-2">Taras: {{ $p->terrace_area }} m<sup>2</sup></span>
-                                    @endif
-                                    @if($p->loggia_area)
-                                        <span class="d-block mb-2">Logia: {{ $p->loggia_area }} m<sup>2</sup></span>
-                                    @endif
-                                </td>
                                 <td class="text-center">{{ $p->views }}</td>
-                                <td class="text-center">
-                                    @if($p->client_id != null)
-                                        <a href="{{ route('admin.crm.clients.show', $p->client->id) }}">{{ $p->client->name }} {{ $p->client->lastname }}</a>
-                                    @endif
-                                </td>
                                 <td class="text-center">{!! status($p->active) !!}</td>
                                 <td>{{ $p->updated_at }}</td>
-                                <td>{{ $p->type }}</td>
-                                <td><a href="{{ $p->property_url }}" class="btn action-button me-1"
-                                       data-bs-toggle="tooltip"
-                                       data-placement="top"
-                                       data-bs-title="Edytuj lokal">
-                                        <i class="fe-edit"></i>
-                                    </a>
-                                </td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -138,11 +97,7 @@
 
     @push('scripts')
         <script>
-            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-            const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-                return new bootstrap.Tooltip(tooltipTriggerEl)
-            });
-            @if (session('success')) toastr.options={closeButton:!0,progressBar:!0,positionClass:"toast-bottom-left",timeOut:"3000"};toastr.success("{{ session('success') }}"); @endif
+
         </script>
     @endpush
 @endsection

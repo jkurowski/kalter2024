@@ -329,11 +329,9 @@ Route::group([
                 '{investment}/houses' => 'House\HouseController',
                 '{investment}/floors' => 'Floor\FloorController',
                 '{investment}/floor/{floor}/properties' => 'Property\PropertyController',
-                '{investment}/floor/{floor}/others' => 'Property\OthersController',
                 '{investment}/buildings' => 'Building\BuildingController',
                 '{investment}/building.floors' => 'Building\BuildingFloorController',
                 '{investment}/building.floor.properties' => 'Building\BuildingPropertyController',
-                '{investment}/building.floor.others' => 'Building\BuildingOthersController',
                 '{investment}/property/{property}/message' => 'Property\InboxController'
             ]);
 
@@ -353,7 +351,6 @@ Route::group([
             Route::get('{investment}/eventTable', 'Investment\IndexController@eventtable')->name('eventtable');
 
             Route::get('{investment}/properties', 'Property\PropertyController@fetchProperties');
-            Route::get('{investment}/available-properties', 'Property\PropertyController@fetchAvailableProperties');
 
             Route::prefix('{investment}/payments')->group(function () {
                 Route::get('/', 'Payments\IndexController@index')->name('payments');
@@ -369,7 +366,6 @@ Route::group([
 
 
             Route::post('{investment}/{floor}/{property}/related', 'Property\PropertyController@storerelated')->name('related.store');
-            Route::post('{investment}/{floor}/{property}/remove-related', 'Property\PropertyController@removerelated')->name('related.remove');
 
 
             //admin.developro.investment.property.history
@@ -379,8 +375,6 @@ Route::group([
             Route::get('{investment}/floors/{floor}/copy', 'Floor\FloorController@copy')->name('floors.copy');
             Route::get('{investment}/building/{building}/floors/{floor}/copy', 'Building\BuildingFloorController@copy')->name('building.floors.copy');
         });
-        Route::post('ajax/investment', 'Investment\IndexController@ajax')->name('ajax.investment');
-
     });
 
     //Notes v2

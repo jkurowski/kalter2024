@@ -37,10 +37,9 @@ class Property extends Model
         'area',
         'area_search',
         'price',
-        'price_brutto',
+        'price_search',
         'price_30',
-        'vat',
-        'bank_account',
+        'text',
         'garden_area',
         'balcony_area',
         'balcony_area_2',
@@ -71,7 +70,6 @@ class Property extends Model
         'highlighted',
         'promotion_end_date',
         'promotion_price',
-        'promotion_price_show',
         'client_id',
         'saled_at',
         'reservation_until'
@@ -169,20 +167,6 @@ class Property extends Model
         return $this->belongsTo(Building::class);
     }
 
-    public function getLocation(): string
-    {
-        $buildingName = $this->building ? $this->building->name : null;
-        $floorName = $this->floor ? $this->floor->name : null;
-
-        if ($buildingName && $floorName) {
-            return "{$buildingName} - {$floorName}";
-        } elseif ($floorName) {
-            return "{$floorName}";
-        }
-
-        return 'Brak lokalizacji'; // Fallback if no building or floor is set
-    }
-
     /**
      * Get the client that owns the property.
      */
@@ -191,34 +175,9 @@ class Property extends Model
         return $this->belongsTo(Client::class, 'client_id');
     }
 
-    public function priceHistory(): HasMany
-    {
-        return $this->hasMany(PropertyPrice::class)->orderBy('changed_at', 'desc');
-    }
-
-    public function lowestPriceLast30Days()
-    {
-        $dateFrom = Carbon::now()->subDays(30);
-
-        return $this->priceHistory()
-            ->where('changed_at', '>=', $dateFrom)
-            ->orderBy('price_brutto', 'asc')
-            ->first()?->price_brutto;  // zwróci lowest price albo null, jeœli brak
-    }
-
-    public function getHasPriceHistoryAttribute(): bool
-    {
-        return $this->priceHistory()->exists();
-    }
-
     public function relatedProperties()
     {
         return $this->belongsToMany(Property::class, 'property_property', 'property_id', 'related_property_id');
-    }
-
-    public function connectedProperty()
-    {
-        return $this->hasOne(Property::class, 'storey_property', 'id');
     }
 
     public function payments()

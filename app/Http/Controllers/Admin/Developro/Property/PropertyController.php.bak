@@ -168,21 +168,6 @@ class PropertyController extends Controller
         return response()->json($result);
     }
 
-    public function fetchAvailableProperties(Investment $investment) {
-        $properties = $investment->selectAvailableProperties()->get();
-
-        if ($properties->isEmpty()) {
-            return response()->json([]);
-        }
-
-        $types = $properties->groupBy('type');
-        $result = [];
-        foreach ($types as $type => $properties) {
-            $result[$type] = $properties;
-        }
-        return response()->json($result);
-    }
-
     public function storerelated(Request $request, $investmentId, $floorId, $propertyId)
     {
         $request->validate([
