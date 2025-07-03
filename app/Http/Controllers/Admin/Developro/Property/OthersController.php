@@ -87,14 +87,6 @@ class OthersController extends Controller
 
     public function update(PropertyFormRequest $request, Investment $investment, Floor $floor, Property $other)
     {
-        // dd($property);
-        $old_client_id = $other->client_id;
-        $new_client_id = $request->validated()['client_id'];
-
-        if($new_client_id == 0) {
-            $this->updateClientDealsFieldsWhenClientIsUnset($other);
-        }
-
         $this->repository->update($request->validated(), $other);
 
         if ($request->hasFile('file')) {
