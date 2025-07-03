@@ -33,11 +33,7 @@ class PropertyFormRequest extends FormRequest
         $this->merge([
             'investment_id' => $this->route('investment')->id
         ]);
-        if (!$this->filled('building')) {
-            $this->merge([
-                'building_id' => $this->route('building')->id
-            ]);
-        }
+
         if (!$this->filled('floor')) {
             $this->merge([
                 'floor_id' => $this->route('floor')->id
@@ -125,8 +121,8 @@ class PropertyFormRequest extends FormRequest
             'saled_at.date' => 'The saled at must be a valid date.',
             'reservation_until.date' => 'The reservation until must be a valid date.',
             'reservation_until.after_or_equal' => 'The reservation until must be a date after or equal to the saled at date.',
-            'price_brutto.numeric' => 'Pole "Cena brutto" musi byæ liczb¹.',
-            'price_brutto.regex' => 'Pole "Cena brutto" musi zawieraæ maksymalnie dwie cyfry po przecinku.',
+            'price_brutto.numeric' => 'Pole "Cena brutto" musi byï¿½ liczbï¿½.',
+            'price_brutto.regex' => 'Pole "Cena brutto" musi zawieraï¿½ maksymalnie dwie cyfry po przecinku.',
 
         ];
     }
