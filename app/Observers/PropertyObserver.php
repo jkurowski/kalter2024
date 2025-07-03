@@ -89,7 +89,7 @@ class PropertyObserver
 
                 PropertyPrice::create([
                     'property_id' => $property->id,
-                    'price_brutto' => $originalPrice,
+                    'price_brutto' => $originalPrice ?? 0,
                     'new_price_brutto' => $newPrice,
                     'area' => $property->area,
                     'changed_at' => now(),
