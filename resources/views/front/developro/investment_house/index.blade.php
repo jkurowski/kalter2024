@@ -35,8 +35,8 @@
                             </div>
                         @endif
 
-                        @if($property->price)
-                            <h6 class="propertyPrice">@money($property->price)</h6>
+                        @if($property->price_brutto)
+                            <h6 class="propertyPrice">@money($property->price_brutto)</h6>
                         @endif
 
                         <ul class="list-unstyled">

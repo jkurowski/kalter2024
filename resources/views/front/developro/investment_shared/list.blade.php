@@ -3,7 +3,7 @@
         @if($properties->count() > 0)
             @foreach($properties as $room)
                 <div class="row">
-                    @if($room->price)
+                    @if($room->price_brutto)
                         <span class="ribbon1"><span>Oferta specjalna</span></span>
                     @endif
                     <div class="col col-top">
@@ -31,8 +31,8 @@
                     </div>
                     <div class="col">
                         <ul class="mb-0 list-unstyled">
-                            @if($room->price && $room->status == 1)
-                                <li>cena: <b>@money($room->price)</b></li>
+                            @if($room->price_brutto && $room->status == 1)
+                                <li>cena: <b>@money($room->price_brutto)</b></li>
                             @endif
                             <li>pokoje: <b>{{$room->rooms}}</b></li>
                             <li>pow.: <b>{{$room->area}} m<sup>2</sup></b></li>
