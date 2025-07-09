@@ -33,6 +33,18 @@ class PropertyFormRequest extends FormRequest
         $this->merge([
             'investment_id' => $this->route('investment')->id
         ]);
+
+        if (!$this->filled('floor')) {
+            $this->merge([
+                'floor_id' => $this->route('floor')->id
+            ]);
+        }
+
+        if ($this->has('area')) {
+            $this->merge([
+                'area' => str_replace(',', '.', $this->input('area')),
+            ]);
+        }
     }
 
     /**
@@ -68,10 +80,10 @@ class PropertyFormRequest extends FormRequest
             'plot_area' => '',
             'parking_space' => '',
             'garage' => '',
-            'price' => '',
-            'price_search' => '',
-            'price_30' => '',
-            'text' => '',
+            'price' => ['nullable', 'regex:/^\d+(\.\d{1,2})?$/'],
+            'price_brutto' => ['nullable', 'regex:/^\d+(\.\d{1,2})?$/'],
+            'price_30' => ['nullable', 'regex:/^\d+(\.\d{1,2})?$/'],
+            'vat' => '',
             'cords' => '',
             'html' => '',
             'meta_title' => '',
@@ -80,6 +92,7 @@ class PropertyFormRequest extends FormRequest
             'highlighted' => 'boolean',
             'promotion_end_date' => 'nullable|date|after:now',
             'promotion_price' => 'nullable',
+            'promotion_price_show' => 'boolean',
             'client_id' => [
                 'nullable',
                 function ($attribute, $value, $fail) {
@@ -108,6 +121,9 @@ class PropertyFormRequest extends FormRequest
             'saled_at.date' => 'The saled at must be a valid date.',
             'reservation_until.date' => 'The reservation until must be a valid date.',
             'reservation_until.after_or_equal' => 'The reservation until must be a date after or equal to the saled at date.',
+            'price_brutto.numeric' => 'Pole "Cena brutto" musi by� liczb�.',
+            'price_brutto.regex' => 'Pole "Cena brutto" musi zawiera� maksymalnie dwie cyfry po przecinku.',
+
         ];
     }
 }

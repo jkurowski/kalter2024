@@ -194,6 +194,36 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="row w-100 form-group">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <h2>Przynależne powierzchnie do wyboru przez klienta</h2>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                @include('form-elements.html-input-radio', [
+                                                'name' => 'visitor_related_type',
+                                                'label' => '',
+                                                'value' => $entry->visitor_related_type,
+                                                'options' => [
+                                                    '1' => 'Brak wyboru',
+                                                    '2' => 'Wszystkie',
+                                                    '3' => 'Tylko wybrane'
+                                                ],
+                                                'required' => true,
+                                            ])
+                                            </div>
+                                            <div class="col-12 d-none" id="visitorRelated">
+                                                @include('form-elements.html-select-multiple', ['label' => 'Wybierz powierzchnie dodatkowe', 'name' => 'visitor_related_ids', 'selected' => $entry->visitorRelatedProperties->pluck('id')->toArray(), 'select' => $visitor_others,
+                                                    'liveSearch' => true
+                                                ])
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 @endif
 
                                 <div class="row w-100 form-group">
@@ -415,6 +445,20 @@
         "areas":[{!! $entry->cords !!}]
     };
     const added = document.getElementById('added');
+    const visitorRelated = document.getElementById('visitorRelated');
+    const visitorRelatedChoose = document.getElementById('visitor_related_type_3');
+
+    function toggleVisitorRelated() {
+        if (visitorRelatedChoose.checked) {
+            visitorRelated.classList.remove('d-none');
+            visitorRelated.classList.add('d-block');
+        } else {
+            visitorRelated.classList.remove('d-block');
+            visitorRelated.classList.add('d-none');
+
+            $('#visitorRelated .selectpicker').selectpicker('deselectAll');
+        }
+    }
 
     $(document).ready(function() {
         @if($floor->file)
@@ -498,6 +542,12 @@
     document.getElementById('inputClient').addEventListener('input', () => {
         inputClientId.val(0);
     })
+
+    toggleVisitorRelated();
+
+    document.querySelectorAll('input[name="visitor_related_type"]').forEach((input) => {
+        input.addEventListener('change', toggleVisitorRelated);
+    });
 
     const appendStatusAlert = (message, type, duration = 4000) => {
         const wrapper = document.createElement('div')

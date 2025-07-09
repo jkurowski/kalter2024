@@ -74,7 +74,8 @@ class Property extends Model
         'promotion_price_show',
         'client_id',
         'saled_at',
-        'reservation_until'
+        'reservation_until',
+        'visitor_related_type'
     ];
 
     /**
@@ -204,6 +205,11 @@ class Property extends Model
             ->where('changed_at', '>=', $dateFrom)
             ->orderBy('price_brutto', 'asc')
             ->first()?->price_brutto;  // zwróci lowest price albo null, jeœli brak
+    }
+
+    public function visitorRelatedProperties()
+    {
+        return $this->belongsToMany(Property::class, 'property_visitor_related', 'property_id', 'related_property_id');
     }
 
     public function getHasPriceHistoryAttribute(): bool

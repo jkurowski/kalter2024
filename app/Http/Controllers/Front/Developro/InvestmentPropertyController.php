@@ -35,6 +35,8 @@ class InvestmentPropertyController extends Controller
             ->take(5)
             ->get();
 
+        $property->with('relatedProperties');
+
         return view('front.developro.investment_property.index', [
             'investment' => $investment,
             'floor' => $floor,

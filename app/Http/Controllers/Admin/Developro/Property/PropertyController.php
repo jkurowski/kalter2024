@@ -99,15 +99,34 @@ class PropertyController extends Controller
 
     public function edit(Investment $investment, Floor $floor, Property $property)
     {
-        // Get all properties for the investment except the current property
-        $others = Property::where('investment_id', '=', $investment->id)
+        $allOthers = Property::with('building', 'floor')
+            ->where('investment_id', $investment->id)
             ->where('id', '<>', $property->id)
-            ->where('status', '=', 1)
+            ->where('status', 1)
             ->whereNull('client_id')
-            ->pluck('name', 'id');
+            ->get();
+
+        $relatedIds = DB::table('property_property')->pluck('related_property_id')->toArray();
+
+        $visitor_others = $allOthers
+            ->where('type', '!=', 1)
+            ->whereNotIn('id', $relatedIds)
+            ->mapWithKeys(function ($item) {
+                return [
+                    $item->id => $item->name . ' (' . $item->floor->name . ')'
+                ];
+            });
+
+        $all = Property::with(['floor', 'building'])
+            ->where('investment_id', $investment->id)
+            ->where('id', '<>', $property->id)
+            ->get()
+            ->mapWithKeys(function ($prop) {
+                $name = $prop->name . ' (' . $prop->floor->name . ')';
+                return [$prop->id => $name];
+            });
 
         $related = $property->relatedProperties;
-
         $isRelated = PropertyProperty::where('related_property_id', $property->id)->exists();
 
         return view('admin.developro.investment_property.form', [
@@ -116,7 +135,9 @@ class PropertyController extends Controller
             'floor' => $floor,
             'investment' => $investment,
             'entry' => $property,
-            'others' => $others,
+            'others' => $allOthers->pluck('name', 'id'),
+            'visitor_others' => $visitor_others,
+            'all' => $all,
             'related' => $related,
             'isRelated' => $isRelated
         ]);
@@ -124,7 +145,16 @@ class PropertyController extends Controller
 
     public function update(PropertyFormRequest $request, Investment $investment, Floor $floor, Property $property)
     {
+//        dd($property);
+//        $old_client_id = $property->client_id;
+//        $new_client_id = $request->validated()['client_id'];
+//
+//        if($new_client_id == 0) {
+//            $this->updateClientDealsFieldsWhenClientIsUnset($property);
+//        }
+
         $this->repository->update($request->validated(), $property);
+        $property->visitorRelatedProperties()->sync($request->validated()['visitor_related_ids'] ?? []);
 
         if ($request->hasFile('file')) {
             $this->service->upload($request->name, $request->file('file'), $property, true);
@@ -146,9 +176,6 @@ class PropertyController extends Controller
             $delay = now()->addSeconds(3600);  // Delay for 1 minute for testing
             EndPropertyPromotion::dispatch($property->id)->delay($delay);
         }
-
-        $this->investmentRepository->sendMessageToInvestmentSupervisors($investment, 'Zmiana parametrów: '.$property->name);
-
         return redirect(route('admin.developro.investment.properties.index', [$investment, $floor]))->with('success', 'Powierzchnia zaktualizowana');
     }
 

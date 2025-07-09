@@ -169,6 +169,12 @@ Route::middleware(['restrictIp'])->group(function () {
             // Inwestycja domkowa
             Route::get('/{slug}/d/{property}', 'InvestmentHouseController@index')->name('house');
 
+            //Historia cen
+            Route::get('/historia/{property}', 'History\IndexController@show')->name('history');
+            Route::get('/przynalezne/{property}', 'History\IndexController@others')->name('others');
+            Route::get('/przynalezne/{property}/show', 'History\IndexController@other')->name('others.show');
+            Route::get('/przynalezne/{property}/table', 'History\IndexController@otherTable')->name('others.table');
+
             //Pages
             Route::get('/{slug}/{page}', 'Page\IndexController@index')->name('page');
 

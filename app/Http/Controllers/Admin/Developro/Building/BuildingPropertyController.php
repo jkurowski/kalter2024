@@ -14,6 +14,7 @@ use App\Repositories\InvestmentRepository;
 use App\Repositories\PropertyRepository;
 use App\Services\PropertyService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class BuildingPropertyController extends Controller
@@ -112,20 +113,34 @@ class BuildingPropertyController extends Controller
 
     public function edit(Investment $investment, Building $building, Floor $floor, Property $property)
     {
-        // Get all properties for the investment except the current property
-        $others = Property::where('investment_id', '=', $investment->id)
+        $allOthers = Property::with('building', 'floor')
+            ->where('investment_id', $investment->id)
             ->where('id', '<>', $property->id)
-            ->where('status', '=', 1)
+            ->where('status', 1)
             ->whereNull('client_id')
-            ->pluck('name', 'id');
+            ->when($property->building_id, function ($query, $buildingId) {
+                $query->where('building_id', $buildingId);
+            })
+            ->get();
 
-        $all = Property::where('investment_id', $investment->id)
+        $relatedIds = DB::table('property_property')->pluck('related_property_id')->toArray();
+
+        $visitor_others = $allOthers
+            ->where('type', '!=', 1)
+            ->whereNotIn('id', $relatedIds)
+            ->mapWithKeys(function ($item) {
+                return [
+                    $item->id => $item->name . ' (' . $item->building->name . ' - ' . $item->floor->name . ')'
+                ];
+            });
+
+        $all = Property::with(['floor', 'building'])
+        ->where('investment_id', $investment->id)
             ->where('id', '<>', $property->id)
             ->get()
             ->mapWithKeys(function ($prop) {
                 $name = $prop->name . ' (' . $prop->floor->name . ')';
 
-                // Add building name if it exists
                 if ($prop->building && $prop->building->name) {
                     $name .= ' - ' . $prop->building->name;
                 }
@@ -144,7 +159,8 @@ class BuildingPropertyController extends Controller
             'building' => $building,
             'investment' => $investment,
             'entry' => $property,
-            'others' => $others,
+            'others' => $allOthers->pluck('name', 'id'),
+            'visitor_others' => $visitor_others,
             'all' => $all,
             'related' => $related,
             'isRelated' => $isRelated
@@ -153,7 +169,9 @@ class BuildingPropertyController extends Controller
 
     public function update(PropertyFormRequest $request, Investment $investment, Building $building, Floor $floor, Property $property)
     {
+
         $this->repository->update($request->validated(), $property);
+        $property->visitorRelatedProperties()->sync($request->validated()['visitor_related_ids'] ?? []);
 
         if ($request->hasFile('file')) {
             $this->service->upload($request->name, $request->file('file'), $property, true);

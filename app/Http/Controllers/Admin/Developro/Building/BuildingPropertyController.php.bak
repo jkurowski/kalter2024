@@ -20,6 +20,7 @@ class BuildingPropertyController extends Controller
 {
     private PropertyRepository $repository;
     private PropertyService $service;
+
     private InvestmentRepository $investmentRepository;
 
     public function __construct(PropertyRepository $repository, PropertyService $service, InvestmentRepository $investmentRepository)
@@ -62,7 +63,6 @@ class BuildingPropertyController extends Controller
 
     public function create(Investment $investment, Building $building, Floor $floor)
     {
-
         $others = Property::where('investment_id', '=', $investment->id)
             ->where('status', '=', 1)
             ->whereNull('client_id')

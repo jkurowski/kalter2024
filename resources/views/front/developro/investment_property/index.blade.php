@@ -166,51 +166,45 @@
                             <?php endif; ?>
 
                             @if($investment->show_prices)
-                                <p class="h4 mb-1 d-flex flex-wrap align-items-center column-gap-3 ff-secondary">
-                                    @if($property->price_brutto && !$property->highlighted)
-                                        <span class="fs-24">@money($property->price_brutto)</span>
-                                    @else
-                                        @if($property->promotion_price)
-                                            <span class="fs-24">@money($property->promotion_price)</span>
+                                <p class="h4 mb-1 ff-secondary row">
+                                    <span class="col-12">
+                                        @if($property->price_brutto && $property->status == 1 && !$property->highlighted)
+                                            <span class="fs-2 d-block">@money($property->price_brutto)</span>
+                                            <span class="fs-14 d-block">@money(($property->price_brutto / $property->area)) / m<sup>2</sup></span>
                                         @endif
-                                        @if($property->price_brutto)
-                                            <span class="text-body-emphasis opacity-50 fs-6 align-middle text-decoration-line-through">@money($property->price_brutto)</span>
-                                        @endif
+                                    </span>
 
-                                        @if($property->price_brutto && $property->promotion_price)
+                                    @if($property->highlighted && $property->promotion_price_show && $property->promotion_price && $property->price_brutto)
+                                            <span class="col-6">
+                                                <span class="fs-2 d-block">@money($property->promotion_price)</span>
+                                                <span class="fs-14 d-block">@money(($property->promotion_price / $property->area)) / m<sup>2</sup></span>
+                                            </span>
+                                            <span class="col-6 text-end pt-2">
+                                                @if($property->price_brutto)
+                                                    <span class="text-body-emphasis opacity-50 fs-24 align-middle text-decoration-line-through d-block">@money($property->price_brutto)</span>
+                                                    <span class="text-body-emphasis d-block opacity-50 fs-14 align-middle text-decoration-line-through">@money($property->price_brutto / $property->area) / m<sup>2</sup></span>
+                                                @endif
+                                            </span>
+
                                             @php
                                                 $rabat = $property->price_brutto - $property->promotion_price;
                                             @endphp
                                             <span class="rabat h4 d-block w-100">Rabat: @money($rabat)</span>
-                                        @endif
-                                   @endif
+                                    @endif
                                 </p>
                                 @if($property->price_30)
                                     <p class="fs-10 text-black mb-0">
                                         Najniższa cena z ostatnich 30 dni: @money($property->price_30)
                                     </p>
                                 @endif
-                            @else
-                                @if($property->promotion_price_show)
-                                    <p class="h4 mb-1 d-flex flex-wrap align-items-center column-gap-3 ff-secondary">
-                                        @if($property->promotion_price)
-                                            <span class="fs-24">@money($property->promotion_price)</span>
-                                        @endif
-                                        @if($property->price_brutto && $property->promotion_price)
-                                            <span class="text-body-emphasis opacity-50 fs-6 align-middle text-decoration-line-through">@money($property->price_brutto)</span>
-                                            @php
-                                                $rabat = $property->price_brutto - $property->promotion_price;
-                                            @endphp
-                                            <span class="rabat h4 d-block w-100">Rabat: @money($rabat)</span>
-                                        @endif
-                                    </p>
-                                    @if($property->price_30)
-                                        <p class="fs-10 text-black mb-0">
-                                            Najniższa cena z ostatnich 30 dni: @money($property->price_30)
-                                        </p>
-                                    @endif
-                                @endif
                             @endif
+
+                            @auth
+                                @if($property->has_price_history)
+                                    <a href="#" class="btn btn-primary btn-with-icon px-3 min-w-max-content flex-fill d-inline-flex align-items-center justify-content-center gap-1 btn-history mt-3" data-id="{{ $property->id }}">Pokaż historię ceny</a>
+                                    <div id="modalHistory"></div>
+                                @endif
+                            @endauth
                             <div class="mb-50 mt-4">
                                 <table class="text-sm-down-small w-100">
                                     <tbody>
@@ -265,6 +259,75 @@
                                     </tbody>
                                 </table>
                             </div>
+
+                            @auth
+                            @if ($property->status == 1)
+                                <div class="property-related">
+                                    @if($property->relatedProperties->isNotEmpty())
+                                    <h5>Przynależne powierzchnie</h5>
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th>Nazwa</th>
+                                            <th class="text-center">Powierzchnia</th>
+                                            <th class="text-center">Cena</th>
+                                            <th></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach ($property->relatedProperties as $related)
+                                            <tr>
+                                                <td valign="middle">{{ $related->name }}</td>
+                                                <td class="text-center" valign="middle">{{ $related->area }} m<sup>2</sup></td>
+                                                <td class="text-center" valign="middle">
+                                                    @money($related->price_brutto)
+                                                </td>
+                                                <td valign="middle" align="right">
+                                                    @if($related->has_price_history)
+                                                        <a href="#" class="btn-history" data-id="{{ $related->id }}"><svg class="d-block" width="16px" height="16px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path fill="#000000" d="M10.6972,0.468433 C12.354,1.06178 13.7689,2.18485 14.7228,3.66372 C15.6766,5.14258 16.1163,6.89471 15.9736,8.64872 C15.8309,10.4027 15.1138,12.0607 13.9334,13.366 C12.753,14.6712 11.1752,15.5508 9.4443,15.8685 C7.71342,16.1863 5.92606,15.9244 4.35906,15.1235 C2.79206,14.3226 1.53287,13.0274 0.776508,11.4384 C0.539137,10.9397 0.750962,10.343 1.24963,10.1057 C1.74831,9.86829 2.34499,10.0801 2.58236,10.5788 C3.14963,11.7705 4.09402,12.742 5.26927,13.3426 C6.44452,13.9433 7.78504,14.1397 9.08321,13.9014 C10.3814,13.6631 11.5647,13.0034 12.45,12.0245 C13.3353,11.0456 13.8731,9.80205 13.9801,8.48654 C14.0872,7.17103 13.7574,5.85694 13.042,4.74779 C12.3266,3.63864 11.2655,2.79633 10.0229,2.35133 C8.78032,1.90632 7.42568,1.88344 6.1688,2.28624 C5.34644,2.54978 4.59596,2.98593 3.96459,3.5597 L4.69779,4.29291 C5.32776,4.92287 4.88159,6.00002 3.99069,6.00002 L1.77635684e-15,6.00002 L1.77635684e-15,2.00933 C1.77635684e-15,1.11842 1.07714,0.672258 1.70711,1.30222 L2.54916,2.14428 C3.40537,1.3473 4.43126,0.742882 5.55842,0.381656 C7.23428,-0.155411 9.04046,-0.124911 10.6972,0.468433 Z M8,4 C8.55229,4 9,4.44772 9,5 L9,7.58579 L10.7071,9.29289 C11.0976,9.68342 11.0976,10.3166 10.7071,10.7071 C10.3166,11.0976 9.68342,11.0976 9.29289,10.7071 L7,8.41421 L7,5 C7,4.44772 7.44772,4 8,4 Z"/>
+                                                            </svg></a>
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                    @endif
+
+                                    @if($property->visitor_related_type != 1)
+                                        <div class="property-offer-check">
+                                            <p>Dodanie powierzchni dodatkowych służy jedynie orientacyjnej wycenie. Ostateczna oferta oraz warunki zakupu zostaną przedstawione przez przedstawiciela sprzedaży.</p>
+                                            <a href="#" class="btn btn-primary btn-with-icon px-3 min-w-max-content flex-fill d-inline-flex align-items-center justify-content-center gap-1 btn-offer" data-id="{{ $property->id }}">Dodaj do oferty</a>
+                                            <div id="offerModal"></div>
+                                            <table class="table d-none mt-3">
+                                                <thead>
+                                                <tr>
+                                                    <th>Nazwa</th>
+                                                    <th class="text-center">Powierzchnia</th>
+                                                    <th class="text-center">Cena</th>
+                                                    <th></th>
+                                                </tr>
+                                                </thead>
+                                                <tbody id="offerList"></tbody>
+                                            </table>
+                                        </div>
+                                    @endif
+                                </div>
+                                @if($property->highlighted && $property->promotion_price_show)
+                                    <div class="property-summary fs-5 d-flex" data-totalprice="{{ ($property->promotion_price + $property->relatedProperties->sum('price_brutto')) }}">
+                                        Cena za całość: <span class="ms-auto"><b class="fw-bold" id="totalDisplay">@money(($property->promotion_price + $property->relatedProperties->sum('price_brutto')))</b></span>
+                                    </div>
+                                @else
+                                    @if($property->price_brutto)
+                                    <div class="property-summary fs-5 d-flex" data-totalprice="{{ ($property->price_brutto + $property->relatedProperties->sum('price_brutto')) }}">
+                                        Cena za całość: <span class="ms-auto"><b class="fw-bold" id="totalDisplay">@money(($property->price_brutto + $property->relatedProperties->sum('price_brutto')))</b></span>
+                                    </div>
+                                    @endif
+                                @endif
+                            @endif
+                                <div class="mb-3"></div>
+                            @endauth
+
                             <div class="d-flex flex-wrap gap-2">
                                 <a href="#kontakt" class="btn btn-primary btn-with-icon px-3 min-w-max-content flex-fill d-inline-flex align-items-center justify-content-center gap-1">Zapytaj o ofertę <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062"><path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor" /></svg>
                                 </a>
@@ -541,6 +604,10 @@
     </main>
 @endsection
 @push('scripts')
+    <link href="{{ asset('/css/history.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('/js/bootstrap-select/bootstrap-select.min.css') }}" rel="stylesheet">
+    <script src="{{ asset('/js/bootstrap-select/bootstrap-select.min.js') }}" charset="utf-8"></script>
+
     <script src="{{ asset('/js/plan/imagemapster.js') }}" charset="utf-8"></script>
     <script src="{{ asset('/js/plan/tip.js') }}" charset="utf-8"></script>
     <script src="{{ asset('/js/plan/floor.js') }}" charset="utf-8"></script>
@@ -615,5 +682,229 @@
                 }
             });
         });
+
+
+        document.querySelectorAll('.btn-history').forEach(button => {
+            button.addEventListener('click', async (event) => {
+                event.preventDefault();
+
+                const modalHolder = document.getElementById('modalHistory');
+                const dataId = event.currentTarget.dataset.id;
+                modalHolder.innerHTML = '';
+
+                try {
+                    const url = `/pl/historia/${dataId}/`;
+
+                    const response = await fetch(url, {
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest',
+                        }
+                    });
+                    if (!response.ok) {
+                        const errorText = await response.text();
+                        console.error('Błąd z backendu:', response.status, errorText);
+                        throw new Error(`Błąd sieci: ${response.status}`);
+                    }
+
+                    const html = await response.text();
+                    modalHolder.innerHTML = html;
+
+                    const modalElement = document.getElementById('portletModal');
+                    const bootstrapModal = new bootstrap.Modal(modalElement);
+                    bootstrapModal.show();
+
+                    // Wyczyść zawartość po zamknięciu modala
+                    modalElement.addEventListener('hidden.bs.modal', () => {
+                        modalHolder.innerHTML = '';
+                    }, { once: true });
+
+                } catch (error) {
+                    alert('Wystąpił błąd podczas ładowania historii.');
+                    console.error(error);
+                }
+            });
+        });
+
+        document.querySelectorAll('.btn-offer').forEach(button => {
+            button.addEventListener('click', async (event) => {
+                event.preventDefault();
+
+                const modalHolder = document.getElementById('offerModal');
+                const dataId = event.currentTarget.dataset.id;
+                modalHolder.innerHTML = '';
+
+                try {
+                    const url = `/pl/przynalezne/${dataId}/`;
+
+                    const response = await fetch(url, {
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest',
+                        }
+                    });
+                    if (!response.ok) {
+                        const errorText = await response.text();
+                        console.error('Błąd z backendu:', response.status, errorText);
+                        throw new Error(`Błąd sieci: ${response.status}`);
+                    }
+
+                    const html = await response.text();
+                    modalHolder.innerHTML = html;
+
+                    const modalElement = document.getElementById('portletModal');
+                    const bootstrapModal = new bootstrap.Modal(modalElement);
+                    bootstrapModal.show();
+
+                    modalElement.addEventListener('shown.bs.modal', () => {
+                        console.log("Modal shown");
+                        if ($('.selectpicker').length > 0) {
+                            $('.selectpicker').selectpicker(); // or `.selectpicker()` if not yet initialized
+                        }
+
+                        $('.selectpicker').on('changed.bs.select', function (e, clickedIndex, isSelected, previousValue) {
+                            var selectedValue = $(this).val();
+                            console.log('Selected value:', selectedValue);
+                            const url = `/pl/przynalezne/${selectedValue}/show/`;
+
+                            const otherHolder = document.getElementById('relatedInfo');
+                            otherHolder.innerHTML = '';
+
+                            fetch(url, {
+                                headers: {
+                                    'X-Requested-With': 'XMLHttpRequest',
+                                }
+                            })
+                                .then(response => {
+                                    if (!response.ok) {
+                                        throw new Error(`Server responded with status ${response.status}`);
+                                    }
+                                    return response.text();
+                                })
+                                .then(html => {
+                                    console.log('Received HTML:', html);
+                                    otherHolder.innerHTML = html;
+                                })
+                                .catch(error => {
+                                    console.error('Fetch error:', error);
+                                });
+                        });
+
+                        const addBtn = modalElement.querySelector('.modal-footer .btn-primary');
+                        const addedSurfaceIds = new Set();
+
+                        if (!addBtn.dataset.bound) {
+                            addBtn.addEventListener('click', () => {
+                                const select = modalElement.querySelector('.selectpicker');
+                                const selectedOption = select.options[select.selectedIndex];
+                                const surfaceId = selectedOption.value;
+
+                                if (addedSurfaceIds.has(surfaceId)) return;
+
+                                const url = `/pl/przynalezne/${surfaceId}/table/`;
+                                const otherHolder = document.getElementById('offerList');
+
+                                fetch(url, {
+                                    headers: {
+                                        'X-Requested-With': 'XMLHttpRequest',
+                                    }
+                                })
+                                    .then(response => {
+                                        if (!response.ok) {
+                                            throw new Error(`Server responded with status ${response.status}`);
+                                        }
+                                        return response.text();
+                                    })
+                                    .then(html => {
+                                        otherHolder.insertAdjacentHTML('beforeend', html);
+
+                                        // Pokaż tabelę
+                                        document.querySelector('.property-offer-check .table').classList.remove('d-none');
+
+                                        // Dodaj do listy zapamiętanych
+                                        addedSurfaceIds.add(surfaceId);
+
+                                        // Aktualizacja ceny
+                                        const newRow = otherHolder.querySelector(`tr[data-id="${surfaceId}"]`);
+                                        const price = parseFloat(newRow.dataset.price);
+
+                                        updateTotalPrice(price, 'add');
+
+                                        // Zamknij modal
+                                        bootstrap.Modal.getInstance(modalElement).hide();
+                                    })
+                                    .catch(error => {
+                                        console.error('Fetch error:', error);
+                                    });
+                            });
+
+                            addBtn.dataset.bound = "true";
+                        }
+                    });
+
+                    // Wyczyść zawartość po zamknięciu modala
+                    modalElement.addEventListener('hidden.bs.modal', () => {
+                        modalHolder.innerHTML = '';
+                    }, { once: true });
+
+                } catch (error) {
+                    alert('Wystąpił błąd podczas ładowania historii.');
+                    console.error(error);
+                }
+            });
+        });
+
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('.btn-delete');
+            if (btn) {
+                e.preventDefault();
+                const tr = btn.closest('tr');
+                if (tr) {
+                    const priceToRemove = parseFloat(tr.dataset.price) || 0;
+                    tr.remove();
+                    updateTotalPrice(priceToRemove, 'remove');
+                    checkOfferList();
+                }
+            }
+        });
+        function checkOfferList() {
+            const tbody = document.getElementById('offerList');
+            const table = document.querySelector('.property-offer-check .table');
+
+            if (!tbody || !table) return;
+
+            if (tbody.children.length === 0) {
+                table.classList.add('d-none');
+            } else {
+                table.classList.remove('d-none');
+            }
+        }
+        function updateTotalPrice(price, action = 'add') {
+            const summary = document.querySelector('.property-summary');
+            if (!summary) return;
+
+            let priceValue = parseFloat(price);
+            if (isNaN(priceValue)) priceValue = 0;
+
+            let currentPrice = parseFloat(summary.dataset.totalprice || 0);
+
+            if (action === 'add') {
+                currentPrice += priceValue;
+            } else if (action === 'remove') {
+                currentPrice -= priceValue;
+            }
+
+            if (currentPrice < 0) currentPrice = 0;
+
+            summary.dataset.totalprice = currentPrice.toFixed(2);
+
+            const display = document.getElementById('totalDisplay');
+            if (display) {
+                display.textContent = formatPrice(currentPrice);
+            }
+        }
+        function formatPrice(price) {
+            let parts = price.toFixed(2).split('.');
+            parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+            return parts.join('.');
+        }
     </script>
 @endpush

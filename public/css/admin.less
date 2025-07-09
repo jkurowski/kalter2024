@@ -1510,7 +1510,33 @@ span.form-control-character-count {
     }
 }
 
-
+/* Input type radio
+================================================== */
+.form-check-label {
+    padding: 5px;
+    margin:0;
+    input {
+        display: none;
+    }
+    label {
+        border-radius: 3px;
+        background: #e9ecef;
+        padding: 10px;
+        width: 100%;
+        text-align: center;
+        color: black;
+        cursor: pointer;
+        transition: all .2s;
+        &:hover {
+            background: #00acc1;
+            color: white;
+        }
+    }
+}
+.form-check-input:checked + .form-check-label {
+    background-color: #008595;
+    color: white;
+}
 
 /* Files
 ================================================== */
