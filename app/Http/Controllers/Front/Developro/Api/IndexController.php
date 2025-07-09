@@ -36,7 +36,7 @@ class IndexController extends Controller
                 'garden_area',
                 'balcony_area',
                 'balcony_area_2',
-                'price',
+                'price_brutto',
                 'promotion_price',
                 'file',
                 'file_pdf'
