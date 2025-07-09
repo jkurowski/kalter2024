@@ -427,7 +427,6 @@
                 @foreach($similarProperties as $p)
                     <div>
                         <div class="invest-card-horizontal position-relative d-flex flex-column-reverse flex-sm-row justify-content-between  bg-white">
-
                             @if($investment->type == 1)
                                 <a href="{{ route('developro.building.floor.property', [
                                                             $investment->slug,
@@ -447,22 +446,24 @@
                             <div class="text-secondary invest-card-horizontal-left flex-fill">
                                 <p class="h3 mb-0">{{ $p->name }}</p>
                                 <p class="fs-10 text-uppercase fw-900 mb-2">{{ $investment->name }}</p>
-                                <p class="h3 mb-1">
-                                    @if($p->price_brutto && !$p->highlighted)
-                                        <span class="me-2">@money($p->price_brutto)</span>
-                                    @else
-                                        @if($p->promotion_price)
-                                            <span class="me-2">@money($p->promotion_price)</span>
+                                @if($p->investment->show_prices)
+                                    <p class="h3 mb-1">
+                                        @if($p->price_brutto && !$p->highlighted)
+                                            <span class="me-2">@money($p->price_brutto)</span>
+                                        @else
+                                            @if($p->promotion_price)
+                                                <span class="me-2">@money($p->promotion_price)</span>
+                                            @endif
+                                            @if($p->price_brutto)
+                                                <span class="text-body-emphasis opacity-50 fs-6 align-middle text-decoration-line-through">@money($p->price_brutto)</span>
+                                            @endif
                                         @endif
-                                        @if($p->price_brutto)
-                                            <span class="text-body-emphasis opacity-50 fs-6 align-middle text-decoration-line-through">@money($p->price_brutto)</span>
-                                        @endif
-                                    @endif
-                                </p>
-                                @if($p->price_30)
-                                    <p class="fs-8 text-black">
-                                        Najniższa cena z ostatnich 30 dni: @money($p->price_30)
                                     </p>
+                                    @if($p->price_30)
+                                        <p class="fs-8 text-black">
+                                            Najniższa cena z ostatnich 30 dni: @money($p->price_30)
+                                        </p>
+                                    @endif
                                 @endif
                                 <div class="small mb-40">
                                     <table class="w-100">
