@@ -139,11 +139,13 @@
                         <td>@lang('website.label_metraz')</td>
                         <td class="text-end">{{ $p->area }} m<sup>2</sup></td>
                     </tr>
+                    @if($p->type == 1)
                     <tr>
                         <td class="td-with-icon"><img src="{{ asset('img/rooms.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="12" height="12"></td>
                         <td>@lang('website.label_liczba_pokoi')</td>
                         <td class="text-end">{{ $p->rooms }}</td>
                     </tr>
+                    @endif
                     </tbody>
                 </table>
             </div>

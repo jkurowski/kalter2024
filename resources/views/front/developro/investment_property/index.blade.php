@@ -224,41 +224,43 @@
                                         <td class="pb-2">Metraż</td>
                                         <td class="text-end pb-2">{{$property->area}} m<sup>2</sup></td>
                                     </tr>
-                                    <tr>
-                                        <td class="td-with-icon pb-2"><img src="{{ asset('img/rooms.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="12" height="12"></td>
-                                        <td class="pb-2">Liczba Pokoi</td>
-                                        <td class="text-end pb-2">{{$property->rooms}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="td-with-icon pb-2"><img src="{{ asset('img/kitchen.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="12" height="12"></td>
-                                        <td class="pb-2">Aneks/Kuchnia</td>
-                                        <td class="text-end pb-2">Aneks kuchenny</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="td-with-icon pb-2"><img src="{{ asset('img/window.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="12" height="12"></td>
-                                        <td class="pb-2">Wystawa okienna</td>
-                                        <td class="text-end pb-2">Południe wschód</td>
-                                    </tr>
-                                    @if($property->terrace_area)
+                                    @if($property->type == 1)
                                         <tr>
-                                            <td class="td-with-icon pb-2"><img src="{{ asset('img/terrace.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="12" height="12"></td>
-                                            <td class="pb-2">Taras</td>
-                                            <td class="text-end pb-2">{{$property->terrace_area}} m<sup>2</sup></td>
+                                            <td class="td-with-icon pb-2"><img src="{{ asset('img/rooms.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="12" height="12"></td>
+                                            <td class="pb-2">Liczba Pokoi</td>
+                                            <td class="text-end pb-2">{{$property->rooms}}</td>
                                         </tr>
-                                    @endif
-                                    @if($property->garden_area)
                                         <tr>
-                                            <td class="td-with-icon pb-2"><img src="{{ asset('img/shovels.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="12" height="12"></td>
-                                            <td class="pb-2">Ogródek</td>
-                                            <td class="text-end pb-2">{{$property->garden_area}} m<sup>2</sup></td>
+                                            <td class="td-with-icon pb-2"><img src="{{ asset('img/kitchen.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="12" height="12"></td>
+                                            <td class="pb-2">Aneks/Kuchnia</td>
+                                            <td class="text-end pb-2">Aneks kuchenny</td>
                                         </tr>
-                                    @endif
-                                    @if($property->balcony_area)
                                         <tr>
-                                            <td class="td-with-icon pb-2"><img src="{{ asset('img/shovels.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="12" height="12"></td>
-                                            <td class="pb-2">Balkon</td>
-                                            <td class="text-end pb-2">{{$property->balcony_area}} m<sup>2</sup></td>
+                                            <td class="td-with-icon pb-2"><img src="{{ asset('img/window.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="12" height="12"></td>
+                                            <td class="pb-2">Wystawa okienna</td>
+                                            <td class="text-end pb-2">Południe wschód</td>
                                         </tr>
+                                        @if($property->terrace_area)
+                                            <tr>
+                                                <td class="td-with-icon pb-2"><img src="{{ asset('img/terrace.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="12" height="12"></td>
+                                                <td class="pb-2">Taras</td>
+                                                <td class="text-end pb-2">{{$property->terrace_area}} m<sup>2</sup></td>
+                                            </tr>
+                                        @endif
+                                        @if($property->garden_area)
+                                            <tr>
+                                                <td class="td-with-icon pb-2"><img src="{{ asset('img/shovels.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="12" height="12"></td>
+                                                <td class="pb-2">Ogródek</td>
+                                                <td class="text-end pb-2">{{$property->garden_area}} m<sup>2</sup></td>
+                                            </tr>
+                                        @endif
+                                        @if($property->balcony_area)
+                                            <tr>
+                                                <td class="td-with-icon pb-2"><img src="{{ asset('img/shovels.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="12" height="12"></td>
+                                                <td class="pb-2">Balkon</td>
+                                                <td class="text-end pb-2">{{$property->balcony_area}} m<sup>2</sup></td>
+                                            </tr>
+                                        @endif
                                     @endif
                                     </tbody>
                                 </table>
@@ -482,6 +484,7 @@
                                             <td>Metraż</td>
                                             <td class="text-end">{{ $p->area }} m<sup>2</sup></td>
                                         </tr>
+                                        @if($p->type == 1)
                                         <tr>
                                             <td class="td-with-icon">
                                                 <img src="{{ asset('img/rooms.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="12" height="12">
@@ -489,6 +492,7 @@
                                             <td>Liczba Pokoi</td>
                                             <td class="text-end">{{ $p->rooms }}</td>
                                         </tr>
+                                        @endif
                                         </tbody>
                                     </table>
                                 </div>
