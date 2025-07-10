@@ -220,7 +220,8 @@
                                 </div>
                             </div>
                         </div>
-                        <input name="rooms" value="1" type="hidden">
+                        <input type="hidden" name="rooms" value="1">
+                        <input type="hidden" name="visitor_related_type" value="0">
                         @include('form-elements.submit', ['name' => 'submit', 'value' => 'Zapisz'])
                     </div>
                 </form>

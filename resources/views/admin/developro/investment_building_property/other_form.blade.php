@@ -223,7 +223,8 @@
                         <input type="hidden" name="floor_id" value="{{ $floor->id }}">
                         <input type="hidden" name="building_id" value="{{ $building->id }}">
                         <input type="hidden" name="investment_id" value="{{ $investment->id }}">
-                        <input name="rooms" value="1" type="hidden">
+                        <input type="hidden" name="rooms" value="1">
+                        <input type="hidden" name="visitor_related_type" value="0">
                         @include('form-elements.submit', ['name' => 'submit', 'value' => 'Zapisz'])
                     </div>
                 </form>
