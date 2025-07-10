@@ -192,15 +192,17 @@
                                             <span class="rabat h4 d-block w-100">Rabat: @money($rabat)</span>
                                     @endif
                                 </p>
-                                @if($property->has_price_history)
-                                    @php
-                                        $lowest_price = $property->lowestPriceLast30Days();
-                                    @endphp
-                                    @if($lowest_price > 0)
-                                        <p class="fs-10 text-black mb-0">Najniższa cena z 30 dni przed obniżką: @money($lowest_price)</p>
+                                @if($property->highlighted)
+                                    @if($property->has_price_history)
+                                        @php
+                                            $lowest_price = $property->lowestPriceLast30Days();
+                                        @endphp
+                                        @if($lowest_price > 0)
+                                            <p class="fs-10 text-black mb-0">Najniższa cena z 30 dni przed obniżką: @money($lowest_price)</p>
+                                        @endif
+                                    @else
+                                        <p class="fs-10 text-black mb-0">Najniższa cena z 30 dni przed obniżką @money($property->price_30)</p>
                                     @endif
-                                @else
-                                    <p class="fs-10 text-black mb-0">Najniższa cena z 30 dni przed obniżką @money($property->price_30)</p>
                                 @endif
                             @endif
                             @endauth
