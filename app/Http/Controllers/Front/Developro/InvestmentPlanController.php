@@ -55,8 +55,9 @@ class InvestmentPlanController extends Controller
                         $query->orderBy($column, $direction);
                     }
 
-                    $query->where('properties.type', '!=', 3);
-                    $query->where('properties.type', '!=', 4);
+                    $query->where('type', 1);
+
+                    $query->orderBy('number_order');
                 },
                 'plan'
             ));
@@ -102,8 +103,9 @@ class InvestmentPlanController extends Controller
                         $query->orderBy($column, $direction);
                     }
 
-                    $query->where('properties.type', '!=', 3);
-                    $query->where('properties.type', '!=', 4);
+                    $query->where('type', 1);
+
+                    $query->orderBy('number_order');
                 }
             ));
 

@@ -47,6 +47,11 @@ class InvestmentFloorController extends Controller
                     $direction = $order_param[1];
                     $query->orderBy($column, $direction);
                 }
+
+                $customOrder = [1, 3, 2, 4, 5, 6];
+                $orderList = implode(',', $customOrder);
+                $query->orderByRaw("FIELD(type, $orderList)");
+                $query->orderBy('number_order');
             },
             'floor' => function ($query) use ($floor) {
                 $query->where('id', $floor->id);

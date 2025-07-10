@@ -35,6 +35,10 @@ class InvestmentBuildingFloorController extends Controller
                     $direction = $order_param[1];
                     $query->orderBy($column, $direction);
                 }
+                $customOrder = [1, 3, 2, 4, 5, 6];
+                $orderList = implode(',', $customOrder);
+                $query->orderByRaw("FIELD(type, $orderList)");
+                $query->orderBy('number_order');
             },
             'building' => function($query) use ($building)
             {
