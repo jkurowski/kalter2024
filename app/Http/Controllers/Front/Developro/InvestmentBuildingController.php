@@ -33,9 +33,8 @@ class InvestmentBuildingController extends Controller
                     $query->orderBy($column, $direction);
                 }
 
-                $query->where('type', 1);
-
-                $query->orderBy('number_order');
+                $query->where('properties.type', 1);
+                $query->orderBy('properties.number_order');
             },
             'buildingFloors' => function($query) use ($building)
             {
