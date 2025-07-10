@@ -164,7 +164,7 @@
                             <?php else : ?>
                             <p class="text-warning text-uppercase fw-bold fs-5">Rezerwacja</p>
                             <?php endif; ?>
-
+                            @auth
                             @if($investment->show_prices)
                                 <p class="h4 mb-1 ff-secondary row">
                                     <span class="col-12">
@@ -198,6 +198,7 @@
                                     </p>
                                 @endif
                             @endif
+                            @endauth
 
                             @auth
                                 @if($property->has_price_history)
