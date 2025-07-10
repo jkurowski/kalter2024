@@ -89,30 +89,30 @@
                     Etap: I
                 </small>
             </p>
-
-            @if($investment->show_prices)
-                <p class="h4 mb-1 d-flex flex-wrap align-items-center column-gap-2 ff-secondary">
-                    @if($p->price && !$p->highlighted)
-                        <span>@money($p->price)</span>
-                    @else
-                        @if($p->promotion_price)
-                            <span>@money($p->promotion_price)</span>
+            @auth
+                @if($investment->show_prices)
+                    <p class="h4 mb-1 d-flex flex-wrap align-items-center column-gap-2 ff-secondary">
+                        @if($p->price_brutto && !$p->highlighted)
+                            <span>@money($p->price_brutto)</span>
+                        @else
+                            @if($p->promotion_price)
+                                <span>@money($p->promotion_price)</span>
+                            @endif
+                            @if($p->price_brutto)
+                                <span class="text-body-emphasis opacity-50 fs-6 align-middle text-decoration-line-through">@money($p->price_brutto)</span>
+                            @endif
                         @endif
-                        @if($p->price)
-                            <span class="text-body-emphasis opacity-50 fs-6 align-middle text-decoration-line-through">@money($p->price)</span>
-                        @endif
-                    @endif
-                </p>
+                    </p>
 
-                @if($p->promotion_price)
-                    @if($p->price_30)
-                        <p class="fs-8 text-black mb-0">
-                            @lang('website.label_cena_30') @money($p->price_30)
-                        </p>
+                    @if($p->promotion_price)
+                        @if($p->price_30)
+                            <p class="fs-8 text-black mb-0">
+                                @lang('website.label_cena_30') @money($p->price_30)
+                            </p>
+                        @endif
                     @endif
                 @endif
-            @endif
-
+            @endauth
             <?php if ($p->status == 3) : ?>
             <p class="text-danger text-uppercase fw-bold">Sprzedany</p>
             <?php elseif ($p->status == 1) : ?>
