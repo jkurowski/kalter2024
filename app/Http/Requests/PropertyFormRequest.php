@@ -108,6 +108,8 @@ class PropertyFormRequest extends FormRequest
             ],
             'saled_at' => 'nullable|date',
             'reservation_until' => 'nullable|date|after_or_equal:saled_at',
+            'text' => '',
+            'history_info' => ''
         ];
     }
 

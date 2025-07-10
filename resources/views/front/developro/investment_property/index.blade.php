@@ -271,6 +271,11 @@
                             @auth
                             @if ($property->status == 1)
                                 <div class="property-related">
+
+                                    @if($property->history_info)
+                                        <p>{!! $property->history_info !!}</p>
+                                    @endif
+
                                     @if($property->relatedProperties->isNotEmpty())
                                     <h5>Przynależne powierzchnie</h5>
                                     <table class="table">

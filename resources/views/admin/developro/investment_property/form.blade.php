@@ -224,6 +224,16 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="row w-100 form-group">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                @include('form-elements.input-text', ['label' => 'Dodatkowa informacja dot. ceny', 'name' => 'history_info', 'value' => $entry->history_info])
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 @endif
 
                                 <div class="row w-100 form-group">

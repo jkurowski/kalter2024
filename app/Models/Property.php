@@ -75,7 +75,9 @@ class Property extends Model
         'client_id',
         'saled_at',
         'reservation_until',
-        'visitor_related_type'
+        'visitor_related_type',
+        'text',
+        'history_info'
     ];
 
     /**
@@ -204,7 +206,7 @@ class Property extends Model
         return $this->priceHistory()
             ->where('changed_at', '>=', $dateFrom)
             ->orderBy('price_brutto', 'asc')
-            ->first()?->price_brutto;  // zwróci lowest price albo null, jeœli brak
+            ->first()?->price_brutto;  // zwrï¿½ci lowest price albo null, jeï¿½li brak
     }
 
     public function visitorRelatedProperties()
