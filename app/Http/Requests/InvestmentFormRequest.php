@@ -54,7 +54,8 @@ class InvestmentFormRequest extends FormRequest
             'show_prices' => 'boolean',
             'show_properties' => 'integer',
             'users' => '',
-            'supervisors' => ''
+            'supervisors' => '',
+            'file_brochure' => ''
         ];
     }
 

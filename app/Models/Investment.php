@@ -67,6 +67,7 @@ class Investment extends Model
         'supervisors',
         'template_id',
         'iframe_css',
+        'file_brochure'
     ];
 
     /**

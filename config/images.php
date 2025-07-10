@@ -19,7 +19,8 @@ return [
         'header_width' => 1920,
         'header_height' => 386,
         'header_file_path' => 'investment/header/',
-        'header_preview_file_path' => 'investment/header/'
+        'header_preview_file_path' => 'investment/header/',
+        'brochure_file_path' => 'investment/brochure/'
     ],
 
     /*
