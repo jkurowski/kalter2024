@@ -702,48 +702,6 @@
             });
         });
 
-
-        document.querySelectorAll('.btn-history').forEach(button => {
-            button.addEventListener('click', async (event) => {
-                event.preventDefault();
-
-                const modalHolder = document.getElementById('modalHistory');
-                const dataId = event.currentTarget.dataset.id;
-                modalHolder.innerHTML = '';
-
-                try {
-                    const url = `/pl/historia/${dataId}/`;
-
-                    const response = await fetch(url, {
-                        headers: {
-                            'X-Requested-With': 'XMLHttpRequest',
-                        }
-                    });
-                    if (!response.ok) {
-                        const errorText = await response.text();
-                        console.error('Błąd z backendu:', response.status, errorText);
-                        throw new Error(`Błąd sieci: ${response.status}`);
-                    }
-
-                    const html = await response.text();
-                    modalHolder.innerHTML = html;
-
-                    const modalElement = document.getElementById('portletModal');
-                    const bootstrapModal = new bootstrap.Modal(modalElement);
-                    bootstrapModal.show();
-
-                    // Wyczyść zawartość po zamknięciu modala
-                    modalElement.addEventListener('hidden.bs.modal', () => {
-                        modalHolder.innerHTML = '';
-                    }, { once: true });
-
-                } catch (error) {
-                    alert('Wystąpił błąd podczas ładowania historii.');
-                    console.error(error);
-                }
-            });
-        });
-
         document.querySelectorAll('.btn-offer').forEach(button => {
             button.addEventListener('click', async (event) => {
                 event.preventDefault();
@@ -871,19 +829,63 @@
             });
         });
 
-        document.addEventListener('click', function(e) {
-            const btn = e.target.closest('.btn-delete');
-            if (btn) {
+        document.addEventListener('click', async function (e) {
+            // Handle Delete Button
+            const btnDelete = e.target.closest('.btn-delete');
+            if (btnDelete) {
                 e.preventDefault();
-                const tr = btn.closest('tr');
+                const tr = btnDelete.closest('tr');
                 if (tr) {
                     const priceToRemove = parseFloat(tr.dataset.price) || 0;
                     tr.remove();
                     updateTotalPrice(priceToRemove, 'remove');
                     checkOfferList();
                 }
+                return;  // Exit after handling delete
+            }
+
+            // Handle History Button
+            const btnHistory = e.target.closest('.btn-history');
+            if (btnHistory) {
+                e.preventDefault();
+
+                const modalHolder = document.getElementById('modalHistory');
+                const dataId = btnHistory.dataset.id;
+                modalHolder.innerHTML = '';
+
+                try {
+                    const url = `/pl/historia/${dataId}/`;
+
+                    const response = await fetch(url, {
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest',
+                        }
+                    });
+
+                    if (!response.ok) {
+                        const errorText = await response.text();
+                        console.error('Błąd z backendu:', response.status, errorText);
+                        throw new Error(`Błąd sieci: ${response.status}`);
+                    }
+
+                    const html = await response.text();
+                    modalHolder.innerHTML = html;
+
+                    const modalElement = document.getElementById('portletModal');
+                    const bootstrapModal = new bootstrap.Modal(modalElement);
+                    bootstrapModal.show();
+
+                    modalElement.addEventListener('hidden.bs.modal', () => {
+                        modalHolder.innerHTML = '';
+                    }, { once: true });
+
+                } catch (error) {
+                    alert('Wystąpił błąd podczas ładowania historii.');
+                    console.error(error);
+                }
             }
         });
+
         function checkOfferList() {
             const tbody = document.getElementById('offerList');
             const table = document.querySelector('.property-offer-check .table');
