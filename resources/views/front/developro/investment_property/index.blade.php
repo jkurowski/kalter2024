@@ -370,16 +370,14 @@
                                 -->
                             </div>
                             @if($investment->file_brochure)
-                                <div>
-                                    <a href="{{ asset('/investment/brochure/'.$investment->file_brochure) }}" target="_blank">Prospekt informacyjny</a>
-                                </div>
+
                             @endif
+                            <div class="d-none">
+                                <a href="{{ asset('/investment/brochure/'.$investment->file_brochure) }}" target="_blank">Prospekt informacyjny</a>
+                            </div>
                             <div id="clipboardmessage"></div>
                         </div>
                     </div>
-
-
-
                     <div class="col-12 col-md-6 offset-lg-1 order-first order-md-0">
                         @if($property->file && $property->model_3d)
                         <ul class="nav justify-content-center justify-content-md-end mb-4 mb-sm-30 gap-30" role="tablist">
