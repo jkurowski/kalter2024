@@ -373,7 +373,7 @@
 
                             @endif
                             <div class="d-none">
-                                <a href="{{ asset('/investment/brochure/'.$investment->file_brochure) }}" target="_blank">Prospekt informacyjny</a>
+                                <a href="{{ asset('/investment/brochure/'.$investment->file_brochure) }}" target="_blank" class="link-body-primary small">Prospekt informacyjny</a>
                             </div>
                             <div id="clipboardmessage"></div>
                         </div>
