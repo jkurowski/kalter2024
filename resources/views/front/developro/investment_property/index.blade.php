@@ -524,6 +524,7 @@
                             <div class="text-secondary invest-card-horizontal-left flex-fill">
                                 <p class="h3 mb-0">{{ $p->name }}</p>
                                 <p class="fs-10 text-uppercase fw-900 mb-2">{{ $investment->name }}</p>
+                                @auth
                                 @if($p->investment->show_prices)
                                     <p class="h3 mb-1">
                                         @if($p->price_brutto && !$p->highlighted)
@@ -543,6 +544,7 @@
                                         </p>
                                     @endif
                                 @endif
+                                @endauth
                                 <div class="small mb-40">
                                     <table class="w-100">
                                         <tbody>
