@@ -256,7 +256,7 @@
                                         @if($p->price)
                                             <span class="text-body-emphasis opacity-50 fs-6 align-middle text-decoration-line-through">@money($p->price_brutto)</span>
                                          @endif
-                                        @if($p->price_brutto && $p->promotion_price)
+                                        @if($p->price_brutto && $p->promotion_price && $p->promotion_price <> $p->price_brutto)
                                             @php
                                             $rabat = $p->price_brutto - $p->promotion_price;
                                             @endphp

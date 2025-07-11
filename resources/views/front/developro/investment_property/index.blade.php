@@ -189,7 +189,9 @@
                                             @php
                                                 $rabat = $property->price_brutto - $property->promotion_price;
                                             @endphp
-                                            <span class="rabat h4 d-block w-100">Rabat: @money($rabat)</span>
+                                            @if($property->price_brutto <> $property->promotion_price)
+                                                <span class="rabat h4 d-block w-100">Rabat: @money($rabat)</span>
+                                            @endif
                                     @endif
                                 </p>
                                 @if($property->highlighted)
