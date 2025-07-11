@@ -369,6 +369,11 @@
                                 <a href="/kontakt.php" class="btn btn-primary btn-with-icon d-inline-flex align-items-center gap-1 justify-content-center px-3 min-w-max-content flex-fill">
                                 -->
                             </div>
+                            @if($investment->file_brochure)
+                                <div>
+                                    <a href="{{ asset('/investment/brochure/'.$investment->file_brochure) }}" target="_blank">Prospekt informacyjny</a>
+                                </div>
+                            @endif
                             <div id="clipboardmessage"></div>
                         </div>
                     </div>
