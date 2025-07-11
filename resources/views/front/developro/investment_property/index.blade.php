@@ -269,6 +269,9 @@
                             </div>
 
                             @auth
+
+                                <p>Typ: {{ $property->typ }}</p>
+
                             @if ($property->status == 1 && $property->type == 1)
                                 <div class="property-related">
 
