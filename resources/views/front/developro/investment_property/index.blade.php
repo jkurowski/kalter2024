@@ -830,7 +830,7 @@
         });
 
         document.addEventListener('click', async function (e) {
-            // Handle Delete Button
+            // Delete Button
             const btnDelete = e.target.closest('.btn-delete');
             if (btnDelete) {
                 e.preventDefault();
@@ -841,13 +841,16 @@
                     updateTotalPrice(priceToRemove, 'remove');
                     checkOfferList();
                 }
-                return;  // Exit after handling delete
+                return;
             }
 
-            // Handle History Button
+            // History Button
             const btnHistory = e.target.closest('.btn-history');
             if (btnHistory) {
                 e.preventDefault();
+
+                // Disable button to prevent double click
+                btnHistory.disabled = true;
 
                 const modalHolder = document.getElementById('modalHistory');
                 const dataId = btnHistory.dataset.id;
@@ -882,6 +885,9 @@
                 } catch (error) {
                     alert('Wystąpił błąd podczas ładowania historii.');
                     console.error(error);
+                } finally {
+                    // Re-enable the button after request completes
+                    btnHistory.disabled = false;
                 }
             }
         });
