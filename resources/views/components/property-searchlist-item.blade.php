@@ -90,7 +90,7 @@
                 </small>
             </p>
             @auth
-                @if($investment->show_prices)
+                @if($investment->show_prices && $p->status == 1)
                     <p class="h4 mb-1 d-flex flex-wrap align-items-center column-gap-2 ff-secondary">
                         @if($p->price_brutto && !$p->highlighted)
                             <span>@money($p->price_brutto)</span>
