@@ -269,7 +269,7 @@
                             </div>
 
                             @auth
-                            @if ($property->status == 1 && $property->typ == 1)
+                            @if ($property->status == 1 && $property->type == 1)
                                 <div class="property-related">
 
                                     @if($property->history_info)
