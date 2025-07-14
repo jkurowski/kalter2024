@@ -15,6 +15,7 @@ class PropertyPrice extends Model
         'price_brutto',
         'new_price_brutto',
         'area',
+        'promotion',
         'changed_at',
         'changed_by',
     ];

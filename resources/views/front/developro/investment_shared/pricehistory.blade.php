@@ -44,6 +44,7 @@
                                 </td>
                                 <td>-></td>
                                 <td class="text-center">
+                                    @if($entry->promotion) <span style="font-size: 11px;color:red;display:block">(Promocja)</span> @endif
                                     <strong style="font-weight: 700">@money($entry->new_price_brutto)</strong><br>
                                     <span style="font-size: 12px">@money($entry->new_price_brutto / $entry->area ) / m2</span>
                                 </td>

@@ -11,9 +11,9 @@ class IndexController extends Controller
 {
     public function show($lang, Property $property)
     {
-        if (!request()->ajax()) {
-            abort(403, 'Tylko AJAX');
-        }
+//        if (!request()->ajax()) {
+//            abort(403, 'Tylko AJAX');
+//        }
 
         return view('front.developro.investment_shared.pricehistory', compact('property'))->render();
     }

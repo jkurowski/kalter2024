@@ -77,23 +77,86 @@ class PropertyObserver
         }
 
         // Handle price change
-        if ($property->isDirty('price_brutto')) {
+        if (
+            $property->isDirty('price_brutto') ||
+            $property->isDirty('promotion_price') ||
+            $property->isDirty('highlighted')
+        ) {
             $newPrice = $property->price_brutto;
-            if ($originalPrice !== $newPrice) {
-                $message .= sprintf('<br>Cena: "<b>%s zł</b>" -> "<b>%s zł</b>".',
+            $originalPrice = $property->getOriginal('price_brutto');
+            $originalPromotionPrice = $property->getOriginal('promotion_price');
+            $originalHighlighted = $property->getOriginal('highlighted');
+
+            $promotionPrice = $property->promotion_price;
+            $highlighted = $property->highlighted;
+
+            // ✅ Case 1: Promotion added or changed
+            if (
+                $highlighted &&
+                $promotionPrice !== null &&
+                $promotionPrice != $newPrice
+            ) {
+                $message .= sprintf(
+                    '<br>Promocja: "<b>%s zł</b>" -> "<b>%s zł</b>".',
+                    ($originalPrice !== null && $originalPrice !== '')
+                        ? number_format($originalPrice, 0, '.', ' ')
+                        : 'brak',
+                    number_format($promotionPrice, 0, '.', ' ')
+                );
+
+                PropertyPrice::create([
+                    'property_id' => $property->id,
+                    'price_brutto' => is_numeric($originalPrice) ? $originalPrice : 0,
+                    'new_price_brutto' => $promotionPrice,
+                    'area' => $property->area,
+                    'promotion' => true,
+                    'changed_at' => now(),
+                    'changed_by' => Auth::id(),
+                ]);
+
+                $priceChanged = true;
+
+                // ✅ Case 2: Promotion removed (highlighted was true, now false)
+            } elseif (
+                !$highlighted &&
+                $originalHighlighted &&
+                $originalPromotionPrice !== null &&
+                $originalPromotionPrice != $newPrice
+            ) {
+                $message .= sprintf(
+                    '<br>Koniec promocji: "<b>%s zł</b>" -> "<b>%s zł</b>".',
+                    number_format($originalPromotionPrice, 0, '.', ' '),
+                    number_format($newPrice, 0, '.', ' ')
+                );
+
+                PropertyPrice::create([
+                    'property_id' => $property->id,
+                    'price_brutto' => $originalPromotionPrice,
+                    'new_price_brutto' => $newPrice,
+                    'area' => $property->area,
+                    'promotion' => false,
+                    'changed_at' => now(),
+                    'changed_by' => Auth::id(),
+                ]);
+
+                $priceChanged = true;
+
+                // ✅ Case 3: Regular price change (no promotion involved)
+            } elseif ($originalPrice !== $newPrice) {
+                $message .= sprintf(
+                    '<br>Cena: "<b>%s zł</b>" -> "<b>%s zł</b>".',
                     ($originalPrice !== null && $originalPrice !== '')
                         ? number_format($originalPrice, 0, '.', ' ')
                         : 'brak',
                     number_format($newPrice, 0, '.', ' ')
                 );
 
-                $originalPrice = is_numeric($originalPrice) ? $originalPrice : 0;
-
                 PropertyPrice::create([
                     'property_id' => $property->id,
-                    'price_brutto' => $originalPrice,
+                    'price_brutto' => is_numeric($originalPrice) ? $originalPrice : 0,
                     'new_price_brutto' => $newPrice,
                     'area' => $property->area,
+                    'promotion' => false,
                     'changed_at' => now(),
                     'changed_by' => Auth::id(),
                 ]);
@@ -101,6 +164,30 @@ class PropertyObserver
                 $priceChanged = true;
             }
         }
+//        if ($property->isDirty('price_brutto')) {
+//            $newPrice = $property->price_brutto;
+//            if ($originalPrice !== $newPrice) {
+//                $message .= sprintf('<br>Cena: "<b>%s zł</b>" -> "<b>%s zł</b>".',
+//                    ($originalPrice !== null && $originalPrice !== '')
+//                        ? number_format($originalPrice, 0, '.', ' ')
+//                        : 'brak',
+//                    number_format($newPrice, 0, '.', ' ')
+//                );
+//
+//                $originalPrice = is_numeric($originalPrice) ? $originalPrice : 0;
+//
+//                PropertyPrice::create([
+//                    'property_id' => $property->id,
+//                    'price_brutto' => $originalPrice,
+//                    'new_price_brutto' => $newPrice,
+//                    'area' => $property->area,
+//                    'changed_at' => now(),
+//                    'changed_by' => Auth::id(),
+//                ]);
+//
+//                $priceChanged = true;
+//            }
+//        }
 
         // Handle area change
         if ($property->isDirty('area')) {
