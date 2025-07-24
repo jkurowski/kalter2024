@@ -30,6 +30,10 @@ class InvestmentPlanController extends Controller
         if($investment->type == 1){
             $investment_room = $investment->load(array(
                 'buildingRooms' => function ($query) use ($request) {
+                    $query->orderBy('properties.highlighted', 'DESC');
+                    $query->orderBy('properties.number_order', 'ASC');
+
+
                     if ($request->input('rooms')) {
                         $query->where('rooms', $request->input('rooms'));
                     }
@@ -54,10 +58,7 @@ class InvestmentPlanController extends Controller
                         $direction = $order_param[1];
                         $query->orderBy($column, $direction);
                     }
-
                     $query->where('type', 1);
-
-                    $query->orderBy('number_order');
                 },
                 'plan'
             ));
@@ -71,8 +72,8 @@ class InvestmentPlanController extends Controller
         if ($investment->type == 2) {
             $investment_room = $investment->load(array(
                 'floorRooms' => function ($query) use ($request, $investment) {
-                    $query->orderBy('highlighted', 'DESC');
-                    $query->orderBy('number_order', 'ASC');
+                    $query->orderBy('properties.highlighted', 'DESC');
+                    $query->orderBy('properties.number_order', 'ASC');
 
                     if ($request->input('rooms')) {
                         $query->where('rooms', $request->input('rooms'));
@@ -104,7 +105,6 @@ class InvestmentPlanController extends Controller
                     }
 
                     $query->where('properties.type', 1);
-                    $query->orderBy('properties.number_order');
                 }
             ));
 

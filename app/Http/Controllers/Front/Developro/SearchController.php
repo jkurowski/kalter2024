@@ -61,6 +61,9 @@ class SearchController extends Controller
 
 
 // Filter Properties
+        $customOrder = [1, 3, 2, 4, 5, 6];
+        $orderList = implode(',', $customOrder);
+
         $properties = Property::query()
             ->with(['building' => fn($query) => $query->select('id', 'active', 'name')])
             ->with(['floor' => fn($query) => $query->select('id', 'name')])
@@ -94,6 +97,9 @@ class SearchController extends Controller
             )
 
             ->when($filters['type'], fn($query, $type) => $query->where('type', $type))
+            ->orderByRaw("FIELD(properties.type, $orderList)")
+            ->orderBy('properties.highlighted', 'DESC')
+            ->orderBy('properties.number_order', 'ASC')
             ->get();
 
         // Group properties by investment

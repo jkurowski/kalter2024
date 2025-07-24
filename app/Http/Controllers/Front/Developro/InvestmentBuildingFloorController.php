@@ -23,6 +23,12 @@ class InvestmentBuildingFloorController extends Controller
                 $query->where('properties.floor_id', $floor->id);
                 $query->where('properties.building_id', $building->id);
 
+                $customOrder = [1, 3, 2, 4, 5, 6];
+                $orderList = implode(',', $customOrder);
+                $query->orderByRaw("FIELD(properties.type, $orderList)");
+                $query->orderBy('properties.highlighted', 'DESC');
+                $query->orderBy('properties.number_order');
+
                 if ($request->input('rooms')) {
                     $query->where('rooms', $request->input('rooms'));
                 }
@@ -35,10 +41,6 @@ class InvestmentBuildingFloorController extends Controller
                     $direction = $order_param[1];
                     $query->orderBy($column, $direction);
                 }
-                $customOrder = [1, 3, 2, 4, 5, 6];
-                $orderList = implode(',', $customOrder);
-                $query->orderByRaw("FIELD(properties.type, $orderList)");
-                $query->orderBy('properties.number_order');
             },
             'building' => function($query) use ($building)
             {
