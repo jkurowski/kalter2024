@@ -90,8 +90,11 @@
                                 </div>
                                 <div class="col">
                                     <select name="type" id="apartment" class="form-select">
-                                        <option value="1" {{ request('type') == 1 ? 'selected' : '' }}>Lokal Mieszkalny</option>
-                                        <option value="2" {{ request('type') == 2 ? 'selected' : '' }}>Lokal użytkowy</option>
+                                        <option value="1" {{ request('type') == 1 ? 'selected' : '' }}>Lokal mieszkalny</option>
+                                        <option value="2" {{ request('type') == 5 ? 'selected' : '' }}>Lokal usługowy</option>
+                                        <option value="2" {{ request('type') == 2 ? 'selected' : '' }}>Komórka lokatorska</option>
+                                        <option value="2" {{ request('type') == 3 ? 'selected' : '' }}>Miejsce parkingowe</option>
+                                        <option value="2" {{ request('type') == 6 ? 'selected' : '' }}>Miejsce park. + KL</option>
                                     </select>
                                 </div>
                             </div>
