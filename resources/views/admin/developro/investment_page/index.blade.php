@@ -34,10 +34,12 @@
                                     <div class="btn-group">
                                         <span class="btn action-button move-button me-1"><i class="fe-move"></i></span>
                                         <a href="{{route('admin.developro.investment.page.edit', [$investment, $item->id])}}" class="btn action-button me-1" data-bs-toggle="tooltip" data-placement="top" data-bs-title="Edytuj wpis"><i class="fe-edit"></i></a>
-                                        <form method="POST" action="{{route('admin.developro.investment.page.destroy', [$investment, $item->id])}}">
-                                            {{ csrf_field() }}
-                                            {{ method_field('DELETE') }}
-                                            <button type="submit" class="btn action-button confirm" data-bs-toggle="tooltip" data-placement="top" data-bs-title="Usuń wpis" data-id="{{ $item->id }}"><i class="fe-trash-2"></i></button>
+                                        <form method="POST" action="{{ route('admin.developro.investment.page.destroy', [$investment, $item->id]) }}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn action-button confirm" data-bs-toggle="tooltip" data-placement="top" data-bs-title="Usuń wpis" data-id="{{ $item->id }}">
+                                                <i class="fe-trash-2"></i>
+                                            </button>
                                         </form>
                                     </div>
                                 </td>

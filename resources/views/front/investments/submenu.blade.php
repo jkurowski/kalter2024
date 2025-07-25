@@ -4,6 +4,7 @@
     if (request()->routeIs('developro.show')) {
         $links = collect([
             ['id' => '1', 'class' =>'scroll', 'title' => 'Opis inwestycji', 'href' => '#submenu'],
+            ['id' => '8', 'class' =>'', 'title' => 'Galeria', 'href' => route('developro.investment.gallery', $investment->slug).'#submenu'],
             ['id' => '2', 'class' =>'', 'title' => 'Wyszukaj z rzutu', 'href' => route('developro.plan', $investment->slug).'?status=1#submenu'],
             ['id' => '3', 'class' =>'', 'title' => 'Wyszukaj z modelu 3D', 'href' => route('developro.mockup', $investment->slug).'#submenu'],
             ['id' => '4', 'class' =>'scroll', 'title' => 'Lokalizacja', 'href' => '#lokalizacja'],
@@ -19,6 +20,7 @@
     } else {
             $links = collect([
             ['id' => '1', 'class' =>'scroll', 'title' => 'Opis inwestycji', 'href' => route('developro.show', $investment->slug).'#submenu'],
+            ['id' => '8', 'class' =>'', 'title' => 'Galeria', 'href' => route('developro.investment.gallery', $investment->slug).'#submenu'],
             ['id' => '2', 'class' =>'', 'title' => 'Wyszukaj z rzutu', 'href' => route('developro.plan', $investment->slug).'?status=1#submenu'],
             ['id' => '3', 'class' =>'', 'title' => 'Wyszukaj z modelu 3D', 'href' => route('developro.mockup', $investment->slug).'#submenu'],
             ['id' => '4', 'class' =>'scroll', 'title' => 'Lokalizacja', 'href' => route('developro.show', $investment->slug).'#lokalizacja'],

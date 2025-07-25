@@ -21,11 +21,11 @@
                         <div class="card mt-3">
                             @include('form-elements.back-route-button')
                             <div class="card-body control-col12">
-                                <div class="row w-100 form-group">
+                                <div class="row w-100 form-group d-none">
                                     @include('form-elements.html-select', ['label' => 'Status', 'name' => 'active', 'selected' => $entry->active, 'select' => ['1' => 'Pokaż na liście', '0' => 'Ukryj na liście']])
                                 </div>
 
-                                <div class="row w-100 form-group">
+                                <div class="row w-100 form-group d-none">
                                     @include('form-elements.html-select', ['label' => 'Formularz kontaktowy', 'name' => 'contact_form', 'selected' => $entry->contact_form, 'select' => ['0' => 'Nie', '1' => 'Tak']])
                                 </div>
 
@@ -43,13 +43,13 @@
                                 </div>
 
 
-                                <div class="row w-100 form-group">
+                                <div class="row w-100 form-group d-none">
                                     @include('form-elements.html-input-text', ['label' => 'Tekst CTA', 'sublabel'=> 'Sekcja CTA na dole strony', 'name' => 'cta_text', 'value' => $entry->cta_text])
                                 </div>
-                                <div class="row w-100 form-group">
+                                <div class="row w-100 form-group d-none">
                                     @include('form-elements.html-input-text', ['label' => 'Button CTA', 'sublabel'=> 'Sekcja CTA na dole strony', 'name' => 'cta_button', 'value' => $entry->cta_button])
                                 </div>
-                                <div class="row w-100 form-group">
+                                <div class="row w-100 form-group d-none">
                                     @include('form-elements.html-input-text', ['label' => 'Link CTA', 'sublabel'=> 'Sekcja CTA na dole strony', 'name' => 'cta_link', 'value' => $entry->cta_link])
                                 </div>
 

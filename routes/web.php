@@ -147,6 +147,8 @@ Route::middleware(['restrictIp'])->group(function () {
             Route::get('/i/{slug}/dziennik-inwestycji', 'Article\IndexController@index')->name('investment.news');
             Route::get('/i/{slug}/dziennik-inwestycji/{article}', 'Article\IndexController@show')->name('investment.news.show');
 
+            Route::get('/i/{slug}/galeria', 'Gallery\IndexController@index')->name('investment.gallery');
+
             Route::get('/i/{slug}', 'InvestmentController@show')->name('show');
             Route::get('/i/{slug}/plan-inwestycji', 'InvestmentPlanController@index')->name('plan');
             Route::get('/i/{slug}/plan-inwestycji-3d', 'InvestmentPlanController@mockup')->name('mockup');

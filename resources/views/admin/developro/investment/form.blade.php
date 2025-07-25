@@ -231,7 +231,8 @@
                             '4' => 'Lokalizacja',
                             '5' => 'Atuty',
                             '6' => 'Dziennik inwestycji',
-                            '7' => 'Kontakt'
+                            '7' => 'Kontakt',
+                            '8' => 'Galeria'
                             ]
                         ])
                     </div>
