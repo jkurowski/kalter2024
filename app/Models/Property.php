@@ -254,6 +254,13 @@ class Property extends Model
         return "/inwestycje/i/{$investmentSlug}/pietro/{$this->floor_id}/m/{$this->id}";
     }
 
+    public function priceComponents()
+    {
+        return $this->belongsToMany(PropertyPriceComponent::class, 'property_price_component_property')
+            ->withPivot('value', 'value_m2', 'category')
+            ->withTimestamps();
+    }
+
     protected static function boot()
     {
         parent::boot();

@@ -124,7 +124,19 @@ class PropertyFormRequest extends FormRequest
             'saled_at' => 'nullable|date',
             'reservation_until' => 'nullable|date|after_or_equal:saled_at',
             'text' => '',
-            'history_info' => ''
+            'history_info' => '',
+
+            'price-component-type'     => 'array',
+            'price-component-type.*'   => 'required|exists:property_price_components,id',
+
+            'price-component-category'   => 'array',
+            'price-component-category.*' => 'required|in:1,2',
+
+            'price-component-value'     => 'array',
+            'price-component-value.*'   => 'nullable',
+
+            'price-component-m2-value'     => 'array',
+            'price-component-m2-value.*'   => 'nullable',
         ];
     }
 

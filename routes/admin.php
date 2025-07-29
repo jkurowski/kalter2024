@@ -313,7 +313,10 @@ Route::group([
         });
 
         Route::resources([
-            'investment' => 'Investment\IndexController'
+            'investment' => 'Investment\IndexController',
+            'property-price-components' => 'PropertyPrice\IndexController',
+            'investment-company' => 'Company\IndexController',
+            'investment-sale-point' => 'Investment\SalePointController',
         ]);
         Route::post('investment/get-templates', 'Investment\IndexController@getTemplates')->name('investment.getTemplates');
         Route::post('investment/update-templates', 'Investment\IndexController@updateTemplates')->name('investment.updateTemplates');

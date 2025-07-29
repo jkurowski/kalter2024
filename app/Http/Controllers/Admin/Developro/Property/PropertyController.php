@@ -3,20 +3,22 @@
 namespace App\Http\Controllers\Admin\Developro\Property;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 //CMS
 use App\Http\Requests\PropertyFormRequest;
 use App\Jobs\EndPropertyPromotion;
+use App\Services\PropertyService;
+
 use App\Repositories\InvestmentRepository;
 use App\Repositories\PropertyRepository;
-use App\Services\PropertyService;
-use Illuminate\Http\Request;
 
+use App\Models\PropertyPriceComponent;
 use App\Models\Floor;
 use App\Models\Investment;
 use App\Models\Property;
 use App\Models\PropertyProperty;
-use Illuminate\Support\Facades\DB;
 
 class PropertyController extends Controller
 {
@@ -39,9 +41,9 @@ class PropertyController extends Controller
 //            'only' => ['destroy']
 //        ]);
 
+        $this->priceComponents = PropertyPriceComponent::all();
         $this->repository = $repository;
         $this->service = $service;
-        $this->investmentRepository = $investmentRepository;
     }
 
     public function index(Investment $investment, Floor $floor)
@@ -68,13 +70,16 @@ class PropertyController extends Controller
             ->whereNull('client_id')
             ->pluck('name', 'id');
 
+        $priceComponents = PropertyPriceComponent::all();
+
         return view('admin.developro.investment_property.form', [
             'cardTitle' => 'Dodaj powierzchnię',
             'backButton' => route('admin.developro.investment.properties.index', [$investment, $floor]),
             'floor' => $floor,
             'investment' => $investment,
             'others' => $others,
-            'related' => collect()
+            'related' => collect(),
+            'priceComponents' => $priceComponents
         ])->with('entry', Property::make());
     }
 
@@ -85,6 +90,23 @@ class PropertyController extends Controller
             'investment_id' => $investment->id,
             'floor_id' => $floor->id
         ]));
+
+        $types = $request->input('price-component-type', []);
+        $categories = $request->input('price-component-category', []);
+        $values = $request->input('price-component-value', []);
+        $values_m2 = $request->input('price-component-m2-value', []);
+
+        $data = [];
+
+        foreach ($types as $index => $componentId) {
+            $data[$componentId] = [
+                'category' => $categories[$index],
+                'value' => $values[$index],
+                'value_m2' => $values_m2[$index],
+            ];
+        }
+
+        $property->priceComponents()->sync($data);
 
         if ($request->hasFile('file')) {
             $this->service->upload($request->name, $request->file('file'), $property);
@@ -128,6 +150,7 @@ class PropertyController extends Controller
 
         $related = $property->relatedProperties;
         $isRelated = PropertyProperty::where('related_property_id', $property->id)->exists();
+        $priceComponents = PropertyPriceComponent::all();
 
         return view('admin.developro.investment_property.form', [
             'cardTitle' => 'Edytuj powierzchnię',
@@ -139,22 +162,32 @@ class PropertyController extends Controller
             'visitor_others' => $visitor_others,
             'all' => $all,
             'related' => $related,
-            'isRelated' => $isRelated
+            'isRelated' => $isRelated,
+            'priceComponents' => $priceComponents
         ]);
     }
 
     public function update(PropertyFormRequest $request, Investment $investment, Floor $floor, Property $property)
     {
-//        dd($property);
-//        $old_client_id = $property->client_id;
-//        $new_client_id = $request->validated()['client_id'];
-//
-//        if($new_client_id == 0) {
-//            $this->updateClientDealsFieldsWhenClientIsUnset($property);
-//        }
-
         $this->repository->update($request->validated(), $property);
         $property->visitorRelatedProperties()->sync($request->validated()['visitor_related_ids'] ?? []);
+
+        $types = $request->input('price-component-type', []);
+        $categories = $request->input('price-component-category', []);
+        $values = $request->input('price-component-value', []);
+        $values_m2 = $request->input('price-component-m2-value', []);
+
+        $data = [];
+
+        foreach ($types as $index => $componentId) {
+            $data[$componentId] = [
+                'category' => $categories[$index],
+                'value' => $values[$index],
+                'value_m2' => $values_m2[$index],
+            ];
+        }
+
+        $property->priceComponents()->sync($data);
 
         if ($request->hasFile('file')) {
             $this->service->upload($request->name, $request->file('file'), $property, true);
