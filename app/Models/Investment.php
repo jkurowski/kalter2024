@@ -67,7 +67,17 @@ class Investment extends Model
         'supervisors',
         'template_id',
         'iframe_css',
-        'file_brochure'
+        'file_brochure',
+
+        'inv_province',
+        'inv_county',
+        'inv_municipality',
+        'inv_city',
+        'inv_street',
+        'inv_property_number',
+        'inv_postal_code',
+        'company_id',
+        'sale_point_id',
     ];
 
     /**
