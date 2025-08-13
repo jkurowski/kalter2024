@@ -142,9 +142,9 @@ class BuildingPropertyController extends Controller
             ->where('id', '<>', $property->id)
             ->where('status', 1)
             ->whereNull('client_id')
-            ->when($property->building_id, function ($query, $buildingId) {
-                $query->where('building_id', $buildingId);
-            })
+//            ->when($property->building_id, function ($query, $buildingId) {
+//                $query->where('building_id', $buildingId);
+//            })
             ->get();
 
         $relatedIds = DB::table('property_property')->pluck('related_property_id')->toArray();
