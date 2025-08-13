@@ -26,8 +26,8 @@ class IndexController extends Controller
 
         $query = Property::query()
             ->where('status', 1)
-            ->where('investment_id', $property->investment_id)
-            ->when($property->building_id, fn($q) => $q->where('building_id', $property->building_id));
+            ->where('investment_id', $property->investment_id);
+            //->when($property->building_id, fn($q) => $q->where('building_id', $property->building_id));
 
         if ($property->visitor_related_type == 3) {
             $relatedIds = $property->visitorRelatedProperties()->pluck('related_property_id');
