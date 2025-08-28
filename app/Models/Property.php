@@ -227,29 +227,34 @@ class Property extends Model
 
     public function getRelatedTypesAttribute()
     {
-        return $this->relatedProperties
+        $types = $this->relatedProperties
             ->pluck('type')
             ->map(fn ($type) => PropertyAreaTypes::getStatusText($type) ?? 'X')
             ->unique()
             ->values();
+
+        return $types->isNotEmpty() ? $types : collect(['X']);
     }
 
     public function getRelatedNumbersAttribute()
     {
-        // Zwraca listę numerów powiązanych pomieszczeń, jeśli istnieją
-        return $this->relatedProperties
-            ->pluck('number')        // pobieramy pole 'number' z powiązanych
-            ->filter()               // usuwamy null/nieustawione
-            ->values();              // resetujemy klucze kolekcji
+        $numbers = $this->relatedProperties
+            ->pluck('number')
+            ->filter()
+            ->values();
+
+        return $numbers->isNotEmpty() ? $numbers : collect(['X']);
     }
 
     public function getRelatedPricesAttribute()
     {
-        return $this->relatedProperties->map(function ($property) {
+        $prices = $this->relatedProperties->map(function ($property) {
             return ($property->type == 1 && $property->price_brutto)
                 ? $property->price_brutto
                 : 'X';
         });
+
+        return $prices->isNotEmpty() ? $prices : collect(['X']);
     }
 
     public function getTotalWithRelatedPriceAttribute()
