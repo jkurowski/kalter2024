@@ -68,7 +68,6 @@ class Investment extends Model
         'template_id',
         'iframe_css',
         'file_brochure',
-
         'inv_province',
         'inv_county',
         'inv_municipality',
@@ -132,6 +131,15 @@ class Investment extends Model
     public function city(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(City::class);
+    }
+
+    public function company(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(InvestmentCompany::class);
+    }
+    public function salePoint(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(InvestmentSalePoint::class);
     }
 
     /**

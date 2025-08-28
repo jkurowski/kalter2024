@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helpers\PropertyAreaTypes;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -224,6 +225,52 @@ class Property extends Model
         return $this->belongsToMany(Property::class, 'property_property', 'property_id', 'related_property_id');
     }
 
+    public function getRelatedTypesAttribute()
+    {
+        return $this->relatedProperties
+            ->pluck('type')
+            ->map(fn ($type) => PropertyAreaTypes::getStatusText($type) ?? 'X')
+            ->unique()
+            ->values();
+    }
+
+    public function getRelatedNumbersAttribute()
+    {
+        // Zwraca listę numerów powiązanych pomieszczeń, jeśli istnieją
+        return $this->relatedProperties
+            ->pluck('number')        // pobieramy pole 'number' z powiązanych
+            ->filter()               // usuwamy null/nieustawione
+            ->values();              // resetujemy klucze kolekcji
+    }
+
+    public function getRelatedPricesAttribute()
+    {
+        return $this->relatedProperties->map(function ($property) {
+            return ($property->type == 1 && $property->price_brutto)
+                ? $property->price_brutto
+                : 'X';
+        });
+    }
+
+    public function getTotalWithRelatedPriceAttribute()
+    {
+        if ($this->type != 1) {
+            return 'X';
+        }
+
+        return (float)$this->price_brutto
+            + $this->relatedProperties->sum(function ($prop) {
+                return (float)$prop->price_brutto;
+            });
+    }
+
+    public function getDisplayPriceAttribute()
+    {
+        return ($this->type == 1 && $this->price_brutto)
+            ? $this->price_brutto
+            : 'X';
+    }
+
     public function connectedProperty()
     {
         return $this->hasOne(Property::class, 'storey_property', 'id');
@@ -259,6 +306,16 @@ class Property extends Model
         return $this->belongsToMany(PropertyPriceComponent::class, 'property_price_component_property')
             ->withPivot('value', 'value_m2', 'category')
             ->withTimestamps();
+    }
+
+    public function getProcessedPriceComponentsAttribute()
+    {
+        return $this->priceComponents->map(function ($component) {
+            return [
+                'category' => $component->pivot->category ?? 'X',
+                'value'    => $component->pivot->value ?? 'X',
+            ];
+        });
     }
 
     protected static function boot()

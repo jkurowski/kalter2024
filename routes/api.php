@@ -1,6 +1,5 @@
 <?php
-
-use App\Http\Controllers\Admin\Email\GeneratorController;
+use App\Http\Controllers\Api\History\IndexController as DatasetController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,7 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => '/api'], function () {
 
-
+    Route::get('/xml/create', [DatasetController::class, 'createXml']);
+    Route::get('/xml/update', [DatasetController::class, 'updateXml']);
+    Route::get('/xml/showAsTable/{investment}', [DatasetController::class, 'showAsTable']);
 
     //User
     Route::post('login', 'LoginController@store')->name('auth.login.store');

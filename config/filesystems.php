@@ -72,7 +72,10 @@ return [
             'driver' => 'local',
             'root'   => public_path() . '/investment',
         ],
-
+        'dataset_uploads' => [
+            'driver' => 'local',
+            'root'   => public_path() . '/datasets',
+        ],
     ],
 
     /*
