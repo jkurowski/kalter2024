@@ -406,7 +406,8 @@ class IndexController extends Controller
 
         // Table body
         echo '<tbody>';
-        foreach ($investment->properties as $property) {
+
+        foreach ($investment->activeProperties as $property) {
 
             $row = [
                 $investment->company->name ?? 'X',
