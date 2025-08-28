@@ -29,16 +29,19 @@ class IndexController extends Controller
         $extIdent = bin2hex(random_bytes(18));
         $dataset->appendChild($doc->createElement("extIdent", $extIdent));
 
+        $company = "Kalter Nieruchomości Sp. z o.o.";
+        $year = 2025;
+
         // title
         $title = $doc->createElement("title");
-        $title->appendChild($doc->createElement("polish", "Ceny ofertowe mieszkań dewelopera {nazwa dewelopera} w {2025} r."));
-        $title->appendChild($doc->createElement("english", "Offer prices of apartments of developer {developer's name} in {2025}."));
+        $title->appendChild($doc->createElement("polish", "Ceny ofertowe mieszkań dewelopera {$company} w {$year} r."));
+        $title->appendChild($doc->createElement("english", "Offer prices of apartments of developer {$company} in {$year}."));
         $dataset->appendChild($title);
 
         // description
         $description = $doc->createElement("description");
-        $description->appendChild($doc->createElement("polish", "Zbiór danych zawiera informacje o cenach ofertowych mieszkań dewelopera {nazwa dewelopera} udostępniane zgodnie z art. 19b. ust. 1 Ustawy z dnia 20 maja 2021 r. o ochronie praw nabywcy lokalu mieszkalnego lub domu jednorodzinnego oraz Deweloperskim Funduszu Gwarancyjnym (Dz. U. z 2024 r. poz. 695)."));
-        $description->appendChild($doc->createElement("english", "The dataset contains information on offer prices of apartments of the developer {developer's name} made available in accordance with art. 19b. ust. 1 Ustawy z dnia 20 maja 2021 r. o ochronie praw nabywcy lokalu mieszkalnego lub domu jednorodzinnego oraz Deweloperskim Funduszu Gwarancyjnym (Dz. U. z 2024 r. poz. 695)."));
+        $description->appendChild($doc->createElement("polish", "Zbiór danych zawiera informacje o cenach ofertowych mieszkań dewelopera {$company} udostępniane zgodnie z art. 19b. ust. 1 Ustawy z dnia 20 maja 2021 r. o ochronie praw nabywcy lokalu mieszkalnego lub domu jednorodzinnego oraz Deweloperskim Funduszu Gwarancyjnym (Dz. U. z 2024 r. poz. 695)."));
+        $description->appendChild($doc->createElement("english", "The dataset contains information on offer prices of apartments of the developer {$company} made available in accordance with art. 19b. ust. 1 Ustawy z dnia 20 maja 2021 r. o ochronie praw nabywcy lokalu mieszkalnego lub domu jednorodzinnego oraz Deweloperskim Funduszu Gwarancyjnym (Dz. U. z 2024 r. poz. 695)."));
         $dataset->appendChild($description);
 
         $dataset->appendChild($doc->createElement("updateFrequency", "daily"));
