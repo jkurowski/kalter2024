@@ -175,7 +175,7 @@ class IndexController extends Controller
             $csv->insertOne($headers);
             $baseUrl = config('app.url');
 
-            foreach ($investment->properties as $property) {
+            foreach ($investment->activeProperties as $property) {
                 $row = [
                     $investment->company->name ?? 'X',
                     $investment->company->legal_form ?? 'X',
@@ -214,14 +214,14 @@ class IndexController extends Controller
                     $investment->inv_street ?? 'X',
                     $investment->inv_property_number ?? 'X',
                     $investment->inv_postal_code ?? 'X',
-                    //Rodzaj nieruchomości: lokal mieszkalny, dom jednorodzinny
 
-                    $property->type => ($property->type == 1)
+                    //Rodzaj nieruchomości: lokal mieszkalny, dom jednorodzinny
+                    ($property->type == 1)
                         ? (PropertyAreaTypes::getStatusText($property->type) ?? 'X')
                         : 'X',
 
                     //Nr lokalu lub domu jednorodzinnego nadany przez dewelopera
-                    $property->type => ($property->type == 1)
+                    ($property->type == 1)
                         ? ($property->number ?? 'X')
                         : 'X',
 
@@ -248,17 +248,17 @@ class IndexController extends Controller
                     'X',
 
                     //Rodzaj części nieruchomości będących przedmiotem umowy (piwnice, garaże, komórki lokatorskie, strychy, miejsce postojowe)
-                    $property->type => ($property->type != 1)
+                    ($property->type != 1)
                         ? (PropertyAreaTypes::getStatusText($property->type) ?? 'X')
                         : 'X',
 
                     //Oznaczenie części nieruchomości nadane przez dewelopera
-                    $property->type => ($property->type != 1)
+                    ($property->type != 1)
                         ? ($property->number ?? 'X')
                         : 'X',
 
                     //Cena części nieruchomości, będących przedmiotem umowy [zł]
-                    $property->type => ($property->type != 1)
+                    ($property->type != 1)
                         ? ($property->price_brutto ?? 'X')
                         : 'X',
 
@@ -266,18 +266,18 @@ class IndexController extends Controller
                     'X',
 
                     //Rodzaj pomieszczeń przynależnych, o których mowa w art. 2 ust. 4 ustawy z dnia 24 czerwca 1994 r. o własności lokali (piwnice, garaże, komórki lokatorskie, strychy, miejsce postojowe)
-                    $property->type => ($property->type != 1)
-                        ? ($property->related_types->implode(', ') ?? 'X')
+                    ($property->type == 1)
+                        ? $property->related_numbers
                         : 'X',
 
                     //Oznaczenie pomieszczeń przynależnych, o których mowa w art. 2 ust. 4 ustawy z dnia 24 czerwca 1994 r. o własności lokali
-                    $property->type => ($property->type != 1)
-                        ? ($property->related_numbers ?? 'X')
+                    ($property->type == 1)
+                        ? $property->related_numbers
                         : 'X',
 
                     //Wyszczególnienie cen pomieszczeń przynależnych, o których mowa w art. 2 ust. 4 ustawy z dnia 24 czerwca 1994 r. o własności lokali [zł]
-                    $property->type => ($property->type != 1)
-                        ? ($property->related_prices ?? 'X')
+                    ($property->type == 1)
+                        ? $property->related_prices
                         : 'X',
 
                     //Data od której obowiązuje cena wyszczególnionych pomieszczeń przynależnych, o których mowa w art. 2 ust. 4 ustawy z dnia 24 czerwca 1994 r. o własności lokali
@@ -293,10 +293,14 @@ class IndexController extends Controller
                     'X',
 
                     //Wyszczególnienie rodzajów innych świadczeń pieniężnych, które nabywca zobowiązany jest spełnić na rzecz dewelopera w wykonaniu umowy przenoszącej własność
-                    $property->priceComponents->pluck('pivot.category')->map(fn($c) => $c ?? 'X'),
+                    $property->priceComponents->isNotEmpty()
+                        ? $property->priceComponents->pluck('pivot.category')->map(fn($c) => $c ?? 'X')->implode(', ')
+                        : 'X',
 
                     //Wartość innych świadczeń pieniężnych, które nabywca zobowiązany jest spełnić na rzecz dewelopera w wykonaniu umowy przenoszącej własność [zł]
-                    $property->priceComponents->pluck('pivot.value')->map(fn($v) => $v ?? 'X'),
+                    $property->priceComponents->isNotEmpty()
+                        ? $property->priceComponents->pluck('pivot.value')->map(fn($v) => $v ?? 'X')->implode(', ')
+                        : 'X',
 
                     //Data od której obowiązuje cena wartości innych świadczeń pieniężnych, które nabywca zobowiązany jest spełnić na rzecz dewelopera w wykonaniu umowy przenoszącej własność
                     'X',

@@ -233,7 +233,9 @@ class Property extends Model
             ->unique()
             ->values();
 
-        return $types->isNotEmpty() ? $types : collect(['X']);
+        return $types->isNotEmpty()
+            ? $types->implode(', ')
+            : 'X';
     }
 
     public function getRelatedNumbersAttribute()
@@ -243,7 +245,9 @@ class Property extends Model
             ->filter()
             ->values();
 
-        return $numbers->isNotEmpty() ? $numbers : collect(['X']);
+        return $numbers->isNotEmpty()
+            ? $numbers->implode(', ')
+            : 'X';
     }
 
     public function getRelatedPricesAttribute()
@@ -251,10 +255,12 @@ class Property extends Model
         $prices = $this->relatedProperties->map(function ($property) {
             return ($property->type == 1 && $property->price_brutto)
                 ? $property->price_brutto
-                : 'X';
-        });
+                : null;
+        })->filter()->values();
 
-        return $prices->isNotEmpty() ? $prices : collect(['X']);
+        return $prices->isNotEmpty()
+            ? $prices->implode(', ')
+            : 'X';
     }
 
     public function getTotalWithRelatedPriceAttribute()
