@@ -242,7 +242,7 @@
                                         <tr>
                                             <td class="td-with-icon pb-2"><img src="{{ asset('img/window.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="12" height="12"></td>
                                             <td class="pb-2">Wystawa okienna</td>
-                                            <td class="text-end pb-2">Południe wschód</td>
+                                            <td class="text-end pb-2">{{ getWindowDirections($property->window) }}</td>
                                         </tr>
                                         @if($property->terrace_area)
                                             <tr>
