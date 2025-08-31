@@ -34,7 +34,7 @@
                                         @include('form-elements.html-input-text', ['label' => 'Nr KRS', 'name' => 'krs_number', 'value' => $entry->krs_number, 'required' => 1])
                                     </div>
                                     <div class="col-3">
-                                        @include('form-elements.html-input-text', ['label' => 'Nr wpisu do CEiDG', 'name' => 'ceidg_number', 'value' => $entry->ceidg_number, 'required' => 1])
+                                        @include('form-elements.html-input-text', ['label' => 'Nr wpisu do CEiDG', 'name' => 'ceidg_number', 'value' => $entry->ceidg_number, 'required' => 0])
                                     </div>
                                     <div class="col-3">
                                         @include('form-elements.html-input-text', ['label' => 'NIP', 'name' => 'nip', 'value' => $entry->nip, 'required' => 1])
