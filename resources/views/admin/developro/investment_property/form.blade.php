@@ -291,7 +291,7 @@
                                             <div class="col-4">
                                                 {{ implode(',', multiselect($entry->window)) }}
 
-                                                @include('form-elements.html-select-multiple', ['label' => 'Wystawa okienna', 'name' => 'window', 'selected' => multiselect(implode(',', multiselect($entry->window))), 'select' => [
+                                                @include('form-elements.html-select-multiple', ['label' => 'Wystawa okienna', 'name' => 'window', 'selected' => implode(',', multiselect($entry->window)), 'select' => [
                                                     '1' => 'Północ',
                                                     '2' => 'Południe',
                                                     '3' => 'Wschód',
