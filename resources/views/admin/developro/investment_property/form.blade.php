@@ -289,7 +289,7 @@
                                                 @include('form-elements.input-text', ['label' => 'Powierzchnia (szukana)', 'name' => 'area_search', 'value' => $entry->area_search, 'required' => 1])
                                             </div>
                                             <div class="col-4">
-                                                @include('form-elements.html-select-multiple', ['label' => 'Wystawa okienna', 'name' => 'window', 'selected' => multiselect(json_decode($entry->window, true)), 'select' => [
+                                                @include('form-elements.html-select-multiple', ['label' => 'Wystawa okienna', 'name' => 'window', 'selected' => multiselect(implode(',', multiselect($entry->window))), 'select' => [
                                                     '1' => 'Północ',
                                                     '2' => 'Południe',
                                                     '3' => 'Wschód',
