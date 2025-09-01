@@ -290,7 +290,6 @@
                                             </div>
                                             <div class="col-4">
                                                 {{ implode(',', multiselect($entry->window)) }}
-                                                {!! multiselect($entry->window) !!}
 
                                                 @include('form-elements.html-select-multiple', ['label' => 'Wystawa okienna', 'name' => 'window', 'selected' => multiselect($entry->window), 'select' => [
                                                     '1' => 'Północ',
