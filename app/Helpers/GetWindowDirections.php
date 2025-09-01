@@ -18,11 +18,11 @@ if (!function_exists('getWindowDirections')) {
             return null;
         }
 
-        // Convert to array if comma-separated string
-        $selected = is_array($windowField) ? $windowField : explode(',', $windowField);
+        // Decode JSON if it's a string
+        $selected = is_array($windowField) ? $windowField : json_decode($windowField, true);
 
         return collect($selected)
-            ->map(fn($item) => $directions[trim($item)] ?? null)
+            ->map(fn($item) => $directions[$item] ?? null)
             ->filter()
             ->implode(', ');
     }
