@@ -565,6 +565,28 @@ class IndexController extends Controller
         echo '</table>';
     }
 
+    public function generateMD5()
+    {
+        // Ścieżka do XML
+        $xmlPath = public_path('datasets/developer.xml');
+
+        // Sprawdź czy plik istnieje
+        if (!file_exists($xmlPath)) {
+            throw new \Exception("Plik XML nie istnieje: " . $xmlPath);
+        }
+
+        // Oblicz hash MD5 z pliku
+        $md5Hash = md5_file($xmlPath);
+
+        // Ścieżka do pliku .md5
+        $md5Path = public_path('datasets/developer.md5');
+
+        // Zapisz hash do pliku
+        file_put_contents($md5Path, $md5Hash);
+
+        return "Plik MD5 wygenerowany: " . $md5Path;
+    }
+
     /**
      * Helper: tworzy <resource>
      */

@@ -19,6 +19,7 @@ Route::group(['prefix' => '/api'], function () {
     Route::get('/xml/create', [DatasetController::class, 'createXml']);
     Route::get('/xml/update', [DatasetController::class, 'updateXml']);
     Route::get('/xml/showAsTable/{investment}', [DatasetController::class, 'showAsTable']);
+    Route::get('/xml/generate-md5', [DatasetController::class, 'generateMD5']);
 
     //User
     Route::post('login', 'LoginController@store')->name('auth.login.store');
