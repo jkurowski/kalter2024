@@ -14541,6 +14541,27 @@ aside a:hover span {right:100%;opacity:1;-ms-filter:"progid:DXImageTransform.Mic
 
 }
 
+ul.price-component li {
+    font-size:12px;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    line-height: normal;
+    border-bottom: 1px solid #d7d2d0;
+}
+ul.price-component li span .small {
+    font-size: 11px;
+}
+ul.price-component li span {
+    float: none;
+    display: block;
+    line-height: 1.1;
+    font-size: 16px;
+}
+ul.price-component {
+    background: #f4f4f4;
+}
+
 /* Fonty
 ================================================== */
 @font-face{

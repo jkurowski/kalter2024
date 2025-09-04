@@ -271,7 +271,6 @@
                             </div>
 
                             @auth
-
                                 @if ($property->status == 1 && $property->type == 1)
                                     <div class="property-related">
 
@@ -341,6 +340,33 @@
                                         @endif
                                     @endif
                                 @endif
+                                @auth()
+                                    @if($property->priceComponents)
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <ul class="price-component mb-0 list-unstyled">
+                                                    @foreach($property->priceComponents as $priceComponent)
+                                                        <li>
+                                                            {{ $priceComponent->name }}
+                                                            <span class="ms-auto text-end">
+                                                @if($priceComponent->pivot->value)
+                                                                    <span><b>@money($priceComponent->pivot->value)</b></span>
+                                                                @endif
+                                                                    <?php if ($priceComponent->pivot->category == 1) : ?>
+                                                    <span class="small">Obowiązkowy</span>
+                                                <?php elseif ($priceComponent->pivot->category == 2) : ?>
+                                                    <span class="small">Opcjonalny</span>
+                                                <?php else : ?>
+                                                    <span class="small">Zmienny</span>
+                                                <?php endif; ?>
+                                                </span>
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    @endif
+                                @endauth
                                 <div class="mb-3"></div>
                             @endauth
 
