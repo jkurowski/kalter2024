@@ -271,8 +271,6 @@
                                     </tbody>
                                 </table>
                             </div>
-
-                            @auth
                                 @if ($property->status == 1 && $property->type == 1)
                                     <div class="property-related">
 
@@ -342,11 +340,8 @@
                                         @endif
                                     @endif
                                 @endif
-                                @auth()
-
-                                @endauth
                                 <div class="mb-3"></div>
-                            @endauth
+
                             @if($property->priceComponents)
                                 <div class="row">
                                     <div class="col-12">
