@@ -343,18 +343,22 @@
                                     @endif
                                 @endif
                                 @auth()
-                                    @if($property->priceComponents)
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <ul class="price-component mb-0 list-unstyled">
-                                                    @foreach($property->priceComponents as $priceComponent)
-                                                        <li>
-                                                            {{ $priceComponent->name }}
-                                                            <span class="ms-auto text-end">
+
+                                @endauth
+                                <div class="mb-3"></div>
+                            @endauth
+                            @if($property->priceComponents)
+                                <div class="row">
+                                    <div class="col-12">
+                                        <ul class="price-component mb-0 list-unstyled">
+                                            @foreach($property->priceComponents as $priceComponent)
+                                                <li>
+                                                    {{ $priceComponent->name }}
+                                                    <span class="ms-auto text-end">
                                                 @if($priceComponent->pivot->value)
-                                                                    <span><b>@money($priceComponent->pivot->value)</b></span>
-                                                                @endif
-                                                                    <?php if ($priceComponent->pivot->category == 1) : ?>
+                                                            <span><b>@money($priceComponent->pivot->value)</b></span>
+                                                        @endif
+                                                            <?php if ($priceComponent->pivot->category == 1) : ?>
                                                     <span class="small">Obowiązkowy</span>
                                                 <?php elseif ($priceComponent->pivot->category == 2) : ?>
                                                     <span class="small">Opcjonalny</span>
@@ -362,16 +366,13 @@
                                                     <span class="small">Zmienny</span>
                                                 <?php endif; ?>
                                                 </span>
-                                                        </li>
-                                                    @endforeach
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    @endif
-                                @endauth
-                                <div class="mb-3"></div>
-                            @endauth
-
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                </div>
+                            @endif
+                            <div class="mb-3"></div>
                             <div class="d-flex flex-wrap gap-2">
                                 <a href="#kontakt" class="btn btn-primary btn-with-icon px-3 min-w-max-content flex-fill d-inline-flex align-items-center justify-content-center gap-1">Zapytaj o ofertę <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062"><path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor" /></svg>
                                 </a>
