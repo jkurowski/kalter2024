@@ -91,6 +91,13 @@
             @endif
             <?php endforeach; ?>
         </div>
+
+        <div class="row mt-4">
+            <div class="col-12 text-center">
+                <p style="font-size:11px;line-height:14px">Przedstawione na stronie internetowej www.kalternieruchomosci.pl wizualizacje, animacje oraz modele budynku/budynków mają charakter poglądowy. Wygląd budynku/budynków oraz zagospodarowanie terenu mogą nieznacznie ulec zmianie na etapie realizacji. Zmianie nie ulegną istotne cechy świadczenia oraz funkcjonalność budynku/budynków. Przedstawione materiały graficzne nie mogą być traktowane jako ostateczne projekty realizacyjne, oznacza to, że wizualizacje te nie przedstawiają ostatecznych, docelowych właściwości inwestycji wraz z najbliższym otoczeniem i tym samym nie stanowią próbki lub wzoru w rozumieniu art. 556(1) § 1pkt 2 KC.</p>
+                <p style="font-size:11px;line-height:14px">Treści i materiały dostępne na stronie internetowej są chronione prawem - ustawa z dnia 4 lutego 1994 r. o Prawie autorskim i prawach pokrewnych (Dz. U. 2006 Nr 90 poz. 631 z późn. zm.). Bez pisemnej zgody Kalter Nieruchomości Sp. z o.o. zabrania się używania, kopiowania i rozpowszechniania wszelkich danych i materiałów dostępnych na niniejszej stronie internetowej.</p>
+            </div>
+        </div>
     </div>
 </footer>
 
