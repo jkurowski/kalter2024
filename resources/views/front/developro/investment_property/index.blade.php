@@ -164,8 +164,8 @@
                             <?php else : ?>
                             <p class="text-warning text-uppercase fw-bold fs-5">Rezerwacja</p>
                             <?php endif; ?>
-                            @auth
-                            @if($investment->show_prices)
+
+{{--                            @if($investment->show_prices)--}}
                                 <p class="h4 mb-1 ff-secondary row">
                                     <span class="col-12">
                                         @if($property->price_brutto && $property->status == 1 && !$property->highlighted)
@@ -174,7 +174,7 @@
                                         @endif
                                     </span>
 
-                                    @if($property->highlighted && $property->promotion_price_show && $property->promotion_price && $property->price_brutto)
+                                    @if($property->highlighted && $property->promotion_price_show && $property->promotion_price && $property->price_brutto && $property->status == 1)
                                             <span class="col-6">
                                                 <span class="fs-2 d-block">@money($property->promotion_price)</span>
                                                 <span class="fs-14 d-block">@money(($property->promotion_price / $property->area)) / m<sup>2</sup></span>
@@ -194,6 +194,7 @@
                                             @endif
                                     @endif
                                 </p>
+                            @auth
                                 @if($property->highlighted)
                                     @if($property->has_price_history)
                                         @php
@@ -206,8 +207,9 @@
                                         <p class="fs-10 text-black mb-0">Najniższa cena z 30 dni przed obniżką @money($property->price_30)</p>
                                     @endif
                                 @endif
-                            @endif
                             @endauth
+{{--                            @endif--}}
+
 
                             @auth
                                 @if($property->has_price_history)
