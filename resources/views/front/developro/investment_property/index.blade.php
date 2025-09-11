@@ -350,6 +350,7 @@
                             @if($property->priceComponents)
                                 <div class="row">
                                     <div class="col-12">
+                                        <p>Dodatkowe koszty i opcje:</p>
                                         <ul class="price-component mb-0 list-unstyled">
                                             @foreach($property->priceComponents as $priceComponent)
                                                 <li>
