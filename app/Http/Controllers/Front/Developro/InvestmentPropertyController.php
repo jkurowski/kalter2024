@@ -32,6 +32,7 @@ class InvestmentPropertyController extends Controller
             ->where('id', '!=', $property->id)
             ->where('investment_id', '=', $investment->id)
             ->inRandomOrder()
+            ->where('status', '=', 1)
             ->take(5)
             ->get();
 

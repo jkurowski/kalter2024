@@ -33,6 +33,7 @@ class InvestmentBuildingPropertyController extends Controller
 
         $similarProperties = Property::whereBetween('area_search', [$areaSearch - 5, $areaSearch + 5])
             ->where('id', '!=', $property->id)
+            ->where('status', '=', 1)
             ->where('investment_id', '=', $investment->id)
             ->where('building_id', '=', $building->id)
             ->inRandomOrder()
