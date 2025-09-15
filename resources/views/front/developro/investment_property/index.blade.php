@@ -342,7 +342,7 @@
                                 @endif
                                 <div class="mb-3"></div>
 
-                            @if($property->priceComponents)
+                            @if($property->priceComponents && $property->status == 1)
                                 <div class="row">
                                     <div class="col-12">
                                         <p>Dodatkowe koszty i opcje:</p>
