@@ -389,7 +389,9 @@
                                     {!! $property->walk_3d !!}
                                 @endif
 
+                                @if($property->status == 1)
                                 <button id="addToFav" class="btn btn-primary btn-with-icon px-3 min-w-max-content flex-fill d-inline-flex align-items-center justify-content-center gap-1" data-id="{{$property->id}}">Dodaj do schowka <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062"><path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor" /></svg></button>
+                                @endif
                                 <!--
                                 <a href="/kontakt.php" class="btn btn-primary btn-with-icon d-inline-flex align-items-center gap-1 justify-content-center px-3 min-w-max-content flex-fill">
                                 -->
