@@ -26,7 +26,7 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="/pl/wyniki-wyszukiwania?type=1&status=1">Lokale mieszkalne</a></li>
-                                    <li><a class="dropdown-item" href="/pl/wyniki-wyszukiwania?type=2">Lokale usługowe</a></li>
+                                    <li><a class="dropdown-item" href="/pl/wyniki-wyszukiwania?type=5">Lokale usługowe</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
