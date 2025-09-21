@@ -153,6 +153,9 @@
                 <div class="row row-gap-30">
                     <div class="col-12 col-md-6 col-lg-5">
                         <div class="text-secondary">
+                            @if($property->highlighted && $property->promotion_price && $property->price_brutto && $property->status == 1)
+                                <div class="promo-info">PROMOCJA</div>
+                            @endif
                             <h2 class="mb-0">{{$property->name}}</h2>
                             <p class="text-uppercase fw-900 fs-15 ff-secondary mb-0 lh-1">{{$investment->name}}</p>
                             <p class="mb-20"><small>{{ investmentAdvanced($investment->progress) }}</small></p>
@@ -173,27 +176,29 @@
                                             <span class="fs-14 d-block">@money(($property->price_brutto / $property->area)) / m<sup>2</sup></span>
                                         @endif
                                     </span>
-
-                                    @if($property->highlighted && $property->promotion_price_show && $property->promotion_price && $property->price_brutto && $property->status == 1)
-                                            <span class="col-6">
-                                                <span class="fs-2 d-block">@money($property->promotion_price)</span>
-                                                <span class="fs-14 d-block">@money(($property->promotion_price / $property->area)) / m<sup>2</sup></span>
-                                            </span>
-                                            <span class="col-6 text-end pt-2">
-                                                @if($property->price_brutto)
-                                                    <span class="text-body-emphasis opacity-50 fs-24 align-middle text-decoration-line-through d-block">@money($property->price_brutto)</span>
-                                                    <span class="text-body-emphasis d-block opacity-50 fs-14 align-middle text-decoration-line-through">@money($property->price_brutto / $property->area) / m<sup>2</sup></span>
-                                                @endif
-                                            </span>
-
-                                            @php
-                                                $rabat = $property->price_brutto - $property->promotion_price;
-                                            @endphp
-                                            @if($property->price_brutto <> $property->promotion_price)
-                                                <span class="rabat h4 d-block w-100">Rabat: @money($rabat)</span>
-                                            @endif
-                                    @endif
                                 </p>
+                                @if($property->highlighted && $property->promotion_price && $property->price_brutto && $property->status == 1)
+                                    <p class="h4 mb-1 ff-secondary row">
+                                        <span class="col-6">
+                                            <span class="fs-2 d-block">@money($property->promotion_price)</span>
+                                            <span class="fs-14 d-block">@money(($property->promotion_price / $property->area)) / m<sup>2</sup></span>
+                                        </span>
+                                        <span class="col-6 text-end pt-2">
+                                            @if($property->price_brutto)
+                                                <span class="text-body-emphasis opacity-50 fs-24 align-middle text-decoration-line-through d-block">@money($property->price_brutto)</span>
+                                                <span class="text-body-emphasis d-block opacity-50 fs-14 align-middle text-decoration-line-through">@money($property->price_brutto / $property->area) / m<sup>2</sup></span>
+                                            @endif
+                                        </span>
+
+                                        @php
+                                            $rabat = $property->price_brutto - $property->promotion_price;
+                                        @endphp
+                                        @if($property->price_brutto <> $property->promotion_price)
+                                            <span class="rabat h4 d-block w-100">Rabat: @money($rabat)</span>
+                                        @endif
+                                    </p>
+                                    <span class="fs-15 text-black mb-0">Promocja ważna do: {{ $property->promotion_end_date }}</span>
+                                @endif
                             @auth
                                 @if($property->highlighted)
                                     @if($property->has_price_history)
@@ -328,7 +333,8 @@
                                             </div>
                                         @endif
                                     </div>
-                                    @if($property->highlighted && $property->promotion_price_show)
+
+                                    @if($property->highlighted)
                                         <div class="property-summary fs-5 d-flex" data-totalprice="{{ ($property->promotion_price + $property->relatedProperties->sum('price_brutto')) }}">
                                             Cena za całość: <span class="ms-auto"><b class="fw-bold" id="totalDisplay">@money(($property->promotion_price + $property->relatedProperties->sum('price_brutto')))</b></span>
                                         </div>

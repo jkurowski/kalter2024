@@ -21,10 +21,10 @@
         @foreach ($properties as $property)
             @if($investment->type == 1)
                 @if(optional($property->building)->active == 1)
-                    <x-property-searchlist-item :p="$property" :investment="$investment"></x-property-searchlist-item>
+                    <x-property-new-list-item :p="$property" :investment="$investment"/>
                 @endif
             @else
-                <x-property-searchlist-item :p="$property" :investment="$investment"></x-property-searchlist-item>
+                <x-property-new-list-item :p="$property" :investment="$investment"/>
             @endif
         @endforeach
         </div>

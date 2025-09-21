@@ -14562,6 +14562,209 @@ ul.price-component {
     background: #f4f4f4;
 }
 
+/* Nowa list
+================================================== */
+.property-list-item-name span {
+    color: #024282;
+    font-weight: 600;
+    font-size: 12px;
+}
+.text-highlighted {
+    color: #db3434
+}
+.promo-price {
+    color: #db3434 !important;
+}
+
+.promo-info {
+    background: #fbc000;
+    text-align: center;
+    color: white;
+    padding: 6px 0px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+}
+
+.property-list-item-sold .property-list-item-col-1,
+.property-list-item-sold .property-list-item-col-2,
+.property-list-item-sold .property-list-item-col-3,
+.property-list-item-sold .property-list-item-col-4,
+.half-2
+{
+    filter: grayscale(100%);
+    opacity: .5;
+}
+.property-list-item-sold .btn {
+    filter: grayscale(100%);
+    opacity: 1;
+}
+
+/* List view */
+.list-layout .half-2 {
+    display: none;
+}
+.list-layout .half-1 {
+    flex: 0 0 auto;
+    width: 100%;
+}
+.list-layout .invest-card-list {
+    padding: 15px 20px;
+    border-bottom: 1px solid #d7d7d7;
+}
+
+/* Grid view */
+.grid-layout .col-2, .grid-layout .col-4 {
+    flex: 0 0 auto;
+    width: 100%;
+}
+.grid-layout .invest-card-list {
+    padding: 20px;
+    width: calc(100% - 5px);
+}
+.grid-layout .property-list-item-info {
+    font-size: 12px;
+    padding: 0 12px !important;
+}
+.grid-layout .property-list-item-city {
+    padding: 0 12px !important;
+}
+.grid-layout .property-list-item-name {
+    margin-bottom: 10px;
+}
+.grid-layout .property-list-item-status {
+    margin: 10px 0;
+}
+.grid-layout .btn {
+    margin-top: 10px;
+}
+
+@media (max-width: 1453.98px) {
+    .list-layout .property-list-item-info {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 1199.98px) {
+    .list-layout .property-list-item-info {
+        font-size: 11px;
+    }
+    .h3 {
+        font-size: 24px;
+    }
+    .btn {
+        padding: 9px 0;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .list-layout .property-list-item-col-1,
+    .list-layout .property-list-item-col-2,
+    .list-layout .property-list-item-col-3,
+    .list-layout .property-list-item-col-4,
+    .list-layout .property-list-item-col-5
+    {
+        flex: 0 0 auto;
+    }
+
+    .list-layout .property-list-item-col-1,
+    .list-layout .property-list-item-col-3
+    {
+        width: 25%;
+    }
+    .list-layout .property-list-item-col-2
+    {
+        width: 50%;
+    }
+    .list-layout .property-list-item-col-4
+    {
+        width: 60%;
+        margin-top: 15px;
+    }
+    .list-layout .property-list-item-col-5
+    {
+        width: 40%;
+        margin-top: 15px;
+    }
+
+    .list-layout .invest-card-list {
+        padding: 15px;
+    }
+
+    .grid-layout .col-6.half-1,
+    .grid-layout .col-6.half-2 {
+        width: 100%;
+    }
+    .grid-layout .col-6.half-2 {
+        order:1
+    }
+    .grid-layout .col-6.half-1 {
+        order:2;
+        margin-top: 10px;
+    }
+    .grid-layout .property-list-item-col-3 {
+        margin-top: 8px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .list-layout .property-list-item-col-1
+    {
+        width: 35%;
+    }
+    .list-layout .property-list-item-col-2
+    {
+        width: 65%;
+    }
+    .list-layout .property-list-item-col-3,
+    .list-layout .property-list-item-col-4,
+    .list-layout .property-list-item-col-5
+    {
+        width: 33.3333%;
+        margin-top: 15px;
+    }
+
+    .list-layout .invest-card-list {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .list-layout .property-list-item-col-1,
+    .list-layout .property-list-item-col-2
+    {
+        width: 100%;
+    }
+    .list-layout .property-list-item-col-2 {
+        margin-top: 8px;
+    }
+    .list-layout .property-list-item-col-3,
+    .list-layout .property-list-item-col-4
+    {
+        width: 50%;
+        margin-top: 8px;
+    }
+    .list-layout .property-list-item-col-5
+    {
+        width: 100%;
+        margin-top: 5px;
+    }
+    .list-layout .invest-card-list {
+        padding: 15px;
+    }
+
+    .list-layout .h3 {
+        font-size: 21px;
+    }
+    .list-layout .small {
+        font-size: 11px;
+    }
+
+    .grid-layout {
+        display: flex !important;
+        flex-wrap: wrap;
+    }
+}
+
 /* Fonty
 ================================================== */
 @font-face{

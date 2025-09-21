@@ -193,9 +193,9 @@
                 </div>
                 <div class="row mt-30">
                     <div class="col-12">
-                        <div id="layout-container" class="list-layout">
+                        <div id="layout-container" class="container list-layout">
                             @foreach($properties as $p)
-                                <x-property-list-item :p="$p"></x-property-list-item>
+                                <x-property-new-list-item :p="$p"/>
                             @endforeach
                         </div>
                     </div>

@@ -16,24 +16,12 @@
         </div>
         <div class="col-xl-auto d-flex column-gap-30 row-gap-3 align-items-center flex-wrap flex-lg-nowrap flex-fill justify-content-md-center">
             <div class="d-flex gap-2">
-                <div><img src="{{ asset('img/location.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="13" height="13"></div>
+                <div>
+                    <img src="{{ asset('img/location.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="13" height="13">
+                </div>
                 <div>{{ $p->investment->city->name }}</div>
             </div>
-            <div class="vr" style="color:#DFDEDE;"></div>
-            <div class="fs-13 d-flex gap-2">
-                <div><img src="{{ asset('img/tile.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="13" height="13"></div>
-                <div>{{ $p->floor->name }}</div>
-            </div>
-            <div class="vr" style="color:#DFDEDE;"></div>
-            <div class="fs-13 d-flex gap-2">
-                <div><img src="{{ asset('img/blueprint.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="13" height="13"></div>
-                <div>{{ $p->area }} m<sup>2</sup></div>
-            </div>
-            <div class="vr" style="color:#DFDEDE;"></div>
-            <div class="fs-13 d-flex gap-2">
-                <div><img src="{{ asset('img/rooms.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="13" height="13"></div>
-                <div>{{ $p->rooms }}</div>
-            </div>
+
         </div>
         <div class="col-xl-2 text-lg-center">
             <?php if ($p->status == 3) : ?>

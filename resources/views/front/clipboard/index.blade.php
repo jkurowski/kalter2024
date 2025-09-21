@@ -20,7 +20,7 @@
                         <div id="layout-container" class="list-layout">
                             @if($properties->count() > 0)
                                 @foreach($properties as $p)
-                                    <x-property-list-item :p="$p"></x-property-list-item>
+                                    <x-property-new-list-item :p="$p"/>
                                 @endforeach
                             @else
                                 <p class="text-center pt-5 pb-5"><b>Twoja lista jest pusta</b></p>
