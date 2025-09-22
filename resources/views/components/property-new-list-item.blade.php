@@ -103,14 +103,13 @@
         </div>
         <div class="col-6 half-2">
             @if($p->file)
-                <img src="https://kalternieruchomosci.pl/investment/property/thumbs/webp/132004_mieszkanie-4.webp" loading="lazy" decoding="async" class="w-100 h-100 object-fit-contain" alt="">
-                {{--            <picture>--}}
-                {{--                @if($p->file_webp)--}}
-                {{--                    <source type="image/webp" srcset="{{ asset('/investment/property/thumbs/webp/'.$p->file_webp) }}">--}}
-                {{--                @endif--}}
-                {{--                <source type="image/jpeg" srcset="{{ asset('/investment/property/thumbs/'.$p->file) }}">--}}
-                {{--                <img src="{{ asset('/investment/property/thumbs/'.$p->file) }}" alt="{{$p->name}}" loading="lazy" decoding="async" class="w-100 h-100 object-fit-contain">--}}
-                {{--            </picture>--}}
+                <picture>
+                    @if($p->file_webp)
+                        <source type="image/webp" srcset="{{ asset('/investment/property/thumbs/webp/'.$p->file_webp) }}">
+                    @endif
+                    <source type="image/jpeg" srcset="{{ asset('/investment/property/thumbs/'.$p->file) }}">
+                    <img src="{{ asset('/investment/property/thumbs/'.$p->file) }}" alt="{{$p->name}}" loading="lazy" decoding="async" class="w-100 h-100 object-fit-contain">
+                </picture>
             @endif
         </div>
     </div>
