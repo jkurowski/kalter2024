@@ -197,7 +197,9 @@
                                             <span class="rabat h4 d-block w-100">Rabat: @money($rabat)</span>
                                         @endif
                                     </p>
+                                    @if($property->promotion_end_date)
                                     <span class="fs-15 text-black mb-0">Promocja ważna do: {{ $property->promotion_end_date }}</span>
+                                    @endif
                                 @endif
                             @auth
                                 @if($property->highlighted)
