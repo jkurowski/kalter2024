@@ -14589,7 +14589,7 @@ ul.price-component {
 .property-list-item-sold .property-list-item-col-2,
 .property-list-item-sold .property-list-item-col-3,
 .property-list-item-sold .property-list-item-col-4,
-.half-2
+.property-list-item-sold .half-2
 {
     filter: grayscale(100%);
     opacity: .5;
