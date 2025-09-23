@@ -197,7 +197,7 @@
                                             <span class="rabat h4 d-block w-100">Rabat: @money($rabat)</span>
                                         @endif
                                     </p>
-                                    @if($property->promotion_end_date)
+                                    @if($property->promotion_end_date && $property->status == 1)
                                     <span class="fs-15 text-black mb-0">Promocja ważna do: {{ $property->promotion_end_date }}</span>
                                     @endif
                                 @endif
@@ -222,7 +222,9 @@
                                     <a href="#" class="btn btn-primary btn-with-icon px-3 min-w-max-content flex-fill d-inline-flex align-items-center justify-content-center gap-1 btn-history mt-3" data-id="{{ $property->id }}">Pokaż historię ceny</a>
                                     <div id="modalHistory"></div>
                                 @else
+                                    @if($property->status == 1)
                                     <p>Cena nie zmieniła się od: 11.09.2025</p>
+                                    @endif
                                 @endif
                             <div class="mb-50 mt-4">
                                 <table class="text-sm-down-small w-100">
