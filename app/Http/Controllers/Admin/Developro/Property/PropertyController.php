@@ -198,17 +198,17 @@ class PropertyController extends Controller
         }
 
         // Dispatch the EndPropertyPromotion job if the promotion end date is set
-        if ($request->filled('promotion_end_date') && $request->highlighted == 1) {
-//            $promotionEndDate = $request->input('promotion_end_date');
-//            $delay = now()->diffInSeconds($promotionEndDate, false);
+//        if ($request->filled('promotion_end_date') && $request->highlighted == 1) {
+////            $promotionEndDate = $request->input('promotion_end_date');
+////            $delay = now()->diffInSeconds($promotionEndDate, false);
+////
+////            if ($delay > 0) {  // Only dispatch if the end date is in the future
+////                EndPropertyPromotion::dispatch($property)->delay($delay);
+////            }
 //
-//            if ($delay > 0) {  // Only dispatch if the end date is in the future
-//                EndPropertyPromotion::dispatch($property)->delay($delay);
-//            }
-
-            $delay = now()->addSeconds(3600);  // Delay for 1 minute for testing
-            EndPropertyPromotion::dispatch($property->id)->delay($delay);
-        }
+//            $delay = now()->addSeconds(3600);  // Delay for 1 minute for testing
+//            EndPropertyPromotion::dispatch($property->id)->delay($delay);
+//        }
         return redirect(route('admin.developro.investment.properties.index', [$investment, $floor]))->with('success', 'Powierzchnia zaktualizowana');
     }
 
