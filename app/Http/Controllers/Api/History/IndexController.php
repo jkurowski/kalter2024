@@ -323,6 +323,7 @@ class IndexController extends Controller
         }
 
         $doc->save($xmlPath);
+        $this->generateMD5();
 
         return response()->json(['message' => 'Dodano nowy resource', 'path' => $xmlPath]);
     }
