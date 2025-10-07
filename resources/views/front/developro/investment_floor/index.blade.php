@@ -112,7 +112,7 @@
                                                             round(floatval($r->area), 2).'-m2'
                                                         ]) }}"
                                                         data-item="{{$r->id}}"
-                                                        title="{{$r->name}}<hr>Powierzchnia: <b class=fr>{{$r->area}} m<sup>2</sup></b><br />Pokoje: <b class=fr>{{$r->rooms}}</b><br><b>{{ roomStatus($r->status) }}</b><hr>@if($r->price_brutto && $r->status == 1 && !$r->highlighted) @money($r->price_brutto)<span class=small>@money(($r->price_brutto / $r->area)) / m<sup>2</sup></span> @endif @if($r->price_brutto && $r->status == 1 && $r->highlighted) @money($r->promotion_price)<br><span style='font-size:9px'>@money(($r->promotion_price / $r->area)) / m<sup>2</sup></span> @endif"
+                                                        title="{{$r->name}}<hr>Powierzchnia: <b class=fr>{{$r->area}} m<sup>2</sup></b><br />Pokoje: <b class=fr>{{$r->rooms}}</b><br><b>{{ roomStatus($r->status) }}</b><hr>@if($r->price_brutto && $r->status == 1 && !$r->highlighted) @money($r->price_brutto)<br><span style='font-size:9px'>@money(($r->price_brutto / $r->area)) / m<sup>2</sup></span> @endif @if($r->price_brutto && $r->status == 1 && $r->highlighted) @money($r->promotion_price)<br><span style='font-size:9px'>@money(($r->promotion_price / $r->area)) / m<sup>2</sup></span> @endif"
                                                         alt="{{$r->slug}}"
                                                         data-roomnumber="{{$r->number}}"
                                                         data-roomtype="{{$r->typ}}"
