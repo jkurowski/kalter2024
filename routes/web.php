@@ -27,6 +27,9 @@ use Illuminate\Auth\Access\AuthorizationException;
 
 Auth::routes();
 
+Route::get('/register', function () {
+    abort(404);
+});
 Route::post('/register', function () {
     abort(404);
 });
