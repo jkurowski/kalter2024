@@ -162,8 +162,8 @@ return [
     */
 
     'gallery' => [
-        'big_width' => 1360,
-        'big_height' => 765,
+        'big_width' => 1920,
+        'big_height' => 1920,
         'thumb_width' => 520,
         'thumb_height' => 293,
         'thumb_width_2' => 386,
