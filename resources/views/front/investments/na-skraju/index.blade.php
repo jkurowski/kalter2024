@@ -1,8 +1,35 @@
 @extends('layouts.page', ['body_class' => 'single-offer'])
 
+@php
+
+    /* TITLE */
+    if(!empty($investment->meta_title)) {
+        $seoTitle = $investment->meta_title;
+    }
+    elseif(!empty($page->meta_title)) {
+        $seoTitle = $page->meta_title;
+    }
+    else {
+        $seoTitle = settings()->get("page_title") . ' - ' . $page->title . ' - ' . $investment->name;
+    }
+
+    /* DESCRIPTION */
+    if(!empty($investment->meta_description)) {
+        $seoDescription = $investment->meta_description;
+    }
+    elseif(!empty($page->meta_description)) {
+        $seoDescription = $page->meta_description;
+    }
+    else {
+        $seoDescription = settings()->get("page_description");
+    }
+
+@endphp
+
+
 @section('meta_title', $page->title)
-@isset($page->meta_title) @section('seo_title', $page->meta_title) @endisset
-@isset($page->meta_description) @section('seo_description', $page->meta_description) @endisset
+@section('seo_title', $seoTitle)
+@section('seo_description', $seoDescription)
 
 @section('content')
     <main>
