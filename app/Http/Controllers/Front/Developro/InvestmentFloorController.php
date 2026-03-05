@@ -19,7 +19,7 @@ class InvestmentFloorController extends Controller
     public function __construct(FloorRepository $repository)
     {
         $this->repository = $repository;
-        $this->pageId = 2;
+        $this->pageId = 8;
     }
 
     public function index($lang, $slug, Floor $floor, $floorSlug, Request $request)
