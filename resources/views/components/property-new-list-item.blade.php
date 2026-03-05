@@ -92,8 +92,7 @@
                             round(floatval($p->area), 2).'-m2'
                         ]) }}">
                     @endif
-                            Sprawdź
-                            <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062"><path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor"></path></svg>
+                            SPRAWDŹ
                         </a>
 
                 </div>
