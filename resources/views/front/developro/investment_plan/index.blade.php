@@ -7,7 +7,7 @@
         $seoTitle = $page->meta_title;
     }
     else {
-        $seoTitle = settings()->get("page_title") . ' - ' . $page->title . ' - ' . $investment->name . ' - '.$investment_news->title;
+        $seoTitle = settings()->get("page_title") . ' - ' . $page->title . ' - ' . $investment->name . ' - Plan inwestycji';
     }
 
     if(!empty($investment->meta_description)) {
