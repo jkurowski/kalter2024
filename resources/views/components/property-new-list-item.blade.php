@@ -66,10 +66,10 @@
                 </div>
                 <div class="col-2 d-flex align-items-center property-list-item-col-5">
                     @if(Route::currentRouteName() === 'clipboard.index')
-                        <button id="addToFav" class="btn btn-primary btn-with-icon text-nowrap w-100" data-id="{{$p->id}}">USUŃ</button>
+                        <button id="addToFav" class="btn btn-primary btn-with-icon text-nowrap w-100 pe-2 ps-2" data-id="{{$p->id}}">USUŃ</button>
                     @endif
                     @if($p->investment->type == 1)
-                        <a class="btn btn-primary btn-with-icon text-nowrap w-100" href="{{ route('developro.building.floor.property', [
+                        <a class="btn btn-primary btn-with-icon text-nowrap w-100 @if(Route::currentRouteName() === 'clipboard.index') pe-2 ps-2 @endif" href="{{ route('developro.building.floor.property', [
                             $p->investment->slug,
                             $p->building,
                             Str::slug($p->building->name),
@@ -82,7 +82,7 @@
                         ]) }}">
                     @endif
                     @if($p->investment->type == 2)
-                        <a class="btn btn-primary btn-with-icon text-nowrap w-100" href="{{ route('developro.property', [
+                        <a class="btn btn-primary btn-with-icon text-nowrap w-100 @if(Route::currentRouteName() === 'clipboard.index') pe-2 ps-2 ms-2 @endif" href="{{ route('developro.property', [
                             $p->investment->slug,
                             $p->floor,
                             Str::slug($p->floor->name),
