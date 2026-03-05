@@ -1,5 +1,9 @@
 @extends('layouts.page', ['body_class' => 'single-offer'])
 
+@section('meta_title', $page->title)
+@isset($page->meta_title) @section('seo_title', $page->meta_title) @endisset
+@isset($page->meta_description) @section('seo_description', $page->meta_description) @endisset
+
 @section('content')
     <main>
         <section class="position-relative page-hero-section">
