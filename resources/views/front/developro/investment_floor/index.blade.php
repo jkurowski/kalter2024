@@ -140,7 +140,7 @@
                                                         data-roomtype="{{$r->typ}}"
                                                         data-roomstatus="{{$r->status}}"
                                                         coords="{{cords($r->html)}}"
-                                                        class="inline status-{{$r->status}}"
+                                                        class="status-{{$r->status}}"
                                                 >
                                             @endif
                                         @endforeach
