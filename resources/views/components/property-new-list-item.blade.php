@@ -65,38 +65,38 @@
                     </div>
                 </div>
                 <div class="col-2 d-flex align-items-center property-list-item-col-5">
-
+                    @if(Route::currentRouteName() === 'clipboard.index')
                         <button id="addToFav" class="btn btn-primary btn-with-icon text-nowrap w-100" data-id="{{$p->id}}">
                             <i class="lar la-trash-alt me-3"></i> USUŃ ZE SCHOWKA
                         </button>
-
-                        @if($p->investment->type == 1)
-                            <a class="btn btn-primary btn-with-icon text-nowrap w-100" href="{{ route('developro.building.floor.property', [
-                                $p->investment->slug,
-                                $p->building,
-                                Str::slug($p->building->name),
-                                $p->floor,
-                                Str::slug($p->floor->name),
-                                $p,
-                                Str::slug($p->name),
-                                number2RoomsName($p->rooms, true),
-                                round(floatval($p->area), 2).'-m2'
-                            ]) }}">
-                        @endif
-                        @if($p->investment->type == 2)
-                            <a class="btn btn-primary btn-with-icon text-nowrap w-100" href="{{ route('developro.property', [
-                                $p->investment->slug,
-                                $p->floor,
-                                Str::slug($p->floor->name),
-                                $p,
-                                Str::slug($p->name),
-                                number2RoomsName($p->rooms, true),
-                                round(floatval($p->area), 2).'-m2'
-                            ]) }}">
-                        @endif
-                                Sprawdź
-                                <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062"><path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor"></path></svg>
-                            </a>
+                    @endif
+                    @if($p->investment->type == 1)
+                        <a class="btn btn-primary btn-with-icon text-nowrap w-100" href="{{ route('developro.building.floor.property', [
+                            $p->investment->slug,
+                            $p->building,
+                            Str::slug($p->building->name),
+                            $p->floor,
+                            Str::slug($p->floor->name),
+                            $p,
+                            Str::slug($p->name),
+                            number2RoomsName($p->rooms, true),
+                            round(floatval($p->area), 2).'-m2'
+                        ]) }}">
+                    @endif
+                    @if($p->investment->type == 2)
+                        <a class="btn btn-primary btn-with-icon text-nowrap w-100" href="{{ route('developro.property', [
+                            $p->investment->slug,
+                            $p->floor,
+                            Str::slug($p->floor->name),
+                            $p,
+                            Str::slug($p->name),
+                            number2RoomsName($p->rooms, true),
+                            round(floatval($p->area), 2).'-m2'
+                        ]) }}">
+                    @endif
+                            Sprawdź
+                            <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062"><path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor"></path></svg>
+                        </a>
 
                 </div>
             </div>
