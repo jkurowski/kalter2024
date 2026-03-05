@@ -20,7 +20,7 @@ class InvestmentPlanController extends Controller
     public function __construct(InvestmentRepository $repository)
     {
         $this->repository = $repository;
-        $this->pageId = 2;
+        $this->pageId = 8;
     }
 
     public function index($lang, Request $request, $slug)
