@@ -1,5 +1,36 @@
 @extends('layouts.page', ['body_class' => 'single-offer'])
 
+@php
+
+    /* TITLE */
+    if(!empty($investment->meta_title)) {
+        $seoTitle = $investment->meta_title;
+    }
+    elseif(!empty($page->meta_title)) {
+        $seoTitle = $page->meta_title;
+    }
+    else {
+        $seoTitle = settings()->get("page_title") . ' - ' . $page->title . ' - ' . $investment->name;
+    }
+
+    /* DESCRIPTION */
+    if(!empty($investment->meta_description)) {
+        $seoDescription = $investment->meta_description;
+    }
+    elseif(!empty($page->meta_description)) {
+        $seoDescription = $page->meta_description;
+    }
+    else {
+        $seoDescription = settings()->get("page_description");
+    }
+
+@endphp
+
+
+@section('meta_title', $page->title)
+@section('seo_title', $seoTitle)
+@section('seo_description', $seoDescription)
+
 @section('content')
     <main>
         <section class="position-relative page-hero-section">
