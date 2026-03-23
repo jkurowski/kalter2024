@@ -999,7 +999,7 @@
             "@context" => "https://schema.org",
             "@type" => "RealEstateListing",
 
-            "name" => "Mieszkanie {$property->name} – {$investment->name}",
+            "name" => "{$property->name} – {$investment->name}",
             "url" => url()->current(),
             "datePosted" => optional($property->created_at)->toDateString(),
 
@@ -1032,7 +1032,7 @@
                 ],
                 "address" => [
                     "@type" => "PostalAddress",
-                    "addressLocality" => $investment->city ?? "Ząbki",
+                    "addressLocality" => $investment->city->name,
                     "addressCountry" => "PL"
                 ]
             ],
