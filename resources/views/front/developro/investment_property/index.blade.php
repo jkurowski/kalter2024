@@ -992,3 +992,55 @@
         }
     </script>
 @endpush
+
+@section('schema')
+    <script type="application/ld+json">
+        {!! json_encode([
+            "@context" => "https://schema.org",
+            "@type" => "RealEstateListing",
+
+            "name" => "Mieszkanie {$property->name} – {$investment->name}",
+            "url" => url()->current(),
+            "datePosted" => optional($property->created_at)->toDateString(),
+
+            "offers" => [
+                "@type" => "Offer",
+                "price" => (float) (
+                    $property->highlighted && $property->promotion_price
+                        ? $property->promotion_price
+                        : $property->price_brutto
+                ),
+                "priceCurrency" => "PLN",
+                "availability" => match($property->status) {
+                    1 => "https://schema.org/InStock",
+                    2 => "https://schema.org/PreOrder",
+                    3 => "https://schema.org/SoldOut",
+                    default => "https://schema.org/InStock"
+                },
+                "url" => url()->current(),
+                "priceValidUntil" => now()->addMonths(3)->toDateString()
+            ],
+
+            "itemOffered" => [
+                "@type" => "Apartment",
+                "name" => $property->name,
+                "numberOfRooms" => (int) $property->rooms,
+                "floorSize" => [
+                    "@type" => "QuantitativeValue",
+                    "value" => (float) $property->area,
+                    "unitCode" => "MTK"
+                ],
+                "address" => [
+                    "@type" => "PostalAddress",
+                    "addressLocality" => $investment->city ?? "Ząbki",
+                    "addressCountry" => "PL"
+                ]
+            ],
+
+            "image" => $property->file
+                ? asset('/investment/property/'.$property->file)
+                : null
+
+        ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
+    </script>
+@endsection
