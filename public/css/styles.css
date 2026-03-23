@@ -14791,8 +14791,11 @@ ul.price-component {
     text-decoration: none;
     font-weight: bold;
     width: 100%;
-    display: block;
+    display: flex;
     text-align: center;
+    justify-content: center;
+    align-items: center;
+    gap: 11px;
 }
 
 

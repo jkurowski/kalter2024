@@ -404,7 +404,49 @@ function dropdownMobile() {
     document.querySelectorAll('.nav-item.dropdown .nav-link').forEach(item => item.classList.add('dropdown-toggle'))
 }
 
+(function () {
+    const bar = document.getElementById('call-bar');
+
+    let lastScroll = window.scrollY;
+    let ticking = false;
+
+    function isWithinHours() {
+        const now = new Date();
+        const hour = now.getHours();
+        return hour >= 10 && hour < 18;
+    }
+
+    function handleScroll() {
+        const currentScroll = window.scrollY;
+
+        if (!isWithinHours()) {
+            bar.classList.remove('show');
+            return;
+        }
+
+        if (currentScroll < lastScroll) {
+            // scroll UP
+            bar.classList.add('show');
+        } else {
+            // scroll DOWN
+            bar.classList.remove('show');
+        }
+
+        lastScroll = currentScroll;
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', function () {
+        if (!ticking) {
+            window.requestAnimationFrame(handleScroll);
+            ticking = true;
+        }
+    });
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
+
+
 
     // Ruchoma galeria
     $('.col-gallery-thumb').each( function() { $(this).hoverdir(); } );
