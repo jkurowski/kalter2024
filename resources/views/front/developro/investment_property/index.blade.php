@@ -1020,7 +1020,7 @@
                     default => "https://schema.org/InStock"
                 },
                 "url" => url()->current(),
-                "priceValidUntil" => now()->addMonths(3)->toDateString()
+                "priceValidUntil" => \Carbon\Carbon::now()->addMonths(3)->toDateString(),
             ],
 
             "itemOffered" => [
@@ -1052,7 +1052,7 @@
                 "@context" => "https://schema.org",
                 "@type" => "Product",
 
-                "name" => "Mieszkanie {$property->name} – {$investment->name}",
+                "name" => "{$property->name} – {$investment->name}",
                 "image" => $property->file ? asset('/investment/property/'.$property->file) : null,
                 "description" => "{$property->rooms} pokoje, {$property->area} m2",
 
@@ -1071,7 +1071,7 @@
                         default => "https://schema.org/InStock"
                     },
                     "url" => url()->current(),
-                    "priceValidUntil" => now()->addMonths(3)->toDateString()
+                    "priceValidUntil" => \Carbon\Carbon::now()->addMonths(3)->toDateString(),
                 ],
 
                 "additionalProperty" => [
