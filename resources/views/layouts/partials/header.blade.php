@@ -101,3 +101,9 @@
         @endif
     </ul>
 </aside>
+
+<div id="call-bar" class="d-block d-sm-none call-bar hidden">
+    <a href="tel:+48539975771" class="call-btn">
+        📞 Zadzwoń
+    </a>
+</div>
