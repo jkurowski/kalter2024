@@ -1045,6 +1045,7 @@
 
         ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
     </script>
+@endsection
     @section('schema')
         <script type="application/ld+json">
             {!! json_encode([
@@ -1087,11 +1088,10 @@
                     [
                         "@type" => "PropertyValue",
                         "name" => "Miasto",
-                        "value" => optional($investment->city)->name ?? "Ząbki"
+                        "value" => $investment->city->name
                     ]
                 ]
 
             ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
         </script>
     @endsection
-@endsection
