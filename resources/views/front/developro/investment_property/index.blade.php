@@ -1001,7 +1001,9 @@
 
             "name" => "{$property->name} – {$investment->name}",
             "url" => url()->current(),
-            "datePosted" => optional($property->created_at)->toDateString(),
+            "datePosted" => $property->created_at
+            ? $property->created_at->toDateString()
+            : now()->toDateString(),
 
             "offers" => [
                 "@type" => "Offer",
