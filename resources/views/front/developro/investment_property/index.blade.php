@@ -1042,8 +1042,6 @@
 
         ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
     </script>
-@endsection
-    @section('schema')
         <script type="application/ld+json">
             {!! json_encode([
                 "@context" => "https://schema.org",
