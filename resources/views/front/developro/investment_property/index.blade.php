@@ -1020,7 +1020,7 @@
                     default => "https://schema.org/InStock"
                 },
                 "url" => url()->current(),
-                "priceValidUntil" => \Carbon\Carbon::now()->addMonths(3)->toDateString(),
+                "priceValidUntil" => date('Y-m-d', strtotime('+3 months')),
             ],
 
             "itemOffered" => [
@@ -1071,7 +1071,7 @@
                         default => "https://schema.org/InStock"
                     },
                     "url" => url()->current(),
-                    "priceValidUntil" => \Carbon\Carbon::now()->addMonths(3)->toDateString(),
+                    "priceValidUntil" => date('Y-m-d', strtotime('+3 months')),
                 ],
 
                 "additionalProperty" => [
