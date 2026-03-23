@@ -93,7 +93,9 @@
 <aside>
     <ul>
         <li><a rel="nofollow" target="_blank" class="Facebook" href="https://www.facebook.com/kalterdeweloper/"><span>Facebook</span></a></li>
-        <li><a rel="nofollow" target="_blank" class="Phone" href="tel:+48539975771"><span>Zadzwoń</span></a></li>
+        <li class="d-none d-sm-inline">
+            <a rel="nofollow" target="_blank" class="Phone" href="tel:+48539975771"><span>Zadzwoń</span></a>
+        </li>
         @if($clipboardCount)
             <li id="clipboardwidget"><a href="{{ route('clipboard.index') }}" class="Clipboard"><span>Schowek</span></a></li>
         @endif
