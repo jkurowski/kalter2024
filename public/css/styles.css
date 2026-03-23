@@ -14772,8 +14772,7 @@ ul.price-component {
     bottom: 0;
     left: 0;
     width: 100%;
-    background: #111;
-    padding: 10px;
+    background: #024282;
     display: flex;
     justify-content: center;
     transform: translateY(100%);
@@ -14792,6 +14791,9 @@ ul.price-component {
     border-radius: 8px;
     text-decoration: none;
     font-weight: bold;
+    width: 100%;
+    display: block;
+    text-align: center;
 }
 
 
