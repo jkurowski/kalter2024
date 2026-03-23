@@ -1001,10 +1001,7 @@
 
             "name" => "{$property->name} – {$investment->name}",
             "url" => url()->current(),
-            "datePosted" => $property->created_at
-            ? $property->created_at->toDateString()
-            : now()->toDateString(),
-
+            "datePosted" => date('Y-m-d', strtotime('+3 months')),
             "offers" => [
                 "@type" => "Offer",
                 "price" => (float) (
