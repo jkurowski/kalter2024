@@ -5,7 +5,14 @@
                 <form action="{{ route('developro.search.index') }}"
                     class="bg-secondary text-white rounded d-flex row-gap-0 flex-wrap flex-sm-nowrap search-form"
                     autocomplete="off">
-                    <div class="row row-gap-3 align-items-end px-30 py-3 pb-30">
+                    <div class="container-fluid d-block d-sm-none">
+                        <div class="row row-gap-3 py-3 row-button">
+                            <div class="col-12">
+                                <button type="button" id="toggleSearchform" onclick="toggleSearch()">Pokaż / ukryj wyszukiwarkę</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row row-gap-3 align-items-end px-30 py-3 pb-30 toggle-searchform row-form">
                         <div class="col-12">
                             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 row-cols-xxl-5 align-items-end">
                                 <div class="col">
@@ -99,9 +106,8 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
-                    <div class="flex-fill">
+                    <div class="flex-fill toggle-searchform">
                         <button type="submit"
                             class="btn btn-primary w-100 h-100 fs-14 text-uppercase px-sm-4 d-flex align-items-center justify-content-center flex-sm-column gap-2 gap-sm-1">
                             <svg xmlns="http://www.w3.org/2000/svg" width="21.631" height="21.636"
@@ -120,6 +126,11 @@
         </div>
     </div>
 </section>
+<script>
+    function toggleSearch() {
+        document.querySelector('.search-form').classList.toggle('open');
+    }
+</script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const citySelect = document.getElementById('city-select');

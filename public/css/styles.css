@@ -14798,6 +14798,31 @@ ul.price-component {
     gap: 11px;
 }
 
+#toggleSearchform {
+    width: 100%;
+    border: 0;
+    background: #022951;
+    border-radius: 5px;
+    padding: 10px 0;
+    color: white;
+}
+@media (max-width: 575.98px) {
+    .toggle-searchform {
+        display: none;
+    }
+    .open {
+        .toggle-searchform {
+            display: block;
+        }
+        .row-button {
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            border-radius: 5px;
+        }
+        .row-form {
+            padding-top: 0 !important;
+        }
+    }
+}
 
 /* Fonty
 ================================================== */
