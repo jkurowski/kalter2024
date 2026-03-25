@@ -35,26 +35,27 @@
         ?>
 
 
-        <?php foreach ($slider as $index => $s) : ?>
-            <?php $name = pathinfo($s->file, PATHINFO_FILENAME); ?>
+        <div data-slick='<?= json_encode($hero_slider_options) ?>' class="hero-slider">
+            <?php foreach ($slider as $index => $s) : ?>
+                <?php $name = pathinfo($s->file, PATHINFO_FILENAME); ?>
 
-        <div class="hero-slide position-relative">
-            <div class="position-absolute top-0 start-0 w-100 h-100 hero-slide-image-container">
+            <div class="hero-slide position-relative">
+                <div class="position-absolute top-0 start-0 w-100 h-100 hero-slide-image-container">
 
-                <picture>
-                    <source srcset="{{ asset('uploads/slider/webp/'.$name.'.webp') }}" type="image/webp">
+                    <picture>
+                        <source srcset="{{ asset('uploads/slider/webp/'.$name.'.webp') }}" type="image/webp">
 
-                    <img
-                        src="{{ asset('uploads/slider/'.$s->file) }}"
-                        alt=""
-                        class="hero-slide-image w-100 h-100 object-fit-cover"
-                        loading="<?= $index === 0 ? 'eager' : 'lazy' ?>"
-                        width="1920"
-                        height="792"
-                    >
-                </picture>
+                        <img
+                            src="{{ asset('uploads/slider/'.$s->file) }}"
+                            alt=""
+                            class="hero-slide-image w-100 h-100 object-fit-cover"
+                            loading="<?= $index === 0 ? 'eager' : 'lazy' ?>"
+                            width="1920"
+                            height="792"
+                        >
+                    </picture>
 
-            </div>
+                </div>
                 <div class="hero-slide-content isolation-isolate text-white text-center d-flex align-items-center">
                     <div class="col-8 offset-2 col-xxl-4  offset-xxl-4 ">
                             <?php if (!$index) : ?>
