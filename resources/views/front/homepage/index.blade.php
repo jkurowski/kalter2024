@@ -37,21 +37,19 @@
 
         <div data-slick='<?= json_encode($hero_slider_options) ?>' class="hero-slider">
             <?php foreach ($slider as $index => $s) : ?>
-                <?php $name = pathinfo($s->file, PATHINFO_FILENAME); ?>
-
             <div class="hero-slide position-relative">
                 <div class="position-absolute top-0 start-0 w-100 h-100 hero-slide-image-container">
 
+                    @php $name = pathinfo($s->file, PATHINFO_FILENAME); @endphp
+
                     <picture>
+                        <source media="(max-width: 768px)" srcset="{{ asset('uploads/slider/mobile/'.$name.'.webp') }}">
                         <source srcset="{{ asset('uploads/slider/webp/'.$name.'.webp') }}" type="image/webp">
 
                         <img
                             src="{{ asset('uploads/slider/'.$s->file) }}"
-                            alt=""
+                            loading="{{ $index === 0 ? 'eager' : 'lazy' }}"
                             class="hero-slide-image w-100 h-100 object-fit-cover"
-                            loading="<?= $index === 0 ? 'eager' : 'lazy' ?>"
-                            width="1920"
-                            height="792"
                         >
                     </picture>
 

@@ -15,10 +15,13 @@ class SliderService
     public function upload(string $title, UploadedFile $file, object $model, bool $delete = false)
     {
         if ($delete) {
+            $name = pathinfo($model->file, PATHINFO_FILENAME);
+
             File::delete(public_path('uploads/slider/' . $model->file));
             File::delete(public_path('uploads/slider/thumbs/' . $model->file));
-            File::delete(public_path('uploads/slider/webp/' . pathinfo($model->file, PATHINFO_FILENAME) . '.webp'));
-            File::delete(public_path('uploads/slider/thumbs/webp/' . pathinfo($model->file, PATHINFO_FILENAME) . '.webp'));
+
+            File::delete(public_path('uploads/slider/webp/' . $name . '.webp'));
+            File::delete(public_path('uploads/slider/mobile/' . $name . '.webp'));
         }
 
         $slug = Str::slug($title);
@@ -27,33 +30,38 @@ class SliderService
         $file->storeAs('slider', $name, 'public_uploads');
 
         $filepath = public_path('uploads/slider/' . $name);
-        $thumb_filepath = public_path('uploads/slider/thumbs/' . $name);
 
-        // 🔥 RESIZE (najpierw)
-        Image::make($filepath)
-            ->fit(
-                config('images.slider.big_width'),
-                config('images.slider.big_height')
-            )->save($filepath);
-
-        Image::make($filepath)
-            ->fit(
-                config('images.slider.thumb_width'),
-                config('images.slider.thumb_height')
-            )->save($thumb_filepath);
-
-        // 🔥 WEBP (po resize)
-        $name_webp = date('His') . '_' . $slug . '.webp';
-
-        $webp_path = public_path('uploads/slider/webp/' . $name_webp);
-        $webp_thumb_path = public_path('uploads/slider/thumbs/webp/' . $name_webp);
-
-        // upewnij się że katalogi istnieją
+        // 🔥 katalogi
         File::ensureDirectoryExists(public_path('uploads/slider/webp'));
-        File::ensureDirectoryExists(public_path('uploads/slider/thumbs/webp'));
+        File::ensureDirectoryExists(public_path('uploads/slider/mobile'));
 
-        Image::make($filepath)->encode('webp', 75)->save($webp_path);
-        Image::make($thumb_filepath)->encode('webp', 75)->save($webp_thumb_path);
+        // 🔥 DESKTOP (1400px)
+        $image = Image::make($filepath)
+            ->resize(1400, null, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            });
+
+        $image->save($filepath, 80); // fallback jpg
+
+        $image->encode('webp', 60)
+            ->save(public_path('uploads/slider/webp/' . pathinfo($name, PATHINFO_FILENAME) . '.webp'));
+
+        // 🔥 MOBILE (768px)
+        $mobile = Image::make($filepath)
+            ->resize(768, null, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            });
+
+        $mobile->encode('webp', 55)
+            ->save(public_path('uploads/slider/mobile/' . pathinfo($name, PATHINFO_FILENAME) . '.webp'));
+
+        // 🔥 THUMB (opcjonalnie)
+        $thumb = Image::make($filepath)
+            ->fit(400, 250);
+
+        $thumb->save(public_path('uploads/slider/thumbs/' . $name), 80);
 
         $model->update(['file' => $name]);
     }
