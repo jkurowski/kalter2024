@@ -4,10 +4,17 @@
             <div class="col-12 col-lg-10 col-xl-8 offset-lg-1 offset-xl-2">
                 <form action="{{ route('developro.search.index') }}"
                       method="get"
-                      class="bg-secondary text-white rounded d-flex row-gap-0 flex-wrap flex-sm-nowrap search-form"
+                      class="bg-secondary text-white rounded d-block d-sm-flex row-gap-0 flex-wrap flex-sm-nowrap search-form"
                       autocomplete="off">
+                    <div class="container-fluid d-block d-sm-none">
+                        <div class="row row-gap-3 py-3 row-button">
+                            <div class="col-12">
+                                <button type="button" id="toggleSearchform" onclick="toggleSearch()">Pokaż / ukryj wyszukiwarkę</button>
+                            </div>
+                        </div>
+                    </div>
                     <div
-                        class="row row-cols-1 row-cols-md-2 row-cols-lg-4 row-gap-3 align-items-end px-30 py-3 w-md-100 pb-md-40 pb-20">
+                        class="row row-cols-1 row-cols-md-2 row-cols-lg-4 row-gap-3 align-items-end px-30 py-3 w-md-100 pb-md-40 pb-20 toggle-searchform">
                         <p class="col-12 w-100 text-uppercase mb-0">Wyszukiwarka</p>
                         <div class="col">
                             <select name="city" id="city" class="form-select">
@@ -50,7 +57,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="flex-fill">
+                    <div class="flex-fill toggle-searchform">
                         <button type="submit"
                             class="btn btn-primary w-100 h-100 fs-14 text-uppercase px-sm-4 d-flex align-items-center justify-content-center flex-sm-column gap-2 gap-sm-1">
                             <svg xmlns="http://www.w3.org/2000/svg" width="21.631" height="21.636"
@@ -69,3 +76,8 @@
         </div>
     </div>
 </section>
+<script>
+    function toggleSearch() {
+        document.querySelector('.search-form').classList.toggle('open');
+    }
+</script>
