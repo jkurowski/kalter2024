@@ -763,11 +763,13 @@
             button.addEventListener('click', async (event) => {
                 event.preventDefault();
 
-                if (event.currentTarget.disabled) return;
-                event.currentTarget.disabled = true;
+                const btn = event.currentTarget;
+                if (!btn) return;
+                if (btn.disabled) return;
+                btn.disabled = true;
 
                 const modalHolder = document.getElementById('offerModal');
-                const dataId = event.currentTarget.dataset.id;
+                const dataId = btn.dataset.id;
                 modalHolder.innerHTML = '';
 
                 try {
@@ -779,7 +781,7 @@
                         }
                     });
 
-                    event.currentTarget.disabled = false;
+                    btn.disabled = false;
 
                     if (!response.ok) {
                         const errorText = await response.text();
@@ -791,6 +793,7 @@
                     modalHolder.innerHTML = html;
 
                     const modalElement = document.getElementById('portletModal');
+                    if (!modalElement) { btn.disabled = false; throw new Error('Brak elementu modala'); }
                     const bootstrapModal = bootstrap.Modal.getOrCreateInstance(modalElement);
                     bootstrapModal.show();
 
@@ -889,7 +892,7 @@
                     }, { once: true });
 
                 } catch (error) {
-                    event.currentTarget.disabled = false;
+                    try { btn && (btn.disabled = false); } catch (e) {}
                     alert('Wystąpił błąd podczas ładowania.');
                     console.error(error);
                 }
