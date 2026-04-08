@@ -538,19 +538,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const listLayoutBtn = document.getElementById("list-layout");
     const gridLayoutBtn = document.getElementById("grid-layout");
 
-    listLayoutBtn.addEventListener("click", () => {
-        layoutContainer.classList.remove("grid-layout");
-        layoutContainer.classList.add("list-layout");
-        listLayoutBtn.classList.add("active", "opacity-25");
-        gridLayoutBtn.classList.remove("active", "opacity-25");
-    });
+    if (layoutContainer && listLayoutBtn && gridLayoutBtn) {
+        listLayoutBtn.addEventListener("click", () => {
+            layoutContainer.classList.remove("grid-layout");
+            layoutContainer.classList.add("list-layout");
+            listLayoutBtn.classList.add("active", "opacity-25");
+            gridLayoutBtn.classList.remove("active", "opacity-25");
+        });
 
-    gridLayoutBtn.addEventListener("click", () => {
-        layoutContainer.classList.remove("list-layout");
-        layoutContainer.classList.add("grid-layout");
-        gridLayoutBtn.classList.add("active", "opacity-25");
-        listLayoutBtn.classList.remove("active", "opacity-25");
-    });
+        gridLayoutBtn.addEventListener("click", () => {
+            layoutContainer.classList.remove("list-layout");
+            layoutContainer.classList.add("grid-layout");
+            gridLayoutBtn.classList.add("active", "opacity-25");
+            listLayoutBtn.classList.remove("active", "opacity-25");
+        });
+    }
 })
 
 // Easing
