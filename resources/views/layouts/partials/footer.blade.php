@@ -103,7 +103,7 @@
 
 <script src="{{ asset('js/jquery.min.js') }}"></script>
 <script src="{{ asset('js/slick.min.js') }}" defer></script>
-<script src="{{ asset('js/bootstrap.bundle.min.js') }}" defer></script>
+<script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('js/aos.js') }}" defer></script>
 <script src="{{ asset('js/glightbox.min.js') }}" defer></script>
 <script src="{{ asset('js/main.js') }}" defer></script>
