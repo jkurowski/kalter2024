@@ -763,6 +763,9 @@
             button.addEventListener('click', async (event) => {
                 event.preventDefault();
 
+                if (event.currentTarget.disabled) return;
+                event.currentTarget.disabled = true;
+
                 const modalHolder = document.getElementById('offerModal');
                 const dataId = event.currentTarget.dataset.id;
                 modalHolder.innerHTML = '';
@@ -775,6 +778,9 @@
                             'X-Requested-With': 'XMLHttpRequest',
                         }
                     });
+
+                    event.currentTarget.disabled = false;
+
                     if (!response.ok) {
                         const errorText = await response.text();
                         console.error('Błąd z backendu:', response.status, errorText);
@@ -785,7 +791,7 @@
                     modalHolder.innerHTML = html;
 
                     const modalElement = document.getElementById('portletModal');
-                    const bootstrapModal = new bootstrap.Modal(modalElement);
+                    const bootstrapModal = bootstrap.Modal.getOrCreateInstance(modalElement);
                     bootstrapModal.show();
 
                     modalElement.addEventListener('shown.bs.modal', () => {
@@ -794,33 +800,36 @@
                             $('.selectpicker').selectpicker(); // or `.selectpicker()` if not yet initialized
                         }
 
-                        $('.selectpicker').on('changed.bs.select', function (e, clickedIndex, isSelected, previousValue) {
-                            var selectedValue = $(this).val();
-                            console.log('Selected value:', selectedValue);
-                            const url = `https://www.kalternieruchomosci.pl/pl/przynalezne/${selectedValue}/show/`;
+                        if (!modalElement.dataset.selectBound) {
+                            $('.selectpicker').on('changed.bs.select', function (e, clickedIndex, isSelected, previousValue) {
+                                var selectedValue = $(this).val();
+                                console.log('Selected value:', selectedValue);
+                                const url = `https://www.kalternieruchomosci.pl/pl/przynalezne/${selectedValue}/show/`;
 
-                            const otherHolder = document.getElementById('relatedInfo');
-                            otherHolder.innerHTML = '';
+                                const otherHolder = document.getElementById('relatedInfo');
+                                otherHolder.innerHTML = '';
 
-                            fetch(url, {
-                                headers: {
-                                    'X-Requested-With': 'XMLHttpRequest',
-                                }
-                            })
-                                .then(response => {
-                                    if (!response.ok) {
-                                        throw new Error(`Server responded with status ${response.status}`);
+                                fetch(url, {
+                                    headers: {
+                                        'X-Requested-With': 'XMLHttpRequest',
                                     }
-                                    return response.text();
                                 })
-                                .then(html => {
-                                    console.log('Received HTML:', html);
-                                    otherHolder.innerHTML = html;
-                                })
-                                .catch(error => {
-                                    console.error('Fetch error:', error);
-                                });
-                        });
+                                    .then(response => {
+                                        if (!response.ok) {
+                                            throw new Error(`Server responded with status ${response.status}`);
+                                        }
+                                        return response.text();
+                                    })
+                                    .then(html => {
+                                        console.log('Received HTML:', html);
+                                        otherHolder.innerHTML = html;
+                                    })
+                                    .catch(error => {
+                                        console.error('Fetch error:', error);
+                                    });
+                            });
+                            modalElement.dataset.selectBound = "true";
+                        }
 
                         const addBtn = modalElement.querySelector('.modal-footer .btn-primary');
                         const addedSurfaceIds = new Set();
@@ -880,7 +889,8 @@
                     }, { once: true });
 
                 } catch (error) {
-                    alert('Wystąpił błąd podczas ładowania historii.');
+                    event.currentTarget.disabled = false;
+                    alert('Wystąpił błąd podczas ładowania.');
                     console.error(error);
                 }
             });
