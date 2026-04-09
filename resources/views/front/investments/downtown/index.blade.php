@@ -27,6 +27,7 @@
 @endphp
 
 
+@section('seo_robots', 'noindex, nofollow')
 @section('meta_title', $page->title)
 @section('seo_title', $seoTitle)
 @section('seo_description', $seoDescription)
