@@ -808,7 +808,7 @@
                 </div>
             </section>
 
-            @if($images && $images->isNotEmpty())
+            @if(isset($images) && $images->isNotEmpty())
                 @include('front.investments.gallery-grid', [
                     'images' => $images
                 ])
