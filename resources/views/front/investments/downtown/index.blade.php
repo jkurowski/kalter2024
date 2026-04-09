@@ -26,8 +26,9 @@
 
 @endphp
 
-
-@section('seo_robots', 'noindex, nofollow')
+@if($investment->status == 3)
+    @section('seo_robots', 'noindex, nofollow')
+@endif
 @section('meta_title', $page->title)
 @section('seo_title', $seoTitle)
 @section('seo_description', $seoDescription)

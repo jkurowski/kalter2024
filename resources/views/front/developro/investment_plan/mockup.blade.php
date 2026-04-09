@@ -4,7 +4,9 @@
 @section('seo_title', $page->meta_title)
 @section('seo_description', $page->meta_description)
 @section('seo_robots', $page->meta_robots)
-
+@if($investment->status == 3)
+    @section('seo_robots', 'noindex, nofollow')
+@endif
 @section('content')
     <main>
         <section class="position-relative page-hero-section page-hero-section-small">
