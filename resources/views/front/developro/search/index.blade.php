@@ -40,8 +40,28 @@
     <section>
         <div class="container">
             <div class="row pb-4">
-                <div class="col-12">
+                <div class="col-6">
                     Liczba wyników: {{ $results->sum(fn($result) => $result['properties']->count()) }}
+                </div>
+                <div class="col-6 d-flex justify-content-end gap-3">
+                    @php
+                        $activeSorts = explode(',', request('sort', ''));
+                    @endphp
+                    <select name="sort_area" class="form-select form-select-sm w-auto sort-select">
+                        <option value="">Powierzchnia</option>
+                        <option value="area_asc" {{ in_array('area_asc', $activeSorts) ? 'selected' : '' }}>Rosnąco</option>
+                        <option value="area_desc" {{ in_array('area_desc', $activeSorts) ? 'selected' : '' }}>Malejąco</option>
+                    </select>
+                    <select name="sort_price" class="form-select form-select-sm w-auto sort-select">
+                        <option value="">Cena</option>
+                        <option value="price_asc" {{ in_array('price_asc', $activeSorts) ? 'selected' : '' }}>Rosnąco</option>
+                        <option value="price_desc" {{ in_array('price_desc', $activeSorts) ? 'selected' : '' }}>Malejąco</option>
+                    </select>
+                    <select name="sort_views" class="form-select form-select-sm w-auto sort-select">
+                        <option value="">Popularność</option>
+                        <option value="views_asc" {{ in_array('views_asc', $activeSorts) ? 'selected' : '' }}>Rosnąco</option>
+                        <option value="views_desc" {{ in_array('views_desc', $activeSorts) ? 'selected' : '' }}>Malejąco</option>
+                    </select>
                 </div>
             </div>
             <div class="row">
@@ -51,4 +71,22 @@
             </div>
         </div>
     </section>
+
+    <script>
+        document.querySelectorAll('.sort-select').forEach(select => {
+            select.addEventListener('change', function() {
+                const url = new URL(window.location.href);
+                const activeSorts = Array.from(document.querySelectorAll('.sort-select'))
+                    .map(s => s.value)
+                    .filter(val => val !== "");
+
+                if (activeSorts.length > 0) {
+                    url.searchParams.set('sort', activeSorts.join(','));
+                } else {
+                    url.searchParams.delete('sort');
+                }
+                window.location.href = url.toString();
+            });
+        });
+    </script>
 @endsection
