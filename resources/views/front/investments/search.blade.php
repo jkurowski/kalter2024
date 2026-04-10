@@ -70,8 +70,8 @@
 
 <section class="oferta-search search section-search">
     <div class="container">
-        <div class="row">
-            <div class="col-12 col-lg-10 offset-lg-1">
+        <div class="row justify-content-center">
+            <div class="col-12 col-xl-10">
                 <form action="{{ route('developro.search.index') }}"
                     class="bg-secondary text-white rounded d-flex row-gap-0 flex-wrap flex-sm-nowrap search-form"
                     autocomplete="off">

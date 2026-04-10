@@ -40,10 +40,10 @@
     <section>
         <div class="container">
             <div class="row pb-4">
-                <div class="col-6">
+                <div class="col-12 col-md-6 text-center text-md-start">
                     Liczba wyników: {{ $results->sum(fn($result) => $result['properties']->count()) }}
                 </div>
-                <div class="col-6 d-flex justify-content-end gap-3">
+                <div class="col-12 col-md-6 d-flex justify-content-end gap-2 gap-md-3 mt-2 mt-md-0">
                     @php
                         $activeSorts = explode(',', request('sort', ''));
                     @endphp
@@ -90,3 +90,44 @@
         });
     </script>
 @endsection
+@push('style')
+    <style>
+        .sort-select {
+            background-color: #024282;
+            color: white;
+            border-radius: 3px;
+
+            --bs-form-select-bg-img: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+
+            appearance: none;
+            background-image: var(--bs-form-select-bg-img);
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            background-size: 16px 12px;
+
+            padding: 4px 40px 4px 10px;
+        }
+        .form-select.sort-select:focus {
+            border-color: #013364;
+            background-color: #013364;
+            background-image: var(--bs-form-select-bg-img);
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            background-size: 16px 12px;
+            outline: 0;
+            box-shadow: none;
+        }
+        @media (max-width: 767.98px) {
+            .sort-select {
+                padding: 4px 28px 4px 10px;
+                width: 33.333333% !important;
+                font-size: 12px;
+            }
+        }
+        @media (max-width: 405.98px) {
+            .sort-select {
+                font-size: 9px;
+            }
+        }
+    </style>
+@endpush

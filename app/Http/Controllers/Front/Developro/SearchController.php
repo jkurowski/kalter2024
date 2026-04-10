@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front\Developro;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 //CMS
 use App\Models\Investment;
@@ -76,39 +77,45 @@ class SearchController extends Controller
             ->with(['city' => fn($query) => $query->select('cities.id as city_id', 'cities.name')])
             //->whereHas('building', fn($query) => $query->where('active', 1))
             ->when($filters['rooms'], fn($query, $rooms) => $query->where('rooms', $rooms))
-            ->when($filters['area'] || $filters['area_min'] || $filters['area_max'], function ($query) use ($filters) {
-                if ($filters['area_min'] || $filters['area_max']) {
-                    $min = (float)($filters['area_min'] ?? 0);
-                    $max = (float)($filters['area_max'] ?? 500);
-                    $query->whereBetween('area', [$min, $max]);
-                } elseif (strpos($filters['area'], '-') !== false) {
-                    [$min, $max] = explode('-', $filters['area']);
-                    $query->whereBetween('area', [(float) $min, (float) $max]);
-                } else {
-                    $query->where('area', '>=', (float) $filters['area']);
-                }
-            })
-            ->when($filters['price'] || $filters['price_min'] || $filters['price_max'], function ($query) use ($filters) {
-                if ($filters['price_min'] || $filters['price_max']) {
-                    $min = (float)($filters['price_min'] ?? 0);
-                    $max = (float)($filters['price_max'] ?? 5000000);
-                    $query->whereBetween('price_search', [$min, $max]);
-                } else {
-                    $range = explode('-', $filters['price']);
-                    if (count($range) === 2) {
-                        $query->whereBetween('price_search', [$range[0], $range[1]]);
+            ->when(
+                filled($filters['area']) || filled($filters['area_min']) || filled($filters['area_max']),
+                function ($query) use ($filters) {
+                    if ($filters['area_min'] || $filters['area_max']) {
+                        $min = (float)($filters['area_min'] ?? 0);
+                        $max = (float)($filters['area_max'] ?? 500);
+                        $query->whereBetween('area_search', [$min, $max]);
+                    } elseif (strpos($filters['area'], '-') !== false) {
+                        [$min, $max] = explode('-', $filters['area']);
+                        $query->whereBetween('area_search', [(float) $min, (float) $max]);
+                    } else {
+                        $query->where('area_search', '>=', (float) $filters['area']);
                     }
+                })
+            ->when(
+                filled($filters['price']) || filled($filters['price_min']) || filled($filters['price_max']),
+                function ($query) use ($filters) {
+
+                    $min = (int)($filters['price_min'] ?? 0);
+                    $max = (int)($filters['price_max'] ?? 5000000);
+
+                    $query->whereBetween(
+                        DB::raw('CAST(price_search AS UNSIGNED)'),
+                        [$min, $max]
+                    );
                 }
-            })
+            )
             ->when($filters['status'], fn($query, $status) => $query->where('status', $status))
             ->when($filters['kitchen'], fn($query, $kitchen) => $query->where('kitchen', $kitchen))
 
             ->when(filled($filters['garden']) && $filters['garden'] == 1, fn($query) =>
             $query->whereNotNull('garden_area')->where('garden_area', '!=', '')
             )
-            ->when(filled($filters['garden']) && $filters['garden'] == 2, fn($query) =>
-            $query->whereNull('garden_area')->orWhere('garden_area', '')
-            )
+            ->when(filled($filters['garden']) && $filters['garden'] == 2, function ($query) {
+                $query->where(function ($q) {
+                    $q->whereNull('garden_area')
+                        ->orWhere('garden_area', '');
+                });
+            })
 
             ->when($filters['type'], fn($query, $type) => $query->where('type', $type))
             ->when($filters['sort'], function ($query, $sort) {
@@ -116,16 +123,16 @@ class SearchController extends Controller
                 foreach ($sorts as $s) {
                     switch ($s) {
                         case 'area_asc':
-                            $query->orderBy('area', 'asc');
+                            $query->orderBy('area_search', 'asc');
                             break;
                         case 'area_desc':
-                            $query->orderBy('area', 'desc');
+                            $query->orderBy('area_search', 'desc');
                             break;
                         case 'price_asc':
-                            $query->orderBy('price_brutto', 'asc');
+                            $query->orderByRaw('CAST(price_brutto AS UNSIGNED) ASC');
                             break;
                         case 'price_desc':
-                            $query->orderBy('price_brutto', 'desc');
+                            $query->orderByRaw('CAST(price_brutto AS UNSIGNED) DESC');
                             break;
                         case 'views_asc':
                             $query->orderBy('views', 'asc');
