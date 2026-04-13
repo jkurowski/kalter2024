@@ -19,7 +19,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row row-cols-1 row-cols-md-2 @if(!isset($is_floor)) row-cols-lg-4 @else  row-cols-lg-3 @endif row-gap-3 align-items-end px-30 py-3 w-md-100 pb-md-40 pb-20 toggle-searchform">
+                                <div class="row row-gap-3 align-items-end px-30 py-3 w-md-100 pb-md-40 pb-20 toggle-searchform">
                                     <p class="col-12 w-100 text-uppercase mb-0 d-none">Wyszukiwarka</p>
                                     @if($investment->room_range)
                                         @php $rooms = explode(',', $investment->room_range) @endphp
@@ -29,15 +29,6 @@
                                                 @foreach($rooms as $room)
                                                     <option value="{{ $room }}" @if(request()->input('rooms') == $room) selected @endif>{{ $room }}</option>
                                                 @endforeach
-                                            </select>
-                                        </div>
-                                    @endif
-
-                                    @if($investment->area_range)
-                                        <div class="col">
-                                            <select name="area" id="area" class="form-select">
-                                                <option value="">Powierzchnia</option>
-                                                {!! area2Select($investment->area_range) !!}
                                             </select>
                                         </div>
                                     @endif
@@ -59,6 +50,27 @@
                                             <option value="3" @if(request()->input('status') == 3) selected @endif>Sprzedane</option>
                                         </select>
                                     </div>
+
+                                    @if($investment->area_range)
+                                        @php
+                                            preg_match_all('/\d+/', $investment->area_range, $numbers);
+                                            $min = (int)($numbers[0][0] ?? 0);
+                                            $max = (int)(collect($numbers[0])->last() ?? 0);
+                                        @endphp
+
+                                        <div class="col-12 d-block d-sm-flex slider-col">
+                                            <label class="slider-label">Powierzchnia<small><span id="area-val"></span> m²</small></label>
+                                            <div class="slider-container" id="area-slider-container">
+                                                <div class="slider-track"></div>
+                                                <div class="slider-range" id="area-slider-range"></div>
+                                                <input type="range" class="slider-input" id="area-min-input" min="{{ $min }}" max="{{ $max }}" value="{{ request('area_min', $min) }}">
+                                                <input type="range" class="slider-input" id="area-max-input" min="{{ $min }}" max="{{ $max }}" value="{{ request('area_max', $max) }}">
+                                            </div>
+                                            <input type="hidden" name="area_min" id="area_min" value="{{ request('area_min', $min) }}">
+                                            <input type="hidden" name="area_max" id="area_max" value="{{ request('area_max', $max) }}">
+                                        </div>
+                                    @endif
+
                                 </div>
                                 <div class="flex-fill toggle-searchform">
                                     <button type="submit" class="btn btn-primary w-100 h-100 fs-14 text-uppercase px-sm-4 d-flex align-items-center justify-content-center flex-sm-column gap-2 gap-sm-1">
@@ -80,3 +92,121 @@
         document.querySelector('.search-form').classList.toggle('open');
     }
 </script>
+@push('style')
+    <style>
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 35px;
+            padding-top: 15px;
+        }
+        .slider-track {
+            position: absolute;
+            width: 100%;
+            height: 5px;
+            background: #ddd;
+            border-radius: 5px;
+            top: 20px;
+        }
+        .slider-range {
+            position: absolute;
+            height: 5px;
+            background: #007bff;
+            border-radius: 5px;
+            top: 20px;
+        }
+        .slider-input {
+            position: absolute;
+            width: 100%;
+            background: none;
+            pointer-events: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            top: 15px;
+            margin: 0;
+            height: 15px;
+        }
+        .slider-input::-webkit-slider-thumb {
+            height: 18px;
+            width: 18px;
+            border-radius: 50%;
+            background: #fff;
+            border: 2px solid #007bff;
+            cursor: pointer;
+            pointer-events: auto;
+            -webkit-appearance: none;
+        }
+        .slider-input::-moz-range-thumb {
+            height: 18px;
+            width: 18px;
+            border-radius: 50%;
+            background: #fff;
+            border: 2px solid #007bff;
+            cursor: pointer;
+            pointer-events: auto;
+            -moz-appearance: none;
+        }
+        .slider-label { font-size: 1rem; margin-bottom: 5px; display: block; width: 170px;line-height: normal}
+        .slider-label small {display: block}
+        .slider-col {
+            padding-top: 1.225rem;
+        }
+        @media (max-width: 575.98px) {
+            .slider-label {
+                font-size: 1rem;
+                margin-bottom: 0;
+                display: block;
+                width: 100%;
+            }
+        }
+    </style>
+@endpush
+
+@push('scripts')
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            function initDualSlider(containerId, minInputId, maxInputId, minHiddenId, maxHiddenId, rangeId, valId, isPrice = false) {
+                const minInput = document.getElementById(minInputId);
+                const maxInput = document.getElementById(maxInputId);
+                const minHidden = document.getElementById(minHiddenId);
+                const maxHidden = document.getElementById(maxHiddenId);
+                const range = document.getElementById(rangeId);
+                const valSpan = document.getElementById(valId);
+                const minVal = parseInt(minInput.min);
+                const maxVal = parseInt(maxInput.max);
+
+                function updateSlider() {
+                    let v1 = parseInt(minInput.value);
+                    let v2 = parseInt(maxInput.value);
+
+                    if (v1 > v2) {
+                        let tmp = v1;
+                        v1 = v2;
+                        v2 = tmp;
+                    }
+
+                    minHidden.value = v1;
+                    maxHidden.value = v2;
+
+                    const percent1 = ((v1 - minVal) / (maxVal - minVal)) * 100;
+                    const percent2 = ((v2 - minVal) / (maxVal - minVal)) * 100;
+
+                    range.style.left = percent1 + "%";
+                    range.style.width = (percent2 - percent1) + "%";
+
+                    if (isPrice) {
+                        valSpan.innerText = v1.toLocaleString() + " - " + v2.toLocaleString();
+                    } else {
+                        valSpan.innerText = v1 + " - " + v2;
+                    }
+                }
+
+                minInput.addEventListener("input", updateSlider);
+                maxInput.addEventListener("input", updateSlider);
+                updateSlider();
+            }
+
+            initDualSlider("area-slider-container", "area-min-input", "area-max-input", "area_min", "area_max", "area-slider-range", "area-val");
+        });
+    </script>
+@endpush
