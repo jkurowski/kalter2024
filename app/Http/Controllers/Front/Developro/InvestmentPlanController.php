@@ -103,12 +103,25 @@ class InvestmentPlanController extends Controller
                         $query->where('status', 1);
                     }
 
-                    if ($request->input('area')) {
-                        $area_param = explode('-', $request->input('area'));
-                        $min = $area_param[0];
-                        $max = $area_param[1];
-                        $query->whereBetween('area', [$min, $max]);
+                    if ($request->filled('area_min') || $request->filled('area_max') || $request->filled('area')) {
+
+                        if ($request->filled('area_min') || $request->filled('area_max')) {
+                            $min = (float) $request->input('area_min', 0);
+                            $max = (float) $request->input('area_max', 500);
+
+                            $query->whereBetween('area_search', [$min, $max]);
+
+                        } elseif (str_contains($request->input('area'), '-')) {
+                            [$min, $max] = explode('-', $request->input('area'));
+
+                            $query->whereBetween('area_search', [(float)$min, (float)$max]);
+
+                        } else {
+                            $query->where('area_search', '>=', (float)$request->input('area'));
+                        }
                     }
+
+
                     if ($request->input('sort')) {
                         $order_param = explode(':', $request->input('sort'));
                         $column = $order_param[0];
