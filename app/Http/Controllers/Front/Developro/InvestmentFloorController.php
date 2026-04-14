@@ -29,6 +29,10 @@ class InvestmentFloorController extends Controller
         // 🔥 wspólne sortowanie
         $applySorting = function ($query) use ($request) {
             if ($request->filled('sort')) {
+
+                // 🔥 usuń wszystkie wcześniejsze ORDER BY
+                $query->getQuery()->orders = null;
+
                 $sorts = explode(',', $request->input('sort'));
 
                 foreach ($sorts as $s) {
