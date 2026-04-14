@@ -37,7 +37,7 @@
         </div>
     </section>
 
-    <section class="pt-50 pb-5">
+    <section id="incoming" class="pt-50 pb-5">
         <div class="container">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 row-gap-4 justify-content-center">
                 @foreach ($investments as $p)

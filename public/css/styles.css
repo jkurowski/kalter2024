@@ -13142,6 +13142,13 @@ input[name="lang"]:checked + label > img {
     aspect-ratio: 2/3;
     width: 100%;
 }
+
+#incoming .invest-card {
+    padding: 20px 10px 24px 12px;
+    min-height: max(350px, 510px);
+    max-height: 510px;
+}
+
 .invest-card-logo {
     width: 90px;
     min-width: 90px;
