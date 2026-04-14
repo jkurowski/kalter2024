@@ -8,7 +8,7 @@
                         <span class="mb-0 lh-1 d-block">{{ $p->investment->name }}</span>
                     </div>
                 </div>
-                <div class="col-4 d-flex align-items-center property-list-item-col-2">
+                <div class="@if($p->investment->status != 3) col-4 @else col-8 @endif d-flex align-items-center property-list-item-col-2">
                     <div class="row w-100">
                         <div class="col-12">
                             <div class="row">
@@ -32,8 +32,9 @@
                         </div>
                     </div>
                 </div>
+                @if($p->investment->status != 3)
                 <div class="col-2 property-list-item-col-3 d-flex align-items-center">
-                    @if($p->investment->status != 3)
+
                     <div>
                         @if($p->price_brutto && $p->status == 1 && !$p->highlighted)
                             <p class="h3 lh-1 mb-0">@money($p->price_brutto)</p>
@@ -48,10 +49,12 @@
                             <span class="d-block small promo-price">&nbsp;</span>
                         @endif
                     </div>
-                    @endif
+
                 </div>
+                @endif
+                @if($p->investment->status != 3)
                 <div class="col-2 d-flex align-items-center property-list-item-status property-list-item-col-4">
-                    @if($p->investment->status != 3)
+
                     <div class="w-100 text-center">
                         @if($p->status == 1 && $p->highlighted)
                             <p class="text-highlighted text-uppercase fw-bold fs-5 mb-0 lh-1">Promocja</p>
@@ -66,8 +69,9 @@
                             <p class="text-danger text-uppercase fw-bold fs-5 mb-0 lh-1">Sprzedany</p>
                         @endif
                     </div>
-                    @endif
+
                 </div>
+                @endif
                 <div class="col-2 d-flex align-items-center property-list-item-col-5">
                     @if(Route::currentRouteName() === 'clipboard.index')
                         <button id="addToFav" class="btn btn-primary btn-with-icon text-nowrap pe-3 ps-3" data-id="{{$p->id}}">USUŃ</button>
