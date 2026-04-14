@@ -510,7 +510,11 @@
         </section>
 
         <div id="kontakt">
-            @include('layouts.partials.cta', ['pageTitle' => $investment->name.' - '.$property->name, 'propertyId' => $property->id, 'investmentName' => $investment->name, 'investmentId' => $investment->id, 'back' => true, 'sectionTitle' => $property->name, 'sectionSubTitle' => 'Wyślij zapytanie', 'investmentText' => $investment->contact_content])
+            @if($investment->status != 3)
+                @include('layouts.partials.cta', ['pageTitle' => $investment->name.' - '.$property->name, 'propertyId' => $property->id, 'investmentName' => $investment->name, 'investmentId' => $investment->id, 'back' => true, 'sectionTitle' => $property->name, 'sectionSubTitle' => 'Wyślij zapytanie', 'investmentText' => $investment->contact_content])
+            @else
+                @include('layouts.partials.cta', ['pageTitle' => $investment->name.' - '.$property->name, 'propertyId' => $property->id, 'investmentName' => $investment->name, 'investmentId' => $investment->id, 'back' => true, 'sectionTitle' => $property->name, 'sectionSubTitle' => 'Zapisz się na listę zainteresowanych', 'investmentText' => $investment->contact_content])
+            @endif
         </div>
 
         @if($property->text)
@@ -664,6 +668,9 @@
                                         @endif
                                         </tbody>
                                     </table>
+                                    @if($investment->status == 3)
+                                        <h5 class="mt-2" style="color:#c6a76c">Inwestycja planowana</h5>
+                                    @endif
                                 </div>
                                 <div class="position-relatieve z-2">
                                     @if($investment->type == 1)
