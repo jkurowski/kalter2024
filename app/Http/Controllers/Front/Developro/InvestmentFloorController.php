@@ -26,19 +26,59 @@ class InvestmentFloorController extends Controller
     {
         $investment = Investment::findBySlug($slug);
 
-        $investment_room = $investment->load(array(
-            'floorRooms' => function ($query) use ($floor, $request) {
+        // 🔥 wspólne sortowanie
+        $applySorting = function ($query) use ($request) {
+            if ($request->filled('sort')) {
+                $sorts = explode(',', $request->input('sort'));
+
+                foreach ($sorts as $s) {
+                    switch ($s) {
+                        case 'area_asc':
+                            $query->orderBy('area_search', 'asc');
+                            break;
+
+                        case 'area_desc':
+                            $query->orderBy('area_search', 'desc');
+                            break;
+
+                        case 'price_asc':
+                            $query->orderByRaw('CAST(price_brutto AS UNSIGNED) ASC');
+                            break;
+
+                        case 'price_desc':
+                            $query->orderByRaw('CAST(price_brutto AS UNSIGNED) DESC');
+                            break;
+
+                        case 'views_asc':
+                            $query->orderBy('views', 'asc');
+                            break;
+
+                        case 'views_desc':
+                            $query->orderBy('views', 'desc');
+                            break;
+                    }
+                }
+            }
+        };
+
+        $investment_room = $investment->load([
+            'floorRooms' => function ($query) use ($floor, $request, $applySorting) {
+
                 $query->where('floor_id', $floor->id);
 
+                // 🔥 custom order
                 $customOrder = [1, 3, 2, 4, 5, 6];
                 $orderList = implode(',', $customOrder);
                 $query->orderByRaw("FIELD(properties.type, $orderList)");
+
+                // 🔥 default order
                 $query->orderBy('properties.highlighted', 'DESC');
                 $query->orderBy('properties.number_order', 'ASC');
 
                 if ($request->input('rooms')) {
                     $query->where('rooms', $request->input('rooms'));
                 }
+
                 if ($request->input('status')) {
                     $query->where('status', $request->input('status'));
                 }
@@ -61,18 +101,14 @@ class InvestmentFloorController extends Controller
                     }
                 }
 
-
-                if ($request->input('sort')) {
-                    $order_param = explode(':', $request->input('sort'));
-                    $column = $order_param[0];
-                    $direction = $order_param[1];
-                    $query->orderBy($column, $direction);
-                }
+                // 🔥 sort z request
+                $applySorting($query);
             },
+
             'floor' => function ($query) use ($floor) {
                 $query->where('id', $floor->id);
             }
-        ));
+        ]);
 
         $page = Page::where('id', $this->pageId)->first();
         $next_floor = $floor->findNext($investment->id, $floor->position, null);

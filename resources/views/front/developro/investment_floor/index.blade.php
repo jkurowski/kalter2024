@@ -158,7 +158,27 @@
         <section id="properties" class="pt-0">
             <div class="container">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-12 col-md-6 d-flex justify-content-start align-items-center gap-2 gap-md-3 mt-2 mt-md-0">
+                        @php
+                            $activeSorts = explode(',', request('sort', ''));
+                        @endphp
+                        <select name="sort_area" class="form-select form-select-sm w-auto sort-select">
+                            <option value="">Powierzchnia</option>
+                            <option value="area_asc" {{ in_array('area_asc', $activeSorts) ? 'selected' : '' }}>Powierzchnia ↑</option>
+                            <option value="area_desc" {{ in_array('area_desc', $activeSorts) ? 'selected' : '' }}>Powierzchnia ↓</option>
+                        </select>
+                        <select name="sort_price" class="form-select form-select-sm w-auto sort-select">
+                            <option value="">Cena</option>
+                            <option value="price_asc" {{ in_array('price_asc', $activeSorts) ? 'selected' : '' }}>Cena ↑</option>
+                            <option value="price_desc" {{ in_array('price_desc', $activeSorts) ? 'selected' : '' }}>Cena ↓</option>
+                        </select>
+                        <select name="sort_views" class="form-select form-select-sm w-auto sort-select">
+                            <option value="">Popularność</option>
+                            <option value="views_asc" {{ in_array('views_asc', $activeSorts) ? 'selected' : '' }}>Popularność ↑</option>
+                            <option value="views_desc" {{ in_array('views_desc', $activeSorts) ? 'selected' : '' }}>Popularność ↓</option>
+                        </select>
+                    </div>
+                    <div class="col-6 d-none d-md-block">
                         <ul class="nav justify-content-end" role="tablist">
                             <li class="nav-item layout-switcher" role="presentation">
                                 <button class="nav-link" id="list-layout" type="button" aria-selected="true">
@@ -236,4 +256,21 @@
     <script src="{{ asset('/js/plan/imagemapster.js') }}" charset="utf-8"></script>
     <script src="{{ asset('/js/plan/tip.js') }}" charset="utf-8"></script>
     <script src="{{ asset('/js/plan/floor.js') }}" charset="utf-8"></script>
+    <script>
+        document.querySelectorAll('.sort-select').forEach(select => {
+            select.addEventListener('change', function() {
+                const url = new URL(window.location.href);
+                const activeSorts = Array.from(document.querySelectorAll('.sort-select'))
+                    .map(s => s.value)
+                    .filter(val => val !== "");
+
+                if (activeSorts.length > 0) {
+                    url.searchParams.set('sort', activeSorts.join(','));
+                } else {
+                    url.searchParams.delete('sort');
+                }
+                window.location.href = url.toString();
+            });
+        });
+    </script>
 @endpush

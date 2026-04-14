@@ -27,12 +27,51 @@ class InvestmentPlanController extends Controller
     {
         $investment = Investment::findBySlug($slug);
 
-        if($investment->type == 1){
-            $investment_room = $investment->load(array(
-                'buildingRooms' => function ($query) use ($request) {
+        // 🔥 wspólna funkcja sortowania
+        $applySorting = function ($query) use ($request) {
+            if ($request->filled('sort')) {
+                $sorts = explode(',', $request->input('sort'));
+
+                foreach ($sorts as $s) {
+                    switch ($s) {
+                        case 'area_asc':
+                            $query->orderBy('area_search', 'asc');
+                            break;
+
+                        case 'area_desc':
+                            $query->orderBy('area_search', 'desc');
+                            break;
+
+                        case 'price_asc':
+                            $query->orderByRaw('CAST(price_brutto AS UNSIGNED) ASC');
+                            break;
+
+                        case 'price_desc':
+                            $query->orderByRaw('CAST(price_brutto AS UNSIGNED) DESC');
+                            break;
+
+                        case 'views_asc':
+                            $query->orderBy('views', 'asc');
+                            break;
+
+                        case 'views_desc':
+                            $query->orderBy('views', 'desc');
+                            break;
+                    }
+                }
+            }
+        };
+
+        // =========================
+        // TYPE 1 – wiele budynków
+        // =========================
+        if ($investment->type == 1) {
+
+            $investment_room = $investment->load([
+                'buildingRooms' => function ($query) use ($request, $applySorting) {
+
                     $query->orderBy('properties.highlighted', 'DESC');
                     $query->orderBy('properties.number_order', 'ASC');
-
 
                     if ($request->input('rooms')) {
                         $query->where('rooms', $request->input('rooms'));
@@ -64,26 +103,24 @@ class InvestmentPlanController extends Controller
                         }
                     }
 
-                    if ($request->input('sort')) {
-                        $order_param = explode(':', $request->input('sort'));
-                        $column = $order_param[0];
-                        $direction = $order_param[1];
-                        $query->orderBy($column, $direction);
-                    }
+                    $applySorting($query);
+
                     $query->where('type', 1);
                 },
                 'plan'
-            ));
+            ]);
 
             $properties = $investment_room->buildingRooms;
         }
 
-        /**
-         * Inwestycja z jednym budynkiem
-         */
+        // =========================
+        // TYPE 2 – jeden budynek
+        // =========================
         if ($investment->type == 2) {
-            $investment_room = $investment->load(array(
-                'floorRooms' => function ($query) use ($request, $investment) {
+
+            $investment_room = $investment->load([
+                'floorRooms' => function ($query) use ($request, $investment, $applySorting) {
+
                     $query->orderBy('properties.highlighted', 'DESC');
                     $query->orderBy('properties.number_order', 'ASC');
 
@@ -121,41 +158,34 @@ class InvestmentPlanController extends Controller
                         }
                     }
 
-
-                    if ($request->input('sort')) {
-                        $order_param = explode(':', $request->input('sort'));
-                        $column = $order_param[0];
-                        $direction = $order_param[1];
-                        $query->orderBy($column, $direction);
-                    }
+                    $applySorting($query);
 
                     $query->where('properties.type', 1);
                 }
-            ));
+            ]);
 
             $properties = $investment_room->floorRooms;
         }
 
-        /**
-         * Inwestycja z domami
-         */
+        // =========================
+        // TYPE 3 – domy
+        // =========================
         if ($investment->type == 3) {
-            $investment_room = $investment->load(array(
-                'properties' => function ($query) use ($request) {
+
+            $investment_room = $investment->load([
+                'properties' => function ($query) use ($request, $applySorting) {
+
                     if ($request->input('rooms')) {
                         $query->where('rooms', $request->input('rooms'));
                     }
+
                     if ($request->input('status')) {
                         $query->where('status', $request->input('status'));
                     }
-                    if ($request->input('sort')) {
-                        $order_param = explode(':', $request->input('sort'));
-                        $column = $order_param[0];
-                        $direction = $order_param[1];
-                        $query->orderBy($column, $direction);
-                    }
+
+                    $applySorting($query);
                 }
-            ));
+            ]);
 
             $properties = $investment_room->properties;
         }
