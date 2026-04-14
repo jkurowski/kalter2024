@@ -177,79 +177,95 @@
                 <div class="row row-gap-30">
                     <div class="col-12 col-md-6 col-lg-5">
                         <div class="text-secondary">
-                            @if($property->highlighted && $property->promotion_price && $property->price_brutto && $property->status == 1)
-                                <div class="promo-info">PROMOCJA</div>
+                            @if($investment->status != 3)
+                                @if($property->highlighted && $property->promotion_price && $property->price_brutto && $property->status == 1)
+                                    <div class="promo-info">PROMOCJA</div>
+                                @endif
                             @endif
+
                             <h2 class="mb-0">{{$property->name}}</h2>
                             <p class="text-uppercase fw-900 fs-15 ff-secondary mb-0 lh-1">{{$investment->name}}</p>
-                            <p class="mb-20"><small>{{ investmentAdvanced($investment->progress) }}</small></p>
 
-                            <?php if ($property->status == 3) : ?>
-                            <p class="text-danger text-uppercase fw-bold fs-5">Sprzedany</p>
-                            <?php elseif ($property->status == 1) : ?>
-                            <p class="text-success text-uppercase fw-bold fs-5">Dostępny</p>
-                            <?php else : ?>
-                            <p class="text-warning text-uppercase fw-bold fs-5">Rezerwacja</p>
-                            <?php endif; ?>
+                            @if($investment->status != 3)
+                                <p class="mb-20"><small>{{ investmentAdvanced($investment->progress) }}</small></p>
 
-{{--                            @if($investment->show_prices)--}}
+                                <?php if ($property->status == 3) : ?>
+                                <p class="text-danger text-uppercase fw-bold fs-5">Sprzedany</p>
+                                <?php elseif ($property->status == 1) : ?>
+                                <p class="text-success text-uppercase fw-bold fs-5">Dostępny</p>
+                                <?php else : ?>
+                                <p class="text-warning text-uppercase fw-bold fs-5">Rezerwacja</p>
+                                <?php endif; ?>
+
+    {{--                            @if($investment->show_prices)--}}
+                                    <p class="h4 mb-1 ff-secondary row">
+                                        <span class="col-12">
+                                            @if($property->price_brutto && $property->status == 1 && !$property->highlighted)
+                                                <span class="fs-2 d-block">@money($property->price_brutto)</span>
+                                                <span class="fs-14 d-block">@money(($property->price_brutto / $property->area)) / m<sup>2</sup></span>
+                                            @endif
+                                        </span>
+                                    </p>
+                                    @if($property->highlighted && $property->promotion_price && $property->price_brutto && $property->status == 1)
+                                        <p class="h4 mb-1 ff-secondary row">
+                                            <span class="col-6">
+                                                <span class="fs-2 d-block">@money($property->promotion_price)</span>
+                                                <span class="fs-14 d-block">@money(($property->promotion_price / $property->area)) / m<sup>2</sup></span>
+                                            </span>
+                                            <span class="col-6 text-end pt-2">
+                                                @if($property->price_brutto)
+                                                    <span class="text-body-emphasis opacity-50 fs-24 align-middle text-decoration-line-through d-block">@money($property->price_brutto)</span>
+                                                    <span class="text-body-emphasis d-block opacity-50 fs-14 align-middle text-decoration-line-through">@money($property->price_brutto / $property->area) / m<sup>2</sup></span>
+                                                @endif
+                                            </span>
+
+                                            @php
+                                                $rabat = $property->price_brutto - $property->promotion_price;
+                                            @endphp
+                                            @if($property->price_brutto <> $property->promotion_price)
+                                                <span class="rabat h4 d-block w-100">Rabat: @money($rabat)</span>
+                                            @endif
+                                        </p>
+                                        @if($property->promotion_end_date && $property->status == 1)
+                                        <span class="fs-15 text-black mb-0">Promocja ważna do: {{ $property->promotion_end_date }}</span>
+                                        @endif
+                                    @endif
+                                @auth
+                                    @if($property->highlighted)
+                                        @if($property->has_price_history)
+                                            @php
+                                                $lowest_price = $property->lowestPriceLast30Days();
+                                            @endphp
+                                            @if($lowest_price > 0)
+                                                <p class="fs-10 text-black mb-0">Najniższa cena z 30 dni przed obniżką: @money($lowest_price)</p>
+                                            @endif
+                                        @else
+                                            <p class="fs-10 text-black mb-0">Najniższa cena z 30 dni przed obniżką @money($property->price_30)</p>
+                                        @endif
+                                    @endif
+                                @endauth
+    {{--                            @endif--}}
+
+
+                                    @if($property->has_price_history)
+                                        <a href="#" class="btn btn-primary btn-with-icon px-3 min-w-max-content flex-fill d-inline-flex align-items-center justify-content-center gap-1 btn-history mt-3" data-id="{{ $property->id }}">Pokaż historię ceny</a>
+                                        <div id="modalHistory"></div>
+                                    @else
+                                        @if($property->status == 1)
+                                        <p>Cena nie zmieniła się od: 11.09.2025</p>
+                                        @endif
+                                    @endif
+                            @else
                                 <p class="h4 mb-1 ff-secondary row">
                                     <span class="col-12">
-                                        @if($property->price_brutto && $property->status == 1 && !$property->highlighted)
-                                            <span class="fs-2 d-block">@money($property->price_brutto)</span>
+                                        @if($property->price_brutto && $property->area)
+                                            <span class="fs-2 d-block">Szacowane ceny od:</span>
                                             <span class="fs-14 d-block">@money(($property->price_brutto / $property->area)) / m<sup>2</sup></span>
                                         @endif
                                     </span>
                                 </p>
-                                @if($property->highlighted && $property->promotion_price && $property->price_brutto && $property->status == 1)
-                                    <p class="h4 mb-1 ff-secondary row">
-                                        <span class="col-6">
-                                            <span class="fs-2 d-block">@money($property->promotion_price)</span>
-                                            <span class="fs-14 d-block">@money(($property->promotion_price / $property->area)) / m<sup>2</sup></span>
-                                        </span>
-                                        <span class="col-6 text-end pt-2">
-                                            @if($property->price_brutto)
-                                                <span class="text-body-emphasis opacity-50 fs-24 align-middle text-decoration-line-through d-block">@money($property->price_brutto)</span>
-                                                <span class="text-body-emphasis d-block opacity-50 fs-14 align-middle text-decoration-line-through">@money($property->price_brutto / $property->area) / m<sup>2</sup></span>
-                                            @endif
-                                        </span>
+                            @endif
 
-                                        @php
-                                            $rabat = $property->price_brutto - $property->promotion_price;
-                                        @endphp
-                                        @if($property->price_brutto <> $property->promotion_price)
-                                            <span class="rabat h4 d-block w-100">Rabat: @money($rabat)</span>
-                                        @endif
-                                    </p>
-                                    @if($property->promotion_end_date && $property->status == 1)
-                                    <span class="fs-15 text-black mb-0">Promocja ważna do: {{ $property->promotion_end_date }}</span>
-                                    @endif
-                                @endif
-                            @auth
-                                @if($property->highlighted)
-                                    @if($property->has_price_history)
-                                        @php
-                                            $lowest_price = $property->lowestPriceLast30Days();
-                                        @endphp
-                                        @if($lowest_price > 0)
-                                            <p class="fs-10 text-black mb-0">Najniższa cena z 30 dni przed obniżką: @money($lowest_price)</p>
-                                        @endif
-                                    @else
-                                        <p class="fs-10 text-black mb-0">Najniższa cena z 30 dni przed obniżką @money($property->price_30)</p>
-                                    @endif
-                                @endif
-                            @endauth
-{{--                            @endif--}}
-
-
-                                @if($property->has_price_history)
-                                    <a href="#" class="btn btn-primary btn-with-icon px-3 min-w-max-content flex-fill d-inline-flex align-items-center justify-content-center gap-1 btn-history mt-3" data-id="{{ $property->id }}">Pokaż historię ceny</a>
-                                    <div id="modalHistory"></div>
-                                @else
-                                    @if($property->status == 1)
-                                    <p>Cena nie zmieniła się od: 11.09.2025</p>
-                                    @endif
-                                @endif
                             <div class="mb-50 mt-4">
                                 <table class="text-sm-down-small w-100">
                                     <tbody>
@@ -304,6 +320,8 @@
                                     </tbody>
                                 </table>
                             </div>
+
+                            @if($investment->status != 3)
                                 @if ($property->status == 1 && $property->type == 1)
                                     <div class="property-related">
 
@@ -376,7 +394,7 @@
                                 @endif
                                 <div class="mb-3"></div>
 
-                            @if($property->priceComponents && $property->status == 1)
+                                @if($property->priceComponents && $property->status == 1)
                                 <div class="row">
                                     <div class="col-12">
                                         <p>Dodatkowe koszty i opcje:</p>
@@ -402,10 +420,18 @@
                                     </div>
                                 </div>
                             @endif
+
+                            @endif
+
                             <div class="mb-3"></div>
                             <div class="d-flex flex-wrap gap-2">
+                                @if($investment->status != 3)
                                 <a href="#kontakt" class="btn btn-primary btn-with-icon px-3 min-w-max-content flex-fill d-inline-flex align-items-center justify-content-center gap-1">Zapytaj o ofertę <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062"><path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor" /></svg>
                                 </a>
+                                @else
+                                    <a href="#kontakt" class="btn btn-primary btn-with-icon px-3 min-w-max-content flex-fill d-inline-flex align-items-center justify-content-center gap-1">Zapytaj o przewidywaną cenę <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062"><path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor" /></svg>
+                                    </a>
+                                @endif
 
                                 @if($property->file_pdf)
                                     <a href="{{ asset('/investment/property/pdf/'.$property->file_pdf) }}" class="btn btn-primary btn-with-icon d-inline-flex align-items-center gap-1 justify-content-center px-3 min-w-max-content flex-fill" target="_blank">
@@ -423,8 +449,9 @@
                                     {!! $property->walk_3d !!}
                                 @endif
 
+                                @if($investment->status != 3)
                                 <button id="addToFav" class="btn btn-primary btn-with-icon px-3 min-w-max-content flex-fill d-inline-flex align-items-center justify-content-center gap-1" data-id="{{$property->id}}">Dodaj do schowka <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062"><path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor" /></svg></button>
-
+                                @endif
                                 <!--
                                 <a href="/kontakt.php" class="btn btn-primary btn-with-icon d-inline-flex align-items-center gap-1 justify-content-center px-3 min-w-max-content flex-fill">
                                 -->
