@@ -32,7 +32,7 @@ class InvestmentPlanController extends Controller
             if ($request->filled('sort')) {
 
                 // 🔥 usuń wszystkie wcześniejsze ORDER BY
-                $query->getQuery()->orders = null;
+                $query->reorder();
 
                 $sorts = explode(',', $request->input('sort'));
 
