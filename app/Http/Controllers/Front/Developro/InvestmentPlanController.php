@@ -23,6 +23,186 @@ class InvestmentPlanController extends Controller
         $this->pageId = 8;
     }
 
+    public function index($lang, Request $request, $slug)
+    {
+        $investment = Investment::findBySlug($slug);
+
+        // 🔥 wspólna funkcja sortowania
+        $applySorting = function ($query) use ($request) {
+            if ($request->filled('sort')) {
+
+                // 🔥 usuń wszystkie wcześniejsze ORDER BY
+                $query->getQuery()->orders = null;
+
+                $sorts = explode(',', $request->input('sort'));
+
+                foreach ($sorts as $s) {
+                    switch ($s) {
+                        case 'area_asc':
+                            $query->orderBy('area_search', 'asc');
+                            break;
+
+                        case 'area_desc':
+                            $query->orderBy('area_search', 'desc');
+                            break;
+
+                        case 'price_asc':
+                            $query->orderByRaw('CAST(price_brutto AS UNSIGNED) ASC');
+                            break;
+
+                        case 'price_desc':
+                            $query->orderByRaw('CAST(price_brutto AS UNSIGNED) DESC');
+                            break;
+
+                        case 'views_asc':
+                            $query->orderBy('views', 'asc');
+                            break;
+
+                        case 'views_desc':
+                            $query->orderBy('views', 'desc');
+                            break;
+                    }
+                }
+            }
+        };
+
+        // =========================
+        // TYPE 1 – wiele budynków
+        // =========================
+        if ($investment->type == 1) {
+
+            $investment_room = $investment->load([
+                'buildingRooms' => function ($query) use ($request, $applySorting) {
+
+                    $query->orderBy('properties.highlighted', 'DESC');
+                    $query->orderBy('properties.number_order', 'ASC');
+
+                    if ($request->input('rooms')) {
+                        $query->where('rooms', $request->input('rooms'));
+                    }
+
+                    if ($request->input('status')) {
+                        $query->where('status', $request->input('status'));
+                    }
+
+                    if ($request->input('floor')) {
+                        $query->where('floor_id', $request->input('floor'));
+                    }
+
+                    if ($request->filled('area_min') || $request->filled('area_max') || $request->filled('area')) {
+
+                        if ($request->filled('area_min') || $request->filled('area_max')) {
+                            $min = (float) $request->input('area_min', 0);
+                            $max = (float) $request->input('area_max', 500);
+
+                            $query->whereBetween('area_search', [$min, $max]);
+
+                        } elseif (str_contains($request->input('area'), '-')) {
+                            [$min, $max] = explode('-', $request->input('area'));
+
+                            $query->whereBetween('area_search', [(float)$min, (float)$max]);
+
+                        } else {
+                            $query->where('area_search', '>=', (float)$request->input('area'));
+                        }
+                    }
+
+                    $applySorting($query);
+
+                    $query->where('type', 1);
+                },
+                'plan'
+            ]);
+
+            $properties = $investment_room->buildingRooms;
+        }
+
+        // =========================
+        // TYPE 2 – jeden budynek
+        // =========================
+        if ($investment->type == 2) {
+
+            $investment_room = $investment->load([
+                'floorRooms' => function ($query) use ($request, $investment, $applySorting) {
+
+                    $query->orderBy('properties.highlighted', 'DESC');
+                    $query->orderBy('properties.number_order', 'ASC');
+
+                    if ($request->input('rooms')) {
+                        $query->where('rooms', $request->input('rooms'));
+                    }
+
+                    if ($request->input('status')) {
+                        $query->where('status', $request->input('status'));
+                    }
+
+                    if ($request->input('floor')) {
+                        $query->where('floor_id', $request->input('floor'));
+                    }
+
+                    if ($investment->show_properties == 3) {
+                        $query->where('status', 1);
+                    }
+
+                    if ($request->filled('area_min') || $request->filled('area_max') || $request->filled('area')) {
+
+                        if ($request->filled('area_min') || $request->filled('area_max')) {
+                            $min = (float) $request->input('area_min', 0);
+                            $max = (float) $request->input('area_max', 500);
+
+                            $query->whereBetween('area_search', [$min, $max]);
+
+                        } elseif (str_contains($request->input('area'), '-')) {
+                            [$min, $max] = explode('-', $request->input('area'));
+
+                            $query->whereBetween('area_search', [(float)$min, (float)$max]);
+
+                        } else {
+                            $query->where('area_search', '>=', (float)$request->input('area'));
+                        }
+                    }
+
+                    $applySorting($query);
+
+                    $query->where('properties.type', 1);
+                }
+            ]);
+
+            $properties = $investment_room->floorRooms;
+        }
+
+        // =========================
+        // TYPE 3 – domy
+        // =========================
+        if ($investment->type == 3) {
+
+            $investment_room = $investment->load([
+                'properties' => function ($query) use ($request, $applySorting) {
+
+                    if ($request->input('rooms')) {
+                        $query->where('rooms', $request->input('rooms'));
+                    }
+
+                    if ($request->input('status')) {
+                        $query->where('status', $request->input('status'));
+                    }
+
+                    $applySorting($query);
+                }
+            ]);
+
+            $properties = $investment_room->properties;
+        }
+
+        $page = Page::where('id', $this->pageId)->first();
+
+        return view('front.developro.investment_plan.index', [
+            'investment' => $investment,
+            'properties' => $properties,
+            'uniqueRooms' => $this->repository->getUniqueRooms($investment_room->properties),
+            'page' => $page
+        ]);
+    }
 
     public function mockup($lang, $slug)
     {
