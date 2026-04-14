@@ -42,6 +42,7 @@
                                         </div>
                                     @endif
 
+                                    @if($status != 3)
                                     <div class="col">
                                         <select name="status" id="status" class="form-select">
                                             <option value="">Status</option>
@@ -50,6 +51,7 @@
                                             <option value="3" @if(request()->input('status') == 3) selected @endif>Sprzedane</option>
                                         </select>
                                     </div>
+                                    @endif
 
                                     @if($investment->area_range)
                                         @php
