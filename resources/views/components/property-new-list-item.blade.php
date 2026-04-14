@@ -33,6 +33,7 @@
                     </div>
                 </div>
                 <div class="col-2 property-list-item-col-3 d-flex align-items-center">
+                    @if($p->investment->status != 3)
                     <div>
                         @if($p->price_brutto && $p->status == 1 && !$p->highlighted)
                             <p class="h3 lh-1 mb-0">@money($p->price_brutto)</p>
@@ -47,8 +48,10 @@
                             <span class="d-block small promo-price">&nbsp;</span>
                         @endif
                     </div>
+                    @endif
                 </div>
                 <div class="col-2 d-flex align-items-center property-list-item-status property-list-item-col-4">
+                    @if($p->investment->status != 3)
                     <div class="w-100 text-center">
                         @if($p->status == 1 && $p->highlighted)
                             <p class="text-highlighted text-uppercase fw-bold fs-5 mb-0 lh-1">Promocja</p>
@@ -63,6 +66,7 @@
                             <p class="text-danger text-uppercase fw-bold fs-5 mb-0 lh-1">Sprzedany</p>
                         @endif
                     </div>
+                    @endif
                 </div>
                 <div class="col-2 d-flex align-items-center property-list-item-col-5">
                     @if(Route::currentRouteName() === 'clipboard.index')
