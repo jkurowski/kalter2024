@@ -57,7 +57,7 @@
                     </div>
                     @isset($investment->entry_content)
                         <div
-                            class="col-12 col-md-8 col-xl-6 text-white text-center">
+                            class="col-12 col-md-8 text-white text-center">
                             <h1 class="h2 mb-3 text-uppercase" data-aos="fade-up">{{ $investment->name }}</h1>
                             <p class="text-pretty" data-aos="fade-up" data-aos-delay="200">{{ $investment->entry_content }}</p>
                         </div>

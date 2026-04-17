@@ -19,7 +19,7 @@
                 @endif
             </div>
             <div class="container isolation-isolate">
-                <div class="row row-gap-10">
+                <div class="row row-gap-10 justify-content-center">
                     <div class="col-12">
                         <nav aria-label="breadcrumb small text-white" data-aos="fade" class="aos-init aos-animate">
                             <ol class="breadcrumb opacity-50">
@@ -35,14 +35,22 @@
                             </ol>
                         </nav>
                     </div>
-                    <div class="col-12 col-md-8 offset-md-2 col-xl-6 offset-xl-3 text-white text-center">
-                        @isset($investment->name)
+                    @isset($investment->entry_content)
+                        <div
+                            class="col-12 col-md-8 text-white text-center">
                             <h1 class="h2 mb-3 text-uppercase" data-aos="fade-up">{{ $investment->name }}</h1>
-                        @endisset
-                        @isset($page->title_text)
-                            <p class="text-pretty" data-aos="fade-up" data-aos-delay="200">{{ $page->title_text }}</p>
-                        @endisset
-                    </div>
+                            <p class="text-pretty" data-aos="fade-up" data-aos-delay="200">{{ $investment->entry_content }}</p>
+                        </div>
+                    @else
+                        <div class="col-12 col-md-8 offset-md-2 col-xl-6 offset-xl-3 text-white text-center">
+                            @isset($investment->name)
+                                <h1 class="h2 mb-3 text-uppercase" data-aos="fade-up">{{ $investment->name }}</h1>
+                            @endisset
+                            @isset($page->title_text)
+                                <p class="text-pretty" data-aos="fade-up" data-aos-delay="200">{{ $page->title_text }}</p>
+                            @endisset
+                        </div>
+                    @endisset
                 </div>
             </div>
         </section>
