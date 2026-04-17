@@ -55,7 +55,7 @@
                             </ol>
                         </nav>
                     </div>
-                    @isset($investment->$investment->entry_content)
+                    @isset($investment->entry_content)
                         <div
                             class="col-12 col-md-8 col-xl-6 text-white text-center">
                             <h1 class="h2 mb-3 text-uppercase" data-aos="fade-up">{{ $investment->name }}</h1>
