@@ -119,11 +119,13 @@
                                     <select name="advanced" id="advanced" class="form-select">
                                         <option value="">Zaawansowanie</option>
                                         <option value="1" {{ request('advanced') == 1 ? 'selected' : '' }}>Przedsprzedaż</option>
-                                        <option value="2" {{ request('advanced') == 2 ? 'selected' : '' }}>Realizacja 20%</option>
+                                        <option value="2" {{ request('advanced') == 2 ? 'selected' : '' }}>Realizacja</option>
+                                        @if(1 == 2)
                                         <option value="3" {{ request('advanced') == 3 ? 'selected' : '' }}>Realizacja 40%</option>
                                         <option value="4" {{ request('advanced') == 4 ? 'selected' : '' }}>Realizacja 60%</option>
                                         <option value="5" {{ request('advanced') == 5 ? 'selected' : '' }}>Realizacja 80%</option>
                                         <option value="6" {{ request('advanced') == 6 ? 'selected' : '' }}>Realizacja 100%</option>
+                                        @endif
                                         <option value="7" {{ request('advanced') == 7 ? 'selected' : '' }}>Gotowe do odbioru</option>
                                     </select>
                                 </div>
