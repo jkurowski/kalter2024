@@ -53,6 +53,7 @@
             -moz-appearance: none;
         }
         .slider-label { font-size: 1rem; margin-bottom: 5px; display: block; width: 170px;line-height: normal}
+        .slider-label.slider-label-lg {width:290px}
         .slider-label small {display: block}
         .slider-col {
             padding-top: 1.225rem;
@@ -174,7 +175,7 @@
                                     <input type="hidden" name="area_max" id="area_max" value="{{ request('area_max', 200) }}">
                                 </div>
                                 <div class="col-12 col-lg-6 d-block d-sm-flex slider-col">
-                                    <label class="slider-label">Cena<small><span id="price-val"></span> PLN</small></label>
+                                    <label class="slider-label slider-label-lg">Cena<small><span id="price-val"></span> PLN</small></label>
                                     <div class="slider-container" id="price-slider-container">
                                         <div class="slider-track"></div>
                                         <div class="slider-range" id="price-slider-range"></div>

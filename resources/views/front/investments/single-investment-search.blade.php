@@ -2,9 +2,9 @@
     <div class="container">
         <div class="row justify-content-center">
             @if(isset($full))
-                <div class="col-12 col-lg-10">
+                <div class="@if($status != 3)col-12 col-lg-10 @else col-12 col-lg-10 @endif">
                     @else
-                        <div class="col-12 col-lg-10 col-xl-8">
+                        <div class="@if($status != 3)col-12 col-lg-10 col-xl-8 @else col-12 col-lg-10 @endif">
                             @endif
                             <form
                                 action="{{ Route::is(['developro.plan', 'developro.page', 'developro.mockup', 'developro.investment.news', 'developro.investment.news.show', 'developro.show']) ? route('developro.plan', $investment->slug) . '#properties' : '#properties' }}"
@@ -23,7 +23,7 @@
                                     <p class="col-12 w-100 text-uppercase mb-0 d-none">Wyszukiwarka</p>
                                     @if($investment->room_range)
                                         @php $rooms = explode(',', $investment->room_range) @endphp
-                                        <div class="col">
+                                        <div class="@if($status != 3) col @else @if(!isset($is_floor)) col-12 col-sm-6 col-lg-3 @else col-12 col-lg-6 @endif @endif">
                                             <select name="rooms" id="rooms" class="form-select">
                                                 <option value="">Pokoje</option>
                                                 @foreach($rooms as $room)
@@ -34,7 +34,7 @@
                                     @endif
 
                                     @if(!isset($is_floor))
-                                        <div class="col">
+                                        <div class="@if($status != 3) col @else col-12 col-sm-6 col-lg-3 @endif">
                                             <select name="floor" id="floor" class="form-select">
                                                 <option value="">Piętro</option>
                                                 {!! floorToSelect($investment->floors) !!}
@@ -60,7 +60,7 @@
                                             $max = (int)(collect($numbers[0])->last() ?? 0);
                                         @endphp
 
-                                        <div class="col-12 d-block d-sm-flex slider-col">
+                                        <div class="@if($status != 3) col-12 @else col-12 col-lg-6 @endif d-block d-sm-flex slider-col">
                                             <label class="slider-label">Powierzchnia<small><span id="area-val"></span> m²</small></label>
                                             <div class="slider-container" id="area-slider-container">
                                                 <div class="slider-track"></div>
