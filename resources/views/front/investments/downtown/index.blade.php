@@ -45,7 +45,7 @@
                 @endif
             </div>
             <div class="container isolation-isolate">
-                <div class="row row-gap-30">
+                <div class="row row-gap-30 justify-content-center">
                     <div class="col-12">
                         <nav aria-label="breadcrumb small text-white" data-aos="fade">
                             <ol class="breadcrumb opacity-50">
@@ -67,7 +67,7 @@
                         </nav>
                     </div>
                     <div
-                        class="col-12 col-md-8 offset-md-2 col-xl-6 offset-xl-3 col-xxl-4 offset-xxl-4 text-white text-center">
+                        class="col-12 col-md-8 col-xl-6 text-white text-center">
                         <h1 class="h2 mb-3 text-uppercase" data-aos="fade-up">Downtown</h1>
                         <p class="text-pretty" data-aos="fade-up" data-aos-delay="200">{{ $investment->entry_content }}</p>
                     </div>
