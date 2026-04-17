@@ -44,7 +44,7 @@ class InvestmentBuildingController extends Controller
             }
         ));
 
-        $page = Page::where('id', 2)->first();
+        $page = Page::where('id', 8)->first();
 
         return view('front.developro.investment_building.index', [
             'investment' => $investment_room,
