@@ -69,8 +69,7 @@
                     <div
                         class="col-12 col-md-8 offset-md-2 col-xl-6 offset-xl-3 col-xxl-4 offset-xxl-4 text-white text-center">
                         <h1 class="h2 mb-3 text-uppercase" data-aos="fade-up">Downtown</h1>
-                        <p class="text-pretty" data-aos="fade-up" data-aos-delay="200">Zapraszamy do odkrycia nowej,
-                            wyjątkowej inwestycji mieszkań na sprzedaż w Łodzi, która odmieni Twoje postrzeganie miasta.</p>
+                        <p class="text-pretty" data-aos="fade-up" data-aos-delay="200">{{ $investment->entry_content }}</p>
                     </div>
                 </div>
             </div>
