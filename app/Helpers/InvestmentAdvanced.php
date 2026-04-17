@@ -7,7 +7,7 @@ if (! function_exists('investmentAdvanced')) {
             case '1':
                 return "Przedsprzedaż";
             case '2':
-                return "Realizacja 20%";
+                return "Realizacja";
             case '3':
                 return "Realizacja 40%";
             case '4':
