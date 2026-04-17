@@ -67,11 +67,7 @@
                             'selected' => $entry->progress,
                             'select' => [
                                 '1' => 'Przedsprzedaż',
-                                '2' => 'Realizacja 20%',
-                                '3' => 'Realizacja 40%',
-                                '4' => 'Realizacja 60%',
-                                '5' => 'Realizacja 80%',
-                                '6' => 'Realizacja 100%',
+                                '2' => 'Realizacja',
                                 '7' => 'Gotowe do odbioru',
                             ],
                         ])
