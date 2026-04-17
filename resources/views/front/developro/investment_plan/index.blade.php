@@ -39,7 +39,7 @@
                 @endif
             </div>
             <div class="container isolation-isolate">
-                <div class="row row-gap-10">
+                <div class="row row-gap-10 justify-content-center">
                     <div class="col-12">
                         <nav aria-label="breadcrumb small text-white" data-aos="fade" class="aos-init aos-animate">
                             <ol class="breadcrumb opacity-50">
