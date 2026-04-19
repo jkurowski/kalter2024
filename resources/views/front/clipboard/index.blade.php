@@ -34,14 +34,14 @@
 
                 <div class="row mt-30">
                     <div class="col-12">
-
-                        <table class="w-100 table">
+                        @if($properties->count() > 0)
+                            <table class="w-100 table">
                             <thead class="container-fluid">
                                 <tr class="row">
                                     <th class="col-2"></th>
                                     @if($properties->count() > 0)
                                         @foreach($properties as $p)
-                                    <th class="col text-center">
+                                    <th class="col text-center" data-room="{{$p->id}}">
                                         <a href="{{ asset('/investment/property/'.$p->file) }}" class="glightbox">
                                             <picture>
                                                 @if($p->file_webp)
@@ -65,7 +65,7 @@
                                 </th>
                                 @if($properties->count() > 0)
                                     @foreach($properties as $p)
-                                        <td class="col text-center">
+                                        <td class="col text-center" data-room="{{$p->id}}">
                                             @if($p->status == 1 && $p->highlighted)
                                                 <p class="text-highlighted text-uppercase fw-bold fs-5 mb-0 lh-1">Promocja</p>
                                             @endif
@@ -88,7 +88,7 @@
                                     </th>
                                     @if($properties->count() > 0)
                                         @foreach($properties as $p)
-                                    <td class="col text-center">
+                                    <td class="col text-center" data-room="{{$p->id}}">
                                         {{ $p->investment->city->name ?: '-' }}
                                     </td>
                                         @endforeach
@@ -100,7 +100,7 @@
                                     </th>
                                     @if($properties->count() > 0)
                                         @foreach($properties as $p)
-                                    <td class="col text-center">
+                                    <td class="col text-center" data-room="{{$p->id}}">
                                         {{ $p->floor->name ?: '-' }}
                                     </td>
                                         @endforeach
@@ -112,7 +112,7 @@
                                     </th>
                                     @if($properties->count() > 0)
                                         @foreach($properties as $p)
-                                    <td class="col text-center">
+                                    <td class="col text-center" data-room="{{$p->id}}">
                                         {{ $p->area ? $p->area . ' m' : '-' }}<sup>2</sup>
                                     </td>
                                         @endforeach
@@ -124,7 +124,7 @@
                                     </th>
                                     @if($properties->count() > 0)
                                         @foreach($properties as $p)
-                                            <td class="col text-center">
+                                            <td class="col text-center" data-room="{{$p->id}}">
                                                 {{ $p->rooms ?: '-' }}
                                             </td>
                                         @endforeach
@@ -136,7 +136,7 @@
                                     </th>
                                     @if($properties->count() > 0)
                                         @foreach($properties as $p)
-                                            <td class="col text-center">
+                                            <td class="col text-center" data-room="{{$p->id}}">
                                                 {{ kitchenType($p->kitchen) ?: '-' }}
                                             </td>
                                         @endforeach
@@ -148,7 +148,7 @@
                                     </th>
                                     @if($properties->count() > 0)
                                         @foreach($properties as $p)
-                                            <td class="col text-center">
+                                            <td class="col text-center" data-room="{{$p->id}}">
                                                 {{ getWindowDirections($p->window) ?: '-' }}
                                             </td>
                                         @endforeach
@@ -160,7 +160,7 @@
                                     </th>
                                     @if($properties->count() > 0)
                                         @foreach($properties as $p)
-                                            <td class="col text-center">
+                                            <td class="col text-center" data-room="{{$p->id}}">
                                                 {!! $p->terrace_area ? $p->terrace_area . ' m<sup>2</sup>' : '-' !!}
                                             </td>
                                         @endforeach
@@ -172,7 +172,7 @@
                                     </th>
                                     @if($properties->count() > 0)
                                         @foreach($properties as $p)
-                                            <td class="col text-center">
+                                            <td class="col text-center" data-room="{{$p->id}}">
                                                 {!! $p->garden_area ? $p->garden_area . ' m<sup>2</sup>' : '-' !!}
                                             </td>
                                         @endforeach
@@ -184,7 +184,7 @@
                                     </th>
                                     @if($properties->count() > 0)
                                         @foreach($properties as $p)
-                                            <td class="col text-center">
+                                            <td class="col text-center" data-room="{{$p->id}}">
                                                 {!! $p->balcony_area ? $p->balcony_area . ' m<sup>2</sup>' : '-' !!}
                                             </td>
                                         @endforeach
@@ -194,10 +194,10 @@
                                     <th class="col-2 last-left">&nbsp;</th>
                                     @if($properties->count() > 0)
                                         @foreach($properties as $p)
-                                            <td class="col text-center">
+                                            <td class="col text-center" data-room="{{$p->id}}">
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        <button id="addToFav" class="btn btn-primary btn-with-icon text-nowrap w-100" data-id="{{$p->id}}">USUŃ</button>
+                                                        <button class="btn btn-primary btn-with-icon text-nowrap w-100 remove-property" data-id="{{$p->id}}">USUŃ</button>
                                                     </div>
                                                     <div class="col-6">
                                                         @if($p->investment->type == 1)
@@ -232,6 +232,9 @@
                                 </tr>
                             </tbody>
                         </table>
+                        @else
+                            <p class="text-center pt-5 pb-5"><b>Twoja lista jest pusta</b></p>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -245,7 +248,7 @@
 @endsection
 @push('scripts')
     <script type="text/javascript">
-        const buttons = document.querySelectorAll('#addToFav');
+        const buttons = document.querySelectorAll('.remove-property');
         buttons.forEach(function(button) {
             button.addEventListener('click', function() {
                 removeProperty(button.getAttribute('data-id'))
@@ -268,17 +271,21 @@
                     const response = JSON.parse(xhr.responseText);
                     const message = response.message;
                     document.querySelector('#clipboardmessage').innerHTML = message;
-                    const item = document.querySelector(`[data-room="${property_id}"]`);
-                    if (!item) {
-                        return;
-                    }
 
-                    item.animate(
-                        [{ opacity: 1 }, { opacity: 0 }],
-                        { duration: 500 }
-                    ).onfinish = () => {
+                    const items = document.querySelectorAll(`[data-room="${property_id}"]`);
+                    if (items.length > 0) {
+                        items.forEach(item => {
+                            item.animate(
+                                [{ opacity: 1 }, { opacity: 0 }],
+                                { duration: 500 }
+                            );
+                        });
+                        setTimeout(() => {
+                            location.reload();
+                        }, 500);
+                    } else {
                         location.reload();
-                    };
+                    }
                 }
             });
         }
