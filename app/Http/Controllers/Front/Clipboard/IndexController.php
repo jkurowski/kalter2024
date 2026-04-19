@@ -34,8 +34,8 @@ class IndexController extends Controller
     public function index()
     {
         $page = Page::find(10);
-        //$items = session('clipboard.items');
-        $items = [867, 846, 845, 878, 867];
+        $items = session('clipboard.items');
+        //$items = [867, 846, 845, 878, 867];
 
         $properties = collect();
 
