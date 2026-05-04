@@ -259,7 +259,7 @@
                                 <p class="h4 mb-1 ff-secondary row">
                                     <span class="col-12">
                                         @if($property->price_brutto && $property->area)
-                                            <span class="fs-5 d-block mt-4">Szacowane ceny od: @money(($property->price_brutto / $property->area)) / m<sup>2</sup></span>
+                                            <span class="fs-4 d-block mt-4">Szacowane ceny od: @money(($property->price_brutto / $property->area)) / m<sup>2</sup></span>
                                         @endif
                                     </span>
                                 </p>
