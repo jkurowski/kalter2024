@@ -14661,6 +14661,12 @@ ul.price-component {
     .btn {
         padding: 9px 0;
     }
+
+    .invest-card {
+        .btn {
+            padding: 9px 30px;
+        }
+    }
 }
 
 @media (max-width: 991.98px) {
