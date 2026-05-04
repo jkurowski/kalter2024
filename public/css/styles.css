@@ -13132,8 +13132,7 @@ input[name="lang"]:checked + label > img {
 }
 .invest-card {
     padding: 20px 10px 24px 12px;
-    min-height: max(350px, 26.0416666667vw);
-    max-height: 550px;
+    max-height: 490px;
     border-radius: 5px;
     overflow: hidden;
     display: flex;
