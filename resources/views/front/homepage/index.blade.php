@@ -140,7 +140,7 @@
             @endif
 
             @foreach ($current_investment as $p)
-                <div @if($current_investment->count() <= 3) class="col-12 col-md-5 col-xl-4 col-xxl-3 mt-4 mt-md-0" @endif>
+                <div @if($current_investment->count() <= 3) class="col-12 col-md-6 col-lg-5 col-xl-4 col-xxl-3 mt-4 mt-md-0" @endif>
                     <div class="invest-card position-relative">
                         <a href="{{ route('developro.show', $p->slug) }}" class="stretched-link z-2"></a>
                         <div class="position-absolute w-100 h-100 top-0 start-0">
