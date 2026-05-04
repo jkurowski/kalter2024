@@ -256,13 +256,15 @@
                                         @endif
                                     @endif
                             @else
-                                <p class="h4 mb-1 ff-secondary row">
-                                    <span class="col-12">
-                                        @if($property->price_brutto && $property->area)
-                                            <span class="fs-4 d-block mt-4">Szacowane ceny od: @money(($property->price_brutto / $property->area)) / m<sup>2</sup></span>
-                                        @endif
-                                    </span>
-                                </p>
+                                @if($investment->show_prices)
+                                    <p class="h4 mb-1 ff-secondary row">
+                                        <span class="col-12">
+                                            @if($property->price_brutto && $property->area)
+                                                <span class="fs-4 d-block mt-4">Szacowane ceny od: @money(($property->price_brutto / $property->area)) / m<sup>2</sup></span>
+                                            @endif
+                                        </span>
+                                    </p>
+                               @endif
                             @endif
 
                             <div class="mb-50 mt-4">
