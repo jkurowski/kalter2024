@@ -83,8 +83,8 @@
                                                 <img src="{{ asset('/investment/property/thumbs/'.$p->file) }}" alt="{{$p->name}}" class="w-100">
                                             </picture>
                                         </a>
-                                        <h2 class="h4 lh-1 mb-2">{{ $p->name }}</h2>
-                                        <span class="mb-0 lh-1 d-block">{{ $p->investment->name }}</span>
+                                        <h2 class="h4 lh-1 mb-2 fs-3 mt-2">{{ $p->name }}</h2>
+                                        <span class="mb-0 lh-1 d-block fs-15 opacity-50">{{ $p->investment->name }}</span>
                                     </th>
                                         @endforeach
                                     @endif
