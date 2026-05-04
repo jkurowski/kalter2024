@@ -134,9 +134,13 @@
             ],
         ];
         ?>
-        <div class="invests-vertical-slider mt-4 @if($current_investment->count() < 4) disable-blur @endif" data-slick='<?= json_encode($slider_options) ?>'>
+        <div class="@if($current_investment->count() > 3) invests-vertical-slider @else container @endif mt-4 @if($current_investment->count() < 4) disable-blur @endif" @if($current_investment->count() > 3) data-slick='<?= json_encode($slider_options) ?>' @endif>
+            @if($current_investment->count() <= 3)
+                <div class="row justify-content-center">
+            @endif
+
             @foreach ($current_investment as $p)
-                <div>
+                <div @if($current_investment->count() <= 3) class="col" @endif>
                     <div class="invest-card position-relative">
                         <a href="{{ route('developro.show', $p->slug) }}" class="stretched-link z-2"></a>
                         <div class="position-absolute w-100 h-100 top-0 start-0">
@@ -172,6 +176,10 @@
                     </div>
                 </div>
             @endforeach
+
+            @if($current_investment->count() <= 3)
+                </div>
+            @endif
         </div>
     </section>
 
