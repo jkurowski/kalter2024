@@ -11,14 +11,45 @@
         .table .row-diff th {
             border-left: 4px solid #ffc107;
         }
-        .col {
-            border-left: 1px solid #dee2e6;
-        }
         .last-left {
             border-bottom:0 !important;
         }
-        .table tr {
+        .table-responsive .table {
+            display: table;
+            width: auto !important;
+        }
+        .table-responsive .table tr {
+            display: table-row;
+        }
+        .table-responsive .table th, .table-responsive .table td {
+            display: table-cell;
+            white-space: nowrap;
+            vertical-align: middle;
+            border-left: 1px solid #dee2e6;
             border-right: 1px solid #dee2e6;
+            float: none !important;
+        }
+        .table-responsive .table th:first-child, .table-responsive .table td:first-child {
+            position: sticky;
+            left: 0;
+            background-color: #fff;
+            z-index: 10;
+            border-right: 2px solid #dee2e6;
+        }
+        .table-responsive .table thead th {
+            vertical-align: bottom;
+        }
+        .table-responsive .table th.col-2, .table-responsive .table td.col-2 {
+            width: 200px;
+            min-width: 200px;
+        }
+        .table-responsive .table th.col-3, .table-responsive .table td.col-3,
+        .table-responsive .table th.col, .table-responsive .table td.col {
+            width: 300px;
+            min-width: 300px;
+        }
+        #clipboard .table img {
+            max-width: 250px;
         }
     </style>
     <main class="with-bigger-section-spacing">
@@ -35,13 +66,14 @@
                 <div class="row mt-30">
                     <div class="col-12">
                         @if($properties->count() > 0)
-                            <table class="w-100 table">
-                            <thead class="container-fluid">
-                                <tr class="row">
+                            <div class="table-responsive">
+                                <table class="table">
+                            <thead>
+                                <tr>
                                     <th class="col-2"></th>
                                     @if($properties->count() > 0)
                                         @foreach($properties as $p)
-                                    <th class="col text-center" data-room="{{$p->id}}">
+                                    <th class="col-3 text-center" data-room="{{$p->id}}">
                                         <a href="{{ asset('/investment/property/'.$p->file) }}" class="glightbox">
                                             <picture>
                                                 @if($p->file_webp)
@@ -58,14 +90,14 @@
                                     @endif
                                 </tr>
                             </thead>
-                            <tbody class="container-fluid">
-                            <tr class="row">
+                            <tbody>
+                            <tr>
                                 <th class="col-2">
                                     Status
                                 </th>
                                 @if($properties->count() > 0)
                                     @foreach($properties as $p)
-                                        <td class="col text-center" data-room="{{$p->id}}">
+                                        <td class="col-3 text-center" data-room="{{$p->id}}">
                                             @if($p->status == 1 && $p->highlighted)
                                                 <p class="text-highlighted text-uppercase fw-bold fs-5 mb-0 lh-1">Promocja</p>
                                             @endif
@@ -82,7 +114,44 @@
                                     @endforeach
                                 @endif
                             </tr>
-                                <tr class="row @if($properties->count() > 1 && $properties->pluck('investment.city.name')->unique()->count() > 1) row-diff @endif">
+                                <tr class="">
+                                    <th class="col-2">
+                                        Cena
+                                    </th>
+                                    @if($properties->count() > 0)
+                                        @foreach($properties as $p)
+                                    <td class="col text-center" data-room="{{$p->id}}">
+                                        @if($p->price_brutto && $p->status == 1 && !$p->highlighted)
+                                            <strong class="d-block fs-3 mb-0 lh-1">@money($p->price_brutto)</strong>
+                                            <small>@money(($p->price_brutto / $p->area)) / m<sup>2</sup></small>
+                                        @endif
+
+                                        @if($p->highlighted && $p->promotion_price && $p->price_brutto && $p->status == 1)
+                                                <strong class="d-block fs-3 mb-0 lh-1">@money($p->promotion_price)</strong>
+                                                <small>@money(($p->promotion_price / $p->area)) / m<sup>2</sup></small>
+
+                                                @if($p->price_brutto)
+                                                    <strong class="opacity-50 fs-4 text-decoration-line-through d-block lh-1 mt-2">@money($p->price_brutto)</strong>
+                                                    <small class="d-block opacity-50 text-decoration-line-through">@money($p->price_brutto / $p->area) / m<sup>2</sup></small>
+                                                @endif
+
+                                            @php
+                                                $rabat = $p->price_brutto - $p->promotion_price;
+                                            @endphp
+                                            @if($p->price_brutto <> $p->promotion_price)
+                                                <span class="rabat h4 d-block w-100 mt-3">Rabat: @money($rabat)</span>
+                                            @endif
+
+                                            @if($p->promotion_end_date && $p->status == 1)
+                                                <span class="fs-15 text-black mb-0">Promocja ważna do: {{ $p->promotion_end_date }}</span>
+                                            @endif
+                                        @endif
+                                    </td>
+                                        @endforeach
+                                    @endif
+                                </tr>
+
+                            <tr class="@if($properties->count() > 1 && $properties->pluck('investment.city.name')->unique()->count() > 1) row-diff @endif">
                                     <th class="col-2">
                                         Lokalizacja
                                     </th>
@@ -94,7 +163,7 @@
                                         @endforeach
                                     @endif
                                 </tr>
-                                <tr class="row @if($properties->count() > 1 && $properties->pluck('floor.name')->unique()->count() > 1) row-diff @endif">
+                                <tr class="@if($properties->count() > 1 && $properties->pluck('floor.name')->unique()->count() > 1) row-diff @endif">
                                     <th class="col-2">
                                         Piętro
                                     </th>
@@ -106,7 +175,7 @@
                                         @endforeach
                                     @endif
                                 </tr>
-                                <tr class="row @if($properties->count() > 1 && $properties->pluck('area')->unique()->count() > 1) row-diff @endif">
+                                <tr class="@if($properties->count() > 1 && $properties->pluck('area')->unique()->count() > 1) row-diff @endif">
                                     <th class="col-2">
                                         Powierzchnia
                                     </th>
@@ -118,7 +187,7 @@
                                         @endforeach
                                     @endif
                                 </tr>
-                                <tr class="row @if($properties->count() > 1 && $properties->pluck('rooms')->unique()->count() > 1) row-diff @endif">
+                                <tr class="@if($properties->count() > 1 && $properties->pluck('rooms')->unique()->count() > 1) row-diff @endif">
                                     <th class="col-2">
                                         Pokoje
                                     </th>
@@ -130,7 +199,7 @@
                                         @endforeach
                                     @endif
                                 </tr>
-                                <tr class="row @if($properties->count() > 1 && $properties->pluck('kitchen')->unique()->count() > 1) row-diff @endif">
+                                <tr class="@if($properties->count() > 1 && $properties->pluck('kitchen')->unique()->count() > 1) row-diff @endif">
                                     <th class="col-2">
                                         Aneks / kuchnia
                                     </th>
@@ -142,7 +211,7 @@
                                         @endforeach
                                     @endif
                                 </tr>
-                                <tr class="row @if($properties->count() > 1 && $properties->pluck('window')->unique()->count() > 1) row-diff @endif">
+                                <tr class="@if($properties->count() > 1 && $properties->pluck('window')->unique()->count() > 1) row-diff @endif">
                                     <th class="col-2">
                                         Wystawa okienna
                                     </th>
@@ -154,7 +223,7 @@
                                         @endforeach
                                     @endif
                                 </tr>
-                                <tr class="row @if($properties->count() > 1 && $properties->pluck('terrace_area')->unique()->count() > 1) row-diff @endif">
+                                <tr class="@if($properties->count() > 1 && $properties->pluck('terrace_area')->unique()->count() > 1) row-diff @endif">
                                     <th class="col-2">
                                        Taras
                                     </th>
@@ -166,7 +235,7 @@
                                         @endforeach
                                     @endif
                                 </tr>
-                                <tr class="row @if($properties->count() > 1 && $properties->pluck('garden_area')->unique()->count() > 1) row-diff @endif">
+                                <tr class="@if($properties->count() > 1 && $properties->pluck('garden_area')->unique()->count() > 1) row-diff @endif">
                                     <th class="col-2">
                                        Ogródek
                                     </th>
@@ -178,7 +247,7 @@
                                         @endforeach
                                     @endif
                                 </tr>
-                                <tr class="row @if($properties->count() > 1 && $properties->pluck('balcony_area')->unique()->count() > 1) row-diff @endif">
+                                <tr class="@if($properties->count() > 1 && $properties->pluck('balcony_area')->unique()->count() > 1) row-diff @endif">
                                     <th class="col-2">
                                        Balkon
                                     </th>
@@ -190,7 +259,7 @@
                                         @endforeach
                                     @endif
                                 </tr>
-                                <tr class="row">
+                                <tr>
                                     <th class="col-2 last-left">&nbsp;</th>
                                     @if($properties->count() > 0)
                                         @foreach($properties as $p)
@@ -232,6 +301,7 @@
                                 </tr>
                             </tbody>
                         </table>
+                            </div>
                         @else
                             <p class="text-center pt-5 pb-5"><b>Twoja lista jest pusta</b></p>
                         @endif
@@ -240,7 +310,7 @@
             </div>
         </section>
         @if($properties->count() > 0)
-        <div id="kontakt" class="mt-30 d-none">
+        <div id="kontakt" class="mt-30">
             @include('layouts.partials.clipboard', ['pageTitle' => $page->title, 'back' => true])
         </div>
         @endif
@@ -255,11 +325,13 @@
             });
         });
 
+        const baseUrl = "https://www.kalternieruchomosci.pl/";
+
         function removeProperty(property_id) {
             const xhr = new XMLHttpRequest();
             const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
-            xhr.open('DELETE', '/pl/clipboard');
+            xhr.open('DELETE', baseUrl+'pl/clipboard');
             xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
             xhr.setRequestHeader('X-CSRF-TOKEN', csrfToken);
             const data = { id: property_id };

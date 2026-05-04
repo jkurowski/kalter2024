@@ -762,12 +762,14 @@
     <script src="https://implementations.3destate.pl/model360.js"></script>
     <script>
         const button = document.querySelector('#addToFav');
+        const baseUrl = "https://www.kalternieruchomosci.pl/";
+
         button.addEventListener('click', function() {
             const xhr = new XMLHttpRequest();
             const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
             const property_id = button.getAttribute('data-id');
 
-            xhr.open('POST', 'https://www.kalternieruchomosci.pl/pl/clipboard');
+            xhr.open('POST', baseUrl + 'pl/clipboard');
             xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
             xhr.setRequestHeader('X-CSRF-TOKEN', csrfToken);
             const data = { id: property_id };
@@ -785,7 +787,7 @@
                     if (count && !document.querySelector('#clipboardwidget')) {
                         const li = document.createElement('li');
                         li.id = 'clipboardwidget';
-                        li.innerHTML = '<a href="https://www.kalternieruchomosci.pl/pl/schowek" class="Clipboard"><span>Schowek</span></a>';
+                        li.innerHTML = '<a href="' + baseUrl + 'pl/schowek" class="Clipboard"><span>Schowek</span></a>';
 
                         const asideList = document.querySelector('aside ul');
                         if (asideList) {
@@ -810,7 +812,7 @@
                 modalHolder.innerHTML = '';
 
                 try {
-                    const url = `https://www.kalternieruchomosci.pl/pl/przynalezne/${dataId}/`;
+                    const url = baseUrl + `pl/przynalezne/${dataId}/`;
 
                     const response = await fetch(url, {
                         headers: {
@@ -844,7 +846,7 @@
                             $('.selectpicker').on('changed.bs.select', function (e, clickedIndex, isSelected, previousValue) {
                                 var selectedValue = $(this).val();
                                 console.log('Selected value:', selectedValue);
-                                const url = `https://www.kalternieruchomosci.pl/pl/przynalezne/${selectedValue}/show/`;
+                                const url = baseUrl + `pl/przynalezne/${selectedValue}/show/`;
 
                                 const otherHolder = document.getElementById('relatedInfo');
                                 otherHolder.innerHTML = '';
@@ -882,7 +884,7 @@
 
                                 if (addedSurfaceIds.has(surfaceId)) return;
 
-                                const url = `https://www.kalternieruchomosci.pl/pl/przynalezne/${surfaceId}/table/`;
+                                const url = baseUrl + `pl/przynalezne/${surfaceId}/table/`;
                                 const otherHolder = document.getElementById('offerList');
 
                                 fetch(url, {
@@ -964,7 +966,7 @@
                 modalHolder.innerHTML = '';
 
                 try {
-                    const url = `https://www.kalternieruchomosci.pl/pl/historia/${dataId}/`;
+                    const url = baseUrl + `pl/historia/${dataId}/`;
 
                     const response = await fetch(url, {
                         headers: {
