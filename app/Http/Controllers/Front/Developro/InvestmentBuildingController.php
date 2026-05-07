@@ -39,6 +39,26 @@ class InvestmentBuildingController extends Controller
                     $query->orderBy($column, $direction);
                 }
 
+
+                if ($request->filled('area_min') || $request->filled('area_max') || $request->filled('area')) {
+
+                    if ($request->filled('area_min') || $request->filled('area_max')) {
+                        $min = (float) $request->input('area_min', 0);
+                        $max = (float) $request->input('area_max', 500);
+
+                        $query->whereBetween('area_search', [$min, $max]);
+
+                    } elseif (str_contains($request->input('area'), '-')) {
+                        [$min, $max] = explode('-', $request->input('area'));
+
+                        $query->whereBetween('area_search', [(float)$min, (float)$max]);
+
+                    } else {
+                        $query->where('area_search', '>=', (float)$request->input('area'));
+                    }
+                }
+
+
                 $query->where('properties.type', 1);
             },
             'buildingFloors' => function($query) use ($building)
