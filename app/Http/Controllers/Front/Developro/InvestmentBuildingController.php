@@ -29,6 +29,9 @@ class InvestmentBuildingController extends Controller
                 if ($request->input('status')) {
                     $query->where('status', $request->input('status'));
                 }
+                if ($request->input('floor')) {
+                    $query->where('floor_id', $request->input('floor'));
+                }
                 if ($request->input('sort')) {
                     $order_param = explode(':', $request->input('sort'));
                     $column = $order_param[0];
