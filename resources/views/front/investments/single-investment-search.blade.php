@@ -43,7 +43,6 @@
                                     @endif
 
                                     @if(isset($is_building))
-                                        {{ $investment->name }}
                                         <div class="@if($status != 3) col @else col-12 col-sm-6 col-lg-3 @endif">
                                             <select name="floor" id="floor" class="form-select">
                                                 <option value="">Piętro</option>
