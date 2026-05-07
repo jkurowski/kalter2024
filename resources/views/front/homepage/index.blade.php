@@ -266,7 +266,6 @@
                             <div class="text-secondary invest-card-horizontal-left flex-fill">
                                 <p class="h3 mb-0">{{ $p->name }}</p>
                                 <p class="fs-10 text-uppercase fw-900 mb-2">{{ $p->investment->name }}</p>
-                                @auth
                                 <p class="h3 mb-1">
                                     @if($p->price_brutto && !$p->highlighted)
                                         <span class="me-2">@money($p->price_brutto)</span>
@@ -290,7 +289,6 @@
                                             @lang('website.label_cena_30') @money($p->price_30)
                                         </p>
                                     @endif
-                                @endauth
                                     <div class="small mb-40">
                                         <table class="w-100">
                                             <tbody>
