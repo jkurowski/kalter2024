@@ -31,6 +31,7 @@ class InvestmentBuildingController extends Controller
                 }
                 if ($request->input('floor')) {
                     $query->where('floor_id', $request->input('floor'));
+                    echo $request->input('floor');
                 }
                 if ($request->input('sort')) {
                     $order_param = explode(':', $request->input('sort'));
