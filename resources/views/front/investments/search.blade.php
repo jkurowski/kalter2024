@@ -127,6 +127,7 @@
                                         <option value="6" {{ request('advanced') == 6 ? 'selected' : '' }}>Realizacja 100%</option>
                                         @endif
                                         <option value="7" {{ request('advanced') == 7 ? 'selected' : '' }}>Gotowe do odbioru</option>
+                                        <option value="8" {{ request('advanced') == 8 ? 'selected' : '' }}>Planowana</option>
                                     </select>
                                 </div>
 

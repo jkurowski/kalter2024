@@ -69,6 +69,7 @@
                                 '1' => 'Przedsprzedaż',
                                 '2' => 'Realizacja',
                                 '7' => 'Gotowe do odbioru',
+                                '8' => 'Planowana',
                             ],
                         ])
                     </div>
