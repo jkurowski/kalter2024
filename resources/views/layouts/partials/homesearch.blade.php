@@ -14,9 +14,9 @@
                         </div>
                     </div>
                     <div
-                        class="row row-cols-1 row-cols-md-2 row-cols-lg-4 row-gap-3 align-items-end px-30 py-3 w-md-100 pb-md-40 pb-20 toggle-searchform">
+                        class="row row-gap-3 align-items-end px-30 py-3 w-md-100 pb-md-40 pb-20 toggle-searchform">
                         <p class="col-12 w-100 text-uppercase mb-0">Wyszukiwarka</p>
-                        <div class="col">
+                        <div class="col-12 col-md-4">
                             <select name="city" id="city" class="form-select">
                                 <option value="" selected>Miasto</option>
                                 @foreach($cities as $c)
@@ -24,7 +24,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="col">
+                        <div class="col-12 col-sm-6 col-md-4 mt-2 mt-sm-0">
                             <select name="rooms" id="rooms" class="form-select">
                                 <option value="">Pokoje</option>
                                 <option value="1">1</option>
@@ -34,30 +34,40 @@
                                 <option value="5">5</option>
                             </select>
                         </div>
-                        <div class="col">
-                            <select name="area" id="area" class="form-select">
-                                <option value="">Powierzchnia</option>
-                                <option value="30-50" {{ request('area') == '30-50' ? 'selected' : '' }}>30-50 m²</option>
-                                <option value="51-70" {{ request('area') == '51-70' ? 'selected' : '' }}>51-70 m²</option>
-                                <option value="71-90" {{ request('area') == '71-90' ? 'selected' : '' }}>71-90 m²</option>
-                                <option value="91-110" {{ request('area') == '91-110' ? 'selected' : '' }}>91-110 m²</option>
-                                <option value="111-300" {{ request('area') == '111-300' ? 'selected' : '' }}>> 110 m²</option>
-                            </select>
-                        </div>
-                        <div class="col">
+                        <div class="col-12 col-sm-6 col-md-4 mt-2 mt-sm-0">
                             <select name="advanced" id="advanced" class="form-select">
                                 <option value="">Zaawansowanie</option>
                                 <option value="1">Przedsprzedaż</option>
-                                <option value="2">Realizacja 20%</option>
-                                <option value="3">Realizacja 40%</option>
-                                <option value="4">Realizacja 60%</option>
-                                <option value="5">Realizacja 80%</option>
-                                <option value="6">Realizacja 100%</option>
                                 <option value="7">Gotowe do odbioru</option>
+                                <option value="8">Planowana</option>
                             </select>
+                        </div>
+
+                        <div class="col-12 col-lg-6 d-block d-sm-flex slider-col">
+                            <label class="slider-label">Powierzchnia<small><span id="area-val"></span> m²</small></label>
+                            <div class="slider-container" id="area-slider-container">
+                                <div class="slider-track"></div>
+                                <div class="slider-range" id="area-slider-range"></div>
+                                <input type="range" class="slider-input" id="area-min-input" min="0" max="200" value="{{ request('area_min', 0) }}">
+                                <input type="range" class="slider-input" id="area-max-input" min="0" max="200" value="{{ request('area_max', 200) }}">
+                            </div>
+                            <input type="hidden" name="area_min" id="area_min" value="{{ request('area_min', 0) }}">
+                            <input type="hidden" name="area_max" id="area_max" value="{{ request('area_max', 200) }}">
+                        </div>
+                        <div class="col-12 col-lg-6 d-block d-sm-flex slider-col">
+                            <label class="slider-label slider-label-lg">Cena<small><span id="price-val"></span> PLN</small></label>
+                            <div class="slider-container" id="price-slider-container">
+                                <div class="slider-track"></div>
+                                <div class="slider-range" id="price-slider-range"></div>
+                                <input type="range" class="slider-input" id="price-min-input" min="0" max="2000000" step="10000" value="{{ request('price_min', 0) }}">
+                                <input type="range" class="slider-input" id="price-max-input" min="0" max="2000000" step="10000" value="{{ request('price_max', 2000000) }}">
+                            </div>
+                            <input type="hidden" name="price_min" id="price_min" value="{{ request('price_min', 0) }}">
+                            <input type="hidden" name="price_max" id="price_max" value="{{ request('price_max', 2000000) }}">
                         </div>
                     </div>
                     <div class="flex-fill toggle-searchform">
+                        <input type="hidden" name="status" value="1">
                         <button type="submit"
                             class="btn btn-primary w-100 h-100 fs-14 text-uppercase px-sm-4 d-flex align-items-center justify-content-center flex-sm-column gap-2 gap-sm-1">
                             <svg xmlns="http://www.w3.org/2000/svg" width="21.631" height="21.636"
@@ -80,4 +90,49 @@
     function toggleSearch() {
         document.querySelector('.search-form').classList.toggle('open');
     }
+    document.addEventListener("DOMContentLoaded", function() {
+          function initDualSlider(containerId, minInputId, maxInputId, minHiddenId, maxHiddenId, rangeId, valId, isPrice = false) {
+            const minInput = document.getElementById(minInputId);
+            const maxInput = document.getElementById(maxInputId);
+            const minHidden = document.getElementById(minHiddenId);
+            const maxHidden = document.getElementById(maxHiddenId);
+            const range = document.getElementById(rangeId);
+            const valSpan = document.getElementById(valId);
+            const minVal = parseInt(minInput.min);
+            const maxVal = parseInt(maxInput.max);
+
+            function updateSlider() {
+                let v1 = parseInt(minInput.value);
+                let v2 = parseInt(maxInput.value);
+
+                if (v1 > v2) {
+                    let tmp = v1;
+                    v1 = v2;
+                    v2 = tmp;
+                }
+
+                minHidden.value = v1;
+                maxHidden.value = v2;
+
+                const percent1 = ((v1 - minVal) / (maxVal - minVal)) * 100;
+                const percent2 = ((v2 - minVal) / (maxVal - minVal)) * 100;
+
+                range.style.left = percent1 + "%";
+                range.style.width = (percent2 - percent1) + "%";
+
+                if (isPrice) {
+                    valSpan.innerText = v1.toLocaleString() + " - " + v2.toLocaleString();
+                } else {
+                    valSpan.innerText = v1 + " - " + v2;
+                }
+            }
+
+            minInput.addEventListener("input", updateSlider);
+            maxInput.addEventListener("input", updateSlider);
+            updateSlider();
+        }
+
+        initDualSlider("area-slider-container", "area-min-input", "area-max-input", "area_min", "area_max", "area-slider-range", "area-val");
+        initDualSlider("price-slider-container", "price-min-input", "price-max-input", "price_min", "price_max", "price-slider-range", "price-val", true);
+    });
 </script>
