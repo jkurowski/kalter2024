@@ -54,6 +54,7 @@
                             <th class="text-center">Status</th>
                             <th class="text-center">Pokoje</th>
                             <th class="text-center">Metraż</th>
+                            <th class="text-center">Cena</th>
                             <th class="text-center">Wizyty</th>
                             <th class="text-center">Wiadomości</th>
                             <th class="text-center">Widoczność</th>
@@ -80,7 +81,14 @@
                                 <td>{{ $p->name }}</td>
                                 <td><span class="badge room-list-status-{{ $p->status }}">{{ roomStatus($p->status) }}</span></td>
                                 <td class="text-center">{{ $p->rooms }}</td>
-                                <td class="text-center">{{ $p->area }} m<sup>2</sup></td>
+                                <td class="text-center">
+                                    {{ $p->area }} m<sup>2</sup><br>
+                                    <small>Szukane: {{ $p->area_search }} m<sup>2</sup></small>
+                                </td>
+                                <td class="text-center">
+                                    Brutto: @money($p->price_brutto)<br>
+                                    <small>Netto: @money($p->price)</small>
+                                </td>
                                 <td class="text-center">{{ $p->views }}</td>
                                 <td class="text-center">{{ $p->roomsNotifications()->count() }}</td>
                                 <td class="text-center">{!! status($p->active) !!}</td>
