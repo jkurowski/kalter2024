@@ -66,16 +66,28 @@ class InvestmentPlanController extends Controller
             }
         };
 
+        $onlyActiveLocation = function ($query) {
+            $query->where(function ($query) {
+                $query->whereDoesntHave('building')
+                    ->orWhereHas('building', fn($query) => $query->where('active', 1));
+            })->where(function ($query) {
+                $query->whereDoesntHave('floor')
+                    ->orWhereHas('floor', fn($query) => $query->where('active', 1));
+            });
+        };
+
         // =========================
         // TYPE 1 – wiele budynków
         // =========================
         if ($investment->type == 1) {
 
             $investment_room = $investment->load([
-                'buildingRooms' => function ($query) use ($request, $applySorting) {
+                'buildingRooms' => function ($query) use ($request, $applySorting, $onlyActiveLocation) {
 
                     $query->orderBy('properties.highlighted', 'DESC');
                     $query->orderBy('properties.number_order', 'ASC');
+
+                    $onlyActiveLocation($query);
 
                     if ($request->input('rooms')) {
                         $query->where('rooms', $request->input('rooms'));
@@ -123,10 +135,12 @@ class InvestmentPlanController extends Controller
         if ($investment->type == 2) {
 
             $investment_room = $investment->load([
-                'floorRooms' => function ($query) use ($request, $investment, $applySorting) {
+                'floorRooms' => function ($query) use ($request, $investment, $applySorting, $onlyActiveLocation) {
 
                     $query->orderBy('properties.highlighted', 'DESC');
                     $query->orderBy('properties.number_order', 'ASC');
+
+                    $onlyActiveLocation($query);
 
                     if ($request->input('rooms')) {
                         $query->where('rooms', $request->input('rooms'));
@@ -177,7 +191,9 @@ class InvestmentPlanController extends Controller
         if ($investment->type == 3) {
 
             $investment_room = $investment->load([
-                'properties' => function ($query) use ($request, $applySorting) {
+                'properties' => function ($query) use ($request, $applySorting, $onlyActiveLocation) {
+
+                    $onlyActiveLocation($query);
 
                     if ($request->input('rooms')) {
                         $query->where('rooms', $request->input('rooms'));

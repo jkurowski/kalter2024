@@ -73,9 +73,16 @@ class SearchController extends Controller
 
         $properties = Property::query()
             ->with(['building' => fn($query) => $query->select('id', 'active', 'name')])
-            ->with(['floor' => fn($query) => $query->select('id', 'name')])
+            ->with(['floor' => fn($query) => $query->select('id', 'active', 'name')])
             ->with(['city' => fn($query) => $query->select('cities.id as city_id', 'cities.name')])
-            //->whereHas('building', fn($query) => $query->where('active', 1))
+            ->where(function ($query) {
+                $query->whereDoesntHave('building')
+                    ->orWhereHas('building', fn($query) => $query->where('active', 1));
+            })
+            ->where(function ($query) {
+                $query->whereDoesntHave('floor')
+                    ->orWhereHas('floor', fn($query) => $query->where('active', 1));
+            })
             ->when($filters['rooms'], fn($query, $rooms) => $query->where('rooms', $rooms))
             ->when(
                 filled($filters['area']) || filled($filters['area_min']) || filled($filters['area_max']),

@@ -175,6 +175,10 @@ class Investment extends Model
     {
         return $this->hasMany('App\Models\Building')->where('active', 1);
     }
+    public function allBuildings(): HasMany
+    {
+        return $this->hasMany('App\Models\Building');
+    }
 
     /**
      * Get investment floors

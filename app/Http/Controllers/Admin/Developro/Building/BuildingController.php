@@ -15,8 +15,8 @@ use Illuminate\Support\Facades\DB;
 
 class BuildingController extends Controller
 {
-    private $repository;
-    private $service;
+    private BuildingRepository $repository;
+    private BuildingService $service;
 
     public function __construct(BuildingRepository $repository, BuildingService $service)
     {

@@ -22,18 +22,20 @@
                             <th class="text-center">Numer</th>
                             <th class="text-center">Piętra</th>
                             <th class="text-center">Lokale</th>
+                            <th class="text-center">Widoczność</th>
                             <th>Data modyfikacji</th>
                             <th></th>
                         </tr>
                         </thead>
                         <tbody class="content">
-                        @foreach ($investment->buildings as $index => $p)
+                        @foreach ($investment->allBuildings as $index => $p)
                             <tr id="recordsArray_{{ $p->id }}">
                                 <th class="position" scope="row">{{ $index+1 }}</th>
                                 <td><a href="{{route('admin.developro.investment.building.floors.index', [$investment, $p])}}">{{ $p->name }}</a></td>
                                 <td class="text-center">{{ $p->number }}</td>
                                 <td class="text-center">{{ $p->floors->count() }}</td>
                                 <td class="text-center">{{ $p->properties->count() }}</td>
+                                <td class="text-center">{!! status($p->active) !!}</td>
                                 <td>{{ $p->updated_at }}</td>
                                 <td class="option-120">
                                     <div class="btn-group">
