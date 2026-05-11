@@ -73,6 +73,26 @@
                                         </div>
                                     @endif
 
+                                    @if($investment->area_range)
+                                        @php
+                                            preg_match_all('/\d+/', $investment->area_range, $numbers);
+                                            $min = (int)($numbers[0][0] ?? 0);
+                                            $max = (int)(collect($numbers[0])->last() ?? 0);
+                                        @endphp
+
+                                        <div class="@if($status != 3) col-12 @else col-12 col-lg-6 @endif d-block d-sm-flex slider-col">
+                                            <label class="slider-label">Powierzchnia<small><span id="area-val"></span> m²</small></label>
+                                            <div class="slider-container" id="area-slider-container">
+                                                <div class="slider-track"></div>
+                                                <div class="slider-range" id="area-slider-range"></div>
+                                                <input type="range" class="slider-input" id="area-min-input" min="{{ $min }}" max="{{ $max }}" value="{{ request('area_min', $min) }}">
+                                                <input type="range" class="slider-input" id="area-max-input" min="{{ $min }}" max="{{ $max }}" value="{{ request('area_max', $max) }}">
+                                            </div>
+                                            <input type="hidden" name="area_min" id="area_min" value="{{ request('area_min', $min) }}">
+                                            <input type="hidden" name="area_max" id="area_max" value="{{ request('area_max', $max) }}">
+                                        </div>
+                                    @endif
+
                                 </div>
                                 <div class="flex-fill toggle-searchform">
                                     <button type="submit" class="btn btn-primary w-100 h-100 fs-14 text-uppercase px-sm-4 d-flex align-items-center justify-content-center flex-sm-column gap-2 gap-sm-1">

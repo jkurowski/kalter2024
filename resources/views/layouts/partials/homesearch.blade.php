@@ -1,7 +1,7 @@
 <section class="home-search">
     <div class="container">
-        <div class="row">
-            <div class="col-12 col-lg-10 col-xl-8 offset-lg-1 offset-xl-2">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-11 col-xl-10">
                 <form action="{{ route('developro.search.index') }}"
                       method="get"
                       class="bg-secondary text-white rounded d-block d-sm-flex row-gap-0 flex-wrap flex-sm-nowrap search-form"
@@ -136,3 +136,71 @@
         initDualSlider("price-slider-container", "price-min-input", "price-max-input", "price_min", "price_max", "price-slider-range", "price-val", true);
     });
 </script>
+<style>
+    .slider-container {
+        position: relative;
+        width: 100%;
+        height: 35px;
+        padding-top: 15px;
+    }
+    .slider-track {
+        position: absolute;
+        width: 100%;
+        height: 5px;
+        background: #ddd;
+        border-radius: 5px;
+        top: 20px;
+    }
+    .slider-range {
+        position: absolute;
+        height: 5px;
+        background: #007bff;
+        border-radius: 5px;
+        top: 20px;
+    }
+    .slider-input {
+        position: absolute;
+        width: 100%;
+        background: none;
+        pointer-events: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        top: 15px;
+        margin: 0;
+        height: 15px;
+    }
+    .slider-input::-webkit-slider-thumb {
+        height: 18px;
+        width: 18px;
+        border-radius: 50%;
+        background: #fff;
+        border: 2px solid #007bff;
+        cursor: pointer;
+        pointer-events: auto;
+        -webkit-appearance: none;
+    }
+    .slider-input::-moz-range-thumb {
+        height: 18px;
+        width: 18px;
+        border-radius: 50%;
+        background: #fff;
+        border: 2px solid #007bff;
+        cursor: pointer;
+        pointer-events: auto;
+        -moz-appearance: none;
+    }
+    .slider-label { font-size: 1rem; margin-bottom: 5px; display: block; width: 170px;line-height: normal}
+    .slider-label.slider-label-lg {width:290px}
+    .slider-label small {display: block}
+    .slider-col {
+        padding-top: 1.225rem;
+    }
+    @media (max-width: 575.98px) {
+        .slider-label {
+            font-size: 1rem;
+            margin-bottom: 0;
+            display: block;
+            width: 100%;
+        }
+    }
+</style>
