@@ -71,18 +71,20 @@
                             </div>
                         @endif
 
-                        @if($investment->min_price && $investment->max_price && $status != 3)
-                            <div class="col-12 col-lg-6 d-block d-sm-flex slider-col">
-                                <label class="slider-label slider-label-lg">Cena<small><span id="price-val"></span> PLN</small></label>
-                                <div class="slider-container" id="price-slider-container">
-                                    <div class="slider-track"></div>
-                                    <div class="slider-range" id="price-slider-range"></div>
-                                    <input type="range" class="slider-input" id="price-min-input" min="{{ $investment->min_price }}" max="{{ $investment->max_price }}" step="10000" value="{{ request('price_min', $investment->min_price) }}">
-                                    <input type="range" class="slider-input" id="price-max-input" min="{{ $investment->min_price }}" max="{{ $investment->max_price }}" step="10000" value="{{ request('price_max', $investment->max_price) }}">
+                        @if(isset($price))
+                            @if($price->min_price && $price->max_price && $status != 3)
+                                <div class="col-12 col-lg-6 d-block d-sm-flex slider-col">
+                                    <label class="slider-label slider-label-lg">Cena<small><span id="price-val"></span> PLN</small></label>
+                                    <div class="slider-container" id="price-slider-container">
+                                        <div class="slider-track"></div>
+                                        <div class="slider-range" id="price-slider-range"></div>
+                                        <input type="range" class="slider-input" id="price-min-input" min="{{ $price->min_price }}" max="{{ $price->max_price }}" step="10000" value="{{ request('price_min', $price->min_price) }}">
+                                        <input type="range" class="slider-input" id="price-max-input" min="{{ $price->min_price }}" max="{{ $price->max_price }}" step="10000" value="{{ request('price_max', $price->max_price) }}">
+                                    </div>
+                                    <input type="hidden" name="price_min" id="price_min" value="{{ request('price_min', $price->min_price) }}">
+                                    <input type="hidden" name="price_max" id="price_max" value="{{ request('price_max', $price->max_price) }}">
                                 </div>
-                                <input type="hidden" name="price_min" id="price_min" value="{{ request('price_min', $investment->min_price) }}">
-                                <input type="hidden" name="price_max" id="price_max" value="{{ request('price_max', $investment->max_price) }}">
-                            </div>
+                            @endif
                         @endif
 
                     </div>

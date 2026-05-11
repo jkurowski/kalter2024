@@ -8,6 +8,7 @@ use App\Models\Investment;
 use App\Models\Page;
 use App\Repositories\FloorRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 // CMS
 
@@ -24,6 +25,9 @@ class InvestmentFloorController extends Controller
 
     public function index($lang, $slug, Floor $floor, $floorSlug, Request $request)
     {
+        $floor->loadMin('pricesProperties as min_price', 'price_search')
+            ->loadMax('pricesProperties as max_price', 'price_search');
+
         $investment = Investment::findBySlug($slug);
 
         // 🔥 wspólne sortowanie
@@ -105,6 +109,16 @@ class InvestmentFloorController extends Controller
                     }
                 }
 
+                if ($request->filled('price_min') || $request->filled('price_max')) {
+                    $min = (int) $request->input('price_min', 0);
+                    $max = (int) $request->input('price_max', 5000000);
+
+                    $query->whereBetween(
+                        DB::raw('CAST(price_search AS UNSIGNED)'),
+                        [$min, $max]
+                    );
+                }
+
                 // 🔥 sort z request
                 $applySorting($query);
             },
@@ -124,6 +138,7 @@ class InvestmentFloorController extends Controller
             'uniqueRooms' => $this->repository->getUniqueRooms($floor->properties()),
             'next_floor' => $next_floor,
             'prev_floor' => $prev_floor,
+            'floor' => $floor,
             'page' => $page
         ]);
     }

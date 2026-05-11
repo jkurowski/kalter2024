@@ -156,7 +156,7 @@
             </div>
         </section>
 
-        @include('front.investments.single-investment-search', ['investment' => $investment, 'full' => 1, 'status' => $investment->status, 'is_building' => 1])
+        @include('front.investments.single-investment-search', ['investment' => $investment, 'full' => 1, 'status' => $investment->status, 'is_building' => 1, 'price' => $investment])
 
         <section id="properties" class="pt-0">
             <div class="container">

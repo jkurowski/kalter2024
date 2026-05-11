@@ -62,6 +62,14 @@ class Building extends Model
         return $this->hasMany('App\Models\Property');
     }
 
+
+    public function pricesProperties(): HasMany
+    {
+        return $this->hasMany('App\Models\Property')
+            ->whereIn('status', [1, 2])
+            ->where('type', 1);
+    }
+
     public function findNext(int $investment, int $id)
     {
         $next = $this->where('investment_id', $investment);

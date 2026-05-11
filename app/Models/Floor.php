@@ -44,6 +44,13 @@ class Floor extends Model
         return $this->hasMany('App\Models\Property');
     }
 
+    public function pricesProperties(): HasMany
+    {
+        return $this->hasMany('App\Models\Property')
+            ->whereIn('status', [1, 2])
+            ->where('type', 1);
+    }
+
     public function findNext(int $investment, int $current_position, int $building = null)
     {
         $next = $this->where('investment_id', $investment);

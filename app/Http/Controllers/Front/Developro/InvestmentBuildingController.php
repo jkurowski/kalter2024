@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Building;
 use App\Models\Investment;
+use Illuminate\Support\Facades\DB;
 
 class InvestmentBuildingController extends Controller
 {
@@ -15,6 +16,10 @@ class InvestmentBuildingController extends Controller
     public function index($lang, $slug, Building $building, Request $request)
     {
         $investment = Investment::findBySlug($slug);
+
+        $building->loadMin('pricesProperties as min_price', 'price_search')
+            ->loadMax('pricesProperties as max_price', 'price_search');
+
 
         $investment_room = $investment->load(array(
             'buildingRooms' => function($query) use ($building, $request)
@@ -39,7 +44,6 @@ class InvestmentBuildingController extends Controller
                     $query->orderBy($column, $direction);
                 }
 
-
                 if ($request->filled('area_min') || $request->filled('area_max') || $request->filled('area')) {
 
                     if ($request->filled('area_min') || $request->filled('area_max')) {
@@ -58,6 +62,15 @@ class InvestmentBuildingController extends Controller
                     }
                 }
 
+                if ($request->filled('price_min') || $request->filled('price_max')) {
+                    $min = (int) $request->input('price_min', 0);
+                    $max = (int) $request->input('price_max', 5000000);
+
+                    $query->whereBetween(
+                        DB::raw('CAST(price_search AS UNSIGNED)'),
+                        [$min, $max]
+                    );
+                }
 
                 $query->where('properties.type', 1);
             },
