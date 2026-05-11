@@ -146,11 +146,13 @@
                             <option value="area_asc" {{ in_array('area_asc', $activeSorts) ? 'selected' : '' }}>Powierzchnia ↑</option>
                             <option value="area_desc" {{ in_array('area_desc', $activeSorts) ? 'selected' : '' }}>Powierzchnia ↓</option>
                         </select>
-                        <select name="sort_price" class="form-select form-select-sm w-auto sort-select">
-                            <option value="">Cena</option>
-                            <option value="price_asc" {{ in_array('price_asc', $activeSorts) ? 'selected' : '' }}>Cena ↑</option>
-                            <option value="price_desc" {{ in_array('price_desc', $activeSorts) ? 'selected' : '' }}>Cena ↓</option>
-                        </select>
+                        @if($investment->status <> 3)
+                            <select name="sort_price" class="form-select form-select-sm w-auto sort-select">
+                                <option value="">Cena</option>
+                                <option value="price_asc" {{ in_array('price_asc', $activeSorts) ? 'selected' : '' }}>Cena ↑</option>
+                                <option value="price_desc" {{ in_array('price_desc', $activeSorts) ? 'selected' : '' }}>Cena ↓</option>
+                            </select>
+                        @endif
                         <select name="sort_views" class="form-select form-select-sm w-auto sort-select">
                             <option value="">Popularność</option>
                             <option value="views_asc" {{ in_array('views_asc', $activeSorts) ? 'selected' : '' }}>Popularność ↑</option>
