@@ -158,7 +158,7 @@
         <section id="properties" class="pt-0">
             <div class="container">
                 <div class="row">
-                    <div class="col-12 col-md-6 d-flex justify-content-start align-items-center gap-2 gap-md-3 mt-2 mt-md-0">
+                    <div class="col-12 d-flex justify-content-end align-items-center gap-2 gap-md-3 mt-2 mt-md-0">
                         @php
                             $activeSorts = explode(',', request('sort', ''));
                         @endphp
@@ -177,11 +177,10 @@
                             <option value="views_asc" {{ in_array('views_asc', $activeSorts) ? 'selected' : '' }}>Popularność ↑</option>
                             <option value="views_desc" {{ in_array('views_desc', $activeSorts) ? 'selected' : '' }}>Popularność ↓</option>
                         </select>
-                    </div>
-                    <div class="col-6 d-none d-md-block">
-                        <ul class="nav justify-content-end" role="tablist">
+
+                        <ul class="nav justify-content-end d-none d-md-flex" role="tablist">
                             <li class="nav-item layout-switcher" role="presentation">
-                                <button class="nav-link" id="list-layout" type="button" aria-selected="true">
+                                <button class="nav-link active opacity-25" id="list-layout" type="button" aria-selected="true">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="34" height="29" viewBox="0 0 34 29">
                                         <g id="list" opacity="1">
                                             <g id="Rectangle_441" data-name="Rectangle 441" transform="translate(0 24)" fill="#fff" stroke="currentColor" stroke-width="1">
@@ -206,7 +205,7 @@
                                 </button>
                             </li>
                             <li class="nav-item layout-switcher" role="presentation">
-                                <button class="nav-link active opacity-25" id="grid-layout" type="button" aria-selected="false">
+                                <button class="nav-link" id="grid-layout" type="button" aria-selected="false">
                                     <svg id="grid" xmlns="http://www.w3.org/2000/svg" width="34" height="29" viewBox="0 0 34 29">
                                         <g id="Rectangle_430" data-name="Rectangle 430" fill="#fff" stroke="currentColor" stroke-width="1">
                                             <rect width="15" height="7" rx="1" stroke="none" />

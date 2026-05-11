@@ -21,8 +21,48 @@ class InvestmentBuildingController extends Controller
             ->loadMax('pricesProperties as max_price', 'price_search');
 
 
+        // 🔥 wspólna funkcja sortowania
+        $applySorting = function ($query) use ($request) {
+            if ($request->filled('sort')) {
+
+                // 🔥 usuń wszystkie wcześniejsze ORDER BY
+                $query->reorder();
+
+                $sorts = explode(',', $request->input('sort'));
+
+                foreach ($sorts as $s) {
+                    switch ($s) {
+                        case 'area_asc':
+                            $query->orderBy('area_search', 'asc');
+                            break;
+
+                        case 'area_desc':
+                            $query->orderBy('area_search', 'desc');
+                            break;
+
+                        case 'price_asc':
+                            $query->orderByRaw('CAST(price_brutto AS UNSIGNED) ASC');
+                            break;
+
+                        case 'price_desc':
+                            $query->orderByRaw('CAST(price_brutto AS UNSIGNED) DESC');
+                            break;
+
+                        case 'views_asc':
+                            $query->orderBy('views', 'asc');
+                            break;
+
+                        case 'views_desc':
+                            $query->orderBy('views', 'desc');
+                            break;
+                    }
+                }
+            }
+        };
+
+
         $investment_room = $investment->load(array(
-            'buildingRooms' => function($query) use ($building, $request)
+            'buildingRooms' => function($query) use ($building, $request, $applySorting)
             {
                 $query->where('properties.building_id', $building->id);
                 $query->orderBy('properties.highlighted', 'DESC');
@@ -36,12 +76,6 @@ class InvestmentBuildingController extends Controller
                 }
                 if ($request->input('floor')) {
                     $query->where('properties.floor_id', $request->input('floor'));
-                }
-                if ($request->input('sort')) {
-                    $order_param = explode(':', $request->input('sort'));
-                    $column = $order_param[0];
-                    $direction = $order_param[1];
-                    $query->orderBy($column, $direction);
                 }
 
                 if ($request->filled('area_min') || $request->filled('area_max') || $request->filled('area')) {
@@ -71,6 +105,8 @@ class InvestmentBuildingController extends Controller
                         [$min, $max]
                     );
                 }
+
+                $applySorting($query);
 
                 $query->where('properties.type', 1);
             },

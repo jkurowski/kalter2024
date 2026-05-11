@@ -20,8 +20,47 @@ class InvestmentBuildingFloorController extends Controller
         $floor->loadMin('pricesProperties as min_price', 'price_search')
             ->loadMax('pricesProperties as max_price', 'price_search');
 
+        // 🔥 wspólna funkcja sortowania
+        $applySorting = function ($query) use ($request) {
+            if ($request->filled('sort')) {
+
+                // 🔥 usuń wszystkie wcześniejsze ORDER BY
+                $query->reorder();
+
+                $sorts = explode(',', $request->input('sort'));
+
+                foreach ($sorts as $s) {
+                    switch ($s) {
+                        case 'area_asc':
+                            $query->orderBy('area_search', 'asc');
+                            break;
+
+                        case 'area_desc':
+                            $query->orderBy('area_search', 'desc');
+                            break;
+
+                        case 'price_asc':
+                            $query->orderByRaw('CAST(price_brutto AS UNSIGNED) ASC');
+                            break;
+
+                        case 'price_desc':
+                            $query->orderByRaw('CAST(price_brutto AS UNSIGNED) DESC');
+                            break;
+
+                        case 'views_asc':
+                            $query->orderBy('views', 'asc');
+                            break;
+
+                        case 'views_desc':
+                            $query->orderBy('views', 'desc');
+                            break;
+                    }
+                }
+            }
+        };
+
         $investment_room = $investment->load(array(
-            'buildingRooms' => function($query) use ($building, $floor, $request)
+            'buildingRooms' => function($query) use ($building, $floor, $request, $applySorting)
             {
                 $query->where('properties.floor_id', $floor->id);
                 $query->where('properties.building_id', $building->id);
@@ -37,12 +76,6 @@ class InvestmentBuildingFloorController extends Controller
                 }
                 if ($request->input('status')) {
                     $query->where('status', $request->input('status'));
-                }
-                if ($request->input('sort')) {
-                    $order_param = explode(':', $request->input('sort'));
-                    $column = $order_param[0];
-                    $direction = $order_param[1];
-                    $query->orderBy($column, $direction);
                 }
 
                 if ($request->filled('area_min') || $request->filled('area_max') || $request->filled('area')) {
@@ -72,6 +105,8 @@ class InvestmentBuildingFloorController extends Controller
                         [$min, $max]
                     );
                 }
+
+                $applySorting($query);
 
             },
             'building' => function($query) use ($building)
