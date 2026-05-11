@@ -73,6 +73,7 @@
                                         </div>
                                     @endif
 
+                                    @auth()
                                     @if($investment->area_range)
                                         @php
                                             preg_match_all('/\d+/', $investment->area_range, $numbers);
@@ -92,7 +93,7 @@
                                             <input type="hidden" name="area_max" id="area_max" value="{{ request('area_max', $max) }}">
                                         </div>
                                     @endif
-
+                                    @endauth
                                 </div>
                                 <div class="flex-fill toggle-searchform">
                                     <button type="submit" class="btn btn-primary w-100 h-100 fs-14 text-uppercase px-sm-4 d-flex align-items-center justify-content-center flex-sm-column gap-2 gap-sm-1">
