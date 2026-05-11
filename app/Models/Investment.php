@@ -233,6 +233,13 @@ class Investment extends Model
             ->whereIn('status', [1, 2]);
     }
 
+    public function pricesProperties(): HasMany
+    {
+        return $this->hasMany(Property::class)
+            ->whereIn('status', [1, 2])
+            ->where('type', 1);
+    }
+
     /**
      * Get investment pages
      * @return HasMany

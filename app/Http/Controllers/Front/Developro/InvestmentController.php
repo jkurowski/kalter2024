@@ -23,7 +23,11 @@ class InvestmentController extends Controller
 
     public function show($lang, $slug)
     {
-        $investment = Investment::with('sections')->where('slug', $slug)->firstOrFail();
+        $investment = Investment::with('sections')
+            ->withMin('pricesProperties as min_price', 'price_search')
+            ->withMax('pricesProperties as max_price', 'price_search')
+            ->where('slug', $slug)
+            ->firstOrFail();
         $page = Page::find($this->pageId);
 
         if($investment->status == 1){

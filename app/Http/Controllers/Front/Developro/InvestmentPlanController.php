@@ -4,12 +4,11 @@ namespace App\Http\Controllers\Front\Developro;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 //CMS
 use App\Repositories\InvestmentRepository;
 use App\Models\Investment;
-use App\Models\Building;
-use App\Models\Floor;
 use App\Models\Page;
 
 class InvestmentPlanController extends Controller
@@ -25,7 +24,11 @@ class InvestmentPlanController extends Controller
 
     public function index($lang, Request $request, $slug)
     {
-        $investment = Investment::findBySlug($slug);
+        $investment = Investment::withMin('pricesProperties as min_price', 'price_search')
+            ->withMax('pricesProperties as max_price', 'price_search')
+            ->where('slug', $slug)
+            ->firstOrFail();
+
 
         // 🔥 wspólna funkcja sortowania
         $applySorting = function ($query) use ($request) {
@@ -119,6 +122,17 @@ class InvestmentPlanController extends Controller
                         }
                     }
 
+
+                    if ($request->filled('price_min') || $request->filled('price_max')) {
+                        $min = (int) $request->input('price_min', 0);
+                        $max = (int) $request->input('price_max', 5000000);
+
+                        $query->whereBetween(
+                            DB::raw('CAST(price_search AS UNSIGNED)'),
+                            [$min, $max]
+                        );
+                    }
+
                     $applySorting($query);
 
                     $query->where('type', 1);
@@ -174,6 +188,16 @@ class InvestmentPlanController extends Controller
                         } else {
                             $query->where('area_search', '>=', (float)$request->input('area'));
                         }
+                    }
+
+                    if ($request->filled('price_min') || $request->filled('price_max')) {
+                        $min = (int) $request->input('price_min', 0);
+                        $max = (int) $request->input('price_max', 5000000);
+
+                        $query->whereBetween(
+                            DB::raw('CAST(price_search AS UNSIGNED)'),
+                            [$min, $max]
+                        );
                     }
 
                     $applySorting($query);
