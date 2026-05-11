@@ -71,7 +71,7 @@
             </div>
         </section>
 
-        @include('front.investments.single-investment-search', ['status' => $investment->status])
+        @include('front.investments.single-investment-search', ['status' => $investment->status, 'price' => $investment])
 
         <section class="sticky-top py-0 bg-white sticky-top-menu">
             <div class="container-fluid">
