@@ -71,7 +71,7 @@
                             </div>
                         @endif
 
-                        @if($investment->area_range && $status != 3)
+                        @if($investment->min_price && $investment->max_price && $status != 3)
                             <div class="col-12 col-lg-6 d-block d-sm-flex slider-col">
                                 <label class="slider-label slider-label-lg">Cena<small><span id="price-val"></span> PLN</small></label>
                                 <div class="slider-container" id="price-slider-container">
