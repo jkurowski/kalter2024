@@ -125,7 +125,7 @@ class InvestmentBuildingController extends Controller
             'page' => $page,
             'prev_building' => $building->findPrev($investment->id, $building->id),
             'next_building' => $building->findNext($investment->id, $building->id),
-
+            'sort' => $request->input('sort')
         ]);
     }
 

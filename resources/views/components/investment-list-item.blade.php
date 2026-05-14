@@ -1,6 +1,7 @@
 @props([
     'investment',
-    'properties'
+    'properties',
+    'sort' => null
 ])
 @if($properties->count() > 0)
 <div class="col-12">
@@ -18,13 +19,13 @@
         </div>
 
         <div id="layout-container" class="list-layout">
-        @foreach ($properties as $property)
+        @foreach ($properties as $index => $property)
             @if($investment->type == 1)
                 @if(optional($property->building)->active == 1)
-                    <x-property-new-list-item :p="$property" :investment="$investment"/>
+                    <x-property-new-list-item :p="$property" :investment="$investment" :index="$index" :sort="$sort"/>
                 @endif
             @else
-                <x-property-new-list-item :p="$property" :investment="$investment"/>
+                <x-property-new-list-item :p="$property" :investment="$investment" :index="$index" :sort="$sort"/>
             @endif
         @endforeach
         </div>

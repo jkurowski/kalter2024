@@ -126,7 +126,8 @@ class InvestmentBuildingFloorController extends Controller
             'floor' => $floor,
             'properties' => $investment->buildingRooms,
             'next_floor' => $floor->findNext($investment->id, $floor->position, $building->id),
-            'prev_floor' => $floor->findPrev($investment->id, $floor->position, $building->id)
+            'prev_floor' => $floor->findPrev($investment->id, $floor->position, $building->id),
+            'sort' => $request->input('sort')
         ]);
     }
 

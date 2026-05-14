@@ -166,6 +166,7 @@ class SearchController extends Controller
         return view('front.developro.search.index', [
             'page' => $page,
             'results' => $results,
+            'sort' => $filters['sort']
         ]);
     }
 }

@@ -139,7 +139,8 @@ class InvestmentFloorController extends Controller
             'next_floor' => $next_floor,
             'prev_floor' => $prev_floor,
             'floor' => $floor,
-            'page' => $page
+            'page' => $page,
+            'sort' => $request->input('sort')
         ]);
     }
 }

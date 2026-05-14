@@ -68,8 +68,10 @@
                         @if ($p->status == 3)
                             <p class="text-danger text-uppercase fw-bold fs-5 mb-0 lh-1">Sprzedany</p>
                         @endif
+                            @if(isset($sort) && str_contains($sort, 'views_desc') && $index < 10)
+                                <p><small><i>Wizyt: {{ $p->views }}</i></small></p>
+                            @endif
                     </div>
-
                 </div>
                 @endif
                 <div class="col-2 d-flex align-items-center property-list-item-col-5">
@@ -88,8 +90,7 @@
                             number2RoomsName($p->rooms, true),
                             round(floatval($p->area), 2).'-m2'
                         ]) }}">
-                    @endif
-                    @if($p->investment->type == 2)
+                    @elseif($p->investment->type == 2)
                         <a class="btn btn-primary btn-with-icon text-nowrap w-100 @if(Route::currentRouteName() === 'clipboard.index') pe-2 ps-2 ms-2 @endif" href="{{ route('developro.property', [
                             $p->investment->slug,
                             $p->floor,
@@ -99,6 +100,8 @@
                             number2RoomsName($p->rooms, true),
                             round(floatval($p->area), 2).'-m2'
                         ]) }}">
+                    @else
+                        <a class="btn btn-primary btn-with-icon text-nowrap w-100 @if(Route::currentRouteName() === 'clipboard.index') pe-2 ps-2 ms-2 @endif" href="#">
                     @endif
                             SPRAWDŹ
                         </a>

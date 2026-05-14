@@ -66,7 +66,7 @@
             </div>
             <div class="row">
                 @foreach ($results as $result)
-                    <x-investment-list-item :investment="$result['investment']" :properties="$result['properties']" />
+                    <x-investment-list-item :investment="$result['investment']" :properties="$result['properties']" :sort="$sort" />
                 @endforeach
             </div>
         </div>

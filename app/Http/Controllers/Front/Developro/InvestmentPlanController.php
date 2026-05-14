@@ -240,7 +240,8 @@ class InvestmentPlanController extends Controller
             'investment' => $investment,
             'properties' => $properties,
             'uniqueRooms' => $this->repository->getUniqueRooms($investment_room->properties),
-            'page' => $page
+            'page' => $page,
+            'sort' => $request->input('sort')
         ]);
     }
 
