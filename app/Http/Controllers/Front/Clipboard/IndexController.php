@@ -110,7 +110,7 @@ class IndexController extends Controller
             $request->session()->put('clipboard.items', array_unique($items));
         }
 
-        return response()->json(['message' => '<div class="alert alert-success border-0 mt-3">Mieszkanie dodane do ulubionych</div>', 'count' => count($items)]);
+        return response()->json(['message' => '<div class="alert alert-success border-0 mt-3">Mieszkanie dodane do ulubionych</div>', 'count' => count($items), 'raw' => 'Mieszkanie dodane do ulubionych']);
     }
 
     public function destroy(Request $request)

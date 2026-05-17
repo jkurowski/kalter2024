@@ -285,5 +285,45 @@
                 window.location.href = url.toString();
             });
         });
+
+        const buttons = document.querySelectorAll('.list-fav');
+        const baseUrl = "https://www.kalternieruchomosci.pl/";
+
+        buttons.forEach(button => {
+            button.addEventListener('click', function() {
+                const xhr = new XMLHttpRequest();
+                const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+                const property_id = this.getAttribute('data-id');
+
+                xhr.open('POST', baseUrl + 'pl/clipboard');
+                xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+                xhr.setRequestHeader('X-CSRF-TOKEN', csrfToken);
+                const data = { id: property_id };
+                const jsonData = JSON.stringify(data);
+                xhr.send(jsonData);
+
+                xhr.addEventListener('load', function() {
+                    if (xhr.status === 200) {
+                        const response = JSON.parse(xhr.responseText);
+                        const message = response.raw;
+                        const count = response.count;
+
+                        toastr.options={closeButton:!0,progressBar:!0,positionClass:"toast-menu-bottom-right",timeOut:"3000"};toastr.success(message);
+
+                        // Check if count is truthy and element doesn't already exist
+                        if (count && !document.querySelector('#clipboardwidget')) {
+                            const li = document.createElement('li');
+                            li.id = 'clipboardwidget';
+                            li.innerHTML = '<a href="' + baseUrl + 'pl/schowek" class="Clipboard"><span>Schowek</span></a>';
+
+                            const asideList = document.querySelector('aside ul');
+                            if (asideList) {
+                                asideList.appendChild(li);
+                            }
+                        }
+                    }
+                });
+            });
+        });
     </script>
 @endpush

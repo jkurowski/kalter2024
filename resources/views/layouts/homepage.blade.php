@@ -22,7 +22,7 @@
           onload="this.media='all'">
 
     <!-- CSS (non-blocking) -->
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}?v=2403v1" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}?v=17052026" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="{{ asset('css/slick.css') }}" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="{{ asset('css/aos.css') }}" media="(min-width: 550px)">
 
