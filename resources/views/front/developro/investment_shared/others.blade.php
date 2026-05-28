@@ -49,7 +49,7 @@
         min-height: 600px;
     }
     #otherListGroup {
-        height: 316px;
+        height: 570px;
         overflow-y: auto;
         border-top:1px solid #dee2e6
     }
