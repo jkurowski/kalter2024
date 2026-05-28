@@ -20,9 +20,9 @@ class IndexController extends Controller
 
     public function others($lang, Property $property)
     {
-        if (!request()->ajax()) {
-            abort(403, 'Tylko AJAX');
-        }
+//        if (!request()->ajax()) {
+//            abort(403, 'Tylko AJAX');
+//        }
 
         $query = Property::query()
             ->where('status', 1)

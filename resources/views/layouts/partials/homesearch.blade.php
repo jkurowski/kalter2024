@@ -38,6 +38,7 @@
                             <select name="advanced" id="advanced" class="form-select">
                                 <option value="">Zaawansowanie</option>
                                 <option value="1">Przedsprzedaż</option>
+                                <option value="2">Realizacja</option>
                                 <option value="7">Gotowe do odbioru</option>
                                 <option value="8">Planowana</option>
                             </select>

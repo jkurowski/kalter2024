@@ -771,6 +771,7 @@
     <script>
         const button = document.querySelector('#addToFav');
         const baseUrl = "https://www.kalternieruchomosci.pl/";
+        //const baseUrl = "https://newkalter.test/";
 
         button.addEventListener('click', function() {
             const xhr = new XMLHttpRequest();
@@ -846,18 +847,50 @@
 
                     modalElement.addEventListener('shown.bs.modal', () => {
                         console.log("Modal shown");
-                        if ($('.selectpicker').length > 0) {
-                            $('.selectpicker').selectpicker(); // or `.selectpicker()` if not yet initialized
-                        }
 
-                        if (!modalElement.dataset.selectBound) {
-                            $('.selectpicker').on('changed.bs.select', function (e, clickedIndex, isSelected, previousValue) {
-                                var selectedValue = $(this).val();
-                                console.log('Selected value:', selectedValue);
-                                const url = baseUrl + `pl/przynalezne/${selectedValue}/show/`;
+                        const filterButtons = modalElement.querySelectorAll('.col-12.p-0 .btn');
+                        const listItems = modalElement.querySelectorAll('#otherListGroup .list-group-item');
 
-                                const otherHolder = document.getElementById('relatedInfo');
-                                otherHolder.innerHTML = '';
+                        filterButtons.forEach(btn => {
+                            btn.addEventListener('click', (e) => {
+                                e.preventDefault();
+                                const type = btn.dataset.type;
+
+                                // Update buttons style
+                                filterButtons.forEach(b => {
+                                    b.classList.remove('btn-primary');
+                                    b.classList.add('btn-secondary');
+                                });
+                                btn.classList.remove('btn-secondary');
+                                btn.classList.add('btn-primary');
+
+                                // Filter list
+                                listItems.forEach(item => {
+                                    if (type === "0" || item.dataset.type === type) {
+                                        item.style.display = '';
+                                    } else {
+                                        item.style.display = 'none';
+                                    }
+                                });
+                            });
+                        });
+
+                        const listButtons = modalElement.querySelectorAll('#otherListGroup button');
+                        const otherHolder = document.getElementById('relatedInfo');
+                        let selectedSurfaceId = null;
+
+                        listButtons.forEach(btn => {
+                            btn.addEventListener('click', (e) => {
+                                e.preventDefault();
+                                const li = btn.closest('li');
+                                selectedSurfaceId = li.dataset.id;
+
+                                // Update active state
+                                listButtons.forEach(b => b.classList.remove('active'));
+                                btn.classList.add('active');
+
+                                const url = baseUrl + `pl/przynalezne/${selectedSurfaceId}/show/`;
+                                otherHolder.innerHTML = '<div class="text-center p-3"><div class="spinner-border spinner-border-sm" role="status"></div></div>';
 
                                 fetch(url, {
                                     headers: {
@@ -871,29 +904,52 @@
                                         return response.text();
                                     })
                                     .then(html => {
-                                        console.log('Received HTML:', html);
                                         otherHolder.innerHTML = html;
+                                        $('#invesmentplan').mapster({
+                                            fillOpacity: 1,
+                                            fillColor: 'fbc000',
+                                            stroke: true,
+                                            strokeColor: '024282',
+                                            strokeOpacity: 1,
+                                            strokeWidth: 2,
+                                            clickNavigate: false,
+                                            isSelectable: false,
+                                            mapKey: 'data-item',
+                                            onConfigured: function() {
+                                                $('#invesmentplan').mapster('set', true, {
+                                                    fillColor: 'fbc000',
+                                                    fillOpacity: 1
+                                                });
+                                            },
+                                            areas: [{
+                                                key: selectedSurfaceId,
+                                                selected: true
+                                            }]
+                                        });
                                     })
                                     .catch(error => {
                                         console.error('Fetch error:', error);
+                                        otherHolder.innerHTML = '<div class="alert alert-danger p-2 small">Błąd ładowania danych</div>';
                                     });
                             });
-                            modalElement.dataset.selectBound = "true";
-                        }
+                        });
+
+
 
                         const addBtn = modalElement.querySelector('.modal-footer .btn-primary');
                         const addedSurfaceIds = new Set();
 
                         if (!addBtn.dataset.bound) {
                             addBtn.addEventListener('click', () => {
-                                const select = modalElement.querySelector('.selectpicker');
-                                const selectedOption = select.options[select.selectedIndex];
-                                const surfaceId = selectedOption.value;
+                                if (!selectedSurfaceId) {
+                                    alert('Proszę wybrać element z listy');
+                                    return;
+                                }
 
-                                if (addedSurfaceIds.has(surfaceId)) return;
+                                if (addedSurfaceIds.has(selectedSurfaceId)) return;
 
-                                const url = baseUrl + `pl/przynalezne/${surfaceId}/table/`;
-                                const otherHolder = document.getElementById('offerList');
+                                const url = baseUrl + `pl/przynalezne/${selectedSurfaceId}/table/`;
+                                const otherHolderList = document.getElementById('offerList');
 
                                 fetch(url, {
                                     headers: {
@@ -907,16 +963,16 @@
                                         return response.text();
                                     })
                                     .then(html => {
-                                        otherHolder.insertAdjacentHTML('beforeend', html);
+                                        otherHolderList.insertAdjacentHTML('beforeend', html);
 
                                         // Pokaż tabelę
                                         document.querySelector('.property-offer-check .table').classList.remove('d-none');
 
                                         // Dodaj do listy zapamiętanych
-                                        addedSurfaceIds.add(surfaceId);
+                                        addedSurfaceIds.add(selectedSurfaceId);
 
                                         // Aktualizacja ceny
-                                        const newRow = otherHolder.querySelector(`tr[data-id="${surfaceId}"]`);
+                                        const newRow = otherHolderList.querySelector(`tr[data-id="${selectedSurfaceId}"]`);
                                         const price = parseFloat(newRow.dataset.price);
 
                                         updateTotalPrice(price, 'add');
