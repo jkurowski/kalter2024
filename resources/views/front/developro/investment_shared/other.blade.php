@@ -76,15 +76,13 @@
 
                 @if($property->file)
                     <div id="main-image" class="d-block">
-                        <a href="{{ asset('/investment/property/'.$property->file) }}" class="glightbox">
-                            <picture>
-                                @if($property->file_webp)
-                                    <source type="image/webp" srcset="{{ asset('/investment/property/thumbs/webp/'.$property->file_webp) }}">
-                                @endif
-                                <source type="image/jpeg" srcset="{{ asset('/investment/property/thumbs/'.$property->file) }}">
-                                <img src="{{ asset('/investment/property/thumbs/'.$property->file) }}" alt="{{$property->name}}" loading="eager" class="img-fluid">
-                            </picture>
-                        </a>
+                        <picture>
+                            @if($property->file_webp)
+                                <source type="image/webp" srcset="{{ asset('/investment/property/thumbs/webp/'.$property->file_webp) }}">
+                            @endif
+                            <source type="image/jpeg" srcset="{{ asset('/investment/property/thumbs/'.$property->file) }}">
+                            <img src="{{ asset('/investment/property/thumbs/'.$property->file) }}" alt="{{$property->name}}" loading="eager" class="img-fluid">
+                        </picture>
                     </div>
                 @endif
             </div>
