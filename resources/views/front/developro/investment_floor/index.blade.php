@@ -163,22 +163,15 @@
                         @php
                             $activeSorts = explode(',', request('sort', ''));
                         @endphp
-                        <select name="sort_area" class="form-select form-select-sm w-auto sort-select">
-                            <option value="">Powierzchnia</option>
+                        <select name="sort" class="form-select form-select-sm w-auto sort-select">
+                            <option value="">Sortuj wg.</option>
                             <option value="area_asc" {{ in_array('area_asc', $activeSorts) ? 'selected' : '' }}>Powierzchnia ↑</option>
                             <option value="area_desc" {{ in_array('area_desc', $activeSorts) ? 'selected' : '' }}>Powierzchnia ↓</option>
-                        </select>
-                        @if($investment->status <> 3)
-                            <select name="sort_price" class="form-select form-select-sm w-auto sort-select">
-                                <option value="">Cena</option>
+                            @if($investment->status <> 3)
                                 <option value="price_asc" {{ in_array('price_asc', $activeSorts) ? 'selected' : '' }}>Cena ↑</option>
                                 <option value="price_desc" {{ in_array('price_desc', $activeSorts) ? 'selected' : '' }}>Cena ↓</option>
-                            </select>
-                        @endif
-                        <select name="sort_views" class="form-select form-select-sm w-auto sort-select">
-                            <option value="">Popularność</option>
-                            <option value="views_asc" {{ in_array('views_asc', $activeSorts) ? 'selected' : '' }}>Popularność ↑</option>
-                            <option value="views_desc" {{ in_array('views_desc', $activeSorts) ? 'selected' : '' }}>Popularność ↓</option>
+                            @endif
+                            <option value="views_desc" {{ in_array('views_desc', $activeSorts) ? 'selected' : '' }}>Najczęściej odwiedzane</option>
                         </select>
 
                         <ul class="nav justify-content-end d-none d-md-flex" role="tablist">
@@ -259,20 +252,15 @@
     <script src="{{ asset('/js/plan/tip.js') }}" charset="utf-8"></script>
     <script src="{{ asset('/js/plan/floor.js') }}" charset="utf-8"></script>
     <script>
-        document.querySelectorAll('.sort-select').forEach(select => {
-            select.addEventListener('change', function() {
-                const url = new URL(window.location.href);
-                const activeSorts = Array.from(document.querySelectorAll('.sort-select'))
-                    .map(s => s.value)
-                    .filter(val => val !== "");
-
-                if (activeSorts.length > 0) {
-                    url.searchParams.set('sort', activeSorts.join(','));
-                } else {
-                    url.searchParams.delete('sort');
-                }
-                window.location.href = url.toString();
-            });
+        document.querySelector('.sort-select').addEventListener('change', function() {
+            const url = new URL(window.location.href);
+            if (this.value) {
+                url.searchParams.set('sort', this.value);
+            } else {
+                url.searchParams.delete('sort');
+            }
+            url.hash = 'properties';
+            window.location.href = url.toString();
         });
 
         const buttons = document.querySelectorAll('.list-fav');
