@@ -45,12 +45,12 @@
 <style>
     #relatedInfo {
         overflow: scroll;
-        max-height: 620px;
-        min-height: 620px;
+        max-height: 360px;
+        min-height: 360px;
         margin-top: 17px;
     }
     #otherListGroup {
-        height: 570px;
+        height: 340px;
         overflow-y: auto;
         border-top:1px solid #dee2e6
     }
