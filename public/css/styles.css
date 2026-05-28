@@ -14766,6 +14766,42 @@ button.toast-close-button{
     aside {
         top: 170px;
     }
+    .table-responsive .table th,
+    .table-responsive .table td {
+        font-size: 11px;
+    }
+    .table-responsive .table th.col-2,
+    .table-responsive .table td.col-2 {
+        width: 110px;
+        min-width: 110px;
+    }
+    .table-responsive .table th.col-3,
+    .table-responsive .table td.col-3,
+    .table-responsive .table th.col,
+    .table-responsive .table td.col {
+        width: 145px;
+        min-width: 145px;
+    }
+    #clipboard .table img {
+        max-width: 140px;
+    }
+    .table-responsive .fs-3 {
+        font-size: 15px !important;
+    }
+    .table-responsive .fs-15 {
+        font-size: 9px;
+    }
+    .table-responsive .fs-5 {
+        font-size: 13px;
+    }
+    .table-responsive small,
+    .table-responsive .small {
+        font-size: 10px;
+    }
+    .table-responsive .btn {
+        padding: 10px 0;
+        font-size: 10px;
+    }
 }
 /* end of 575.98 */
 
