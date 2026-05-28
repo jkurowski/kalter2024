@@ -45,8 +45,9 @@
 <style>
     #relatedInfo {
         overflow: scroll;
-        max-height: 600px;
-        min-height: 600px;
+        max-height: 620px;
+        min-height: 620px;
+        margin-top: 17px;
     }
     #otherListGroup {
         height: 570px;
