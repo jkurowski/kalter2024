@@ -85,7 +85,7 @@
                 </div>
             </div>
         </section>
-        <div id="#mainContent"></div>
+        <div id="mainContent"></div>
         <section class="sticky-top py-0 bg-white sticky-top-menu">
             <div class="container-fluid">
                 <div class="row">
