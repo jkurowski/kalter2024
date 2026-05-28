@@ -1,7 +1,7 @@
 <div class="p-4">
     <div id="relatedProperty">
         <div class="row">
-            <div class="col-6">
+            <div class="col-5">
                 <h2 class="mb-3">{{ $property->name }}</h2>
                 <ul class="mb-0 list-unstyled">
                     @if($property->price_brutto)
@@ -17,7 +17,7 @@
                     <li class="d-flex">Powierzchnia: <span class="ms-auto"><strong>{{ $property->area }} m<sup>2</sup></strong></span></li>
                 </ul>
             </div>
-            <div class="col-6">
+            <div class="col-7">
                 @if($property->floor && $property->floor->file)
                     <div id="relatedFloor" class="mb-4">
                         <div class="position-relative">
