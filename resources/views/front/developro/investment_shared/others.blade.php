@@ -43,6 +43,11 @@
     </div>
 </div>
 <style>
+    #relatedInfo {
+        overflow: scroll;
+        max-height: 600px;
+        min-height: 600px;
+    }
     #otherListGroup {
         height: 316px;
         overflow-y: auto;

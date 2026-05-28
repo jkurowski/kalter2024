@@ -14476,7 +14476,7 @@ blockquote p {
 
 /* Social
 ================================================== */
-aside {position: fixed;top:260px;z-index: 9998;right:0}
+aside {position: fixed;top:90px;z-index: 9998;right:0}
 aside ul {list-style: none outside none;margin: 0;padding: 0;}
 aside ul li {margin-bottom: 1px;text-indent: 0}
 aside ul li:before {display:none}
