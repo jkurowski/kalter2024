@@ -14763,6 +14763,9 @@ button.toast-close-button{
     section.sticky-top li {
         padding: 0 18px
     }
+    aside {
+        top: 170px;
+    }
 }
 /* end of 575.98 */
 
