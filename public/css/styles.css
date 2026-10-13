@@ -15355,3 +15355,5 @@ ul.price-component {
 .pcard-contact a:hover{color:var(--bs-primary)}
 .pcard-walk .btn{padding:12px 20px;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
 @media (max-width:575.98px){.btn-pcard-outline{padding:12px 10px;white-space:nowrap}.pcard-plan__footer .btn-pcard-outline{flex:0 0 auto}}
+.pcard-nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px}.pcard-nav__prev{justify-self:start}.pcard-nav__floor{justify-self:center}.pcard-nav__next{justify-self:end}.pcard-nav .btn-pcard-outline{gap:10px;padding:12px 22px}@media (max-width:575.98px){.pcard-nav .pcard-nav__label{display:none}.pcard-nav .btn-pcard-outline{padding:12px 16px}}
+@media (max-width:575.98px){.pcard-nav{grid-template-columns:auto auto auto;justify-content:center}.pcard-nav__prev:empty,.pcard-nav__next:empty{width:46px}}

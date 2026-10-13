@@ -98,77 +98,53 @@
 
         <section class="pt-40 pb-0">
             <div class="container">
-                <div class="row row-gap-3 justify-content-between small">
-                    <div class="col-6 col-sm-4">
-                        @if($investment->type == 1 && $prev)
-                        <a href="{{ route('developro.building.floor.property', [
-                                                            $investment->slug,
-                                                            $building,
-                                                            Str::slug($building->name),
-                                                            $prev->floor,
-                                                            Str::slug($floor->name),
-                                                            $prev,
-                                                            Str::slug($prev->name),
-                                                            number2RoomsName($prev->rooms, true),
-                                                            round(floatval($prev->area), 2).'-m2'
-                                                        ]) }}" class="btn btn-primary  px-3 min-w-max-content flex-fill d-inline-flex align-items-center gap-1">
-                            <svg class="me-2 me-sm-3 me-md-4" xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062">
-                                <path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(362.073 -672.938) rotate(180)" fill="currentColor" />
-                            </svg>
-                            Poprzednie
-                        </a>
-                        @endif
-
-                        @if($investment->type == 2 && $prev)
-                        <a href="{{ route('developro.property', [$investment->slug, $floor, Str::slug($floor->name), $prev, Str::slug($prev->name), number2RoomsName($prev->rooms, true), round(floatval($prev->area), 2).'-m2']) }}" class="btn btn-primary  px-3 min-w-max-content flex-fill d-inline-flex align-items-center gap-1">
-                            <svg class="me-2 me-sm-3 me-md-4" xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062">
-                                <path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(362.073 -672.938) rotate(180)" fill="currentColor" />
-                            </svg>
-                            Poprzednie
-                        </a>
-                        @endif
-                    </div>
-                    <div class="col-12 col-sm-4 text-center order-first order-sm-0">
-                        @if($investment->type == 1)
-                            <a href="{{route('developro.building.floor', [$investment->slug, $building, 'buildingSlug' => Str::slug($building->name), $floor, 'floorSlug' => Str::slug($floor->name)])}}" class="btn btn-outline-primary" style="--bs-btn-hover-color: var(--bs-white);">
-                                Plan piętra
-                            </a>
-                        @endif
-                        @if($investment->type == 2)
-                            <a href="{{route('developro.floor', [$investment->slug, $floor, 'floorSlug' => Str::slug($floor->name)])}}" class="btn btn-outline-primary" style="--bs-btn-hover-color: var(--bs-white);">
-                                Plan piętra
+                @php
+                    $navBuilding = $building ?? null;
+                    $propertyUrl = function ($p) use ($investment, $navBuilding) {
+                        if (!$p) {
+                            return null;
+                        }
+                        $params = [$p, Str::slug($p->name), number2RoomsName($p->rooms, true), round(floatval($p->area), 2).'-m2'];
+                        if ($investment->type == 1) {
+                            return route('developro.building.floor.property', array_merge([$investment->slug, $navBuilding, Str::slug($navBuilding->name), $p->floor, Str::slug($p->floor->name)], $params));
+                        }
+                        if ($investment->type == 2) {
+                            return route('developro.property', array_merge([$investment->slug, $p->floor, Str::slug($p->floor->name)], $params));
+                        }
+                        return null;
+                    };
+                    $prevUrl = $propertyUrl($prev);
+                    $nextUrl = $propertyUrl($next);
+                    $floorUrl = null;
+                    if ($investment->type == 1) {
+                        $floorUrl = route('developro.building.floor', [$investment->slug, $building, 'buildingSlug' => Str::slug($building->name), $floor, 'floorSlug' => Str::slug($floor->name)]);
+                    } elseif ($investment->type == 2) {
+                        $floorUrl = route('developro.floor', [$investment->slug, $floor, 'floorSlug' => Str::slug($floor->name)]);
+                    }
+                @endphp
+                <nav class="pcard-nav" aria-label="Nawigacja między lokalami">
+                    <div class="pcard-nav__prev">
+                        @if($prevUrl)
+                            <a href="{{ $prevUrl }}" class="btn btn-pcard-outline" title="Poprzednie: {{ $prev->name }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062" aria-hidden="true"><path d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(362.073 -672.938) rotate(180)" fill="currentColor" /></svg>
+                                <span class="pcard-nav__label">Poprzednie</span>
                             </a>
                         @endif
                     </div>
-                    <div class="col-6 col-sm-4 text-end">
-                        @if($investment->type == 1 && $next)
-                        <a href="{{ route('developro.building.floor.property', [
-                                                            $investment->slug,
-                                                            $building,
-                                                            Str::slug($building->name),
-                                                            $next->floor,
-                                                            Str::slug($next->name),
-                                                            $next,
-                                                            Str::slug($next->name),
-                                                            number2RoomsName($next->rooms, true),
-                                                            round(floatval($next->area), 2).'-m2'
-                                                        ]) }}" class="btn btn-primary px-3 min-w-max-content flex-fill d-inline-flex align-items-center  gap-1">
-                            Następne
-                            <svg class="ms-2 ms-sm-3 ms-md-4" xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062">
-                                <path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor" />
-                            </svg>
-                        </a>
-                        @endif
-                        @if($investment->type == 2 && $next)
-                        <a href="{{ route('developro.property', [$investment->slug, $floor, Str::slug($floor->name), $next, Str::slug($next->name), number2RoomsName($next->rooms, true), round(floatval($next->area), 2).'-m2']) }}" class="btn btn-primary  px-3 min-w-max-content flex-fill d-inline-flex align-items-center  gap-1">
-                            Następne
-                            <svg class="ms-2 ms-sm-3 ms-md-4" xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062">
-                                <path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor" />
-                            </svg>
-                        </a>
+                    <div class="pcard-nav__floor">
+                        @if($floorUrl)
+                            <a href="{{ $floorUrl }}" class="btn btn-pcard-outline">Plan piętra</a>
                         @endif
                     </div>
-                </div>
+                    <div class="pcard-nav__next">
+                        @if($nextUrl)
+                            <a href="{{ $nextUrl }}" class="btn btn-pcard-outline" title="Następne: {{ $next->name }}">
+                                <span class="pcard-nav__label">Następne</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062" aria-hidden="true"><path d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor" /></svg>
+                            </a>
+                        @endif
+                    </div>
+                </nav>
             </div>
         </section>
 
