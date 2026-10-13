@@ -87,35 +87,27 @@
 
         <section id="plan">
             <div class="container">
-                <div id="planNav" class="row">
-                    <div class="col-6 col-sm-4">
+                <nav id="planNav" class="pcard-nav" aria-label="Nawigacja między piętrami">
+                    <div class="pcard-nav__prev">
                         @if($prev_floor)
-                            <a href="{{route('developro.building.floor', [$investment->slug, $building, 'buildingSlug' => Str::slug($building->name), $prev_floor, 'floorSlug' => Str::slug($prev_floor->name)])}}" class="btn btn-primary  px-3 min-w-max-content flex-fill d-inline-flex align-items-center  gap-1">
-                                <svg class="me-2 me-sm-3 me-md-4" xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062">
-                                    <path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(362.073 -672.938) rotate(180)" fill="currentColor"></path>
-                                </svg>
-                                {{$prev_floor->name}}
+                            <a href="{{route('developro.building.floor', [$investment->slug, $building, 'buildingSlug' => Str::slug($building->name), $prev_floor, 'floorSlug' => Str::slug($prev_floor->name)])}}" class="btn btn-pcard-outline" title="Poprzednie: {{ $prev_floor->name }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062" aria-hidden="true"><path d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(362.073 -672.938) rotate(180)" fill="currentColor" /></svg>
+                                <span class="pcard-nav__label">{{ $prev_floor->name }}</span>
                             </a>
                         @endif
                     </div>
-
-                    <div class="col-12 col-sm-4 text-center order-first order-sm-0">
-
-                        <a href="{{route('developro.building', [$investment->slug, $building, 'buildingSlug' => Str::slug($building->name)])}}" class="btn btn-outline-primary" style="--bs-btn-hover-color: var(--bs-white);">Plan budunku</a>
-
+                    <div class="pcard-nav__floor">
+                        <a href="{{route('developro.building', [$investment->slug, $building, 'buildingSlug' => Str::slug($building->name)])}}" class="btn btn-pcard-outline">Plan budynku</a>
                     </div>
-
-                    <div class="col-6 col-sm-4 text-end">
+                    <div class="pcard-nav__next">
                         @if($next_floor)
-                            <a href="{{route('developro.building.floor', [$investment->slug, $building, 'buildingSlug' => Str::slug($building->name), $next_floor, 'floorSlug' => Str::slug($next_floor->name)])}}" class="btn btn-primary  px-3 min-w-max-content flex-fill d-inline-flex align-items-center  gap-1">
-                                {{$next_floor->name}}
-                                <svg class="ms-2 ms-sm-3 ms-md-4" xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062">
-                                    <path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor"></path>
-                                </svg>
+                            <a href="{{route('developro.building.floor', [$investment->slug, $building, 'buildingSlug' => Str::slug($building->name), $next_floor, 'floorSlug' => Str::slug($next_floor->name)])}}" class="btn btn-pcard-outline" title="Następne: {{ $next_floor->name }}">
+                                <span class="pcard-nav__label">{{ $next_floor->name }}</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062" aria-hidden="true"><path d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor" /></svg>
                             </a>
                         @endif
                     </div>
-                </div>
+                </nav>
             </div>
 
             <div class="container">
