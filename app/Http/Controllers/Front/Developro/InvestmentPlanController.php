@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Front\Developro;
 
+use App\Models\Property;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -24,10 +25,10 @@ class InvestmentPlanController extends Controller
 
     public function index($lang, Request $request, $slug)
     {
-        $investment = Investment::withMin('pricesProperties as min_price', 'price_search')
-            ->withMax('pricesProperties as max_price', 'price_search')
-            ->withMin('pricesProperties as min_area', 'area_search')
-            ->withMax('pricesProperties as max_area', 'area_search')
+        $investment = Investment::withMin('pricesProperties as min_price', DB::raw(Property::PRICE_SEARCH_SQL))
+            ->withMax('pricesProperties as max_price', DB::raw(Property::PRICE_SEARCH_SQL))
+            ->withMin('pricesProperties as min_area', DB::raw(Property::AREA_SEARCH_SQL))
+            ->withMax('pricesProperties as max_area', DB::raw(Property::AREA_SEARCH_SQL))
             ->where('slug', $slug)
             ->firstOrFail();
 
@@ -44,11 +45,11 @@ class InvestmentPlanController extends Controller
                 foreach ($sorts as $s) {
                     switch ($s) {
                         case 'area_asc':
-                            $query->orderBy('area_search', 'asc');
+                            $query->orderByRaw(Property::AREA_SEARCH_SQL . ' ASC');
                             break;
 
                         case 'area_desc':
-                            $query->orderBy('area_search', 'desc');
+                            $query->orderByRaw(Property::AREA_SEARCH_SQL . ' DESC');
                             break;
 
                         case 'price_asc':
@@ -112,15 +113,15 @@ class InvestmentPlanController extends Controller
                             $min = (float) $request->input('area_min', 0);
                             $max = (float) $request->input('area_max', 500);
 
-                            $query->whereBetween('area_search', [$min, $max]);
+                            $query->whereBetween(DB::raw(Property::AREA_SEARCH_SQL), [$min, $max]);
 
                         } elseif (str_contains($request->input('area'), '-')) {
                             [$min, $max] = explode('-', $request->input('area'));
 
-                            $query->whereBetween('area_search', [(float)$min, (float)$max]);
+                            $query->whereBetween(DB::raw(Property::AREA_SEARCH_SQL), [(float)$min, (float)$max]);
 
                         } else {
-                            $query->where('area_search', '>=', (float)$request->input('area'));
+                            $query->where(DB::raw(Property::AREA_SEARCH_SQL), '>=', (float)$request->input('area'));
                         }
                     }
 
@@ -130,7 +131,7 @@ class InvestmentPlanController extends Controller
                         $max = (int) $request->input('price_max', 5000000);
 
                         $query->whereBetween(
-                            DB::raw('CAST(price_search AS UNSIGNED)'),
+                            DB::raw(Property::PRICE_SEARCH_SQL),
                             [$min, $max]
                         );
                     }
@@ -180,15 +181,15 @@ class InvestmentPlanController extends Controller
                             $min = (float) $request->input('area_min', 0);
                             $max = (float) $request->input('area_max', 500);
 
-                            $query->whereBetween('area_search', [$min, $max]);
+                            $query->whereBetween(DB::raw(Property::AREA_SEARCH_SQL), [$min, $max]);
 
                         } elseif (str_contains($request->input('area'), '-')) {
                             [$min, $max] = explode('-', $request->input('area'));
 
-                            $query->whereBetween('area_search', [(float)$min, (float)$max]);
+                            $query->whereBetween(DB::raw(Property::AREA_SEARCH_SQL), [(float)$min, (float)$max]);
 
                         } else {
-                            $query->where('area_search', '>=', (float)$request->input('area'));
+                            $query->where(DB::raw(Property::AREA_SEARCH_SQL), '>=', (float)$request->input('area'));
                         }
                     }
 
@@ -197,7 +198,7 @@ class InvestmentPlanController extends Controller
                         $max = (int) $request->input('price_max', 5000000);
 
                         $query->whereBetween(
-                            DB::raw('CAST(price_search AS UNSIGNED)'),
+                            DB::raw(Property::PRICE_SEARCH_SQL),
                             [$min, $max]
                         );
                     }

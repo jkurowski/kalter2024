@@ -90,12 +90,12 @@ class SearchController extends Controller
                     if ($filters['area_min'] || $filters['area_max']) {
                         $min = (float)($filters['area_min'] ?? 0);
                         $max = (float)($filters['area_max'] ?? 500);
-                        $query->whereBetween('area_search', [$min, $max]);
+                        $query->whereBetween(DB::raw(Property::AREA_SEARCH_SQL), [$min, $max]);
                     } elseif (strpos($filters['area'], '-') !== false) {
                         [$min, $max] = explode('-', $filters['area']);
-                        $query->whereBetween('area_search', [(float) $min, (float) $max]);
+                        $query->whereBetween(DB::raw(Property::AREA_SEARCH_SQL), [(float) $min, (float) $max]);
                     } else {
-                        $query->where('area_search', '>=', (float) $filters['area']);
+                        $query->where(DB::raw(Property::AREA_SEARCH_SQL), '>=', (float) $filters['area']);
                     }
                 })
             ->when(
@@ -106,7 +106,7 @@ class SearchController extends Controller
                     $max = (int)($filters['price_max'] ?? 5000000);
 
                     $query->whereBetween(
-                        DB::raw('CAST(price_search AS UNSIGNED)'),
+                        DB::raw(Property::PRICE_SEARCH_SQL),
                         [$min, $max]
                     );
                 }
@@ -130,10 +130,10 @@ class SearchController extends Controller
                 foreach ($sorts as $s) {
                     switch ($s) {
                         case 'area_asc':
-                            $query->orderBy('area_search', 'asc');
+                            $query->orderByRaw(Property::AREA_SEARCH_SQL . ' ASC');
                             break;
                         case 'area_desc':
-                            $query->orderBy('area_search', 'desc');
+                            $query->orderByRaw(Property::AREA_SEARCH_SQL . ' DESC');
                             break;
                         case 'price_asc':
                             $query->orderByRaw('CAST(price_brutto AS UNSIGNED) ASC');

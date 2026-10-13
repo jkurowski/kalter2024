@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Front\Developro;
 
+use Illuminate\Support\Facades\DB;
+use App\Models\Property;
 use App\Http\Controllers\Controller;
 use App\Models\Investment;
 use Illuminate\Http\Request;
@@ -24,10 +26,10 @@ class InvestmentController extends Controller
     public function show($lang, $slug)
     {
         $investment = Investment::with('sections')
-            ->withMin('pricesProperties as min_price', 'price_search')
-            ->withMax('pricesProperties as max_price', 'price_search')
-            ->withMin('pricesProperties as min_area', 'area_search')
-            ->withMax('pricesProperties as max_area', 'area_search')
+            ->withMin('pricesProperties as min_price', DB::raw(Property::PRICE_SEARCH_SQL))
+            ->withMax('pricesProperties as max_price', DB::raw(Property::PRICE_SEARCH_SQL))
+            ->withMin('pricesProperties as min_area', DB::raw(Property::AREA_SEARCH_SQL))
+            ->withMax('pricesProperties as max_area', DB::raw(Property::AREA_SEARCH_SQL))
             ->where('slug', $slug)
             ->firstOrFail();
         $page = Page::find($this->pageId);

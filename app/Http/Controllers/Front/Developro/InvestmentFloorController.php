@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Front\Developro;
 
+use App\Models\Property;
 use App\Http\Controllers\Controller;
 use App\Models\Floor;
 use App\Models\Investment;
@@ -25,10 +26,10 @@ class InvestmentFloorController extends Controller
 
     public function index($lang, $slug, Floor $floor, $floorSlug, Request $request)
     {
-        $floor->loadMin('pricesProperties as min_price', 'price_search')
-            ->loadMax('pricesProperties as max_price', 'price_search')
-            ->loadMin('pricesProperties as min_area', 'area_search')
-            ->loadMax('pricesProperties as max_area', 'area_search');
+        $floor->loadMin('pricesProperties as min_price', DB::raw(Property::PRICE_SEARCH_SQL))
+            ->loadMax('pricesProperties as max_price', DB::raw(Property::PRICE_SEARCH_SQL))
+            ->loadMin('pricesProperties as min_area', DB::raw(Property::AREA_SEARCH_SQL))
+            ->loadMax('pricesProperties as max_area', DB::raw(Property::AREA_SEARCH_SQL));
 
         $investment = Investment::findBySlug($slug);
 
@@ -44,11 +45,11 @@ class InvestmentFloorController extends Controller
                 foreach ($sorts as $s) {
                     switch ($s) {
                         case 'area_asc':
-                            $query->orderBy('area_search', 'asc');
+                            $query->orderByRaw(Property::AREA_SEARCH_SQL . ' ASC');
                             break;
 
                         case 'area_desc':
-                            $query->orderBy('area_search', 'desc');
+                            $query->orderByRaw(Property::AREA_SEARCH_SQL . ' DESC');
                             break;
 
                         case 'price_asc':
@@ -99,15 +100,15 @@ class InvestmentFloorController extends Controller
                         $min = (float) $request->input('area_min', 0);
                         $max = (float) $request->input('area_max', 500);
 
-                        $query->whereBetween('area_search', [$min, $max]);
+                        $query->whereBetween(DB::raw(Property::AREA_SEARCH_SQL), [$min, $max]);
 
                     } elseif (str_contains($request->input('area'), '-')) {
                         [$min, $max] = explode('-', $request->input('area'));
 
-                        $query->whereBetween('area_search', [(float)$min, (float)$max]);
+                        $query->whereBetween(DB::raw(Property::AREA_SEARCH_SQL), [(float)$min, (float)$max]);
 
                     } else {
-                        $query->where('area_search', '>=', (float)$request->input('area'));
+                        $query->where(DB::raw(Property::AREA_SEARCH_SQL), '>=', (float)$request->input('area'));
                     }
                 }
 
@@ -116,7 +117,7 @@ class InvestmentFloorController extends Controller
                     $max = (int) $request->input('price_max', 5000000);
 
                     $query->whereBetween(
-                        DB::raw('CAST(price_search AS UNSIGNED)'),
+                        DB::raw(Property::PRICE_SEARCH_SQL),
                         [$min, $max]
                     );
                 }

@@ -17,6 +17,11 @@ class Property extends Model
     use LogsActivity, Notifiable, HasTranslations;
     public array $translatable = ['name', 'name_list', 'meta_title', 'meta_description'];
 
+    // Cena do suwaka / filtra: cena promocyjna (jak na karcie lokalu) albo brutto.
+    // Kolumny są varchar - bez CAST MIN/MAX porównują tekst ('969000' > '1025000'), puste/0 jako NULL.
+    public const PRICE_SEARCH_SQL = "NULLIF(CAST(CASE WHEN properties.highlighted = 1 AND properties.status = 1 AND COALESCE(properties.promotion_price, '') NOT IN ('', '0') THEN properties.promotion_price ELSE properties.price_brutto END AS DECIMAL(12,2)), 0)";
+    public const AREA_SEARCH_SQL = "NULLIF(CAST(NULLIF(properties.area_search, '') AS DECIMAL(10,2)), 0)";
+
 
     /**
      * The attributes that are mass assignable.
