@@ -34,7 +34,7 @@
         </div>
         <div class="position-relative z-2 col-xl-auto">
             @if(Route::currentRouteName() === 'clipboard.index')
-                <button id="addToFav" class="btn btn-primary btn-with-icon text-nowrap" data-id="{{$p->id}}"><i class="lar la-trash-alt me-3"></i> USUŃ ZE SCHOWKA</button>
+                <button id="addToFav" class="btn btn-primary btn-with-icon text-nowrap" data-id="{{$p->id}}"><i class="lar la-trash-alt me-3"></i> USUŃ Z ULUBIONYCH</button>
             @else
                 @if($p->investment->type == 1)
                     <a class="btn btn-primary btn-with-icon text-nowrap" href="{{ route('developro.building.floor.property', [

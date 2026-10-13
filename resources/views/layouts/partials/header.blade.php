@@ -97,7 +97,7 @@
             <a rel="nofollow" target="_blank" class="Phone" href="tel:+48539975771"><span>Zadzwoń</span></a>
         </li>
         @if($clipboardCount)
-            <li id="clipboardwidget"><a href="{{ route('clipboard.index') }}" class="Clipboard"><span>Schowek</span></a></li>
+            <li id="clipboardwidget"><a href="{{ route('clipboard.index') }}" class="Clipboard"><span>Ulubione</span></a></li>
         @endif
     </ul>
 </aside>

@@ -458,7 +458,7 @@
                                 @endif
 
                                 @if($investment->status != 3)
-                                <button id="addToFav" class="btn btn-primary btn-with-icon px-3 min-w-max-content flex-fill d-inline-flex align-items-center justify-content-center gap-1" data-id="{{$property->id}}">Dodaj do schowka <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062"><path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor" /></svg></button>
+                                <button id="addToFav" class="btn btn-primary btn-with-icon px-3 min-w-max-content flex-fill d-inline-flex align-items-center justify-content-center gap-1 @if(in_array($property->id, session('clipboard.items', []))) is-fav @endif" data-id="{{$property->id}}"><svg class="icon-heart" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> <span>{{ in_array($property->id, session('clipboard.items', [])) ? 'W ulubionych' : 'Dodaj do ulubionych' }}</span></button>
                                 @endif
                                 <!--
                                 <a href="/kontakt.php" class="btn btn-primary btn-with-icon d-inline-flex align-items-center gap-1 justify-content-center px-3 min-w-max-content flex-fill">
@@ -770,7 +770,7 @@
     <script src="https://implementations.3destate.pl/model360.js"></script>
     <script>
         const button = document.querySelector('#addToFav');
-        const baseUrl = "https://www.kalternieruchomosci.pl/";
+        const baseUrl = "{{ url('/') }}/";
         //const baseUrl = "https://newkalter.test/";
 
         button.addEventListener('click', function() {
@@ -791,12 +791,14 @@
                     const message = response.message;
                     const count = response.count;
                     document.querySelector('#clipboardmessage').innerHTML = message;
+                    button.classList.add('is-fav');
+                    button.querySelector('span').textContent = 'W ulubionych';
 
                     // Check if count is truthy and element doesn't already exist
                     if (count && !document.querySelector('#clipboardwidget')) {
                         const li = document.createElement('li');
                         li.id = 'clipboardwidget';
-                        li.innerHTML = '<a href="' + baseUrl + 'pl/schowek" class="Clipboard"><span>Schowek</span></a>';
+                        li.innerHTML = '<a href="' + baseUrl + 'pl/schowek" class="Clipboard"><span>Ulubione</span></a>';
 
                         const asideList = document.querySelector('aside ul');
                         if (asideList) {

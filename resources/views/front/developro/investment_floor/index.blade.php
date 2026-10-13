@@ -264,7 +264,7 @@
         });
 
         const buttons = document.querySelectorAll('.list-fav');
-        const baseUrl = "https://www.kalternieruchomosci.pl/";
+        const baseUrl = "{{ url('/') }}/";
 
         buttons.forEach(button => {
             button.addEventListener('click', function() {
@@ -286,12 +286,13 @@
                         const count = response.count;
 
                         toastr.options={closeButton:!0,progressBar:!0,positionClass:"toast-menu-bottom-right",timeOut:"3000"};toastr.success(message);
+                        button.classList.add('is-fav');
 
                         // Check if count is truthy and element doesn't already exist
                         if (count && !document.querySelector('#clipboardwidget')) {
                             const li = document.createElement('li');
                             li.id = 'clipboardwidget';
-                            li.innerHTML = '<a href="' + baseUrl + 'pl/schowek" class="Clipboard"><span>Schowek</span></a>';
+                            li.innerHTML = '<a href="' + baseUrl + 'pl/schowek" class="Clipboard"><span>Ulubione</span></a>';
 
                             const asideList = document.querySelector('aside ul');
                             if (asideList) {

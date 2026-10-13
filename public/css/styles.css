@@ -14496,7 +14496,7 @@ aside a:before {font-family: "FontAwesome";font-style: normal;font-variant: norm
 .Phone:before {content:"\f095"}
 
 .Clipboard, .Clipboard span {background:#024282}
-.Clipboard:before {content:"\f0ea"}
+.Clipboard:before {content:"\f004"}
 
 aside a span {right: -600%;font-size: 15px;height: inherit;line-height: 35px;margin-left: -5px;min-width: 110px;width: auto;text-transform: uppercase}
 aside a span:before {right: -4px;}
@@ -15270,4 +15270,17 @@ ul.price-component {
     font-size: 12px;
     font-weight: 400;
     color: var(--bs-body-color);
+}
+
+/* Ulubione - ikonka serduszka */
+.icon-heart {
+    flex-shrink: 0;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linejoin: round;
+    transition: fill .2s;
+}
+.is-fav .icon-heart {
+    fill: currentColor;
 }

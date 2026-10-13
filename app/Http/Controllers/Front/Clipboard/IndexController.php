@@ -110,7 +110,7 @@ class IndexController extends Controller
             $request->session()->put('clipboard.items', array_unique($items));
         }
 
-        return response()->json(['message' => '<div class="alert alert-success border-0 mt-3">Mieszkanie dodane do ulubionych</div>', 'count' => count($items), 'raw' => 'Mieszkanie dodane do ulubionych']);
+        return response()->json(['message' => '<div class="alert alert-success border-0 mt-3">Dodano do ulubionych</div>', 'count' => count($items), 'raw' => 'Dodano do ulubionych']);
     }
 
     public function destroy(Request $request)
@@ -128,14 +128,14 @@ class IndexController extends Controller
             // Check if the item was actually removed
             if ($removed !== null) {
                 return response()->json([
-                    'message' => '<div class="alert alert-success border-0 mt-3">Mieszkanie usunięte z ulubionych</div>',
+                    'message' => '<div class="alert alert-success border-0 mt-3">Usunięto z ulubionych</div>',
                     'count' => count($items) - 1
                 ]);
             }
         }
 
         return response()->json([
-            'message' => '<div class="danger alert-danger border-0 mt-3">Wybrane mieszkanie nie istnieje w ulubionych</div>',
+            'message' => '<div class="danger alert-danger border-0 mt-3">Nie znaleziono w ulubionych</div>',
             'count' => count($items)
         ]);
     }
