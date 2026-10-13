@@ -61,7 +61,7 @@
                     </div>
                     <div
                         class="col-12 col-md-8 offset-md-2 col-xl-6 offset-xl-3 col-xxl-4 offset-xxl-4 text-white text-center">
-                        <h1 class="h2 mb-3 text-uppercase" data-aos="fade-up">Slonimska Residence II</h1>
+                        <h1 class="h2 mb-3 text-uppercase" data-aos="fade-up">{{ $investment->name }}</h1>
                     </div>
                 </div>
             </div>
