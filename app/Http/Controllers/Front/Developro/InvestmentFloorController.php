@@ -135,6 +135,8 @@ class InvestmentFloorController extends Controller
         return view('front.developro.investment_floor.index', [
             'investment' => $investment_room,
             'properties' => $investment_room->floorRooms,
+            // rzut zawsze ze wszystkimi lokalami (kolory statusów), filtry dotyczą tylko listy
+            'planProperties' => $floor->properties()->with(['floor', 'investment'])->get(),
             'uniqueRooms' => $this->repository->getUniqueRooms($floor->properties()),
             'next_floor' => $next_floor,
             'prev_floor' => $prev_floor,

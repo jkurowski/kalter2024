@@ -120,8 +120,8 @@
                                     <img src="{{ asset('/investment/floor/'.$investment->floor->file) }}" alt="{{$investment->floor->name}}" id="invesmentplan" usemap="#invesmentplan" class="w-100 h-100 object-fit-cover rounded">
                                 @endif
                                 <map name="invesmentplan">
-                                    @if($properties)
-                                        @foreach($properties as $r)
+                                    @if($planProperties)
+                                        @foreach($planProperties as $r)
                                             @if($r->html)
                                                 <area
                                                         shape="poly"

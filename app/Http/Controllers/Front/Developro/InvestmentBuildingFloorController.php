@@ -125,6 +125,8 @@ class InvestmentBuildingFloorController extends Controller
             'building' => $building,
             'floor' => $floor,
             'properties' => $investment->buildingRooms,
+            // rzut zawsze ze wszystkimi lokalami (kolory statusów), filtry dotyczą tylko listy
+            'planProperties' => $floor->properties()->where('building_id', $building->id)->with(['floor', 'investment'])->get(),
             'next_floor' => $floor->findNext($investment->id, $floor->position, $building->id),
             'prev_floor' => $floor->findPrev($investment->id, $floor->position, $building->id),
             'sort' => $request->input('sort')
