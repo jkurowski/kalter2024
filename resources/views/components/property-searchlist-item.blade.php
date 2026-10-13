@@ -19,7 +19,7 @@
                     <img src="{{ asset('img/tile.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="13" height="13">{{ $p->floor->name }}
                 </div>
                 <div class="col-4 fs-13 d-flex align-items-center gap-2">
-                    <img src="{{ asset('img/blueprint.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="13" height="13"> {{ $p->area }} m<sup>2</sup>
+                    <img src="{{ asset('img/blueprint.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="13" height="13"> <span>{{ $p->area }} m<sup>2</sup></span>
                 </div>
                 <div class="col-4 fs-13 d-flex align-items-center gap-2">
                     <img src="{{ asset('img/rooms.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="13" height="13"> {{ $p->rooms }}
