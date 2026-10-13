@@ -10,7 +10,9 @@
     <meta name="robots" content="{{ settings()->get("page_robots") }}">
     <meta name="author" content="{{ settings()->get("page_author") }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="shortcut icon" href="/uploads/{{ settings()->get("page_favicon") }}">
+    <link rel="icon" href="/favicon.ico" sizes="48x48">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
     <!-- FONTS (non-blocking) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
