@@ -26,6 +26,8 @@ class InvestmentPlanController extends Controller
     {
         $investment = Investment::withMin('pricesProperties as min_price', 'price_search')
             ->withMax('pricesProperties as max_price', 'price_search')
+            ->withMin('pricesProperties as min_area', 'area_search')
+            ->withMax('pricesProperties as max_area', 'area_search')
             ->where('slug', $slug)
             ->firstOrFail();
 

@@ -18,7 +18,9 @@ class InvestmentBuildingFloorController extends Controller
         $investment = Investment::findBySlug($slug);
         $page = Page::where('id', 8)->first();
         $floor->loadMin('pricesProperties as min_price', 'price_search')
-            ->loadMax('pricesProperties as max_price', 'price_search');
+            ->loadMax('pricesProperties as max_price', 'price_search')
+            ->loadMin('pricesProperties as min_area', 'area_search')
+            ->loadMax('pricesProperties as max_area', 'area_search');
 
         // 🔥 wspólna funkcja sortowania
         $applySorting = function ($query) use ($request) {

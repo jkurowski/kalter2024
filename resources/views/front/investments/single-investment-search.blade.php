@@ -49,12 +49,20 @@
                             </div>
                         @endif
 
-                        @if($investment->area_range)
-                            @php
+                        @php
+                            // zakres z area_search lokali (min w dół, max w górę), fallback: ręcznie wpisany area_range
+                            if (isset($price) && $price->min_area && $price->max_area) {
+                                $min = (int) floor((float) $price->min_area);
+                                $max = (int) ceil((float) $price->max_area);
+                            } elseif ($investment->area_range) {
                                 preg_match_all('/\d+/', $investment->area_range, $numbers);
                                 $min = (int)($numbers[0][0] ?? 0);
                                 $max = (int)(collect($numbers[0])->last() ?? 0);
-                            @endphp
+                            } else {
+                                $min = $max = null;
+                            }
+                        @endphp
+                        @if($min !== null && $max)
                             @if($status != 3)
                                 <div class="w-100"></div>
                             @endif

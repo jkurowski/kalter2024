@@ -18,7 +18,9 @@ class InvestmentBuildingController extends Controller
         $investment = Investment::findBySlug($slug);
 
         $building->loadMin('pricesProperties as min_price', 'price_search')
-            ->loadMax('pricesProperties as max_price', 'price_search');
+            ->loadMax('pricesProperties as max_price', 'price_search')
+            ->loadMin('pricesProperties as min_area', 'area_search')
+            ->loadMax('pricesProperties as max_area', 'area_search');
 
 
         // 🔥 wspólna funkcja sortowania

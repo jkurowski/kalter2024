@@ -26,7 +26,9 @@ class InvestmentFloorController extends Controller
     public function index($lang, $slug, Floor $floor, $floorSlug, Request $request)
     {
         $floor->loadMin('pricesProperties as min_price', 'price_search')
-            ->loadMax('pricesProperties as max_price', 'price_search');
+            ->loadMax('pricesProperties as max_price', 'price_search')
+            ->loadMin('pricesProperties as min_area', 'area_search')
+            ->loadMax('pricesProperties as max_area', 'area_search');
 
         $investment = Investment::findBySlug($slug);
 
