@@ -73,16 +73,21 @@
 
                         @if(isset($price))
                             @if($price->min_price && $price->max_price && $status != 3)
+                                @php
+                                    // suwak ma step 10 000 - zakres zaokrąglony do pełnego kroku, inaczej max (np. 752 000) snapuje w dół do 750 000
+                                    $priceMin = (int) floor((float) $price->min_price / 10000) * 10000;
+                                    $priceMax = (int) ceil((float) $price->max_price / 10000) * 10000;
+                                @endphp
                                 <div class="col-12 col-lg-6 d-block d-sm-flex slider-col">
                                     <label class="slider-label slider-label-lg">Cena<small><span id="price-val"></span> PLN</small></label>
                                     <div class="slider-container" id="price-slider-container">
                                         <div class="slider-track"></div>
                                         <div class="slider-range" id="price-slider-range"></div>
-                                        <input type="range" class="slider-input" id="price-min-input" min="{{ $price->min_price }}" max="{{ $price->max_price }}" step="10000" value="{{ request('price_min', $price->min_price) }}">
-                                        <input type="range" class="slider-input" id="price-max-input" min="{{ $price->min_price }}" max="{{ $price->max_price }}" step="10000" value="{{ request('price_max', $price->max_price) }}">
+                                        <input type="range" class="slider-input" id="price-min-input" min="{{ $priceMin }}" max="{{ $priceMax }}" step="10000" value="{{ request('price_min', $priceMin) }}">
+                                        <input type="range" class="slider-input" id="price-max-input" min="{{ $priceMin }}" max="{{ $priceMax }}" step="10000" value="{{ request('price_max', $priceMax) }}">
                                     </div>
-                                    <input type="hidden" name="price_min" id="price_min" value="{{ request('price_min', $price->min_price) }}">
-                                    <input type="hidden" name="price_max" id="price_max" value="{{ request('price_max', $price->max_price) }}">
+                                    <input type="hidden" name="price_min" id="price_min" value="{{ request('price_min', $priceMin) }}">
+                                    <input type="hidden" name="price_max" id="price_max" value="{{ request('price_max', $priceMax) }}">
                                 </div>
                             @endif
                         @endif
