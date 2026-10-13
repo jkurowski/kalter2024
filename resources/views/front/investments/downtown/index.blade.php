@@ -696,116 +696,27 @@
                     </div>
 
 
-                    <div class="row justify-content-center pt-md-50 mt-30">
-                        <div class="col-12">
-                            <p class="h5 fw-semibold text-secondary mb-3 mb-md-30">Infrastruktura w otoczeniu inwestycji
-                            </p>
-                        </div>
-                        <?php
-                        $list1 = [
-                            [
-                                'name' => 'Muzeum Sztuki EC1',
-                                'distance' => '700 m',
-                            ],
-                            [
-                                'name' => 'Łódzka szkoła filmowa',
-                                'distance' => '800 m',
-                            ],
-                            [
-                                'name' => 'Deptak ul. Piotrkowska',
-                                'distance' => '900 m',
-                            ],
-                            [
-                                'name' => 'Planetarium',
-                                'distance' => '700 m',
-                            ],
-                        ];
-
-                        $list2 = [
-                            [
-                                'name' => 'Park Sienkiewicza',
-                                'distance' => '700 m',
-                            ],
-                            [
-                                'name' => 'Park Źródliska',
-                                'distance' => '1,2 km',
-                            ],
-                            [
-                                'name' => 'Galeria Handlowa Manufaktura',
-                                'distance' => '3,8 km',
-                            ],
-                            [
-                                'name' => 'Galeria Łódzka',
-                                'distance' => '700 m',
-                            ],
-                        ];
-
-                        $list3 = [
-                            [
-                                'name' => 'Off Piotrkowska',
-                                'distance' => '900 m',
-                            ],
-                            [
-                                'name' => 'Sieć komunikacji miejskiej',
-                                'distance' => '350 m',
-                            ],
-                            [
-                                'name' => 'Dworzec Łódź Fabryczna',
-                                'distance' => '900 m',
-                            ],
-                        ];
-
-                        ?>
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <ul class="mb-0">
-                                @foreach ($list1 as $item)
-                                    <li>
-                                        <div class="d-inline-flex justify-content-between gap-3 w-100">
-                                            <p>
-                                                {{ $item['name'] }}
-                                            </p>
-                                            <p class="text-secondary">
-                                                {{ $item['distance'] }}
-                                            </p>
-                                        </div>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <ul class="mb-0">
-                                @foreach ($list2 as $item)
-                                    <li>
-                                        <div class="d-inline-flex justify-content-between gap-3 w-100">
-                                            <p>
-                                                {{ $item['name'] }}
-                                            </p>
-                                            <p class="text-secondary">
-                                                {{ $item['distance'] }}
-                                            </p>
-                                        </div>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <ul class="">
-                                @foreach ($list3 as $item)
-                                    <li>
-                                        <div class="d-inline-flex justify-content-between gap-3 w-100">
-                                            <p>
-                                                {{ $item['name'] }}
-                                            </p>
-                                            <p class="text-secondary">
-                                                {{ $item['distance'] }}
-                                            </p>
-                                        </div>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-
-                    </div>
+                    @include('front.investments.infrastructure', ['infrastructure' => [
+                        'Kultura i rozrywka' => [
+                            ['name' => 'Muzeum Sztuki EC1', 'distance' => '700 m'],
+                            ['name' => 'Planetarium', 'distance' => '700 m'],
+                            ['name' => 'Łódzka szkoła filmowa', 'distance' => '800 m'],
+                            ['name' => 'Deptak ul. Piotrkowska', 'distance' => '900 m'],
+                            ['name' => 'Off Piotrkowska', 'distance' => '900 m'],
+                        ],
+                        'Parki' => [
+                            ['name' => 'Park Sienkiewicza', 'distance' => '700 m'],
+                            ['name' => 'Park Źródliska', 'distance' => '1,2 km'],
+                        ],
+                        'Zakupy' => [
+                            ['name' => 'Galeria Łódzka', 'distance' => '700 m'],
+                            ['name' => 'Galeria Handlowa Manufaktura', 'distance' => '3,8 km'],
+                        ],
+                        'Komunikacja' => [
+                            ['name' => 'Sieć komunikacji miejskiej', 'distance' => '350 m'],
+                            ['name' => 'Dworzec Łódź Fabryczna', 'distance' => '900 m'],
+                        ],
+                    ]])
                 </div>
             </section>
 

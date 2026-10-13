@@ -609,154 +609,36 @@
                     </div>
 
 
-                    <div class="row justify-content-center pt-md-50 mt-30">
-                        <div class="col-12">
-                            <p class="h5 fw-semibold text-secondary mb-3 mb-md-30">Infrastruktura w otoczeniu inwestycji
-                            </p>
-                        </div>
-                        <?php
-                        $list1 = [
-                            [
-                                'name' => 'Basen, kręgielnia, squash',
-                                'distance' => '1,3 km - 18 min',
-                            ],
-                            [
-                                'name' => 'Boisko sportowe',
-                                'distance' => '1,6 km - 23 min',
-                            ],
-                            [
-                                'name' => 'Korty tenisowe',
-                                'distance' => '1,6 km - 22 min',
-                            ],
-                            [
-                                'name' => 'Park miejski',
-                                'distance' => '2,3 km - 32 min',
-                            ],
-                            [
-                                'name' => 'Plac zabaw',
-                                'distance' => '600 m - 8 min',
-                            ],
-                            [
-                                'name' => 'Centrum handlowe',
-                                'distance' => '1,2 km - 18 min',
-                            ],
-                            [
-                                'name' => 'Market spożywczy',
-                                'distance' => '60 m - 1 min',
-                            ],
-                        ];
-
-                        $list2 = [
-                            [
-                                'name' => 'Biedronka',
-                                'distance' => '1,1 km – 16 min',
-                            ],
-                            [
-                                'name' => 'Lidl',
-                                'distance' => '1,6 km - 22 min',
-                            ],
-                            [
-                                'name' => 'Poczta',
-                                'distance' => '600 m - 8 min',
-                            ],
-                            [
-                                'name' => 'Bazar',
-                                'distance' => '400 m - 5 min',
-                            ],
-                            [
-                                'name' => 'Apteka',
-                                'distance' => '450 m - 6 min',
-                            ],
-                            [
-                                'name' => 'Przystanek autobusowy linia 245',
-                                'distance' => '300 m - 4 min',
-                            ],
-
-                            [
-                                'name' => 'Stacja kolejowa',
-                                'distance' => '2,2 km - 31 min',
-                            ],
-                        ];
-
-                        $list3 = [
-                            [
-                                'name' => 'Żłobek',
-                                'distance' => '50 m - 1 min',
-                            ],
-                            [
-                                'name' => 'Przedszkole publiczne',
-                                'distance' => '400 m - 5 min',
-                            ],
-                            [
-                                'name' => 'Szkoła podstawowa',
-                                'distance' => '700 m - 10 min',
-                            ],
-                            [
-                                'name' => 'Kościół',
-                                'distance' => '550 m - 8 min',
-                            ],
-                            [
-                                'name' => 'Centrum medyczne',
-                                'distance' => '50 m - 1 min',
-                            ],
-                            [
-                                'name' => 'Miejska przychodnia',
-                                'distance' => '2,1 km - 29 min',
-                            ],
-                        ];
-
-                        ?>
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <ul class="mb-0">
-                                @foreach ($list1 as $item)
-                                    <li>
-                                        <div class="d-inline-flex justify-content-between gap-3 w-100">
-                                            <p>
-                                                {{ $item['name'] }}
-                                            </p>
-                                            <p class="text-secondary">
-                                                {{ $item['distance'] }}
-                                            </p>
-                                        </div>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <ul class="mb-0">
-                                @foreach ($list2 as $item)
-                                    <li>
-                                        <div class="d-inline-flex justify-content-between gap-3 w-100">
-                                            <p>
-                                                {{ $item['name'] }}
-                                            </p>
-                                            <p class="text-secondary">
-                                                {{ $item['distance'] }}
-                                            </p>
-                                        </div>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <ul class="">
-                                @foreach ($list3 as $item)
-                                    <li>
-                                        <div class="d-inline-flex justify-content-between gap-3 w-100">
-                                            <p>
-                                                {{ $item['name'] }}
-                                            </p>
-                                            <p class="text-secondary">
-                                                {{ $item['distance'] }}
-                                            </p>
-                                        </div>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-
-
-                    </div>
+                    @include('front.investments.infrastructure', ['infrastructure' => [
+                        'Sport i rekreacja' => [
+                            ['name' => 'Plac zabaw', 'distance' => '600 m', 'time' => '8 min'],
+                            ['name' => 'Basen, kręgielnia, squash', 'distance' => '1,3 km', 'time' => '18 min'],
+                            ['name' => 'Korty tenisowe', 'distance' => '1,6 km', 'time' => '22 min'],
+                            ['name' => 'Boisko sportowe', 'distance' => '1,6 km', 'time' => '23 min'],
+                            ['name' => 'Park miejski', 'distance' => '2,3 km', 'time' => '32 min'],
+                        ],
+                        'Zakupy i usługi' => [
+                            ['name' => 'Market spożywczy', 'distance' => '60 m', 'time' => '1 min'],
+                            ['name' => 'Bazar', 'distance' => '400 m', 'time' => '5 min'],
+                            ['name' => 'Apteka', 'distance' => '450 m', 'time' => '6 min'],
+                            ['name' => 'Poczta', 'distance' => '600 m', 'time' => '8 min'],
+                            ['name' => 'Biedronka', 'distance' => '1,1 km', 'time' => '16 min'],
+                            ['name' => 'Centrum handlowe', 'distance' => '1,2 km', 'time' => '18 min'],
+                            ['name' => 'Lidl', 'distance' => '1,6 km', 'time' => '22 min'],
+                        ],
+                        'Edukacja i zdrowie' => [
+                            ['name' => 'Żłobek', 'distance' => '50 m', 'time' => '1 min'],
+                            ['name' => 'Centrum medyczne', 'distance' => '50 m', 'time' => '1 min'],
+                            ['name' => 'Przedszkole publiczne', 'distance' => '400 m', 'time' => '5 min'],
+                            ['name' => 'Szkoła podstawowa', 'distance' => '700 m', 'time' => '10 min'],
+                            ['name' => 'Miejska przychodnia', 'distance' => '2,1 km', 'time' => '29 min'],
+                        ],
+                        'Komunikacja i inne' => [
+                            ['name' => 'Przystanek autobusowy linia 245', 'distance' => '300 m', 'time' => '4 min'],
+                            ['name' => 'Kościół', 'distance' => '550 m', 'time' => '8 min'],
+                            ['name' => 'Stacja kolejowa', 'distance' => '2,2 km', 'time' => '31 min'],
+                        ],
+                    ]])
                 </div>
             </section>
 

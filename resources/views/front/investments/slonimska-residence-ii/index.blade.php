@@ -388,117 +388,28 @@
                         </div>
 
                     </div>
-                    <div class="row justify-content-center pt-md-50 mt-30">
-                        <div class="col-12">
-                            <p class="h5 fw-semibold text-secondary mb-3 mb-md-30">Infrastruktura w otoczeniu inwestycji</p>
-                        </div>
-                        <?php
-                        $list1 = [
-                            [
-                                'name' => 'przystanek autobusowy linii 5',
-                                'distance' => '450m',
-                            ],
-                            [
-                                'name' => 'przystanek autobusowy linii 28',
-                                'distance' => '450m',
-                            ],
-                            [
-                                'name' => 'Park Barnickich',
-                                'distance' => '990m',
-                            ],
-                            [
-                                'name' => 'centrum handlowe',
-                                'distance' => '1,4km',
-                            ],
-                        ];
-
-                        $list2 = [
-                            [
-                                'name' => 'żłobek',
-                                'distance' => '160m',
-                            ],
-                            [
-                                'name' => 'przedszkole publiczne',
-                                'distance' => '1,2km',
-                            ],
-                            [
-                                'name' => 'szkoła podstawowa',
-                                'distance' => '51m',
-                            ],
-                            [
-                                'name' => 'market spożywczy',
-                                'distance' => '500m',
-                            ],
-                        ];
-
-                        $list3 = [
-                            [
-                                'name' => 'sklep osiedlowy',
-                                'distance' => '300m',
-                            ],
-                            [
-                                'name' => 'plac zabaw',
-                                'distance' => '750m',
-                            ],
-                            [
-                                'name' => 'przychodnia',
-                                'distance' => '400m',
-                            ],
-                            [
-                                'name' => 'Urząd Miejski',
-                                'distance' => '600m',
-                            ],
-                        ];
-                        ?>
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <ul class="mb-0">
-                                @foreach ($list1 as $item)
-                                    <li>
-                                        <div class="d-inline-flex justify-content-between gap-3 w-100">
-                                            <p>
-                                                {{ $item['name'] }}
-                                            </p>
-                                            <p class="text-secondary">
-                                                {{ $item['distance'] }}
-                                            </p>
-                                        </div>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <ul class="mb-0">
-                                @foreach ($list2 as $item)
-                                    <li>
-                                        <div class="d-inline-flex justify-content-between gap-3 w-100">
-                                            <p>
-                                                {{ $item['name'] }}
-                                            </p>
-                                            <p class="text-secondary">
-                                                {{ $item['distance'] }}
-                                            </p>
-                                        </div>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <ul class="">
-                                @foreach ($list3 as $item)
-                                    <li>
-                                        <div class="d-inline-flex justify-content-between gap-3 w-100">
-                                            <p>
-                                                {{ $item['name'] }}
-                                            </p>
-                                            <p class="text-secondary">
-                                                {{ $item['distance'] }}
-                                            </p>
-                                        </div>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
+                    @include('front.investments.infrastructure', ['infrastructure' => [
+                        'Rekreacja' => [
+                            ['name' => 'Plac zabaw', 'distance' => '750 m'],
+                            ['name' => 'Park Barnickich', 'distance' => '990 m'],
+                        ],
+                        'Zakupy i usługi' => [
+                            ['name' => 'Sklep osiedlowy', 'distance' => '300 m'],
+                            ['name' => 'Market spożywczy', 'distance' => '500 m'],
+                            ['name' => 'Urząd Miejski', 'distance' => '600 m'],
+                            ['name' => 'Centrum handlowe', 'distance' => '1,4 km'],
+                        ],
+                        'Edukacja i zdrowie' => [
+                            ['name' => 'Szkoła podstawowa', 'distance' => '51 m'],
+                            ['name' => 'Żłobek', 'distance' => '160 m'],
+                            ['name' => 'Przychodnia', 'distance' => '400 m'],
+                            ['name' => 'Przedszkole publiczne', 'distance' => '1,2 km'],
+                        ],
+                        'Komunikacja' => [
+                            ['name' => 'Przystanek autobusowy linii 5', 'distance' => '450 m'],
+                            ['name' => 'Przystanek autobusowy linii 28', 'distance' => '450 m'],
+                        ],
+                    ]])
                 </div>
             </section>
 

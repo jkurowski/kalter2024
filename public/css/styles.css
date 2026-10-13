@@ -15221,3 +15221,53 @@ ul.price-component {
     font-display: swap;
 }
 .fa-icons:before, .fa-icons:after { display: inline-block; font-family: "FontAwesome"; speak: none; font-style: normal; font-weight: normal; font-variant: normal; text-transform: none; text-rendering: auto; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+/* Infrastruktura w otoczeniu inwestycji */
+.infrastructure-card {
+    height: 100%;
+    padding: 24px;
+    background: #f4f7fb;
+    border-top: 3px solid var(--bs-secondary);
+    border-radius: 4px;
+}
+.infrastructure-card__title {
+    margin-bottom: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--bs-secondary);
+    text-transform: uppercase;
+    letter-spacing: .03em;
+}
+.infrastructure-card__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.infrastructure-card__list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(var(--bs-secondary-rgb), .12);
+}
+.infrastructure-card__list li:last-child {
+    border-bottom: 0;
+}
+.infrastructure-card__name {
+    color: #4a4a4a;
+    line-height: 1.3;
+}
+.infrastructure-card__distance {
+    flex-shrink: 0;
+    text-align: right;
+    font-weight: 600;
+    color: var(--bs-secondary);
+    white-space: nowrap;
+}
+.infrastructure-card__distance small {
+    display: block;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--bs-body-color);
+}

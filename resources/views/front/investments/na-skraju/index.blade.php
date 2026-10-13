@@ -427,203 +427,34 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row justify-content-center pt-md-50 mt-30">
-                        <div class="col-12">
-                            <p class="h5 fw-semibold text-secondary mb-3 mb-md-30">Infrastruktura w otoczeniu inwestycji:</p>
-                        </div>
-                        <div class="col-12 col-md-6 col-xl-4">
-                            <ul>
-                                <li>
-                                    <div class="d-inline-flex justify-content-between gap-3 w-100">
-                                        <p>
-                                            przystanek autobusowy linii 187, 194, N35:
-                                        </p>
-                                        <p class="text-secondary">
-                                            600m
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="d-inline-flex justify-content-between gap-3 w-100">
-                                        <p>
-                                            przystanek autobusowy linii 716, N85:
-                                        </p>
-                                        <p class="text-secondary">
-                                            750m
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="d-inline-flex justify-content-between gap-3 w-100">
-                                        <p>
-                                            przystanek autobusowy linii 501, 517:
-                                        </p>
-                                        <p class="text-secondary">
-                                            950m
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="d-inline-flex justify-content-between gap-3 w-100">
-                                        <p>
-                                            przystanek autobusowy linii 177:
-                                        </p>
-                                        <p class="text-secondary">
-                                            800m
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="d-inline-flex justify-content-between gap-3 w-100">
-                                        <p>
-                                            stacja kolejowa:
-                                        </p>
-                                        <p class="text-secondary">
-                                            1,5km
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="d-inline-flex justify-content-between gap-3 w-100">
-                                        <p>
-                                            plac zabaw:
-                                        </p>
-                                        <p class="text-secondary">
-                                            350m
-                                        </p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-12 col-md-6 col-xl-4">
-                            <ul>
-                                <li>
-                                    <div class="d-inline-flex justify-content-between gap-3 w-100">
-                                        <p>
-                                            tereny sportowe i rekreacyjne:
-                                        </p>
-                                        <p class="text-secondary">
-                                            900m
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="d-inline-flex justify-content-between gap-3 w-100">
-                                        <p>
-                                            park:
-                                        </p>
-                                        <p class="text-secondary">
-                                            1,3km
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="d-inline-flex justify-content-between gap-3 w-100">
-                                        <p>
-                                            centrum handlowe:
-                                        </p>
-                                        <p class="text-secondary">
-                                            850m
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="d-inline-flex justify-content-between gap-3 w-100">
-                                        <p>
-                                            żłobek:
-                                        </p>
-                                        <p class="text-secondary">
-                                            400m
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="d-inline-flex justify-content-between gap-3 w-100">
-                                        <p>
-                                            przedszkole publiczne
-                                        </p>
-                                        <p class="text-secondary">
-                                            800m
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="d-inline-flex justify-content-between gap-3 w-100">
-                                        <p>
-                                            przychodnia:
-                                        </p>
-                                        <p class="text-secondary">
-                                            1,2km
-                                        </p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-12 col-md-6 col-xl-4">
-                            <ul>
-                                <li>
-                                    <div class="d-inline-flex justify-content-between gap-3 w-100">
-                                        <p>
-                                            Szkoła podstawowa:
-                                        </p>
-                                        <p class="text-secondary">
-                                            650m
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="d-inline-flex justify-content-between gap-3 w-100">
-                                        <p>
-                                            market spożywczy:
-                                        </p>
-                                        <p class="text-secondary">
-                                            950m
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="d-inline-flex justify-content-between gap-3 w-100">
-                                        <p>
-                                            sklep osiedlowy:
-                                        </p>
-                                        <p class="text-secondary">
-                                            500m
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="d-inline-flex justify-content-between gap-3 w-100">
-                                        <p>
-                                            bazar:
-                                        </p>
-                                        <p class="text-secondary">
-                                            1,3km
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="d-inline-flex justify-content-between gap-3 w-100">
-                                        <p>
-                                            kościół:
-                                        </p>
-                                        <p class="text-secondary">
-                                            900m
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="d-inline-flex justify-content-between gap-3 w-100">
-                                        <p>
-                                            apteka:
-                                        </p>
-                                        <p class="text-secondary">
-                                            950m
-                                        </p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                    @include('front.investments.infrastructure', ['infrastructure' => [
+                        'Sport i rekreacja' => [
+                            ['name' => 'Plac zabaw', 'distance' => '350 m'],
+                            ['name' => 'Tereny sportowe i rekreacyjne', 'distance' => '900 m'],
+                            ['name' => 'Park', 'distance' => '1,3 km'],
+                        ],
+                        'Zakupy i usługi' => [
+                            ['name' => 'Sklep osiedlowy', 'distance' => '500 m'],
+                            ['name' => 'Centrum handlowe', 'distance' => '850 m'],
+                            ['name' => 'Market spożywczy', 'distance' => '950 m'],
+                            ['name' => 'Apteka', 'distance' => '950 m'],
+                            ['name' => 'Bazar', 'distance' => '1,3 km'],
+                        ],
+                        'Edukacja i zdrowie' => [
+                            ['name' => 'Żłobek', 'distance' => '400 m'],
+                            ['name' => 'Szkoła podstawowa', 'distance' => '650 m'],
+                            ['name' => 'Przedszkole publiczne', 'distance' => '800 m'],
+                            ['name' => 'Przychodnia', 'distance' => '1,2 km'],
+                        ],
+                        'Komunikacja i inne' => [
+                            ['name' => 'Przystanek autobusowy linii 187, 194, N35', 'distance' => '600 m'],
+                            ['name' => 'Przystanek autobusowy linii 716, N85', 'distance' => '750 m'],
+                            ['name' => 'Przystanek autobusowy linii 177', 'distance' => '800 m'],
+                            ['name' => 'Kościół', 'distance' => '900 m'],
+                            ['name' => 'Przystanek autobusowy linii 501, 517', 'distance' => '950 m'],
+                            ['name' => 'Stacja kolejowa', 'distance' => '1,5 km'],
+                        ],
+                    ]])
                 </div>
             </section>
 
