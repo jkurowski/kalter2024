@@ -3,7 +3,7 @@
     'name' => 'Na falistej',
     'logo' => asset('img/invest_1_logo.png'),
     'bg' => asset('img/invest_1_bg.png'),
-    'price' => '999 999zł',
+    'price' => '999 999 zł',
     'delivery' => 'III kwartał 2023',
     'link' => '#',
     'showPrice' => false,
