@@ -60,13 +60,13 @@
                             <p class="text-highlighted text-uppercase fw-bold fs-5 mb-0 lh-1">Promocja</p>
                         @endif
                         @if ($p->status == 1 && !$p->highlighted)
-                            <p class="text-success text-uppercase fw-bold fs-5 mb-0 lh-1">Dostępny</p>
+                            <p class="text-success text-uppercase fw-bold fs-5 mb-0 lh-1">{{ propertyStatus(1, $p->type) }}</p>
                         @endif
                         @if ($p->status == 2)
                             <p class="text-warning text-uppercase fw-bold fs-5 mb-0 lh-1">Rezerwacja</p>
                         @endif
                         @if ($p->status == 3)
-                            <p class="text-danger text-uppercase fw-bold fs-5 mb-0 lh-1">Sprzedany</p>
+                            <p class="text-danger text-uppercase fw-bold fs-5 mb-0 lh-1">{{ propertyStatus(3, $p->type) }}</p>
                         @endif
                             @if(isset($sort) && str_contains($sort, 'views_desc') && $index < 10)
                                 <p><small><i>Wizyt: {{ $p->views }}</i></small></p>

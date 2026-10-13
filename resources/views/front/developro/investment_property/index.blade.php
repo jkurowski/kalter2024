@@ -190,9 +190,9 @@
                                 <p class="mb-20"><small>{{ investmentAdvanced($investment->progress) }}</small></p>
 
                                 <?php if ($property->status == 3) : ?>
-                                <p class="text-danger text-uppercase fw-bold fs-5">Sprzedany</p>
+                                <p class="text-danger text-uppercase fw-bold fs-5">{{ propertyStatus(3, $property->type) }}</p>
                                 <?php elseif ($property->status == 1) : ?>
-                                <p class="text-success text-uppercase fw-bold fs-5">Dostępny</p>
+                                <p class="text-success text-uppercase fw-bold fs-5">{{ propertyStatus(1, $property->type) }}</p>
                                 <?php else : ?>
                                 <p class="text-warning text-uppercase fw-bold fs-5">Rezerwacja</p>
                                 <?php endif; ?>

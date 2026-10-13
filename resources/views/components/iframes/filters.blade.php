@@ -14,7 +14,7 @@
                 <label for="filtr-status" class="w-100">Status</label>
                 <select name="status" id="filtr-status">
                     <option value="">Wszystkie</option>
-                    <option value="1" @if(request()->input('status') == 1) selected @endif>Na sprzedaż</option>
+                    <option value="1" @if(request()->input('status') == 1) selected @endif>Dostępne</option>
                     <option value="2" @if(request()->input('status') == 2) selected @endif>Rezerwacja</option>
                     <option value="3" @if(request()->input('status') == 3) selected @endif>Sprzedane</option>
                 </select>

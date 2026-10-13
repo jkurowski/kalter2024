@@ -29,9 +29,9 @@
 
         <div class="col-2 text-center">
             <?php if ($p->status == 3) : ?>
-            <p class="text-danger text-uppercase fw-bold fs-5 mb-0">Sprzedany</p>
+            <p class="text-danger text-uppercase fw-bold fs-5 mb-0">{{ propertyStatus(3, $p->type) }}</p>
             <?php elseif ($p->status == 1) : ?>
-            <p class="text-success text-uppercase fw-bold fs-5 mb-0">Dostępny</p>
+            <p class="text-success text-uppercase fw-bold fs-5 mb-0">{{ propertyStatus(1, $p->type) }}</p>
             <?php else : ?>
             <p class="text-warning text-uppercase fw-bold fs-5 mb-0">Rezerwacja</p>
             <?php endif; ?>
@@ -110,9 +110,9 @@
                 @endif
             @endauth
             <?php if ($p->status == 3) : ?>
-            <p class="text-danger text-uppercase fw-bold">Sprzedany</p>
+            <p class="text-danger text-uppercase fw-bold">{{ propertyStatus(3, $p->type) }}</p>
             <?php elseif ($p->status == 1) : ?>
-            <p class="text-success text-uppercase fw-bold">Dostępny</p>
+            <p class="text-success text-uppercase fw-bold">{{ propertyStatus(1, $p->type) }}</p>
             <?php else : ?>
             <p class="text-warning text-uppercase fw-bold">Rezerwacja</p>
             <?php endif; ?>

@@ -13,7 +13,7 @@
                 <div class="col-12 col-xl-5">
                     <div class="property-desc">
                         <div class="room-status room-status-{{ $property->status }}">
-                            {{ roomStatus($property->status) }}
+                            {{ propertyStatus($property->status, $property->type) }}
                         </div>
 
                         @if ($property->price && $property->status == 1)

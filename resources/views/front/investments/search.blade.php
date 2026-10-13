@@ -144,7 +144,7 @@
                                 <div class="col-12 col-sm-6 col-md-4 col-xl-3">
                                     <select name="status" id="status" class="form-select">
                                         <option value="" selected>Status</option>
-                                        <option value="1" {{ request('status') == 1 ? 'selected' : '' }}>Dostępny</option>
+                                        <option value="1" {{ request('status') == 1 ? 'selected' : '' }}>Dostępne</option>
                                         <option value="2" {{ request('status') == 2 ? 'selected' : '' }}>Rezerwacja</option>
                                         <option value="3" {{ request('status') == 3 ? 'selected' : '' }}>Sprzedane</option>
                                     </select>

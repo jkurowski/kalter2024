@@ -29,7 +29,7 @@
                     </ul>
                 </div>
                 <div class="col justify-content-center">
-                    <span class="badge room-list-status-{{ $room->status }}">{{ roomStatus($room->status) }}</span>
+                    <span class="badge room-list-status-{{ $room->status }}">{{ propertyStatus($room->status, $room->type) }}</span>
                 </div>
                 <div class="col justify-content-end col-list-btn">
                     <a href="{{ $room->url }}" class="bttn">ZOBACZ</a>
