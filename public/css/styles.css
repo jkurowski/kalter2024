@@ -15284,3 +15284,74 @@ ul.price-component {
 .is-fav .icon-heart {
     fill: currentColor;
 }
+
+/* Karta lokalu - układ wg propozycji klienta (uwaga 12) */
+.pcard-grid{display:flex;flex-direction:column;gap:20px}
+.pcard-col{display:contents}
+.pcard-head{order:1}.pcard-plan{order:2}.pcard-offer{order:3}.pcard-params-card{order:4}.pcard-related{order:5}.pcard-costs{order:6}
+@media (min-width:992px){
+.pcard-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+.pcard-col{display:flex;flex-direction:column;gap:30px;min-width:0}
+}
+.pcard{background:#fff;border:1px solid #e6e9ee;border-radius:3px;box-shadow:0 4px 18px rgba(2,66,130,.06);overflow:hidden}
+.pcard-body{padding:30px}
+@media (max-width:575.98px){.pcard-body{padding:20px}}
+.pcard-promo{background:var(--bs-primary);color:var(--bs-secondary);text-align:center;text-transform:uppercase;font-weight:700;letter-spacing:.15em;font-size:14px;padding:8px 0}
+.pcard-title{font-size:clamp(28px,3vw,40px);line-height:1.1}
+.pcard-subtitle{text-transform:uppercase;font-weight:900;font-size:15px;letter-spacing:.06em;font-family:"Noto Sans Display",sans-serif}
+.pcard-progress{font-size:13px;opacity:.7;margin-top:4px}
+.pcard-status{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;padding:8px 16px;border-radius:3px;font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.pcard-status:before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+.pcard-status.is-available{color:#198754;background:rgba(25,135,84,.1)}
+.pcard-status.is-reserved{color:#b38600;background:rgba(251,192,0,.15)}
+.pcard-status.is-sold{color:#d52121;background:rgba(213,33,33,.08)}
+.pcard-heading{color:var(--bs-secondary);font-size:17px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:20px}
+.pcard-muted{color:#6c757d;font-size:14px}
+.pcard-params-wrap{overflow:hidden}
+.pcard-params{display:grid;grid-template-columns:repeat(3,1fr);margin:0 -1px -1px 0}
+@media (max-width:575.98px){.pcard-params{grid-template-columns:repeat(2,1fr)}}
+.pcard-param{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;padding:22px 10px;border-right:1px solid #e6e9ee;border-bottom:1px solid #e6e9ee}
+.pcard-param img{width:28px;height:28px;object-fit:contain;margin-bottom:6px}
+.pcard-param__label{color:#6c757d;font-size:14px}
+.pcard-param__value{color:var(--bs-secondary);font-weight:700;font-size:18px;line-height:1.2}
+.pcard-notice{background:rgba(251,192,0,.1);border-left:4px solid var(--bs-primary);padding:18px 22px;margin-bottom:25px;font-size:14px;color:#6c757d}
+.pcard-notice__title{color:var(--bs-secondary);font-weight:700;font-size:16px;margin-bottom:6px}
+.pcard-notice__title p:last-child{margin-bottom:0}
+.pcard-related.property-related{background:#fff;padding:0}
+.pcard-table{font-size:14px;margin-bottom:25px}
+.pcard-related .property-offer-check .pcard-table{margin-bottom:0}
+.btn-pcard-outline{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid #d7dce2;background:#fff;color:var(--bs-secondary);font-weight:600;text-transform:uppercase;letter-spacing:.06em;font-size:13px;padding:12px 20px;border-radius:3px}
+.btn-pcard-outline:hover,.btn-pcard-outline:focus{border-color:var(--bs-secondary);color:var(--bs-secondary);background:#fff}
+.pcard-related .btn-offer{border-color:var(--bs-secondary)}
+.pcard-related .btn-offer:hover{background:var(--bs-secondary);color:#fff}
+.pcard-costs__list li{display:flex;align-items:center;gap:15px;padding:14px 0;border-bottom:1px solid #e6e9ee;font-size:15px;color:#212529}
+.pcard-costs__list li:first-child{padding-top:0}
+.pcard-badge{background:rgba(2,66,130,.07);color:var(--bs-secondary);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:6px 12px;border-radius:3px;white-space:nowrap}
+.pcard-link{color:var(--bs-secondary);font-weight:600}
+.pcard-link:hover{color:var(--bs-primary)}
+.pcard-plan .nav-link{padding:6px 16px}
+.pcard-plan__footer{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:0 30px 30px}
+@media (max-width:575.98px){.pcard-plan__footer{padding:0 20px 20px}}
+.pcard-price,.pcard-price.property-summary{background:#2c3e50;color:#fff;padding:30px}
+@media (max-width:575.98px){.pcard-price,.pcard-price.property-summary{padding:20px}}
+.pcard-price__label{display:block;text-transform:uppercase;letter-spacing:.1em;font-size:14px;opacity:.75;margin-bottom:4px}
+.pcard-price__value{font-family:"Noto Sans Display",sans-serif;font-weight:700;font-size:clamp(32px,3.4vw,46px);line-height:1.1}
+.pcard-price__old{font-size:20px;opacity:.6;text-decoration:line-through}
+.pcard-price__discount{background:var(--bs-primary);color:var(--bs-secondary);font-weight:700;padding:5px 12px;border-radius:3px;font-size:15px}
+.pcard-price__sqm{font-size:15px}
+.pcard-price__note{font-size:14px;opacity:.8;margin-top:12px}
+.pcard-price__note + .pcard-price__note{margin-top:4px}
+.pcard-price__history{display:inline-block;margin-top:12px;color:var(--bs-primary);font-weight:700}
+.pcard-price__history:hover{color:#fff}
+.pcard-cta{display:flex;align-items:center;justify-content:center;gap:12px;padding:16px 20px;font-size:16px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.pcard-offer #addToFav{flex:0 0 calc(50% - 8px)}
+.pcard-offer #addToFav:only-child{flex:1 1 auto}
+.pcard-offer #addToFav .icon-heart{width:20px;height:20px}
+.pcard-walk > *{width:100%}
+.pcard-contact{border-top:1px solid #e6e9ee;margin-top:25px;padding-top:20px}
+.pcard-contact__label{display:block;text-transform:uppercase;letter-spacing:.08em;font-size:14px;color:#6c757d;margin-bottom:6px}
+.pcard-contact__phone{display:block;color:var(--bs-secondary);font-weight:700;font-size:22px}
+.pcard-contact__email{display:block;color:var(--bs-secondary);font-size:16px;word-break:break-all}
+.pcard-contact a:hover{color:var(--bs-primary)}
+.pcard-walk .btn{padding:12px 20px;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+@media (max-width:575.98px){.btn-pcard-outline{padding:12px 10px;white-space:nowrap}.pcard-plan__footer .btn-pcard-outline{flex:0 0 auto}}

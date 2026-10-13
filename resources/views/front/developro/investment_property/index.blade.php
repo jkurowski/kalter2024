@@ -172,174 +172,130 @@
             </div>
         </section>
 
-        <section>
+        <section class="pt-30">
             <div class="container">
-                <div class="row row-gap-30">
-                    <div class="col-12 col-md-6 col-lg-5">
-                        <div class="text-secondary">
-                            @if($investment->status != 3)
-                                @if($property->highlighted && $property->promotion_price && $property->price_brutto && $property->status == 1)
-                                    <div class="promo-info">PROMOCJA</div>
+                @php
+                    $isAvailable = $property->status == 1;
+                    $isPromo = $property->highlighted && $property->promotion_price && $property->price_brutto && $isAvailable;
+                    $basePrice = $isPromo ? $property->promotion_price : $property->price_brutto;
+                    $relatedSum = $property->relatedProperties->sum('price_brutto');
+                    $showPrice = $investment->status != 3 && $isAvailable && $property->price_brutto && ($isPromo || !$property->highlighted);
+                    $statusClass = [1 => 'is-available', 2 => 'is-reserved', 3 => 'is-sold', 4 => 'is-sold'][$property->status] ?? '';
+                    $hasOffer = $investment->status != 3 && $isAvailable && $property->type == 1;
+                    $hasCosts = $investment->status != 3 && $isAvailable && $property->priceComponents && $property->priceComponents->isNotEmpty();
+                    $city = $investment->city;
+
+                    $params = [['icon' => 'blueprint.svg', 'label' => 'Powierzchnia', 'value' => $property->area.' m<sup>2</sup>']];
+                    if ($property->type == 1) {
+                        $params[] = ['icon' => 'rooms.svg', 'label' => 'Pokoje', 'value' => e($property->rooms)];
+                    }
+                    $params[] = ['icon' => 'tile.svg', 'label' => 'Piętro', 'value' => e($floor->name)];
+                    if ($property->type == 1) {
+                        if ($property->kitchen) {
+                            $params[] = ['icon' => 'kitchen.svg', 'label' => 'Kuchnia', 'value' => e(kitchenType($property->kitchen))];
+                        }
+                        if ($property->window) {
+                            $params[] = ['icon' => 'window.svg', 'label' => 'Wystawa okienna', 'value' => e(getWindowDirections($property->window))];
+                        }
+                        foreach ([['terrace_area', 'Taras', 'terrace.svg'], ['garden_area', 'Ogródek', 'shovels.svg'], ['balcony_area', 'Balkon', 'terrace.svg'], ['loggia_area', 'Loggia', 'terrace.svg']] as [$field, $label, $icon]) {
+                            if ($property->$field) {
+                                $params[] = ['icon' => $icon, 'label' => $label, 'value' => $property->$field.' m<sup>2</sup>'];
+                            }
+                        }
+                    }
+                @endphp
+
+                <div class="pcard-grid">
+                    <div class="pcard-col">
+                        {{-- Nagłówek --}}
+                        <div class="pcard pcard-head">
+                            @if($isPromo && $investment->status != 3)
+                                <div class="pcard-promo">Promocja</div>
+                            @endif
+                            <div class="pcard-body d-flex justify-content-between align-items-start gap-3">
+                                <div class="text-secondary">
+                                    <h2 class="pcard-title mb-1">{{ $property->name }}</h2>
+                                    <p class="pcard-subtitle mb-0">{{ $investment->name }}</p>
+                                    @if($investment->status != 3)
+                                        <p class="pcard-progress mb-0">{{ investmentAdvanced($investment->progress) }}</p>
+                                    @endif
+                                </div>
+                                @if($investment->status != 3)
+                                    <span class="pcard-status {{ $statusClass }}">{{ $property->status == 2 ? 'Rezerwacja' : propertyStatus($property->status, $property->type) }}</span>
                                 @endif
-                            @endif
-
-                            <h2 class="mb-0">{{$property->name}}</h2>
-                            <p class="text-uppercase fw-900 fs-15 ff-secondary mb-0 lh-1">{{$investment->name}}</p>
-
-                            @if($investment->status != 3)
-                                <p class="mb-20"><small>{{ investmentAdvanced($investment->progress) }}</small></p>
-
-                                <?php if ($property->status == 3) : ?>
-                                <p class="text-danger text-uppercase fw-bold fs-5">{{ propertyStatus(3, $property->type) }}</p>
-                                <?php elseif ($property->status == 1) : ?>
-                                <p class="text-success text-uppercase fw-bold fs-5">{{ propertyStatus(1, $property->type) }}</p>
-                                <?php else : ?>
-                                <p class="text-warning text-uppercase fw-bold fs-5">Rezerwacja</p>
-                                <?php endif; ?>
-
-    {{--                            @if($investment->show_prices)--}}
-                                    <p class="h4 mb-1 ff-secondary row">
-                                        <span class="col-12">
-                                            @if($property->price_brutto && $property->status == 1 && !$property->highlighted)
-                                                <span class="fs-2 d-block">@money($property->price_brutto)</span>
-                                                <span class="fs-14 d-block">@money(($property->price_brutto / $property->area)) / m<sup>2</sup></span>
-                                            @endif
-                                        </span>
-                                    </p>
-                                    @if($property->highlighted && $property->promotion_price && $property->price_brutto && $property->status == 1)
-                                        <p class="h4 mb-1 ff-secondary row">
-                                            <span class="col-6">
-                                                <span class="fs-2 d-block">@money($property->promotion_price)</span>
-                                                <span class="fs-14 d-block">@money(($property->promotion_price / $property->area)) / m<sup>2</sup></span>
-                                            </span>
-                                            <span class="col-6 text-end pt-2">
-                                                @if($property->price_brutto)
-                                                    <span class="text-body-emphasis opacity-50 fs-24 align-middle text-decoration-line-through d-block">@money($property->price_brutto)</span>
-                                                    <span class="text-body-emphasis d-block opacity-50 fs-14 align-middle text-decoration-line-through">@money($property->price_brutto / $property->area) / m<sup>2</sup></span>
-                                                @endif
-                                            </span>
-
-                                            @php
-                                                $rabat = $property->price_brutto - $property->promotion_price;
-                                            @endphp
-                                            @if($property->price_brutto <> $property->promotion_price)
-                                                <span class="rabat h4 d-block w-100">Rabat: @money($rabat)</span>
-                                            @endif
-                                        </p>
-                                        @if($property->promotion_end_date && $property->status == 1)
-                                        <span class="fs-15 text-black mb-0">Promocja ważna do: {{ $property->promotion_end_date }}</span>
-                                        @endif
-                                    @endif
-                                @auth
-                                    @if($property->highlighted)
-                                        @if($property->has_price_history)
-                                            @php
-                                                $lowest_price = $property->lowestPriceLast30Days();
-                                            @endphp
-                                            @if($lowest_price > 0)
-                                                <p class="fs-10 text-black mb-0">Najniższa cena z 30 dni przed obniżką: @money($lowest_price)</p>
-                                            @endif
-                                        @else
-                                            <p class="fs-10 text-black mb-0">Najniższa cena z 30 dni przed obniżką @money($property->price_30)</p>
-                                        @endif
-                                    @endif
-                                @endauth
-    {{--                            @endif--}}
-
-
-                                    @if($property->has_price_history)
-                                        <a href="#" class="btn btn-primary btn-with-icon px-3 min-w-max-content flex-fill d-inline-flex align-items-center justify-content-center gap-1 btn-history mt-3" data-id="{{ $property->id }}">Pokaż historię ceny</a>
-                                        <div id="modalHistory"></div>
-                                    @else
-                                        @if($property->status == 1)
-                                        <p>Cena nie zmieniła się od: 11.09.2025</p>
-                                        @endif
-                                    @endif
-                            @else
-                                @if($investment->show_prices)
-                                    <p class="h4 mb-1 ff-secondary row">
-                                        <span class="col-12">
-                                            @if($property->price_brutto && $property->area)
-                                                <span class="fs-4 d-block mt-4">Szacowane ceny od: @money(($property->price_brutto / $property->area)) / m<sup>2</sup></span>
-                                            @endif
-                                        </span>
-                                    </p>
-                               @endif
-                            @endif
-
-                            <div class="mb-50 mt-4">
-                                <table class="text-sm-down-small w-100">
-                                    <tbody>
-                                    <tr>
-                                        <td class="td-with-icon pb-2"><img src="{{ asset('img/tile.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="12" height="12"></td>
-                                        <td class="pb-2">Piętro</td>
-                                        <td class="text-end pb-2">{{$floor->name}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="td-with-icon pb-2"><img src="{{ asset('img/blueprint.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="12" height="12"></td>
-                                        <td class="pb-2">Metraż</td>
-                                        <td class="text-end pb-2">{{$property->area}} m<sup>2</sup></td>
-                                    </tr>
-                                    @if($property->type == 1)
-                                        <tr>
-                                            <td class="td-with-icon pb-2"><img src="{{ asset('img/rooms.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="12" height="12"></td>
-                                            <td class="pb-2">Liczba Pokoi</td>
-                                            <td class="text-end pb-2">{{$property->rooms}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="td-with-icon pb-2"><img src="{{ asset('img/kitchen.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="12" height="12"></td>
-                                            <td class="pb-2">Aneks/Kuchnia</td>
-                                            <td class="text-end pb-2">{{ kitchenType($property->kitchen) }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="td-with-icon pb-2"><img src="{{ asset('img/window.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="12" height="12"></td>
-                                            <td class="pb-2">Wystawa okienna</td>
-                                            <td class="text-end pb-2">{{ getWindowDirections($property->window) }}</td>
-                                        </tr>
-                                        @if($property->terrace_area)
-                                            <tr>
-                                                <td class="td-with-icon pb-2"><img src="{{ asset('img/terrace.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="12" height="12"></td>
-                                                <td class="pb-2">Taras</td>
-                                                <td class="text-end pb-2">{{$property->terrace_area}} m<sup>2</sup></td>
-                                            </tr>
-                                        @endif
-                                        @if($property->garden_area)
-                                            <tr>
-                                                <td class="td-with-icon pb-2"><img src="{{ asset('img/shovels.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="12" height="12"></td>
-                                                <td class="pb-2">Ogródek</td>
-                                                <td class="text-end pb-2">{{$property->garden_area}} m<sup>2</sup></td>
-                                            </tr>
-                                        @endif
-                                        @if($property->balcony_area)
-                                            <tr>
-                                                <td class="td-with-icon pb-2"><img src="{{ asset('img/shovels.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="12" height="12"></td>
-                                                <td class="pb-2">Balkon</td>
-                                                <td class="text-end pb-2">{{$property->balcony_area}} m<sup>2</sup></td>
-                                            </tr>
-                                        @endif
-                                        @if($property->loggia_area)
-                                            <tr>
-                                                <td class="td-with-icon pb-2"><img src="{{ asset('img/shovels.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="12" height="12"></td>
-                                                <td class="pb-2">Loggia</td>
-                                                <td class="text-end pb-2">{{$property->loggia_area}} m<sup>2</sup></td>
-                                            </tr>
-                                        @endif
-                                    @endif
-                                    </tbody>
-                                </table>
                             </div>
+                        </div>
 
-                            @if($investment->status != 3)
-                                @if ($property->status == 1 && $property->type == 1)
-                                    <div class="property-related">
+                        {{-- Parametry --}}
+                        <div class="pcard pcard-params-card">
+                            <div class="pcard-body">
+                                <h3 class="pcard-heading">{{ $property->type == 1 ? 'Parametry mieszkania' : 'Parametry lokalu' }}</h3>
+                                <div class="pcard-params-wrap">
+                                    <div class="pcard-params">
+                                        @foreach($params as $param)
+                                            <div class="pcard-param">
+                                                <img src="{{ asset('img/'.$param['icon']) }}" alt="" loading="lazy" decoding="async" width="28" height="28">
+                                                <span class="pcard-param__label">{{ $param['label'] }}</span>
+                                                <span class="pcard-param__value">{!! $param['value'] !!}</span>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                                        @if($property->history_info)
-                                            <p>{!! $property->history_info !!}</p>
-                                        @endif
+                        {{-- Powierzchnie dodatkowe --}}
+                        @if($hasOffer && ($property->history_info || $property->relatedProperties->isNotEmpty() || $property->visitor_related_type != 1))
+                            <div class="pcard pcard-related property-related">
+                                <div class="pcard-body">
+                                    @if($property->history_info)
+                                        <div class="pcard-notice">
+                                            <div class="pcard-notice__title">{!! $property->history_info !!}</div>
+                                            @if($property->visitor_related_type != 1)
+                                                <p class="mb-0">Dodanie powierzchni dodatkowych służy jedynie orientacyjnej wycenie. Ostateczna oferta oraz warunki zakupu zostaną przedstawione przez przedstawiciela sprzedaży.</p>
+                                            @endif
+                                        </div>
+                                    @endif
 
-                                        @if($property->relatedProperties->isNotEmpty())
-                                            <h5>Przynależne powierzchnie</h5>
-                                            <table class="table">
+                                    @if($property->relatedProperties->isNotEmpty())
+                                        <h3 class="pcard-heading">Przynależne powierzchnie</h3>
+                                        <table class="table pcard-table">
+                                            <thead>
+                                            <tr>
+                                                <th>Nazwa</th>
+                                                <th class="text-center">Powierzchnia</th>
+                                                <th class="text-center">Cena</th>
+                                                <th></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach ($property->relatedProperties as $related)
+                                                <tr>
+                                                    <td valign="middle">{{ $related->name }}</td>
+                                                    <td class="text-center" valign="middle">{{ $related->area }} m<sup>2</sup></td>
+                                                    <td class="text-center" valign="middle">@money($related->price_brutto)</td>
+                                                    <td valign="middle" align="right">
+                                                        @if($related->has_price_history)
+                                                            <a href="#" class="btn-history" data-id="{{ $related->id }}" title="Historia ceny"><svg class="d-block" width="16px" height="16px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M10.6972,0.468433 C12.354,1.06178 13.7689,2.18485 14.7228,3.66372 C15.6766,5.14258 16.1163,6.89471 15.9736,8.64872 C15.8309,10.4027 15.1138,12.0607 13.9334,13.366 C12.753,14.6712 11.1752,15.5508 9.4443,15.8685 C7.71342,16.1863 5.92606,15.9244 4.35906,15.1235 C2.79206,14.3226 1.53287,13.0274 0.776508,11.4384 C0.539137,10.9397 0.750962,10.343 1.24963,10.1057 C1.74831,9.86829 2.34499,10.0801 2.58236,10.5788 C3.14963,11.7705 4.09402,12.742 5.26927,13.3426 C6.44452,13.9433 7.78504,14.1397 9.08321,13.9014 C10.3814,13.6631 11.5647,13.0034 12.45,12.0245 C13.3353,11.0456 13.8731,9.80205 13.9801,8.48654 C14.0872,7.17103 13.7574,5.85694 13.042,4.74779 C12.3266,3.63864 11.2655,2.79633 10.0229,2.35133 C8.78032,1.90632 7.42568,1.88344 6.1688,2.28624 C5.34644,2.54978 4.59596,2.98593 3.96459,3.5597 L4.69779,4.29291 C5.32776,4.92287 4.88159,6.00002 3.99069,6.00002 L1.77635684e-15,6.00002 L1.77635684e-15,2.00933 C1.77635684e-15,1.11842 1.07714,0.672258 1.70711,1.30222 L2.54916,2.14428 C3.40537,1.3473 4.43126,0.742882 5.55842,0.381656 C7.23428,-0.155411 9.04046,-0.124911 10.6972,0.468433 Z M8,4 C8.55229,4 9,4.44772 9,5 L9,7.58579 L10.7071,9.29289 C11.0976,9.68342 11.0976,10.3166 10.7071,10.7071 C10.3166,11.0976 9.68342,11.0976 9.29289,10.7071 L7,8.41421 L7,5 C7,4.44772 7.44772,4 8,4 Z"/></svg></a>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+                                    @endif
+
+                                    @if($property->visitor_related_type != 1)
+                                        <div class="property-offer-check">
+                                            <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
+                                                <div>
+                                                    <h3 class="pcard-heading mb-1">Powierzchnie dodatkowe</h3>
+                                                    <span class="pcard-muted">Dodaj miejsce parkingowe lub komórkę do oferty.</span>
+                                                </div>
+                                                <a href="#" class="btn btn-pcard-outline btn-offer" data-id="{{ $property->id }}">+ Dodaj do oferty</a>
+                                            </div>
+                                            <div id="offerModal"></div>
+                                            <table class="table pcard-table d-none mt-3">
                                                 <thead>
                                                 <tr>
                                                     <th>Nazwa</th>
@@ -348,169 +304,185 @@
                                                     <th></th>
                                                 </tr>
                                                 </thead>
-                                                <tbody>
-                                                @foreach ($property->relatedProperties as $related)
-                                                    <tr>
-                                                        <td valign="middle">{{ $related->name }}</td>
-                                                        <td class="text-center" valign="middle">{{ $related->area }} m<sup>2</sup></td>
-                                                        <td class="text-center" valign="middle">
-                                                            @money($related->price_brutto)
-                                                        </td>
-                                                        <td valign="middle" align="right">
-                                                            @if($related->has_price_history)
-                                                                <a href="#" class="btn-history" data-id="{{ $related->id }}"><svg class="d-block" width="16px" height="16px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path fill="#000000" d="M10.6972,0.468433 C12.354,1.06178 13.7689,2.18485 14.7228,3.66372 C15.6766,5.14258 16.1163,6.89471 15.9736,8.64872 C15.8309,10.4027 15.1138,12.0607 13.9334,13.366 C12.753,14.6712 11.1752,15.5508 9.4443,15.8685 C7.71342,16.1863 5.92606,15.9244 4.35906,15.1235 C2.79206,14.3226 1.53287,13.0274 0.776508,11.4384 C0.539137,10.9397 0.750962,10.343 1.24963,10.1057 C1.74831,9.86829 2.34499,10.0801 2.58236,10.5788 C3.14963,11.7705 4.09402,12.742 5.26927,13.3426 C6.44452,13.9433 7.78504,14.1397 9.08321,13.9014 C10.3814,13.6631 11.5647,13.0034 12.45,12.0245 C13.3353,11.0456 13.8731,9.80205 13.9801,8.48654 C14.0872,7.17103 13.7574,5.85694 13.042,4.74779 C12.3266,3.63864 11.2655,2.79633 10.0229,2.35133 C8.78032,1.90632 7.42568,1.88344 6.1688,2.28624 C5.34644,2.54978 4.59596,2.98593 3.96459,3.5597 L4.69779,4.29291 C5.32776,4.92287 4.88159,6.00002 3.99069,6.00002 L1.77635684e-15,6.00002 L1.77635684e-15,2.00933 C1.77635684e-15,1.11842 1.07714,0.672258 1.70711,1.30222 L2.54916,2.14428 C3.40537,1.3473 4.43126,0.742882 5.55842,0.381656 C7.23428,-0.155411 9.04046,-0.124911 10.6972,0.468433 Z M8,4 C8.55229,4 9,4.44772 9,5 L9,7.58579 L10.7071,9.29289 C11.0976,9.68342 11.0976,10.3166 10.7071,10.7071 C10.3166,11.0976 9.68342,11.0976 9.29289,10.7071 L7,8.41421 L7,5 C7,4.44772 7.44772,4 8,4 Z"/>
-                                                                    </svg></a>
-                                                            @endif
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
-                                                </tbody>
+                                                <tbody id="offerList"></tbody>
                                             </table>
-                                        @endif
-
-                                        @if($property->visitor_related_type != 1)
-                                            <div class="property-offer-check">
-                                                <p>Dodanie powierzchni dodatkowych służy jedynie orientacyjnej wycenie. Ostateczna oferta oraz warunki zakupu zostaną przedstawione przez przedstawiciela sprzedaży.</p>
-                                                <a href="#" class="btn btn-primary btn-with-icon px-3 min-w-max-content flex-fill d-inline-flex align-items-center justify-content-center gap-1 btn-offer" data-id="{{ $property->id }}">Dodaj do oferty</a>
-                                                <div id="offerModal"></div>
-                                                <table class="table d-none mt-3">
-                                                    <thead>
-                                                    <tr>
-                                                        <th>Nazwa</th>
-                                                        <th class="text-center">Powierzchnia</th>
-                                                        <th class="text-center">Cena</th>
-                                                        <th></th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody id="offerList"></tbody>
-                                                </table>
-                                            </div>
-                                        @endif
-                                    </div>
-
-                                    @if($property->highlighted)
-                                        <div class="property-summary fs-5 d-flex" data-totalprice="{{ ($property->promotion_price + $property->relatedProperties->sum('price_brutto')) }}">
-                                            Cena za całość: <span class="ms-auto"><b class="fw-bold" id="totalDisplay">@money(($property->promotion_price + $property->relatedProperties->sum('price_brutto')))</b></span>
                                         </div>
-                                    @else
-                                        @if($property->price_brutto)
-                                            <div class="property-summary fs-5 d-flex" data-totalprice="{{ ($property->price_brutto + $property->relatedProperties->sum('price_brutto')) }}">
-                                                Cena za całość: <span class="ms-auto"><b class="fw-bold" id="totalDisplay">@money(($property->price_brutto + $property->relatedProperties->sum('price_brutto')))</b></span>
-                                            </div>
-                                        @endif
                                     @endif
-                                @endif
-                                <div class="mb-3"></div>
+                                </div>
+                            </div>
+                        @endif
 
-                                @if($property->priceComponents && $property->status == 1)
-                                <div class="row">
-                                    <div class="col-12">
-                                        <p>Dodatkowe koszty i opcje:</p>
-                                        <ul class="price-component mb-0 list-unstyled">
+                        {{-- Dodatkowe koszty i opcje --}}
+                        @if($hasCosts || $investment->file_brochure)
+                            <div class="pcard pcard-costs">
+                                <div class="pcard-body">
+                                    @if($hasCosts)
+                                        <h3 class="pcard-heading">Dodatkowe koszty i opcje</h3>
+                                        <ul class="pcard-costs__list list-unstyled mb-0">
                                             @foreach($property->priceComponents as $priceComponent)
                                                 <li>
-                                                    {{ $priceComponent->name }}
-                                                    <span class="ms-auto text-end">
-                                                @if($priceComponent->pivot->value)
-                                                            <span><b>@money($priceComponent->pivot->value)</b></span>
+                                                    <span>{{ $priceComponent->name }}</span>
+                                                    <span class="ms-auto d-flex align-items-center gap-2 text-end">
+                                                        @if($priceComponent->pivot->value)
+                                                            <b class="text-nowrap">@money($priceComponent->pivot->value)</b>
                                                         @endif
-                                                            <?php if ($priceComponent->pivot->category == 1) : ?>
-                                                    <span class="small">Obowiązkowy</span>
-                                                <?php elseif ($priceComponent->pivot->category == 2) : ?>
-                                                    <span class="small">Opcjonalny</span>
-                                                <?php else : ?>
-                                                    <span class="small">Zmienny</span>
-                                                <?php endif; ?>
-                                                </span>
+                                                        <span class="pcard-badge">
+                                                            @if($priceComponent->pivot->category == 1)
+                                                                Obowiązkowy
+                                                            @elseif($priceComponent->pivot->category == 2)
+                                                                Opcjonalny
+                                                            @else
+                                                                Zmienny
+                                                            @endif
+                                                        </span>
+                                                    </span>
                                                 </li>
                                             @endforeach
                                         </ul>
-                                    </div>
+                                    @endif
+                                    @if($investment->file_brochure)
+                                        <a href="{{ asset('/investment/brochure/'.$investment->file_brochure) }}" target="_blank" class="pcard-link d-inline-block @if($hasCosts) mt-4 @endif">Prospekt informacyjny</a>
+                                    @endif
                                 </div>
-                            @endif
-
-                            @endif
-
-                            <div class="mb-3"></div>
-                            <div class="d-flex flex-wrap gap-2">
-                                @if($investment->status != 3)
-                                    <a href="#kontakt" class="btn btn-primary btn-with-icon px-3 min-w-max-content flex-fill d-inline-flex align-items-center justify-content-center gap-1">Zapytaj o ofertę <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062"><path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor" /></svg>
-                                    </a>
-                                @else
-                                    <a href="#kontakt" class="btn btn-primary btn-with-icon px-3 min-w-max-content flex-fill d-inline-flex align-items-center justify-content-center gap-1">Zapytaj o przewidywaną cenę <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062"><path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor" /></svg>
-                                    </a>
-                                @endif
-
-                                @if($property->file_pdf)
-                                    <a href="{{ asset('/investment/property/pdf/'.$property->file_pdf) }}" class="btn btn-primary btn-with-icon d-inline-flex align-items-center gap-1 justify-content-center px-3 min-w-max-content flex-fill" target="_blank">
-                                        <svg class="me-2" xmlns="http://www.w3.org/2000/svg" width="11.109" height="12.96" viewBox="0 0 11.109 12.96">
-                                            <path id="Icon_metro-file-pdf" data-name="Icon metro-file-pdf" d="M13.188,4.952a1.683,1.683,0,0,1,.347.55,1.669,1.669,0,0,1,.145.636V14.47a.691.691,0,0,1-.694.694H3.265a.691.691,0,0,1-.694-.694V2.9A.691.691,0,0,1,3.265,2.2h6.48a1.67,1.67,0,0,1,.636.145,1.683,1.683,0,0,1,.55.347ZM9.977,3.187V5.906H12.7a.79.79,0,0,0-.159-.3L10.273,3.346a.79.79,0,0,0-.3-.159Zm2.777,11.051V6.832H9.745a.691.691,0,0,1-.694-.694V3.129H3.5V14.238h9.257ZM9.036,9.949a5.5,5.5,0,0,0,.608.405,7.177,7.177,0,0,1,.846-.051q1.063,0,1.28.354a.35.35,0,0,1,.014.376.021.021,0,0,1-.007.014l-.014.014v.007q-.043.275-.513.275a2.983,2.983,0,0,1-.832-.145,5.274,5.274,0,0,1-.94-.383,13.023,13.023,0,0,0-2.835.6q-1.107,1.895-1.75,1.895a.421.421,0,0,1-.2-.051l-.174-.087-.043-.036a.3.3,0,0,1-.043-.26,1.571,1.571,0,0,1,.405-.662,3.5,3.5,0,0,1,.955-.7.106.106,0,0,1,.166.043.042.042,0,0,1,.014.029q.376-.615.774-1.425A11.038,11.038,0,0,0,7.5,8.271a5.846,5.846,0,0,1-.221-1.154A2.812,2.812,0,0,1,7.322,6.2q.08-.289.3-.289h.159a.3.3,0,0,1,.253.108.578.578,0,0,1,.065.492.157.157,0,0,1-.029.058.188.188,0,0,1,.007.058v.217a9.471,9.471,0,0,1-.1,1.389A3.659,3.659,0,0,0,9.036,9.949ZM4.871,12.922a3.193,3.193,0,0,0,.991-1.143,4.123,4.123,0,0,0-.633.608A2.4,2.4,0,0,0,4.871,12.922ZM7.749,6.268a2.151,2.151,0,0,0-.014.955q.007-.051.051-.318,0-.022.051-.311a.163.163,0,0,1,.029-.058.021.021,0,0,1-.007-.014.015.015,0,0,0,0-.011.015.015,0,0,1,0-.011.416.416,0,0,0-.094-.26.021.021,0,0,1-.007.014v.014Zm-.9,4.781a10.608,10.608,0,0,1,2.054-.586,1.091,1.091,0,0,1-.094-.069,1.3,1.3,0,0,1-.116-.1,3.831,3.831,0,0,1-.918-1.273,9.665,9.665,0,0,1-.6,1.425q-.217.405-.325.6Zm4.672-.116a1.731,1.731,0,0,0-1.013-.174,2.736,2.736,0,0,0,.9.2.7.7,0,0,0,.13-.007s0-.012-.014-.022Z" transform="translate(-2.571 -2.203)" fill="#fff" />
-                                        </svg>
-
-                                        Pobierz kartę
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062">
-                                            <path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor" />
-                                        </svg>
-                                    </a>
-                                @endif
-                                @if($property->walk_3d)
-                                    {!! $property->walk_3d !!}
-                                @endif
-
-                                @if($investment->status != 3)
-                                <button id="addToFav" class="btn btn-primary btn-with-icon px-3 min-w-max-content flex-fill d-inline-flex align-items-center justify-content-center gap-1 @if(in_array($property->id, session('clipboard.items', []))) is-fav @endif" data-id="{{$property->id}}"><svg class="icon-heart" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> <span>{{ in_array($property->id, session('clipboard.items', [])) ? 'W ulubionych' : 'Dodaj do ulubionych' }}</span></button>
-                                @endif
-                                <!--
-                                <a href="/kontakt.php" class="btn btn-primary btn-with-icon d-inline-flex align-items-center gap-1 justify-content-center px-3 min-w-max-content flex-fill">
-                                -->
                             </div>
-                            @if($investment->file_brochure)
-                                <div class="mt-2">
-                                    <a href="{{ asset('/investment/brochure/'.$investment->file_brochure) }}" target="_blank" class="link-body-primary small">Prospekt informacyjny</a>
-                                </div>                            @endif
-                            <div id="clipboardmessage"></div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 offset-lg-1 order-first order-md-0">
-                        @if($property->file && $property->model_3d)
-                        <ul class="nav justify-content-center justify-content-md-end mb-4 mb-sm-30 gap-30" role="tablist">
-                            @if($property->model_3d)
-                                <li class="nav-item tab-switcher" role="presentation">
-                                    <button class="nav-link active tab-switcher-button-shadow" id="btn-3d" data-bs-toggle="tab" data-bs-target="#btn-3d-pane" type="button" role="tab" aria-controls="list-tab-pane" aria-selected="true">Rzut 3D</button>
-                                </li>
-                            @endif
-                            @if($property->file)
-                                <li class="nav-item tab-switcher" role="presentation">
-                                    <button class="nav-link tab-switcher-button-shadow" id="btn-2d" data-bs-toggle="tab" data-bs-target="#btn-2d-pane" type="button" role="tab" aria-controls="grid-tab-pane" aria-selected="false">Plan</button>
-                                </li>
-                            @endif
-                        </ul>
                         @endif
-                        <div class="tab-content">
-                            @if($property->model_3d)
-                                <div class="tab-pane fade show active" id="btn-3d-pane" role="tabpanel" aria-labelledby="btn-3d" tabindex="0">
-                                    <div class="w-100 h-100">
-                                        <div class="ratio ratio-4x3">
-                                            {!! createIframeFromButton($property->model_3d) !!}
-                                        </div>
+                    </div>
+
+                    <div class="pcard-col">
+                        {{-- Rzut --}}
+                        @if($property->file || $property->model_3d)
+                            <div class="pcard pcard-plan">
+                                <div class="pcard-body">
+                                    @if($property->file && $property->model_3d)
+                                        <ul class="nav justify-content-end mb-3 gap-3" role="tablist">
+                                            <li class="nav-item tab-switcher" role="presentation">
+                                                <button class="nav-link active tab-switcher-button-shadow" id="btn-3d" data-bs-toggle="tab" data-bs-target="#btn-3d-pane" type="button" role="tab" aria-controls="btn-3d-pane" aria-selected="true">Rzut 3D</button>
+                                            </li>
+                                            <li class="nav-item tab-switcher" role="presentation">
+                                                <button class="nav-link tab-switcher-button-shadow" id="btn-2d" data-bs-toggle="tab" data-bs-target="#btn-2d-pane" type="button" role="tab" aria-controls="btn-2d-pane" aria-selected="false">Plan</button>
+                                            </li>
+                                        </ul>
+                                    @endif
+                                    <div class="tab-content">
+                                        @if($property->model_3d)
+                                            <div class="tab-pane fade show active" id="btn-3d-pane" role="tabpanel" aria-labelledby="btn-3d" tabindex="0">
+                                                <div class="ratio ratio-4x3">
+                                                    {!! createIframeFromButton($property->model_3d) !!}
+                                                </div>
+                                            </div>
+                                        @endif
+                                        @if($property->file)
+                                            <div class="tab-pane fade @if(!$property->model_3d) show active @endif" id="btn-2d-pane" role="tabpanel" aria-labelledby="btn-2d" tabindex="0">
+                                                <a href="{{ asset('/investment/property/'.$property->file) }}" class="glightbox d-block" id="planLightbox">
+                                                    <picture>
+                                                        @if($property->file_webp)
+                                                            <source type="image/webp" srcset="{{ asset('/investment/property/thumbs/webp/'.$property->file_webp) }}">
+                                                        @endif
+                                                        <source type="image/jpeg" srcset="{{ asset('/investment/property/thumbs/'.$property->file) }}">
+                                                        <img src="{{ asset('/investment/property/thumbs/'.$property->file) }}" alt="{{ $property->name }}" class="w-100">
+                                                    </picture>
+                                                </a>
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
-                            @endif
-                            @if($property->file)
-                                <div class="tab-pane fade @if(!$property->model_3d) show active @endif" id="btn-2d-pane" role="tabpanel" aria-labelledby="btn-2d" tabindex="0">
-                                    <div class="w-100 h-100">
-                                        <a href="{{ asset('/investment/property/'.$property->file) }}" class="glightbox">
-                                            <picture>
-                                                @if($property->file_webp)
-                                                    <source type="image/webp" srcset="{{ asset('/investment/property/thumbs/webp/'.$property->file_webp) }}">
+                                @if($property->file)
+                                    <div class="pcard-plan__footer">
+                                        <span class="pcard-muted">Rzut lokalu {{ $property->name }}</span>
+                                        <button type="button" class="btn btn-pcard-outline" onclick="document.getElementById('planLightbox').click()">Powiększ rzut</button>
+                                    </div>
+                                @endif
+                            </div>
+                        @endif
+
+                        {{-- Cena i akcje --}}
+                        <div class="pcard pcard-offer">
+                            @if($showPrice)
+                                <div class="pcard-price property-summary" data-totalprice="{{ $basePrice + $relatedSum }}">
+                                    <span class="pcard-price__label">Cena za całość</span>
+                                    <div class="d-flex flex-wrap align-items-baseline column-gap-3">
+                                        <span class="pcard-price__value" id="totalDisplay">@money($basePrice + $relatedSum)</span>
+                                        @if($isPromo && $property->price_brutto <> $property->promotion_price)
+                                            <span class="pcard-price__old">@money($property->price_brutto + $relatedSum)</span>
+                                        @endif
+                                    </div>
+                                    <div class="d-flex flex-wrap align-items-center gap-3 mt-2">
+                                        @if($isPromo && $property->price_brutto > $property->promotion_price)
+                                            <span class="pcard-price__discount">Rabat: @money($property->price_brutto - $property->promotion_price)</span>
+                                        @endif
+                                        <span class="pcard-price__sqm">@money($basePrice / $property->area) / m<sup>2</sup></span>
+                                    </div>
+                                    <p class="pcard-price__note mb-0">
+                                        {{ $property->name }}, {{ $property->area }} m<sup>2</sup>.@if($hasOffer && $property->visitor_related_type != 1) Wycena orientacyjna.@endif
+                                    </p>
+                                    @if($isPromo && $property->promotion_end_date)
+                                        <p class="pcard-price__note mb-0">Promocja ważna do: {{ $property->promotion_end_date }}</p>
+                                    @endif
+                                    @auth
+                                        @if($property->highlighted)
+                                            @if($property->has_price_history)
+                                                @php
+                                                    $lowest_price = $property->lowestPriceLast30Days();
+                                                @endphp
+                                                @if($lowest_price > 0)
+                                                    <p class="pcard-price__note mb-0">Najniższa cena z 30 dni przed obniżką: @money($lowest_price)</p>
                                                 @endif
-                                                <source type="image/jpeg" srcset="{{ asset('/investment/property/thumbs/'.$property->file) }}">
-                                                <img src="{{ asset('/investment/property/thumbs/'.$property->file) }}" alt="{{$property->name}}" class="w-100">
-                                            </picture>
-                                        </a>
-                                    </div>
+                                            @else
+                                                <p class="pcard-price__note mb-0">Najniższa cena z 30 dni przed obniżką @money($property->price_30)</p>
+                                            @endif
+                                        @endif
+                                    @endauth
+                                    @if($property->has_price_history)
+                                        <a href="#" class="pcard-price__history btn-history" data-id="{{ $property->id }}">Pokaż historię ceny</a>
+                                        <div id="modalHistory"></div>
+                                    @else
+                                        <p class="pcard-price__note mb-0">Cena nie zmieniła się od: 11.09.2025</p>
+                                    @endif
+                                </div>
+                            @elseif($investment->status == 3 && $investment->show_prices && $property->price_brutto && $property->area)
+                                <div class="pcard-price">
+                                    <span class="pcard-price__label">Szacowane ceny od</span>
+                                    <span class="pcard-price__value">@money($property->price_brutto / $property->area) / m<sup>2</sup></span>
                                 </div>
                             @endif
+
+                            <div class="pcard-body">
+                                @if($investment->status != 3)
+                                    <a href="#kontakt" class="btn btn-primary pcard-cta w-100">Zapytaj o ofertę <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062"><path d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor" /></svg></a>
+                                @else
+                                    <a href="#kontakt" class="btn btn-primary pcard-cta w-100">Zapytaj o przewidywaną cenę <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062"><path d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor" /></svg></a>
+                                @endif
+
+                                @if($property->file_pdf || $investment->status != 3)
+                                    <div class="d-flex gap-3 mt-3">
+                                        @if($property->file_pdf)
+                                            <a href="{{ asset('/investment/property/pdf/'.$property->file_pdf) }}" class="btn btn-pcard-outline flex-fill" target="_blank">Pobierz kartę</a>
+                                        @endif
+                                        @if($investment->status != 3)
+                                            <button id="addToFav" class="btn btn-pcard-outline @if(in_array($property->id, session('clipboard.items', []))) is-fav @endif" data-id="{{ $property->id }}" title="Dodaj do ulubionych"><svg class="icon-heart" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> <span class="visually-hidden">{{ in_array($property->id, session('clipboard.items', [])) ? 'W ulubionych' : 'Dodaj do ulubionych' }}</span></button>
+                                        @endif
+                                    </div>
+                                @endif
+
+                                @if($property->walk_3d)
+                                    <div class="pcard-walk mt-3">
+                                        {!! $property->walk_3d !!}
+                                    </div>
+                                @endif
+                                <div id="clipboardmessage"></div>
+
+                                @if($city && ($city->phone || $city->email))
+                                    <div class="pcard-contact">
+                                        <span class="pcard-contact__label">Kontakt bezpośredni</span>
+                                        @if($city->phone)
+                                            <a href="tel:{{ preg_replace('/[^\d+]/', '', $city->phone) }}" class="pcard-contact__phone">{{ $city->phone }}</a>
+                                        @endif
+                                        @if($city->email)
+                                            <a href="mailto:{{ $city->email }}" class="pcard-contact__email">{{ $city->email }}</a>
+                                        @endif
+                                    </div>
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1106,7 +1078,8 @@
         function formatPrice(price) {
             let parts = price.toFixed(2).split('.');
             parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-            return parts.join('.');
+            // ten sam format co ceny z serwera: "578 000 zł", grosze tylko gdy niezerowe
+            return (parts[1] === '00' ? parts[0] : parts.join(',')) + ' zł';
         }
     </script>
 @endpush
