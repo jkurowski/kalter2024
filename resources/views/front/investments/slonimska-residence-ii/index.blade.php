@@ -108,6 +108,7 @@
                             </div>
                             <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
                                 {!! investmentSection($investment->sections, 1, 'content') !!}
+                                @include('front.investments.section-button', ['sections' => $investment->sections, 'id' => 1])
                             </div>
                         </div>
                     </div>
@@ -133,6 +134,7 @@
                             </div>
                             <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
                                 {!! investmentSection($investment->sections, 2, 'content') !!}
+                                @include('front.investments.section-button', ['sections' => $investment->sections, 'id' => 2])
                             </div>
                         </div>
                         <div class="col-12 col-md-6 offset-lg-1">
@@ -178,6 +180,7 @@
                             </div>
                             <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
                                 {!! investmentSection($investment->sections, 3, 'content') !!}
+                                @include('front.investments.section-button', ['sections' => $investment->sections, 'id' => 3])
                             </div>
                         </div>
 
@@ -204,6 +207,7 @@
                             </div>
                             <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
                                 {!! investmentSection($investment->sections, 4, 'content') !!}
+                                @include('front.investments.section-button', ['sections' => $investment->sections, 'id' => 4])
                             </div>
                         </div>
                         <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
@@ -249,6 +253,7 @@
                             </div>
                             <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
                                 {!! investmentSection($investment->sections, 5, 'content') !!}
+                                @include('front.investments.section-button', ['sections' => $investment->sections, 'id' => 5])
                             </div>
                         </div>
                     </div>
@@ -274,6 +279,7 @@
                             </div>
                             <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
                                 {!! investmentSection($investment->sections, 6, 'content') !!}
+                                @include('front.investments.section-button', ['sections' => $investment->sections, 'id' => 6])
                             </div>
                         </div>
                         <div class="col-12 col-md-6 offset-lg-1">
@@ -318,6 +324,7 @@
                             </div>
                             <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
                                 {!! investmentSection($investment->sections, 7, 'content') !!}
+                                @include('front.investments.section-button', ['sections' => $investment->sections, 'id' => 7])
                             </div>
                         </div>
 
@@ -344,6 +351,7 @@
                             </div>
                             <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
                                 {!! investmentSection($investment->sections, 8, 'content') !!}
+                                @include('front.investments.section-button', ['sections' => $investment->sections, 'id' => 8])
                             </div>
                         </div>
                         <div class="col-12 col-md-6 offset-lg-1">
@@ -384,6 +392,7 @@
                             </div>
                             <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
                                 {!! investmentSection($investment->sections, 9, 'content') !!}
+                                @include('front.investments.section-button', ['sections' => $investment->sections, 'id' => 9])
                             </div>
                         </div>
 

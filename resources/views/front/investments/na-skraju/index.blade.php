@@ -109,6 +109,7 @@
                             </div>
                             <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
                                 {!! investmentSection($investment->sections, 10, 'content') !!}
+                                @include('front.investments.section-button', ['sections' => $investment->sections, 'id' => 10])
                             </div>
                         </div>
                         <div class="col-12 col-md-6 col-lg-5 offset-lg-1">
@@ -150,6 +151,7 @@
                             </div>
                             <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
                                 {!! investmentSection($investment->sections, 11, 'content') !!}
+                                @include('front.investments.section-button', ['sections' => $investment->sections, 'id' => 11])
                             </div>
                         </div>
 
@@ -173,6 +175,7 @@
                             </div>
                             <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
                                 {!! investmentSection($investment->sections, 12, 'content') !!}
+                                @include('front.investments.section-button', ['sections' => $investment->sections, 'id' => 12])
                             </div>
                         </div>
                         <div class="col-12 col-lg-8 position-relative">
@@ -248,6 +251,7 @@
                             </div>
                             <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
                                 {!! investmentSection($investment->sections, 13, 'content') !!}
+                                @include('front.investments.section-button', ['sections' => $investment->sections, 'id' => 13])
                             </div>
                         </div>
 
@@ -272,6 +276,7 @@
                             </div>
                             <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
                                 {!! investmentSection($investment->sections, 14, 'content') !!}
+                                @include('front.investments.section-button', ['sections' => $investment->sections, 'id' => 14])
                             </div>
                         </div>
                         <div class="col-12 col-md-6 col-lg-5">
@@ -314,6 +319,7 @@
                             </div>
                             <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
                                 {!! investmentSection($investment->sections, 15, 'content') !!}
+                                @include('front.investments.section-button', ['sections' => $investment->sections, 'id' => 15])
                             </div>
                         </div>
 
@@ -338,6 +344,7 @@
                             </div>
                             <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
                                 {!! investmentSection($investment->sections, 16, 'content') !!}
+                                @include('front.investments.section-button', ['sections' => $investment->sections, 'id' => 16])
                             </div>
                         </div>
                         <div class="col-12 col-md-6 offset-lg-1">
@@ -371,6 +378,7 @@
                             </div>
                             <div class="row  mt-4 mt-md-40">
                                 {!! investmentSection($investment->sections, 17, 'content') !!}
+                                @include('front.investments.section-button', ['sections' => $investment->sections, 'id' => 17])
                             </div>
 
                         </div>
@@ -419,6 +427,7 @@
                             </div>
                             <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
                                 {!! investmentSection($investment->sections, 18, 'content') !!}
+                                @include('front.investments.section-button', ['sections' => $investment->sections, 'id' => 18])
                             </div>
                         </div>
                         <div class="col-12 col-md-6 offset-lg-1">

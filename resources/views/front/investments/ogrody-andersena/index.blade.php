@@ -112,6 +112,7 @@
                             </div>
                             <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
                                 {!! investmentSection($investment->sections, 19, 'content') !!}
+                                @include('front.investments.section-button', ['sections' => $investment->sections, 'id' => 19])
                             </div>
                         </div>
 
@@ -188,6 +189,7 @@
                             </div>
                             <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
                                 {!! investmentSection($investment->sections, 20, 'content') !!}
+                                @include('front.investments.section-button', ['sections' => $investment->sections, 'id' => 20])
                             </div>
                         </div>
                         <div class="col-12 col-md-6 offset-lg-1">
@@ -272,6 +274,7 @@
                             </div>
                             <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
                                 {!! investmentSection($investment->sections, 21, 'content') !!}
+                                @include('front.investments.section-button', ['sections' => $investment->sections, 'id' => 21])
                             </div>
                         </div>
 
@@ -298,6 +301,7 @@
                             </div>
                             <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
                                 {!! investmentSection($investment->sections, 22, 'content') !!}
+                                @include('front.investments.section-button', ['sections' => $investment->sections, 'id' => 22])
                             </div>
                         </div>
                         <div class="col-12 col-lg-7 position-relative">
@@ -425,6 +429,7 @@
                             </div>
                             <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
                                 {!! investmentSection($investment->sections, 23, 'content') !!}
+                                @include('front.investments.section-button', ['sections' => $investment->sections, 'id' => 23])
                             </div>
                         </div>
                     </div>
@@ -450,6 +455,7 @@
                             </div>
                             <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
                                 {!! investmentSection($investment->sections, 24, 'content') !!}
+                                @include('front.investments.section-button', ['sections' => $investment->sections, 'id' => 24])
                             </div>
                         </div>
                         <div class="col-12 col-lg-7 position-relative">
@@ -576,6 +582,7 @@
                             </div>
                             <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
                                 {!! investmentSection($investment->sections, 25, 'content') !!}
+                                @include('front.investments.section-button', ['sections' => $investment->sections, 'id' => 25])
                             </div>
                         </div>
                     </div>
@@ -599,6 +606,7 @@
                             </div>
                             <div class="text-pretty mt-4 mt-md-40" data-aos="fade">
                                 {!! investmentSection($investment->sections, 26, 'content') !!}
+                                @include('front.investments.section-button', ['sections' => $investment->sections, 'id' => 26])
                             </div>
                         </div>
                         <div class="col-12 col-md-6 offset-lg-1">

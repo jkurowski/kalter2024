@@ -18,6 +18,8 @@ class InvestmentSection extends Model
         'subtitle',
         'content',
         'code',
+        'button_name',
+        'button_url',
         'file',
         'file_alt',
         'lock',

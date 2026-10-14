@@ -94,6 +94,16 @@
                                         @include('form-elements.textarea-fullwidth', ['label' => 'Treść lub kod html', 'name' => 'code', 'value' => $entry->code, 'rows' => 11])
                                     </div>
                                 @endif
+
+                                {{-- przycisk pod treścią sekcji, dostępny zawsze (także w zablokowanych sekcjach) --}}
+                                <div class="row w-100 form-group">
+                                    <div class="col-12 col-md-6">
+                                        @include('form-elements.html-input-text', ['label' => 'Przycisk - nazwa', 'sublabel' => 'np. Zobacz mieszkania. Puste = brak przycisku', 'name' => 'button_name', 'value' => $entry->button_name])
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        @include('form-elements.html-input-text', ['label' => 'Przycisk - url', 'sublabel' => 'np. /pl/i/slonimska-residence-ii/plan-inwestycji lub pełny adres https://...', 'name' => 'button_url', 'value' => $entry->button_url])
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

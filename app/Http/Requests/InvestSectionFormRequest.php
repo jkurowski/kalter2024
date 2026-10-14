@@ -28,6 +28,8 @@ class InvestSectionFormRequest extends FormRequest
             'subtitle' => 'nullable|string|min:2|max:190',
             'content' => 'nullable|string|min:5',
             'code' => 'nullable|string|min:5',
+            'button_name' => 'nullable|string|max:190|required_with:button_url',
+            'button_url' => 'nullable|string|max:255|required_with:button_name',
             'fields' => '',
             'file_alt' => ''
         ];
