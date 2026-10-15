@@ -15358,3 +15358,18 @@ ul.price-component {
 .pcard-nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px}.pcard-nav__prev{justify-self:start}.pcard-nav__floor{justify-self:center}.pcard-nav__next{justify-self:end}.pcard-nav .btn-pcard-outline{gap:10px;padding:12px 22px}@media (max-width:575.98px){.pcard-nav .pcard-nav__label{display:none}.pcard-nav .btn-pcard-outline{padding:12px 16px}}
 @media (max-width:575.98px){.pcard-nav{grid-template-columns:auto auto auto;justify-content:center}.pcard-nav__prev:empty,.pcard-nav__next:empty{width:46px}}
 #planNav{margin-bottom:20px}
+/* Karta lokalu - cena za mieszkanie / powierzchnie dodatkowe / cena za całość */
+.pcard-price__head{display:flex;flex-direction:column}
+.pcard-price__meta{display:flex;flex-wrap:wrap;column-gap:16px}
+.pcard-price__extras{display:none}
+.has-extras .pcard-price__head{flex-direction:row;flex-wrap:wrap;align-items:baseline;column-gap:16px}
+.has-extras .pcard-price__head .pcard-price__label{margin-bottom:0}
+.has-extras .pcard-price__flat{font-size:26px}
+.has-extras .pcard-price__head .pcard-price__old{font-size:16px}
+.has-extras .pcard-price__extras{display:block;border-top:1px solid rgba(255,255,255,.2);margin-top:20px;padding-top:20px}
+.pcard-price__extras-list{margin-top:6px}
+.pcard-price__extras-list li{display:flex;justify-content:space-between;gap:16px;padding:6px 0;border-bottom:1px dashed rgba(255,255,255,.2);font-size:15px}
+.pcard-price__extras-list li span:last-child{color:var(--bs-primary);font-weight:700;white-space:nowrap}
+.pcard-offer #addToFav{display:inline-flex;align-items:center;justify-content:center;gap:10px}
+.pcard-fav__label{display:none}
+@media (min-width:768px){.pcard-fav__label{display:inline}}

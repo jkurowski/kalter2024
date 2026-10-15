@@ -374,22 +374,23 @@
                         {{-- Cena i akcje --}}
                         <div class="pcard pcard-offer">
                             @if($showPrice)
-                                <div class="pcard-price property-summary" data-totalprice="{{ $basePrice + $relatedSum }}">
-                                    <span class="pcard-price__label">Cena za całość</span>
-                                    <div class="d-flex flex-wrap align-items-baseline column-gap-3">
-                                        <span class="pcard-price__value" id="totalDisplay">@money($basePrice + $relatedSum)</span>
+                                {{-- bez powierzchni dodatkowych: tylko "Cena za mieszkanie"; z nimi (.has-extras): mieszkanie + lista + "Cena za całość" --}}
+                                <div class="pcard-price property-summary @if($property->relatedProperties->isNotEmpty()) has-extras @endif" data-totalprice="{{ $basePrice + $relatedSum }}">
+                                    <div class="pcard-price__head">
+                                        <span class="pcard-price__label">Cena za mieszkanie</span>
+                                        <span class="pcard-price__value pcard-price__flat">@money($basePrice)</span>
                                         @if($isPromo && $property->price_brutto <> $property->promotion_price)
-                                            <span class="pcard-price__old">@money($property->price_brutto + $relatedSum)</span>
+                                            <span class="pcard-price__old">@money($property->price_brutto)</span>
                                         @endif
                                     </div>
-                                    <div class="d-flex flex-wrap align-items-center gap-3 mt-2">
-                                        @if($isPromo && $property->price_brutto > $property->promotion_price)
+                                    @if($isPromo && $property->price_brutto > $property->promotion_price)
+                                        <div class="mt-2">
                                             <span class="pcard-price__discount">Rabat: @money($property->price_brutto - $property->promotion_price)</span>
-                                        @endif
+                                        </div>
+                                    @endif
+                                    <p class="pcard-price__note pcard-price__meta mb-0">
+                                        <span>{{ $property->name }}, {{ $property->area }} m<sup>2</sup>.</span>
                                         <span class="pcard-price__sqm">@money($basePrice / $property->area) / m<sup>2</sup></span>
-                                    </div>
-                                    <p class="pcard-price__note mb-0">
-                                        {{ $property->name }}, {{ $property->area }} m<sup>2</sup>.@if($hasOffer && $property->visitor_related_type != 1) Wycena orientacyjna.@endif
                                     </p>
                                     @if($isPromo && $property->promotion_end_date)
                                         <p class="pcard-price__note mb-0">Promocja ważna do: {{ $property->promotion_end_date }}</p>
@@ -414,6 +415,20 @@
                                     @else
                                         <p class="pcard-price__note mb-0">Cena nie zmieniła się od: 11.09.2025</p>
                                     @endif
+
+                                    <div class="pcard-price__extras">
+                                        <span class="pcard-price__label">Powierzchnie dodatkowe:</span>
+                                        <ul class="pcard-price__extras-list list-unstyled mb-0" id="priceExtras">
+                                            @foreach($property->relatedProperties as $related)
+                                                <li><span>{{ $related->name }}</span><span>@money($related->price_brutto)</span></li>
+                                            @endforeach
+                                        </ul>
+                                        <span class="pcard-price__label mt-3">Cena za całość</span>
+                                        <span class="pcard-price__value" id="totalDisplay">@money($basePrice + $relatedSum)</span>
+                                        @if($hasOffer && $property->visitor_related_type != 1)
+                                            <p class="pcard-price__note mb-0">Wycena orientacyjna.</p>
+                                        @endif
+                                    </div>
                                 </div>
                             @elseif($investment->status == 3 && $investment->show_prices && $property->price_brutto && $property->area)
                                 <div class="pcard-price">
@@ -435,7 +450,8 @@
                                             <a href="{{ asset('/investment/property/pdf/'.$property->file_pdf) }}" class="btn btn-pcard-outline flex-fill" target="_blank">Pobierz kartę</a>
                                         @endif
                                         @if($investment->status != 3)
-                                            <button id="addToFav" class="btn btn-pcard-outline @if(in_array($property->id, session('clipboard.items', []))) is-fav @endif" data-id="{{ $property->id }}" title="Dodaj do ulubionych"><svg class="icon-heart" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> <span class="visually-hidden">{{ in_array($property->id, session('clipboard.items', [])) ? 'W ulubionych' : 'Dodaj do ulubionych' }}</span></button>
+                                            @php $isFav = in_array($property->id, session('clipboard.items', [])); @endphp
+                                            <button id="addToFav" type="button" class="btn btn-pcard-outline @if($isFav) is-fav @endif" data-id="{{ $property->id }}" aria-pressed="{{ $isFav ? 'true' : 'false' }}" title="{{ $isFav ? 'Usuń z ulubionych' : 'Dodaj do ulubionych' }}"><span class="pcard-fav__label">{{ $isFav ? 'Usuń z ulubionych' : 'Dodaj do ulubionych' }}</span> <svg class="icon-heart" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
                                         @endif
                                     </div>
                                 @endif
@@ -721,26 +737,40 @@
         const baseUrl = "{{ url('/') }}/";
         //const baseUrl = "https://newkalter.test/";
 
-        button.addEventListener('click', function() {
+        // przełącznik: kliknięcie dodaje, ponowne kliknięcie usuwa ze schowka
+        button && button.addEventListener('click', function() {
+            if (button.disabled) return;
+            button.disabled = true;
+
             const xhr = new XMLHttpRequest();
             const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
             const property_id = button.getAttribute('data-id');
+            const removing = button.classList.contains('is-fav');
 
-            xhr.open('POST', baseUrl + 'pl/clipboard');
+            xhr.open(removing ? 'DELETE' : 'POST', baseUrl + 'pl/clipboard');
             xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
             xhr.setRequestHeader('X-CSRF-TOKEN', csrfToken);
-            const data = { id: property_id };
-            const jsonData = JSON.stringify(data);
-            xhr.send(jsonData);
+            xhr.send(JSON.stringify({ id: property_id }));
+
+            xhr.addEventListener('loadend', function() {
+                button.disabled = false;
+            });
 
             xhr.addEventListener('load', function() {
                 if (xhr.status === 200) {
                     const response = JSON.parse(xhr.responseText);
                     const message = response.message;
                     const count = response.count;
+                    const label = removing ? 'Dodaj do ulubionych' : 'Usuń z ulubionych';
                     document.querySelector('#clipboardmessage').innerHTML = message;
-                    button.classList.add('is-fav');
-                    button.querySelector('span').textContent = 'W ulubionych';
+                    button.classList.toggle('is-fav', !removing);
+                    button.setAttribute('aria-pressed', removing ? 'false' : 'true');
+                    button.setAttribute('title', label);
+                    button.querySelector('.pcard-fav__label').textContent = label;
+
+                    if (!count && document.querySelector('#clipboardwidget')) {
+                        document.querySelector('#clipboardwidget').remove();
+                    }
 
                     // Check if count is truthy and element doesn't already exist
                     if (count && !document.querySelector('#clipboardwidget')) {
@@ -925,6 +955,7 @@
                                         const newRow = otherHolderList.querySelector(`tr[data-id="${selectedSurfaceId}"]`);
                                         const price = parseFloat(newRow.dataset.price);
 
+                                        addPriceExtra(newRow.dataset.id, newRow.querySelector('td').textContent.trim(), price);
                                         updateTotalPrice(price, 'add');
 
                                         // Zamknij modal
@@ -960,6 +991,7 @@
                 const tr = btnDelete.closest('tr');
                 if (tr) {
                     const priceToRemove = parseFloat(tr.dataset.price) || 0;
+                    removePriceExtra(tr.dataset.id);
                     tr.remove();
                     updateTotalPrice(priceToRemove, 'remove');
                     checkOfferList();
@@ -1026,6 +1058,30 @@
             } else {
                 table.classList.remove('d-none');
             }
+        }
+        // lista powierzchni dodatkowych w boxie ceny; z co najmniej jedną pokazujemy "Cena za całość"
+        function addPriceExtra(id, name, price) {
+            const list = document.getElementById('priceExtras');
+            if (!list) return;
+            const li = document.createElement('li');
+            li.dataset.id = id;
+            const nameEl = document.createElement('span');
+            nameEl.textContent = name;
+            const priceEl = document.createElement('span');
+            priceEl.textContent = formatPrice(parseFloat(price) || 0);
+            li.append(nameEl, priceEl);
+            list.appendChild(li);
+            togglePriceExtras();
+        }
+        function removePriceExtra(id) {
+            const li = document.querySelector(`#priceExtras li[data-id="${id}"]`);
+            if (li) li.remove();
+            togglePriceExtras();
+        }
+        function togglePriceExtras() {
+            const summary = document.querySelector('.property-summary');
+            const list = document.getElementById('priceExtras');
+            if (summary && list) summary.classList.toggle('has-extras', list.children.length > 0);
         }
         function updateTotalPrice(price, action = 'add') {
             const summary = document.querySelector('.property-summary');
