@@ -92,7 +92,9 @@
                 const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
                 const property_id = this.getAttribute('data-id');
 
-                xhr.open('POST', baseUrl + 'pl/clipboard');
+                // przełącznik: ponowne kliknięcie usuwa ze schowka
+                const removing = button.classList.contains('is-fav');
+                xhr.open(removing ? 'DELETE' : 'POST', baseUrl + 'pl/clipboard');
                 xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
                 xhr.setRequestHeader('X-CSRF-TOKEN', csrfToken);
                 const data = { id: property_id };
@@ -106,7 +108,12 @@
                         const count = response.count;
 
                         toastr.options={closeButton:!0,progressBar:!0,positionClass:"toast-menu-bottom-right",timeOut:"3000"};toastr.success(message);
-                        button.classList.add('is-fav');
+                        button.classList.toggle('is-fav', !removing);
+                        button.setAttribute('title', removing ? 'Dodaj do ulubionych' : 'Usuń z ulubionych');
+                        button.setAttribute('aria-label', removing ? 'Dodaj do ulubionych' : 'Usuń z ulubionych');
+                        if (!count && document.querySelector('#clipboardwidget')) {
+                            document.querySelector('#clipboardwidget').remove();
+                        }
 
                         // Check if count is truthy and element doesn't already exist
                         if (count && !document.querySelector('#clipboardwidget')) {

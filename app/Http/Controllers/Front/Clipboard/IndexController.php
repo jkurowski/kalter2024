@@ -129,6 +129,7 @@ class IndexController extends Controller
             if ($removed !== null) {
                 return response()->json([
                     'message' => '<div class="alert alert-success border-0 mt-3">Usunięto z ulubionych</div>',
+                    'raw' => 'Usunięto z ulubionych',
                     'count' => count($items) - 1
                 ]);
             }
@@ -136,6 +137,7 @@ class IndexController extends Controller
 
         return response()->json([
             'message' => '<div class="danger alert-danger border-0 mt-3">Nie znaleziono w ulubionych</div>',
+            'raw' => 'Nie znaleziono w ulubionych',
             'count' => count($items)
         ]);
     }

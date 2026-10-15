@@ -79,7 +79,7 @@
                         <button id="addToFav" class="btn btn-primary btn-with-icon text-nowrap pe-3 ps-3" data-id="{{$p->id}}">USUŃ</button>
                     @else
                         @if ($p->status == 1)
-                        <button class="btn btn-primary text-nowrap list-fav d-flex align-items-center justify-content-center @if(in_array($p->id, session('clipboard.items', []))) is-fav @endif" data-id="{{$p->id}}" title="Dodaj do ulubionych" aria-label="Dodaj do ulubionych">
+                        <button class="btn btn-primary text-nowrap list-fav d-flex align-items-center justify-content-center @if(in_array($p->id, session('clipboard.items', []))) is-fav @endif" data-id="{{$p->id}}" title="{{ in_array($p->id, session('clipboard.items', [])) ? 'Usuń z ulubionych' : 'Dodaj do ulubionych' }}" aria-label="{{ in_array($p->id, session('clipboard.items', [])) ? 'Usuń z ulubionych' : 'Dodaj do ulubionych' }}">
                             <svg class="icon-heart" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
                         </button>
                         @endif
