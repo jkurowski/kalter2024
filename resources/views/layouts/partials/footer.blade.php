@@ -57,10 +57,20 @@
 
         <hr class="footer-hr">
 
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xxl-4 row-gap-3">
+        @php
+            // równe kolumny wg liczby biur widocznych w stopce (3 biura = 3 x 1/3, 4 = 4 x 1/4 od xxl)
+            $footerCitiesCount = $cities->filter(fn ($c) => $c->footer)->count();
+            $footerCitiesCols = match (true) {
+                $footerCitiesCount >= 4 => 'row-cols-md-2 row-cols-lg-3 row-cols-xxl-4',
+                $footerCitiesCount == 3 => 'row-cols-md-2 row-cols-lg-3',
+                $footerCitiesCount == 2 => 'row-cols-md-2',
+                default => '',
+            };
+        @endphp
+        <div class="row row-cols-1 {{ $footerCitiesCols }} row-gap-3">
             <?php foreach ($cities as $city) : ?>
             @if ($city->footer)
-                <div class="col-auto">
+                <div class="col">
                     <p class="text-uppercase text-secondary mb-md-4 fw-semibold fs-6">{{ $city->name }}</p>
                     <div class="footer-office d-flex gap-3 align-items-start mb-2">
                         <svg class="text-secondary" xmlns="http://www.w3.org/2000/svg" width="12.204" height="17.435" viewBox="0 0 12.204 17.435"><path id="Icon_material-location-on" data-name="Icon material-location-on" d="M13.6,3A6.1,6.1,0,0,0,7.5,9.1c0,4.577,6.1,11.333,6.1,11.333S19.7,13.679,19.7,9.1A6.1,6.1,0,0,0,13.6,3Zm0,8.282A2.179,2.179,0,1,1,15.782,9.1,2.18,2.18,0,0,1,13.6,11.282Z" transform="translate(-7.5 -3)" fill="currentcolor"/></svg>
